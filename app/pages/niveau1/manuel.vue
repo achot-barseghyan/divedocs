@@ -33,10 +33,10 @@
           />
         </div>
 
-        <Card class="mb-8 bg-white/95 px-4 backdrop-blur-sm">
+        <Card class="mb-8 !bg-white px-4">
           <template #content>
             <div class="max-h-[60vh] min-h-[360px] w-full overflow-auto">
-              <p class="mb-6 text-lg leading-relaxed text-gray-800">
+              <p class="mb-6 text-lg leading-relaxed text-black">
                 {{ currentPageData.content }}
               </p>
 
@@ -44,12 +44,12 @@
                 <div
                   v-for="(section, index) in currentPageData.sections"
                   :key="index"
-                  class="mb-3 rounded-md bg-white/90 p-4 shadow-sm"
+                  class="mb-3 rounded-md bg-gray-200 p-4 shadow-sm"
                 >
-                  <h3 class="mb-2 text-lg font-semibold text-gray-800">
+                  <h3 class="mb-2 text-lg font-semibold text-black">
                     {{ section.heading }}
                   </h3>
-                  <p class="leading-relaxed text-gray-700">
+                  <p class="leading-relaxed text-black">
                     {{ section.text }}
                   </p>
                 </div>
