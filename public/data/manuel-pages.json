@@ -1,0 +1,298 @@
+{
+  "title": "Manuel de Formation Technique - Plongeur Niveau 1",
+  "subtitle": "PE20 - Plongeur encadré à 20 m",
+  "totalPages": 13,
+  "pages": [
+    {
+      "id": 1,
+      "title": "Prérogatives",
+      "content": "Le plongeur niveau 1 (N1) est capable de réaliser des plongées d'exploration jusqu'à 20 m de profondeur, au sein d'une palanquée, avec un guide de palanquée (GP) qui prend en charge la conduite de la plongée. Ces plongées sont réalisées dans le cadre d'une organisation sécurisée, mise en place par un directeur de plongée (DP), selon les règles définies par le Code du Sport (CdS).",
+      "sections": [
+        {
+          "heading": "CONDITIONS D'ACCÈS À LA FORMATION",
+          "text": "• Être âgé de 12 ans au moins à la date d'entrée en formation et de délivrance du brevet (autorisation d'un responsable légal pour les mineurs).\n• Être titulaire de la licence fédérale en cours de validité.\n• Présenter un certificat d'absence de contre-indication à la plongée conforme à la réglementation fédérale en vigueur.\nLa première immersion scaphandre est un baptême de plongée, sauf s'il a été réalisé auparavant."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Règles d'Organisation et de Délivrance",
+      "content": "L'ensemble des conditions de réalisation des certifications de la FFESSM est défini dans les règles générales des certifications de la FFESSM.",
+      "sections": [
+        {
+          "heading": "Conditions de délivrance",
+          "text": "Le brevet de plongeur niveau 1 (N1) est délivré au niveau d'un club affilié ou d'une structure commerciale agréée :\n• soit par le président du club ou le responsable de la structure commerciale agréée,\n• soit par un encadrant licencié au minimum E3 FFESSM ou associé, ou BEES1, ou DEJEPS, avec l'autorisation du président du club ou du responsable de la structure commerciale agréée.\n\nL'ensemble des compétences doit être acquis dans un délai de 15 mois à compter de la délivrance de la première compétence."
+        },
+        {
+          "heading": "",
+          "text": "L’enseignement et la validation des compétences s’effectuent dans l’espace de 0 à 6 m par un encadrant licencié au minimum E1. Conformément à l’article A. 322-83 du Code du Sport, un plongeur en cours de formation technique peut évoluer dans l’espace de 0 à 20 m sous le responsabilité d’un encadrant E2. L’accoutumance à la profondeur doit être progressive."
+        },
+        {
+          "heading": "",
+          "text": "Dans le cas d’une certification délivrée en milieu artificiel, le plongeur niveau 1 (N1) doit réaliser, au plus tard dans les douze mois qui suivent l’obtention de la certification, au moins 4 plongées en milieu nature attestées sur son carnet de plongée."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "S'équiper et se déséquiper",
+      "content": "Le plongeur est capable de mettre en œuvre son équipement de manière autonome et d'en vérifier le bon fonctionnement.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Gréage et dégréage de son équipement (bouteille, gilet stabilisateur et détendeur) sans erreur, vérification de la pression de la bouteille avant utilisation ainsi que du bon fonctionnement du gilet et du détendeur. Équipement en surface et dans l'eau, lestage approprié au milieu (eau douce, eau salée) et au matériel."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur est autonome dans la mise en œuvre et l'utilisation du matériel. Il respecte les consignes de sécurité. Il développe les notions de palanquée, d'entraide et de solidarité entre les plongeurs."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Prévention des accidents liés aux chutes de la bouteille et des équipements sous pression. Connaissance des règles d'entretien et d'hygiène du matériel. Notions de flottabilité en rapport avec le stage."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Le plongeur est capable de gérer son équipement sans l’assistance de l’encadrant. Il a un comportement adapté au contexte d’une palanquée. Il est capable de s’équiper au sec comme dans l’eau de manière autonome. Il met en œuvre les précautions d’usage pour éviter les accidents."
+      }
+    },
+    {
+      "id": 4,
+      "title": "Se mettre à l'eau et sortir de l'eau",
+      "content": "Le plongeur est capable de se mettre à l'eau et d'en sortir en sécurité pour lui et pour les autres plongeurs selon les modalités définies par le guide de palanquée.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Maîtrise des techniques de mise à l'eau en scaphandre comme en plongée libre : saut droit, bascule arrière, départ plage. Retrait de l'ensemble bloc-gilet en surface et passage à un support de plongée."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur se met à l'eau et sort de l'eau dans le souci de sa sécurité et de celle des autres. Son comportement est adapté au contexte de la plongée et au type d'embarcation (pneumatique, barge, chalutier...). Il est attentif et respecte les consignes du DP."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Prévention des accidents, sensibilisation aux risques liés à la mise en œuvre des différentes techniques (chutes, percussion du bateau ou d'un autre plongeur) en fonction des conditions (hauteur, courant...)."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Le plongeur démontre sa capacité à se mettre à l’eau et à en sortir dans le respect des consignes du DP. Les techniques les plus usuelles sont maîtrisées. Les situations d’apprentissage et d’évaluation en milieu artificiel doivent être les plus proches possible de la réalité (constitution de la palanquée, consignes du DP et mise en œuvre)."
+      }
+    },
+    {
+      "id": 5,
+      "title": "Évoluer dans l'eau - S'immerger",
+      "content": "Le plongeur est capable de s'immerger selon la technique définie par le GP dans le respect de ses consignes.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Maîtrise des deux techniques du phoque et du canard en scaphandre et en plongée libre. Utilisation d'un lestage adapté : recherche essentielle de l'équilibre à 3 m."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur adopte un comportement adapté à la demande du GP et dans le respect de ses consignes."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Prévention des barotraumatismes de l'oreille, des sinus et du plaquage de masque. Flottabilité en lien avec la ventilation et le poumon ballast."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Les deux techniques du canard et du phoque doivent être maitrîsées, le N1 doit être capable de s’immerger rapidement à la commande, en suivant les indications du GP"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Évoluer dans l'eau - Se propulser",
+      "content": "Le plongeur assure ses déplacements de manière autonome en surface comme en immersion.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Maîtrise des différentes techniques de palmage : palmage de surface (sustentation, ventral, dorsal et costal), palmage en immersion, nage capelée. La qualité de réalisation et l'efficacité du geste technique doivent être privilégiées, la performance n'est pas une priorité."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur maîtrise la gestion de son effort, il a le souci de l'unité de la palanquée (entraide et cohésion). Il se maintient à proximité du GP en respectant la profondeur et les consignes données."
+        },
+        {
+          "heading": "Théorie",
+          "text": "La notion d'appui de la surface de la palme et le principe du bras de levier doivent venir en soutien dans les explications du geste technique. Présentation des différents types de palmes. Prévention de l'essoufflement, gestion de la consommation."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Les deux types de nage de surface doivent être évalués sur des distances de l’ordre de 100 m pour le PMT et 50 m pour le capelé (simulation de retour au bateau). La qualité et l’efficacité du geste technique demeurent les principaux critères d’évaluation. Il n’y a pas d’épreuve chronométrée au N1, la capacité à effectuer un parcours en surface dans de bonnes conditions physiques (absence d’essoufflement) doit être le seul critère de performance."
+      }
+    },
+    {
+      "id": 7,
+      "title": "Évoluer dans l'eau - Se ventiler",
+      "content": "Le plongeur gère et adapte sa ventilation, il réagit sereinement à une entrée volontaire ou accidentelle d'eau dans son masque.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Maîtrise et régulation de la ventilation en immersion (fréquence, amplitude et ventilation normale dans le volume courant). Maîtrise de la ventilation en surface sur tuba et du vidage du tuba. Vidage du masque par évacuation de l'eau en introduisant de l'air par le nez et maintien d'une ventilation normale au contact de l'eau. Maîtrise du lâcher-reprise d'embout et des deux techniques : vidage par expiration et utilisation du bouton de suppression."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur adapte son rythme ventilatoire, il maîtrise sa ventilation et la maintient dans la zone de confort, il s'autocontrôle par des apnées de contrôle. Le plongeur vide son masque sans stress dans des situations variées. Il maîtrise sa ventilation dans la phase de remontée en prévention des barotraumatismes."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Prévention des accidents : notions simples de physique pour expliquer les barotraumatismes et leur prévention (Valsalva, BTV, Frenzel). Prévention de la noyade. Consommation : notions simples de physique pour expliquer la consommation en air et sa répercussion sur la flottabilité."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Le plongeur montre sa capacité à gérer et réguler sa ventilation dans un contexte d’effort normal à modéré (faire face à un léger courant, retourner au bateau). Il est capable de faire sans difficultés des déplacements courts en apnée (quelques mètres en apnée inspiratoire et expiratoire). Il est capable de vider son masque dans des situation variées et sans stress (pas de situation brutale de nature à générer de l’insécurité). L’évaluation se fait dans la zone de 0 à 6 m."
+      }
+    },
+    {
+      "id": 8,
+      "title": "Évoluer dans l'eau - S'équilibrer",
+      "content": "Le plongeur gère sa stabilité grâce au poumon ballast et au gilet de stabilisation de manière autonome.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Maîtrise de la technique du poumon ballast et utilisation du gilet pour s'équilibrer : utilisation de l'inflateur et des différentes purges. Maîtrise de la combinaison des deux techniques."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur se met en situation d'équilibre à la demande, il est réactif et ajuste son réglage en fonction des variations de profondeur. Il est capable de maintenir une profondeur stable sur poumon ballast."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Notions de flottabilité (positive, négative, neutre). Liens avec la bonne utilisation de lestage, informations sur les éléments permettant à l'élève de trouver son lestage."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Le plongeur s’équilibre à la demande du GP. Les situations d’évaluation doivent être variées. La compétence est évaluée de manière répétitive, la performance du plongeur est contrôlée dans des situations statique et dynamique avec une variation de plus ou moins 1 mètre."
+      }
+    },
+    {
+      "id": 9,
+      "title": "Respecter le milieu et l'environnement",
+      "content": "Le plongeur adopte une attitude éco-responsable, il évolue dans le respect de l'environnement subaquatique et en connaissance du milieu.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Réalisation de déplacements équilibrés, sans appui, avec un palmage et une stabilisation maîtrisés."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur évolue en limitant son impact sur l'environnement. Il développe sa capacité d'observation."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Connaissance du milieu (faune et flore courantes, risques et dangers du milieu). Connaissance liée au respect de l'environnement, à l'impact du plongeur sur le milieu (respect de la tranquillité de la faune, absence de dégradation). Présentation de la Charte internationale du plongeur responsable."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Au cours des plongées en milieu naturel, le comportement respectueux et responsable du plongeur est évalué."
+      }
+    },
+    {
+      "id": 10,
+      "title": "Communiquer",
+      "content": "Le plongeur est en mesure de comprendre et d'échanger les informations utiles à la gestion de la plongée avec le GP et les autres plongeurs.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Identification et réalisation de l'ensemble des signes conventionnels : OK, monter, descendre, ça ne va pas, mi-pression, réserve, panne d'air, essoufflement, froid, fin de plongée/d'exercice."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur est attentif et réactif, il sait anticiper les gestes et prendre l'initiative de communiquer sans attendre le questionnement du GP, il est rigoureux dans l'exécution des signes."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Connaissance des signes et des réponses possibles."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Les deux aspects de la communication sont évalués, compréhension et réalisation. Les situations d’évaluation doivent être variées (statiques, dynamiques, individuelles ou en palanquée). L’exactitude et la promptitude de la réalisation des gestes est attendue. Le plongeur doit être efficace dans sa communication."
+      }
+    },
+    {
+      "id": 11,
+      "title": "Retourner en surface",
+      "content": "Le plongeur gère son retour en surface en toute sécurité en respectant les consignes du GP.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Maîtrise de la vitesse de remontée en utilisant les palmes et le gilet (avec et sans repères visuels). Tenue d'un palier y compris en pleine eau. Tour d'horizon. Gonflage du gilet en surface. Remontée en expiration contrôlée d'une profondeur n'excédant pas 6 m."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur est attentif à la cohésion de la palanquée. Il est à l'écoute du GP et réactif à ses consignes. Il est capable de revenir en surface et de se signaler en cas de perte de sa palanquée."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Prévention des barotraumatismes : un accent particulier est mis sur la surpression pulmonaire. Flottabilité et loi de Mariotte : notions de physique simples pour expliquer les variations de volume, notamment concernant la zone de 0 à 10 m. Désaturation : principe de l'accident de désaturation, courbe de plongée sans palier et connaissance de son ordinateur."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Le plongeur sait gérer sa remontée en totale autonomie ou au sein d’une palanquée. Il sait également se mettre en sécurité en surface, seul ou en palanquée. Pour la remontée en expiration, aucun critère de temps n’est recherché, la réalisation sans stress et en respectant une vitesse correcte de remontée est recherchée."
+      }
+    },
+    {
+      "id": 12,
+      "title": "Évoluer en sécurité",
+      "content": "Le plongeur est familiarisé à la mise en œuvre des procédures liées aux différentes situations auxquelles il est confronté.",
+      "sections": [
+        {
+          "heading": "Technique",
+          "text": "Application des procédures mises en œuvre par le GP. Familiarisation avec les procédures usuelles mises en œuvre par le GP : réserve, froid. Familiarisation avec la mise en œuvre des procédures en situation d'incident : panne d'air (réalisation d'une apnée expiratoire sur une distance de 10 m à l'horizontale, utilisation de l'octopus du GP), essoufflement, crampe, malaise. Intervention en relais auprès d'un équipier en difficulté : passage de l'octopus et simulation d'échange d'embout en cas de panne d'air."
+        },
+        {
+          "heading": "Comportement",
+          "text": "Le plongeur sait réagir aux différentes situations. Il exécute la procédure demandée sans hésitation, de manière automatique et sans erreur. Il accepte la procédure du guide de palanquée calmement."
+        },
+        {
+          "heading": "Théorie",
+          "text": "Protocoles et procédures : connaissance des codes de communication et des réponses possibles dans le cadre de procédures normales et anormales."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "L’ensemble des situations nécessitant une intervention du GP doit être évalué. Le plongeur est familiarisé avec la procédure mise en œuvre par le GP, il l’accepte en gardant son calme. L’accoutumance doit reposer sur la répétition et la variété des situations d’évaluation."
+      }
+    },
+    {
+      "id": 13,
+      "title": "Connaissances Théoriques",
+      "content": "Les connaissances théoriques sont évaluées lors des mises en situations pratiques. Il n'y a pas d'examen écrit. L'accent est mis sur la prévention.",
+      "sections": [
+        {
+          "heading": "Notions de physique",
+          "text": "Principes de physique simples, flottabilité, variations de pression et de volume (les principes sont présentés sans calcul)."
+        },
+        {
+          "heading": "Accidents",
+          "text": "Principes des barotraumatismes et leur prévention. Principes de l'accident de désaturation. Causes et prévention de l'essoufflement."
+        },
+        {
+          "heading": "Procédures de désaturation",
+          "text": "Principe de l'accident de désaturation, courbe de plongée sans palier, connaissance de différents moyens de décompression (ordinateur et table fédérale). Information sur l'utilisation basique des ordinateurs de plongée."
+        },
+        {
+          "heading": "Réglementation",
+          "text": "Prérogatives du plongeur, présentation de la FFESSM, documents pour plonger, information sur l'organisation de la plongée."
+        },
+        {
+          "heading": "Milieu et environnement",
+          "text": "Charte internationale du plongeur responsable, connaissances minimales du milieu subaquatique. Respect du milieu (palmage, stabilisation...)."
+        }
+      ],
+      "evaluation": {
+        "heading": "Modalités d’évaluation :",
+        "text": "Les connaissances théoriques sont évaluées lors des mises en situations pratiques. Il n’y a pas d’examen écrit. L’accent est mis sur la prévention."
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction à la Plongée",
+    "description": "Découvrez les bases de la plongée, son environnement et les règles de sécurité essentielles.",
+    "sections": [
+      {
+        "heading": "Objectif du Niveau 1",
+        "content": "La plongée est un sport technique pratiqué dans l'eau, milieu différent de celui dans lequel nous évoluons habituellement. Le milieu aquatique et ses caractéristiques physiques ont une influence non négligeable sur notre organisme. Au cours d'une plongée, les plongeurs niveau 1 doivent être capables d'assurer leur propre sécurité."
+      },
+      {
+        "heading": "Ce que vous allez apprendre",
+        "content": "Dans cette formation, nous verrons :",
+        "list": [
+          "Les paramètres physiques qui permettent d'expliquer ce qui se passe dans l'eau, sur l'air que nous respirons et sur nous-mêmes",
+          "Les conséquences physiologiques ou accidents de plongée, et surtout la manière de les éviter",
+          "La courbe de sécurité qu'il faut respecter pour éviter les accidents de décompression",
+          "Le déroulement d'une plongée et toutes les consignes de sécurité à respecter absolument",
+          "Les notions de réglementation de la plongée en France"
+        ]
+      },
+      {
+        "heading": "Philosophie de la Formation",
+        "content": "Il est nécessaire de définir des règles claires car la plongée se pratique dans un milieu qui n'est pas le nôtre naturellement. Ces règles ne sont pas là pour vous contraindre, mais pour vous permettre de plonger en toute sécurité et d'apprécier pleinement l'émerveillement de vos évolutions sous-marines.",
+        "emphasis": "C'est la condition sine qua non pour plonger sereinement."
+      }
+    ],
+    "duration": "5 mins",
+    "keyPoints": [
+      "Les plongeurs niveau 1 doivent être capables d'assurer leur propre sécurité",
+      "Comprendre les paramètres physiques du milieu aquatique",
+      "Connaître les accidents de plongée et comment les éviter",
+      "Respecter la courbe de sécurité",
+      "Suivre les consignes de sécurité absolues"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Vision et Perception Sous-Marine",
+    "description": "Comprenez comment fonctionnent la vision, les couleurs et la luminosité sous l'eau.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 3,
+    "title": "Audition en Milieu Aquatique",
+    "description": "Découvrez la propagation du son dans l'eau et ses implications pour la sécurité.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 4,
+    "title": "Pression et Loi de Mariotte-Boyle",
+    "description": "Maîtrisez les concepts de pression atmosphérique, pression de l'eau et leurs effets sur les gaz.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 5,
+    "title": "Flottabilité et Poussée d'Archimède",
+    "description": "Apprenez la flottabilité, le poumon-ballast et le lestage optimal pour une plongée équilibrée.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 6,
+    "title": "Les Barotraumatismes",
+    "description": "Identifiez les différents types de barotraumatismes : dents, masque, sinus, oreilles et poumons.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 7,
+    "title": "Prévention des Barotraumatismes",
+    "description": "Maîtrisez les manœuvres et techniques de prévention pour chaque type d'accident.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 8,
+    "title": "Gestion du Froid",
+    "description": "Reconnaissez les symptômes de l'hypothermie et apprenez à prévenir le refroidissement.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 9,
+    "title": "L'Essoufflement en Plongée",
+    "description": "Comprenez les causes de l'essoufflement et les techniques pour le gérer efficacement.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 10,
+    "title": "La Courbe de Sécurité",
+    "description": "Découvrez les tables MN90 et les principes de décompression pour éviter les accidents.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 11,
+    "title": "Paliers et Vitesse de Remontée",
+    "description": "Maîtrisez les durées limites sans palier et les règles de remontée sécuritaire.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 12,
+    "title": "Matériel et Équipement",
+    "description": "Apprenez à préparer et vérifier votre matériel de plongée avant chaque immersion.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 13,
+    "title": "Mise à l'Eau et Immersion",
+    "description": "Maîtrisez les procédures de sécurité pour entrer dans l'eau et commencer la plongée.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 14,
+    "title": "Exploration en Palanquée",
+    "description": "Apprenez à rester groupé, communiquer et respecter les règles d'exploration sous-marine.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 15,
+    "title": "Techniques de Remontée Sécuritaire",
+    "description": "Maîtrisez la remontée contrôlée, le palier de sécurité et les consignes essentielles.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 16,
+    "title": "Conduite en Cas d'Égarement",
+    "description": "Sachez quoi faire si vous perdez votre palanquée pendant une plongée.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 17,
+    "title": "Réglementation FFESSM",
+    "description": "Comprenez les règles légales, prérogatives et limites du niveau 1.",
+    "duration": "5 mins"
+  },
+  {
+    "id": 18,
+    "title": "Parcours Niveau 1 Complet",
+    "description": "Parcours complet regroupant tous les modules pour obtenir votre certification FFESSM Niveau 1.",
+    "duration": "5 mins"
+  }
+]

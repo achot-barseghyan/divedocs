@@ -1,0 +1,53 @@
+/* Global theme styles - Diving Theme */
+:root {
+  /* Light mode - Ocean surface */
+  --app-background: #e8edef;
+  --app-text-color: #00191f;
+
+  /* Primary colors */
+  --primary-teal: #00c3b9;
+  --primary-turquoise: #00fff5;
+  --primary-darkblue: #007d9b;
+
+  /* Accent colors */
+  --accent-yellow: #fad537;
+
+  /* Navy backgrounds */
+  --navy-light: #194b5f;
+  --navy-dark: #0a1e26;
+  --navy-darker: #00191f;
+}
+
+.app-dark {
+  /* Dark mode - Ocean depths */
+  --app-background: #0a1e26;
+  --app-text-color: #e6fffe;
+
+  /* Adjust colors for dark mode if needed */
+  --primary-teal: #00c3b9;
+  --primary-turquoise: #00fff5;
+  --primary-darkblue: #3397af;
+}
+
+body,
+html {
+  background-color: var(--app-background);
+  color: var(--app-text-color);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+#__nuxt {
+  min-height: 100vh;
+  background-color: var(--app-background);
+}
+
+/* Optional: Add some ocean-themed gradient backgrounds */
+.ocean-gradient {
+  background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy-dark) 50%, var(--navy-darker) 100%);
+}
+
+.ocean-gradient-light {
+  background: linear-gradient(180deg, #e8edef 0%, #d1dbdf 50%, #a3b7bf 100%);
+}
