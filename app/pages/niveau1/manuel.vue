@@ -1,7 +1,7 @@
 <template>
   <div class="relative min-h-screen w-full pt-[5rem]">
     <img
-      src="/img/bg.jpg"
+      src="/img/bg.webp"
       class="absolute inset-0 h-full w-full object-cover object-center"
       alt="underwater background"
     />

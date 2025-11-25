@@ -3,7 +3,7 @@
     class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-teal-900 pt-20"
   >
     <img
-      src="/img/bg.jpg"
+      src="/img/bg.webp"
       class="fixed inset-0 h-full w-full object-cover object-center"
       alt="underwater background"
     />

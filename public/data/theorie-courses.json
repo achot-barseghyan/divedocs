@@ -7,7 +7,7 @@
     "sections": [
       {
         "heading": "Objectif du Niveau 1",
-        "content": "La plongée est un sport technique pratiqué dans l'eau, milieu différent de celui dans lequel nous évoluons habituellement. Le milieu aquatique et ses caractéristiques physiques ont une influence non négligeable sur notre organisme. Au cours d'une plongée, les plongeurs niveau 1 doivent être capables d'assurer leur propre sécurité."
+        "content": "La plongée est un sport technique pratiqué dans l'eau, milieu différent de celui dans lequel nous évoluons habituellement. \nLe milieu aquatique et ses caractéristiques physiques ont une influence non négligeable sur notre organisme. Au cours d'une plongée, les plongeurs niveau 1 doivent être capables d'assurer leur propre sécurité."
       },
       {
         "heading": "Ce que vous allez apprendre",
@@ -135,7 +135,14 @@
         "subsections": [
           {
             "title": "Pression atmosphérique",
-            "content": "C'est la pression exercée par l'ensemble de l'atmosphère. Au niveau de la mer, elle vaut 1 bar."
+            "content": "C'est la pression exercée par l'ensemble de l'atmosphère. Au niveau de la mer, elle vaut 1 bar.",
+            "images": [
+              {
+                "id": 1,
+                "src": "/img/theorie/module4/img1.jpg",
+                "alt": "Schéma illustrant la pression atmosphérique"
+              }
+            ]
           },
           {
             "title": "Pression de l'eau",
@@ -148,6 +155,13 @@
               "À 0 m : Pression absolue = 1 bar",
               "À 10 m : Pression absolue = 2 bars (1 bar atmosphérique + 1 bar d'eau)",
               "À 20 m : Pression absolue = 3 bars (1 bar atmosphérique + 2 bars d'eau)"
+            ],
+            "images": [
+              {
+                "id": 2,
+                "src": "/img/theorie/module4/img2.jpg",
+                "alt": "Schéma illustrant la pression absolue à différentes profondeurs"
+              }
             ]
           }
         ]
@@ -166,6 +180,13 @@
           "À 0 m (1 bar) : Volume = 15 l",
           "À 10 m (2 bars) : Volume = 7,5 l",
           "À 20 m (3 bars) : Volume = 5 l"
+        ],
+        "images": [
+          {
+            "id": 3,
+            "src": "/img/theorie/module4/img3.jpg",
+            "alt": "Schéma illustrant la loi de Mariotte-Boyle"
+          }
         ]
       },
       {
@@ -235,78 +256,623 @@
     "id": 6,
     "title": "Les Barotraumatismes",
     "description": "Identifiez les différents types de barotraumatismes : dents, masque, sinus, oreilles et poumons.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Définition",
+        "content": "Le corps humain comportent de nombreuses cavités naturelles remplies d'air. En plongée, le masque s'y ajoute. En cas de non équilibre avec la pression ambiante, lors des variations de pression, elles peuvent subir des dommages. Les barotraumatismes sont directement liés à la loi de Mariotte."
+      },
+      {
+        "heading": "Mécanisme général",
+        "content": "Une cavité du corps ne communique plus avec l'extérieur,",
+        "list": [
+          "Quand on descend, la pression augmente et le volume de l'air dans la cavité diminue (en attirant les parois souples)",
+          "Quand on remonte, la pression diminue et le volume de l'air dans la cavité augmente (forçant sur les tissus)"
+        ]
+      },
+      {
+        "heading": "Barotraumatisme des dents",
+        "subsections": [
+          {
+            "title": "Cause",
+            "content": "L'air peut s'infiltrer tout doucement à l'intérieur d'un trou (mauvais plombage, carie) dans une dent pendant la plongée. En remontant, l'air se dilate, mais n'a pas le temps de s'échapper."
+          },
+          {
+            "title": "Que se passe-t-il ?",
+            "content": "On ressent une gêne, plus rarement une forte douleur au niveau du nerf."
+          }
+        ]
+      },
+      {
+        "heading": "Placage de masque",
+        "subsections": [
+          {
+            "title": "Cause",
+            "content": "La pression augmentant à la descente, le volume d'air dans le masque diminue. La jupe du masque se déforme et le masque se rapproche du visage. La pression dans les capillaires sanguins autour et dans les yeux n'est plus compensée."
+          },
+          {
+            "title": "Que se passe-t-il ?",
+            "content": "On ressent une gène, puis une douleur, une sensation d'aspiration ; peuvent venir des saignements de nez, œil devient rouge, puis 'au beurre noir'."
+          }
+        ]
+      },
+      {
+        "heading": "Barotraumatisme des sinus",
+        "subsections": [
+          {
+            "title": "Cause",
+            "content": "Les sinus sont des cavités creusées dans les os de la face et du crâne, qui communiquent avec les fosses nasales par des canaux très étroits, assurant l'équilibre de pression. Lorsque ces canaux sont bouchés, lorsque l'on est enrhumé (rhinite) ou dans le cas d'une déviation de la cloison nasale, l'équilibre ne se fait plus. Si cela arrive, à la descente, la pression augmentant, le volume d'air dans les sinus diminue et les muqueuses sont attirées vers l'intérieur. Au contraire, à la remontée, la pression décroît, le volume d'air dans les sinus augmente et les muqueuses sont écrasées."
+          },
+          {
+            "title": "Que se passe-t-il ?",
+            "content": "On ressent d'abord une gène, puis une douleur au front ou aux maxillaires, selon les sinus touchés ; viennent finalement des hémorragies."
+          }
+        ]
+      },
+      {
+        "heading": "Barotraumatisme des oreilles",
+        "subsections": [
+          {
+            "title": "Cause",
+            "content": "L'oreille est isolée de l'extérieur par une membrane souple, le tympan. Derrière le tympan, l'oreille moyenne est reliée aux fosses nasales par un minuscule conduit, la trompe d'Eustache, assurant l'équilibre de pression. Lorsque la trompe d'Eustache est obstruée, en cas de rhume par exemple, l'équilibre ne se fait plus. Dans ce cas, à la descente, la pression augmente du côté extérieur du tympan, mais pas du côté intérieur. Le tympan se déforme alors vers l'intérieur, éventuellement jusqu'à rupture."
+          },
+          {
+            "title": "Que se passe-t-il :",
+            "content": "Dès 3 m, une douleur apparaît, puis vers 5m une douleur violente et plus bas, dans le cas d'une rupture, une hémorragie peut s'ajouter à la douleur."
+          }
+        ],
+        "images": [
+          {
+            "id": 1,
+            "src": "/img/theorie/module6/img1.jpg",
+            "alt": "Schéma illustrant le barotraumatisme de l'oreille"
+          }
+        ]
+      },
+      {
+        "heading": "Surpression pulmonaire",
+        "emphasis": "La surpression pulmonaire est l'accident le plus grave et le plus dangereux en plongée. Il est susceptible d'arriver le plus fréquemment entre 0 et 10m, zone dans laquelle évoluent les débutants.",
+        "subsections": [
+          {
+            "title": "Cause",
+            "content": "Le plongeur respire de l'air à la pression ambiante, délivré par le détendeur. Il y a alors équipression entre la pression extérieure et la pression intérieure aux poumons. Lors de la remontée, si l'expiration est bloquée, la pression intérieure devient supérieure à la pression extérieure (qui diminue au fur et à mesure que l'on remonte) : le volume d'air dans les poumons augmente pour obtenir l'équipression. Or les poumons ne sont pas extensibles à l'infini…"
+          },
+          {
+            "title": "Les causes de blocage de l'expiration peuvent être :",
+            "list": [
+              "Blocage volontaire",
+              "Blocage involontaire de la glotte",
+              "Spasme consécutif à une irruption d'eau dans le nez ou la gorge",
+              "Obstruction des bronches (asthme, bronchite…)",
+              "Détendeur mal réglé"
+            ]
+          },
+          {
+            "title": "Que se passe-t-il ?",
+            "content": "Selon l'avancée des atteintes, on ressent d'abord une douleur aux poumons, une difficulté à inspirer, puis à respirer, viennent la toux et des crachats sanguins, des emphysèmes sous-cutané (bulles d'air autour du cou), puis des troubles des sens, céphalées, convulsions, le tout pouvant aller jusqu'à l'arrêt respiratoire, puis cardiaque."
+          }
+        ]
+      }
+    ],
+    "duration": "2h30",
+    "keyPoints": [
+      "Les barotraumatismes sont liés à la loi de Mariotte",
+      "Ils touchent les cavités remplies d'air du corps",
+      "À la descente : pression augmente, volume diminue",
+      "À la remontée : pression diminue, volume augmente",
+      "Barotraumatismes des dents : gêne ou douleur au nerf",
+      "Placage de masque : saignements de nez, œil rouge",
+      "Barotraumatisme des sinus : douleur au front ou maxillaires",
+      "Barotraumatisme des oreilles : douleur dès 3m, rupture du tympan possible",
+      "Surpression pulmonaire : accident le plus grave, surtout entre 0 et 10m"
+    ]
   },
   {
     "id": 7,
     "title": "Prévention des Barotraumatismes",
     "description": "Maîtrisez les manœuvres et techniques de prévention pour chaque type d'accident.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Prévention des barotraumatismes",
+        "content": "La liste ci-dessous est à connaître parfaitement :",
+        "subsections": [
+          {
+            "title": "Dents (à la remontée)",
+            "examples": [
+              "Avoir une bonne hygiène dentaire",
+              "Préciser au dentiste que l'on est plongeur",
+              "Si l'on ressent une douleur dans l'eau, la signaler au moniteur, qui vous fera redescendre un peu, puis remonter très lentement"
+            ]
+          },
+          {
+            "title": "Placage de masque (à la descente)",
+            "examples": [
+              "Ne pas trop serrer le masque",
+              "Souffler régulièrement par le nez dans masque durant la descente"
+            ]
+          },
+          {
+            "title": "Sinus (descente et remontée)",
+            "examples": [
+              "Ne pas forcer à la descente",
+              "Ne pas plonger enrhumé",
+              "Si une douleur survient à la descente, prévenir le moniteur qui pourra arrêter la plongée",
+              "Si une douleur survient à la remontée, prévenir le moniteur qui ralentira la remontée"
+            ]
+          },
+          {
+            "title": "Oreilles (descente et remontée)",
+            "examples": [
+              "Ne pas plonger enrhumé",
+              "À la descente uniquement, équilibrer les oreilles par une manœuvre de Valsalva (se pincer le nez et souffler par le nez)",
+              "Ne plus toucher à ses oreilles une fois arrivé au fond",
+              "Si une douleur survient à la remontée, prévenir le moniteur, qui vous fera redescendre un peu, puis remonter très lentement",
+              "Après la plongée, se rincer les oreilles à l'eau douce pour éviter les développements bactériens et les bouchons"
+            ]
+          },
+          {
+            "title": "Surpression pulmonaire (à la remontée)",
+            "examples": [
+              "Ne pas faire Valsalva à la remontée",
+              "Expirer à la remontée, de manière générale, toujours respirer le plus normalement possible au cours d'une plongée"
+            ]
+          }
+        ]
+      }
+    ],
+    "duration": "2 heures",
+    "keyPoints": [
+      "Dents : bonne hygiène dentaire, prévenir le dentiste",
+      "Placage de masque : ne pas trop serrer, souffler dans le masque à la descente",
+      "Sinus : ne pas plonger enrhumé, ne pas forcer",
+      "Oreilles : Valsalva à la descente uniquement",
+      "Manœuvre de Valsalva : se pincer le nez et souffler",
+      "Ne plus toucher aux oreilles une fois au fond",
+      "Rincer les oreilles à l'eau douce après la plongée",
+      "Surpression pulmonaire : toujours expirer à la remontée",
+      "Ne jamais bloquer sa respiration",
+      "Toujours prévenir le moniteur en cas de douleur"
+    ]
   },
   {
+    "description": "Reconnaissez les symptômes de l'hypothermie et apprenez à prévenir le refroidissement.",
     "id": 8,
     "title": "Gestion du Froid",
-    "description": "Reconnaissez les symptômes de l'hypothermie et apprenez à prévenir le refroidissement.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Cause",
+        "content": "L'Homme doit garder sa température constante (~ 37°C). Or, dans l'eau l'équilibre thermique se fait à plus haute température que dans l'air. De plus, on réchauffe l'eau qui circule dans la combinaison et l'on doit aussi réchauffer l'air que l'on respire. La conséquence est une perte d'énergie. La fatigue et l'appréhension sont des facteurs favorisant."
+      },
+      {
+        "heading": "Que se passe-t-il ?",
+        "content": "Cela se traduit par divers phénomènes, par ordre chronologique :",
+        "list": [
+          "Augmentation du rythme respiratoire (pouvant entraîner un essoufflement)",
+          "Petit frissons : 'chair de poule'",
+          "Refroidissement important des extrémités (mains, pieds, …)",
+          "Envie d'uriner",
+          "Grands frissons, tremblements",
+          "Isolement du plongeur"
+        ]
+      },
+      {
+        "heading": "Que faire si cela arrive ?",
+        "emphasis": "Le froid en plongée n'est pas anodin. Il FAUT IMMÉDIATEMENT PRÉVENIR le chef de palanquée, qui vous surveillera de près et avisera s'il faut cesser la plongée immédiatement. N'ayez pas peur d'avertir !"
+      },
+      {
+        "heading": "Comment prévenir ?",
+        "list": [
+          "Éviter de plongée en étant fatigué (après un long voyage, une soirée arrosée…)",
+          "Avoir une bonne alimentation",
+          "Avoir une combinaison adaptée (pour éviter la circulation d'eau)"
+        ]
+      }
+    ],
+    "duration": "1 heure",
+    "keyPoints": [
+      "L'Homme doit maintenir sa température à ~37°C",
+      "L'équilibre thermique dans l'eau demande plus d'énergie",
+      "La fatigue et l'appréhension favorisent le froid",
+      "Symptômes : rythme respiratoire accru, frissons, extrémités froides, envie d'uriner, tremblements, isolement",
+      "Le froid n'est pas anodin en plongée",
+      "Prévenir immédiatement le chef de palanquée",
+      "Prévention : éviter la fatigue, bonne alimentation, combinaison adaptée"
+    ]
   },
   {
+    "description": "Comprenez les causes de l'essoufflement et les techniques pour le gérer efficacement.",
     "id": 9,
     "title": "L'Essoufflement en Plongée",
-    "description": "Comprenez les causes de l'essoufflement et les techniques pour le gérer efficacement.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Cause",
+        "content": "L'essoufflement en plongée est causé par la présence d'une quantité trop importante de gaz carbonique (CO₂) dans l'organisme. Plusieurs raisons peuvent être invoquées :",
+        "list": [
+          "L'inertie du détendeur, créant une difficulté à l'expiration",
+          "L'augmentation de la pression et de la densité de l'air inspiré avec la profondeur",
+          "Des efforts trop importants",
+          "Un robinet mal ouvert",
+          "Le froid"
+        ]
+      },
+      {
+        "heading": "Que se passe-t-il ?",
+        "content": "La respiration devient superficielle : la fréquence de la respiration augmente, au détriment de l'amplitude. On finit par avoir la sensation de suffoquer. Attention, un essoufflement peut entraîner d'autres problèmes, voire finir en noyade."
+      },
+      {
+        "heading": "Que faire si cela arrive ?",
+        "content": "Il faut cesser tout effort, alerter le chef de palanquée (ou son binôme), et se forcer à expirer profondément."
+      },
+      {
+        "heading": "Comment prévenir ?",
+        "list": [
+          "Surveiller sa respiration : si l'on ne peut pas tenir une petite apnée expiratoire de 1 à 2 secondes, c'est que l'essoufflement est proche (appliquer alors les consignes ci-dessus)",
+          "Avoir une bonne technique : lestage adapté, bonne stabilisation",
+          "Éviter les efforts : ne pas hésiter à dire au chef de palanquée (moniteur) de ralentir le palmage",
+          "Attention au froid"
+        ]
+      }
+    ],
+    "duration": "1h15",
+    "keyPoints": [
+      "Essoufflement causé par trop de CO₂ dans l'organisme",
+      "Causes : inertie du détendeur, pression, efforts, robinet mal ouvert, froid",
+      "Respiration superficielle : fréquence augmente, amplitude diminue",
+      "Sensation de suffoquer",
+      "Peut entraîner d'autres problèmes voire noyade",
+      "Conduite à tenir : cesser tout effort, alerter, expirer profondément",
+      "Prévention : surveiller sa respiration, bonne technique, éviter les efforts",
+      "Test : pouvoir tenir une apnée expiratoire de 1-2 secondes"
+    ]
   },
   {
     "id": 10,
     "title": "La Courbe de Sécurité",
     "description": "Découvrez les tables MN90 et les principes de décompression pour éviter les accidents.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "L'azote et la décompression",
+        "content": "L'air que nous respirons est composé d'environ 21% d'oxygène, de 78% d'azote et de différents gaz à l'état de trace. L'oxygène est utilisé par notre organisme. En revanche, l'azote ne l'est pas. Quand nous respirons à la surface, l'azote ne fait quasiment qu'entrer dans nos poumons et en sortir, au rythme de nos cycles inspiration/expiration. Sous l'eau, les choses se passent de manière un peu différente : avec la pression due à la profondeur, de l'azote se dissout dans notre organisme (en particulier dans le sang). La quantité dissoute augmente avec la pression (donc avec la profondeur) et, pour une pression donnée, avec le temps qu'on y passe. En remontant, la pression diminuant, l'azote veut reprendre sa forme gazeuse. S'il le faisait dans notre organisme, cela causerait des dégâts : on appelle cela un accident de décompression."
+      },
+      {
+        "heading": "Paliers et vitesse de remontée",
+        "content": "Afin de l'éviter, de laisser le temps à l'azote de revenir vers les poumons avant de redevenir gazeux, il faut respecter une vitesse maximale de remontée et, éventuellement, faire des arrêts impératifs à certaines profondeurs, appelés paliers. Des tables définissent la vitesse maximale de remontée et la profondeur et durée des paliers. En France, ces tables sont celles de la Marine Nationale, datant de 1990 (tables MN90)."
+      },
+      {
+        "heading": "Définition de la courbe de sécurité",
+        "content": "En lisant ces tables, on voit qu'il existe pour chaque profondeur, une durée à partir de laquelle il faut faire des paliers. Donc, pour une profondeur donnée, si la plongée est inférieure à cette durée, il n'est pas nécessaire de faire des paliers. L'ensemble de ces durées, pour toutes les profondeurs, définit la courbe de sécurité.",
+        "images": [
+          {
+            "src": "/img/theorie/module10/img1.jpg"
+          }
+        ]
+      }
+    ],
+    "duration": "2 heures",
+    "keyPoints": [
+      "L'air contient 21% d'oxygène et 78% d'azote",
+      "L'azote n'est pas utilisé par l'organisme",
+      "Sous pression, l'azote se dissout dans l'organisme",
+      "La quantité d'azote dissous augmente avec la profondeur et le temps",
+      "À la remontée, l'azote reprend sa forme gazeuse",
+      "Accident de décompression si l'azote redevient gazeux dans l'organisme",
+      "Il faut respecter une vitesse de remontée maximale",
+      "Les paliers permettent à l'azote de s'éliminer progressivement",
+      "Tables MN90 : tables de la Marine Nationale de 1990",
+      "La courbe de sécurité définit les durées sans palier pour chaque profondeur"
+    ]
   },
   {
     "id": 11,
     "title": "Paliers et Vitesse de Remontée",
     "description": "Maîtrisez les durées limites sans palier et les règles de remontée sécuritaire.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Ce qu'il faut savoir",
+        "subsections": [
+          {
+            "title": "La vitesse maximale de remontée est de 15 mètres/minute",
+            "content": "Dans l'eau, c'est à peu près la vitesse des plus petites bulles (de la taille d'une tête d'épingle) que l'on expire."
+          },
+          {
+            "title": "Un palier",
+            "content": "Un palier est un arrêt impératif, à une profondeur donnée et d'une durée déterminée par les tables de plongée."
+          },
+          {
+            "title": "La courbe de sécurité",
+            "content": "La courbe de sécurité définit, à des profondeurs données, le temps maximum de plongée pour lequel il n'est pas obligatoire de faire un palier."
+          }
+        ]
+      },
+      {
+        "heading": "Valeurs à connaître de la courbe de sécurité",
+        "emphasis": "Vous devez toujours avoir en tête les valeurs suivantes de la courbe de sécurité :",
+        "content": "Profondeur → Durée de plongée sans palier",
+        "list": [
+          "< 8 m → Temps infini",
+          "12 m → 2 h 15",
+          "15 m → 1 h 15",
+          "20 m → 40 min",
+          "25 m → 20 min"
+        ]
+      },
+      {
+        "heading": "Palier de sécurité",
+        "content": "Même en ayant plongé dans la courbe de sécurité, on fait un palier de sécurité de 3 minutes à 3 mètres."
+      }
+    ],
+    "duration": "1h45",
+    "keyPoints": [
+      "Vitesse maximale de remontée : 15 mètres/minute",
+      "Repère : vitesse des plus petites bulles expirées",
+      "Palier = arrêt impératif à une profondeur et durée déterminées",
+      "Courbe de sécurité = temps max sans palier pour chaque profondeur",
+      "< 8m : temps infini",
+      "12m : 2h15",
+      "15m : 1h15",
+      "20m : 40 min",
+      "25m : 20 min",
+      "Palier de sécurité : 3 minutes à 3 mètres (même dans la courbe)"
+    ]
   },
   {
     "id": 12,
     "title": "Matériel et Équipement",
     "description": "Apprenez à préparer et vérifier votre matériel de plongée avant chaque immersion.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Description du matériel en mer",
+        "list": [
+          "Bouteille en acier de 12l (avec ou sans réserve), contenant de l'air comprimé à 200 bars",
+          "Détendeur avec manomètre",
+          "Combinaison en Néoprène 5 à 7 mm avec cagoule (on se refroidit dans l'eau de 15 à 20 fois plus vite que dans l'air)",
+          "Ceinture de plombs (de 3 à 6 Kg pour les débutants) permet d'annuler la flottabilité de la combinaison à 3 m",
+          "Éventuellement gilet de stabilisation ou bouée",
+          "Palmes, masque et tuba"
+        ]
+      },
+      {
+        "heading": "Avant la mise à l'eau",
+        "content": "Sur le bateau ou à quai avant le départ, il faut vous occuper de votre matériel personnel et de celui qui vous a été confié : le regrouper pour s'équiper rapidement et être sûr de n'avoir rien oublié. Il est conseillé d'observer le matériel du chef de palanquée et de ses camarades de plongée, afin de prendre des points de repère pour les identifier dans l'eau."
+      }
+    ],
+    "duration": "1h30",
+    "keyPoints": [
+      "Bouteille 12l à 200 bars",
+      "Détendeur avec manomètre",
+      "Combinaison néoprène 5-7mm avec cagoule",
+      "Refroidissement 15-20 fois plus rapide dans l'eau",
+      "Ceinture de plombs : 3-6 kg pour débutants",
+      "Gilet de stabilisation ou bouée (optionnel)",
+      "Palmes, masque et tuba",
+      "Regrouper son matériel avant la mise à l'eau",
+      "Observer le matériel des autres pour les identifier dans l'eau"
+    ]
   },
   {
     "id": 13,
     "title": "Mise à l'Eau et Immersion",
     "description": "Maîtrisez les procédures de sécurité pour entrer dans l'eau et commencer la plongée.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Lors de la mise à l'eau",
+        "content": "Bien vérifier son équipement (bouteille ouverte, tous les éléments sont bien présents).",
+        "emphasis": "TOUJOURS METTRE SES PALMES AVANT SA CEINTURE DE PLOMBS ET SA BOUTEILLE."
+      },
+      {
+        "heading": "Constitution de la palanquée",
+        "content": "Une palanquée peut être constituée de 2 à 5 plongeurs. Si cela n'a été fait auparavant, il est bon de se 'binômer' avec une autre personne (même si la palanquée doit rester groupée d'un bout à l'autre de la plongée, il est préférable d'avoir une personne plus privilégiée à surveiller et qui nous surveille)."
+      },
+      {
+        "heading": "La procédure est la suivante :",
+        "list": [
+          "Observer la zone de mise à l'eau (personnes, obstacles…)",
+          "Le chef de palanquée doit être à l'eau le premier",
+          "Attendre, pour sauter à l'eau, le signal du pilote du bateau ou du chef de palanquée dans le cas d'un départ du bord",
+          "Attendre pour s'immerger, le signal du chef de palanquée"
+        ]
+      }
+    ],
+    "duration": "1h30",
+    "keyPoints": [
+      "Vérifier son équipement : bouteille ouverte, éléments présents",
+      "ORDRE : palmes → ceinture de plombs → bouteille",
+      "Palanquée : 2 à 5 plongeurs",
+      "Se binômer avec une personne",
+      "Observer la zone de mise à l'eau",
+      "Le chef de palanquée entre en premier",
+      "Attendre le signal pour sauter",
+      "Attendre le signal pour s'immerger"
+    ]
   },
   {
+    "description": "Apprenez à rester groupé, communiquer et respecter les règles d'exploration sous-marine.",
     "id": 14,
     "title": "Exploration en Palanquée",
-    "description": "Apprenez à rester groupé, communiquer et respecter les règles d'exploration sous-marine.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Lors de l'exploration",
+        "list": [
+          "Rester toujours grouper à portée de palmes",
+          "Toujours surveiller son binôme et le chef de palanquée",
+          "NE JAMAIS SE TROUVER EN DESSOUS DU CHEF DE PALANQUÉE, ni à la descente, ni lors de la plongée",
+          "Ne jamais avoir une réaction atypique. Ne pas entrer dans les cavités"
+        ]
+      }
+    ],
+    "duration": "2 heures",
+    "keyPoints": [
+      "Rester groupé à portée de palmes",
+      "Surveiller son binôme et le chef de palanquée",
+      "Ne JAMAIS se trouver en dessous du chef de palanquée",
+      "Pas de réaction atypique",
+      "Ne pas entrer dans les cavités"
+    ]
   },
   {
     "id": 15,
     "title": "Techniques de Remontée Sécuritaire",
     "description": "Maîtrisez la remontée contrôlée, le palier de sécurité et les consignes essentielles.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Lors de la remontée",
+        "list": [
+          "Contrôler sa remontée",
+          "NE JAMAIS BLOQUER SA RESPIRATION",
+          "NE JAMAIS SE TROUVER AU-DESSUS DU CHEF DE PALANQUÉE",
+          "Observer la surface en faisant un tour d'horizon dans la zone des 3 mètres",
+          "Faire le signe OK à ses camarades et au bateau en arrivant en surface",
+          "Rester toujours grouper à la surface jusqu'au bateau"
+        ]
+      },
+      {
+        "heading": "Règles essentielles",
+        "emphasis": "NE PAS REMONTER PLUS VITE QUE LES PETITES BULLES EXPIRÉES (TÊTE D'ÉPINGLE). S'ASSURER QUE L'ON REMONTE EFFECTIVEMENT"
+      }
+    ],
+    "duration": "2 heures",
+    "keyPoints": [
+      "Contrôler sa remontée",
+      "Ne JAMAIS bloquer sa respiration",
+      "Ne JAMAIS se trouver au-dessus du chef de palanquée",
+      "Tour d'horizon à 3 mètres",
+      "Signe OK en surface",
+      "Rester groupé jusqu'au bateau",
+      "Vitesse max : petites bulles expirées",
+      "S'assurer que l'on remonte effectivement"
+    ]
   },
   {
     "id": 16,
     "title": "Conduite en Cas d'Égarement",
     "description": "Sachez quoi faire si vous perdez votre palanquée pendant une plongée.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Procédure en cas de perte de la palanquée",
+        "content": "Il peut arriver, lors d'une plongée que l'on perde de vue ses compagnons. La conduite à tenir est une convention reconnue dans quasiment tous les clubs fédéraux et qu'il est toujours utile de rappeler pour que cela soit clair pour tout le monde :",
+        "list": [
+          "Regarder autour de soi, sur place, pendant 30 secondes, 1 minute maximum. Il est important de ne pas bouger car le chef de palanquée reviendra vous chercher là où il vous a laissé. Il est également important de ne pas traîner au fond, pour ne pas sortir de la courbe de sécurité.",
+          "Dans le cas où l'on ne retrouve pas sa palanquée, on amorce la remontée à la vitesse des petites bulles en appliquant les règles de sécurité élémentaires : souffler en remontant, tour d'horizon à l'approche de la surface, signe OK à la surface.",
+          "On ne fait pas de palier de sécurité.",
+          "On devrait retrouver sa palanquée en surface.",
+          "Le chef de palanquée décide ou non de continuer l'exploration en fonction des paramètres de plongée de chacun.",
+          "Si on ne retrouve pas sa palanquée, on remonte sur le bateau."
+        ]
+      },
+      {
+        "heading": "Rencontre d'une autre palanquée",
+        "content": "Si pendant la première étape on rencontre une autre palanquée, il est hors de question de poursuivre l'exploration avec cette dernière, pour des raisons évidentes :",
+        "list": [
+          "Vous n'avez pas les mêmes paramètres de plongée que cette palanquée, vous risquez donc un problème",
+          "Votre palanquée, ne vous voyant pas revenir, risque de déclencher inutilement des secours"
+        ]
+      }
+    ],
+    "duration": "1 heure",
+    "keyPoints": [
+      "Regarder autour de soi 30 secondes à 1 minute maximum",
+      "Ne pas bouger : le chef reviendra vous chercher",
+      "Ne pas traîner au fond",
+      "Remonter à la vitesse des petites bulles",
+      "Souffler en remontant",
+      "Tour d'horizon à l'approche de la surface",
+      "Pas de palier de sécurité",
+      "Retrouver la palanquée en surface",
+      "Ne jamais rejoindre une autre palanquée",
+      "Risque de paramètres différents et déclenchement inutile des secours"
+    ]
   },
   {
     "id": 17,
     "title": "Réglementation FFESSM",
     "description": "Comprenez les règles légales, prérogatives et limites du niveau 1.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Cadre légal",
+        "content": "La plongée subaquatique en mer, pratiquée dans les clubs associatifs ou dans les structures commerciales, est régie par la loi (arrêté ministériel du 22 juin 1998). En particulier, les prérogatives des différents niveaux de plongée y sont définies."
+      },
+      {
+        "heading": "Prérogatives des niveaux 1",
+        "list": [
+          "Les plongeurs niveau 1 peuvent plonger uniquement dans l'espace médian, soit entre 0 et 20 m (accidentellement jusqu'à 25 m)",
+          "Ils doivent être encadrés, en exploration, par un plongeur au moins de niveau 4",
+          "Ils doivent être encadrés, en enseignement, par un moniteur au moins 1er degré (fédéral 1er degré, MF1 ou brevet d'état d'éducateur sportif 1er degré, BEES1)"
+        ]
+      },
+      {
+        "heading": "Règles générales",
+        "list": [
+          "Ne jamais plonger seul",
+          "Ne rien remonter d'une plongée en scaphandre"
+        ]
+      },
+      {
+        "heading": "La licence FFESSM",
+        "content": "L'AS Paris 6 est affilié à la Fédération Française d'Etudes et de Sport Sous-Marins (FFESSM). Pour passer un diplôme fédéral, tel le niveau 1, il faut être titulaire d'une licence fédérale (il ne peut en être délivré qu'une).",
+        "detail": "La licence vaut :",
+        "list": [
+          "Affiliation à la FFESSM",
+          "Carte d'identité du sportif",
+          "Participation aux activités (compétitions, stages, examens) organisés par la FFESSM",
+          "Permis de chasse (pour les plus de 16 ans)",
+          "Assurance en responsabilité civile",
+          "Elle est valable 15 mois, du 1er octobre au 31 décembre de l'année suivante"
+        ]
+      },
+      {
+        "heading": "L'assurance en responsabilité civile couvre",
+        "list": [
+          "Protection juridique",
+          "Pratique de la plongée dans le monde entier",
+          "Validité de 15 mois (comme la licence)",
+          "Dommages corporels à autrui sans limitation",
+          "Dommages matériels à autrui avec plafond",
+          "Usage des compresseurs",
+          "Transport entre résidence (principale et occasionnelle) et lieu de plongée"
+        ]
+      },
+      {
+        "heading": "Équivalence internationale",
+        "content": "Il existe une équivalence internationale des niveaux de plongée fédéraux, délivrée par la Confédération Mondiale des Activités Subaquatiques (CMAS). Le niveau 1 correspond au niveau CMAS 1 étoiles."
+      }
+    ],
+    "duration": "1h15",
+    "keyPoints": [
+      "Arrêté ministériel du 22 juin 1998",
+      "Niveau 1 : espace médian 0-20m (max 25m accidentel)",
+      "Encadrement obligatoire par niveau 4 minimum",
+      "Enseignement par moniteur 1er degré minimum",
+      "Ne jamais plonger seul",
+      "Ne rien remonter d'une plongée",
+      "Licence FFESSM obligatoire pour passer le niveau 1",
+      "Licence valable 15 mois (1er oct. au 31 déc. année suivante)",
+      "Assurance responsabilité civile incluse",
+      "Équivalence CMAS : 1 étoile"
+    ]
   },
   {
     "id": 18,
     "title": "Parcours Niveau 1 Complet",
     "description": "Parcours complet regroupant tous les modules pour obtenir votre certification FFESSM Niveau 1.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Conclusion",
+        "content": "Vous possédez maintenant toutes les informations qui doivent vous permettre d'aborder la plongée en ayant conscience des risques, mais aussi en sachant que ces risques sont parfaitement maîtrisables si l'on respecte des règles de sécurité claires. Une fois de plus, vous devez vous mettre à l'eau en étant capable d'assurer votre propre sécurité. C'est la condition 'sine qua none' pour plonger sereinement et apprécier pleinement l'émerveillement de vos évolutions sous-marines."
+      },
+      {
+        "heading": "Le niveau 1 en France",
+        "content": "En France, le niveau 1 est la seconde étape, après le baptême, dans la formation d'un plongeur. Il permet de plonger en étant encadré. L'étape suivante est le niveau 2, qui amène à l'autonomie, c'est-à-dire à la possibilité de plonger avec un ou deux plongeurs du même niveau, sans encadrement."
+      }
+    ],
+    "duration": "30 heures",
+    "keyPoints": [
+      "Les risques de la plongée sont maîtrisables",
+      "Respecter les règles de sécurité claires",
+      "Être capable d'assurer sa propre sécurité",
+      "Condition pour plonger sereinement",
+      "Niveau 1 : seconde étape après le baptême",
+      "Permet de plonger encadré",
+      "Niveau 2 : accès à l'autonomie",
+      "Formation complète regroupant tous les modules"
+    ]
   }
 ]

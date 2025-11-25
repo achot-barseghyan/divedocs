@@ -2,7 +2,7 @@
   <div class="relative min-h-full w-full">
     <!-- Background -->
     <img
-      src="/img/bg.jpg"
+      src="/img/bg.webp"
       class="fixed inset-0 h-full w-full object-cover object-center"
       alt="underwater background"
     />

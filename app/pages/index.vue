@@ -3,7 +3,7 @@
     <!-- Background -->
     <div class="absolute inset-0 z-0">
       <img
-        src="/img/bg3.jpg"
+        src="/img/bg3.webp"
         alt="Diving background"
         class="h-full w-full object-cover object-center"
       />

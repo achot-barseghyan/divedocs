@@ -3,7 +3,7 @@
     v-model:visible="visible"
     modal
     header="Edit Profile"
-    class="max-h-none w-full max-w-none rounded-none bg-darkblue-800 sm:!h-screen sm:!w-screen sm:rounded-none md:max-h-[90vh] md:w-[70%] md:rounded-lg"
+    class="w-full max-w-none rounded-none bg-darkblue-800 sm:!h-screen sm:!w-screen sm:rounded-none md:max-h-[90vh] md:w-[70%] md:max-w-6xl md:rounded-lg"
     blockScroll
   >
     <template #header>
@@ -99,6 +99,17 @@
               {{ example }}
             </li>
           </ul>
+
+          <div v-if="subsection.images" class="mt-4 flex flex-wrap gap-4">
+            <div v-for="(item, imageIndex) in subsection.images" :key="item.id">
+              <img
+                :src="item.src"
+                :alt="item.alt"
+                class="max-h-[40vh] cursor-pointer rounded-lg border-2 border-teal-400"
+                @click="() => showImg(sectionIndex, imageIndex)"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
