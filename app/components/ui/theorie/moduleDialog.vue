@@ -3,7 +3,7 @@
     v-model:visible="visible"
     modal
     header="Edit Profile"
-    class="w-full bg-darkblue-800 md:w-[70%]"
+    class="max-h-none w-full max-w-none rounded-none bg-darkblue-800 sm:!h-screen sm:!w-screen sm:rounded-none md:max-h-[90vh] md:w-[70%] md:rounded-lg"
     blockScroll
   >
     <template #header>
@@ -194,4 +194,4 @@ defineExpose({
 })
 </script>
 
-<style></style>
+<style lang="scss"></style>
