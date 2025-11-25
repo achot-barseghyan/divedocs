@@ -1,5 +1,5 @@
 <template>
-  <Button icon="pi pi-arrow-left" label="Back" @click="handleClick" />
+  <Button icon="pi pi-arrow-left" label="Retour" @click="handleClick" />
 </template>
 
 <script setup lang="ts">
