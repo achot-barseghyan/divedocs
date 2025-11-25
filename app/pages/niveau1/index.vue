@@ -1,6 +1,5 @@
 <template>
   <div class="relative min-h-full w-full">
-    <!-- Background -->
     <img
       src="/img/bg.webp"
       class="fixed inset-0 h-full w-full object-cover object-center"
@@ -10,7 +9,6 @@
       class="fixed inset-0 bg-gradient-to-b from-[#001a23]/60 to-[#001a23]/90"
     ></div>
 
-    <!-- Content -->
     <div
       class="relative z-10 flex h-screen w-full flex-col items-center px-6 py-20 pt-[10rem]"
     >
@@ -37,24 +35,28 @@
           link="/niveau1/theorie"
         />
         <UiMenuCard
-          title="Exercices"
-          desc="Entraînements, signes, préparation physique"
-          icon="dumbbell"
-        />
-        <UiMenuCard
           title="Matériel"
           desc="Équipement, entretien, choix du matériel"
           icon="inbox"
+          link="/niveau1/materiel"
+        />
+        <UiMenuCard
+          title="Exercices"
+          desc="Entraînements, signes, préparation physique"
+          icon="dumbbell"
+          isDevBanner
         />
         <UiMenuCard
           title="Sécurité"
           desc="Procédures, signaux, planification"
           icon="shield"
+          isDevBanner
         />
         <UiMenuCard
           title="Révisions & Quiz"
           desc="Test, vocabulaire, validation connaissances"
           icon="clipboard-check"
+          isDevBanner
         />
       </div>
     </div>

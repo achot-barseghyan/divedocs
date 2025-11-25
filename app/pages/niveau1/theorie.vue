@@ -16,7 +16,7 @@
       </div>
       <div class="relative z-10 mx-auto max-w-7xl px-6">
         <h1 class="mb-4 text-center text-6xl font-bold">
-          <span class="text-yellow-400">Niveau 1</span>
+          <span class="text-yellow-500">Niveau 1</span>
         </h1>
         <p class="mx-auto max-w-3xl text-center text-xl text-gray-300">
           Retrouve ici tous les modules théoriques du niveau 1.
