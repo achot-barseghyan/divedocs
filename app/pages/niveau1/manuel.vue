@@ -12,6 +12,9 @@
     <div
       class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-8"
     >
+      <div class="mb-10 mr-auto">
+        <CommonGoBack useRouter />
+      </div>
       <ProgressSpinner v-if="loading" class="mb-8" />
 
       <Message

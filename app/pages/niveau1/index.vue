@@ -14,6 +14,9 @@
     <div
       class="relative z-10 flex h-screen w-full flex-col items-center px-6 py-20 pt-[10rem]"
     >
+      <div class="mb-10 mr-auto">
+        <CommonGoBack useRouter />
+      </div>
       <h1
         class="mb-14 text-center text-4xl font-black tracking-wide text-yellow-500 md:text-6xl"
       >

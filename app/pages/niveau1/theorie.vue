@@ -10,8 +10,10 @@
     <div
       class="fixed inset-0 bg-gradient-to-b from-[#001a23]/60 to-[#001a23]/90"
     ></div>
-    <div class="relative overflow-hidden py-20">
-      <div class="absolute inset-0"></div>
+    <div class="relative overflow-hidden px-4 py-20">
+      <div class="mb-10 mr-auto">
+        <CommonGoBack useRouter />
+      </div>
       <div class="relative z-10 mx-auto max-w-7xl px-6">
         <h1 class="mb-4 text-center text-6xl font-bold">
           <span class="text-yellow-400">Niveau 1</span>
