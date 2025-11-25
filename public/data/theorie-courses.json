@@ -3,6 +3,7 @@
     "id": 1,
     "title": "Introduction à la Plongée",
     "description": "Découvrez les bases de la plongée, son environnement et les règles de sécurité essentielles.",
+    "icon": "material-symbols:scuba-diving",
     "sections": [
       {
         "heading": "Objectif du Niveau 1",
@@ -38,13 +39,62 @@
     "id": 2,
     "title": "Vision et Perception Sous-Marine",
     "description": "Comprenez comment fonctionnent la vision, les couleurs et la luminosité sous l'eau.",
-    "duration": "5 mins"
+    "duration": "5 mins",
+    "icon": "material-symbols:visibility",
+    "sections": [
+      {
+        "heading": "Vision dans l'eau",
+        "content": "Dans l'eau, sans masque, nous voyons flou. Mais le masque, qui nous permet de voir net, perturbe la perception de la taille et de la distance des objets :",
+        "list": [
+          "Il réduit le champ visuel qui passe de 170 ° à environ 100 ° (selon le type de masque)",
+          "Les objets semblent plus proches : diminution de la distance perçue par rapport à la distance réelle : Distance apparente = distance réelle x 3/4",
+          "Les objets semblent plus gros : Taille apparente = taille réelle x 4/3"
+        ],
+        "images": [
+          {
+            "id": 1,
+            "src": "/img/theorie/module2/img2.jpg",
+            "alt": "Comparaison de la perception de la taille et de la distance avec masque"
+          },
+          {
+            "id": 2,
+            "src": "/img/theorie/module2/img1.jpg",
+            "alt": "Schéma illustrant la vision sous-marine avec masque"
+          }
+        ]
+      },
+      {
+        "heading": "Lumière et couleurs sous-marines",
+        "content": "La lumière et les couleurs, dans l'eau, paraissent différentes :",
+        "list": [
+          "Au-delà d'une quinzaine de mètres, les couleurs dominantes deviennent le marron, le bleu et le vert (absorption du rouge par l'eau)",
+          "La luminosité diminue en général assez vite avec la profondeur (la luminosité est meilleure quand le Soleil est au zénith, car les rayons lumineux ne sont pas réfléchis comme par un miroir)",
+          "Une bonne lampe permet de mieux observer les couleurs naturelles ; mais s'il y a des particules, la lumière naturelle pénètre moins et la lampe fait l'effet des phares dans le brouillard"
+        ],
+        "images": [
+          {
+            "id": 3,
+            "src": "/img/theorie/module2/img3.jpg",
+            "alt": "Schéma illustrant l'absorption des couleurs sous l'eau"
+          }
+        ]
+      }
+    ],
+    "keyPoints": [
+      "Sans masque, la vision est floue sous l'eau",
+      "Le masque déforme la perception : les objets paraissent plus gros et plus proches",
+      "Les couleurs changent avec la profondeur : dominance du bleu, vert et marron au-delà de 15m",
+      "Le rouge est absorbé par l'eau",
+      "La luminosité diminue avec la profondeur",
+      "Une lampe permet de restituer les couleurs naturelles"
+    ]
   },
   {
     "id": 3,
     "title": "Audition en Milieu Aquatique",
     "description": "Découvrez la propagation du son dans l'eau et ses implications pour la sécurité.",
-    "duration": "5 mins"
+    "duration": "5 mins",
+    "icon": "material-symbols:ear-sound"
   },
   {
     "id": 4,

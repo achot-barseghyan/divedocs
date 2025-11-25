@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module',
     '@vueuse/nuxt',
     '@nuxtjs/tailwindcss',
+    'nuxt-easy-lightbox',
   ],
   primevue: {
     options: {

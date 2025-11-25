@@ -1,12 +1,9 @@
-// composables/useCourses.ts
-
-import { set } from '@vueuse/core'
-
 export interface Course {
   id: number
   title: string
   description: string
   duration: string
+  icon: string
 }
 
 export const useTheorieCourses = () => {
@@ -41,9 +38,8 @@ export const useTheorieCourses = () => {
   // Get all courses
   const getAllCourses = computed(() => courses.value)
 
-  // Get course by ID
   const getCourseById = (id: number) => {
-    return computed(() => courses.value.find((course) => course.id === id))
+    return computed(() => courses.value.find((c) => c.id === id) || null)
   }
 
   // Search courses - Fixed to accept reactive query
