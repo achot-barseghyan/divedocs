@@ -4,6 +4,7 @@
     modal
     header="Edit Profile"
     class="w-full bg-darkblue-800 md:w-[70%]"
+    blockScroll
   >
     <template #header>
       <div class="flex flex-col gap-6">
@@ -24,11 +25,89 @@
       <p class="mb-2 text-lg font-bold text-white">
         {{ value.heading }}
       </p>
-      <p>{{ value.content }}</p>
+      <p class="mb-2">{{ value.content }}</p>
+
+      <div
+        v-if="value.formula"
+        class="my-4 rounded-lg border border-teal-500/30 bg-teal-900/30 p-4"
+      >
+        <p class="text-center font-mono text-xl text-teal-300">
+          {{ value.formula }}
+        </p>
+        <p
+          v-if="value.formulaDescription"
+          class="mt-2 text-center text-sm text-gray-300"
+        >
+          {{ value.formulaDescription }}
+        </p>
+      </div>
+
+      <p v-if="value.detail" class="mt-2 italic text-gray-300">
+        {{ value.detail }}
+      </p>
+
+      <p v-if="value.principle" class="mt-2 text-gray-200">
+        {{ value.principle }}
+      </p>
+
+      <p v-if="value.law" class="mt-2 font-semibold text-teal-300">
+        {{ value.law }}
+      </p>
 
       <ul v-if="value.list" class="mt-2 list-inside list-disc">
         <li v-for="item in value.list" :key="item" class="mb-4">{{ item }}</li>
       </ul>
+
+      <ul
+        v-if="value.consequences"
+        class="mt-2 list-inside list-disc text-yellow-300"
+      >
+        <li v-for="item in value.consequences" :key="item" class="mb-2">
+          {{ item }}
+        </li>
+      </ul>
+
+      <div v-if="value.examples" class="mt-4 space-y-2">
+        <p class="font-semibold text-turquoise-400">Exemples :</p>
+        <ul class="ml-4 list-inside list-disc">
+          <li v-for="example in value.examples" :key="example" class="mb-2">
+            {{ example }}
+          </li>
+        </ul>
+      </div>
+
+      <div v-if="value.subsections" class="mt-4 space-y-4">
+        <div
+          v-for="subsection in value.subsections"
+          :key="subsection.title"
+          class="ml-4 rounded-lg bg-darkblue-800 p-3"
+        >
+          <p class="mb-2 font-bold text-turquoise-400">
+            {{ subsection.title }}
+          </p>
+          <p class="text-gray-200">{{ subsection.content }}</p>
+
+          <ul
+            v-if="subsection.examples"
+            class="ml-4 mt-2 list-inside list-disc"
+          >
+            <li
+              v-for="example in subsection.examples"
+              :key="example"
+              class="mb-1"
+            >
+              {{ example }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        v-if="value.emphasis"
+        class="mt-4 rounded-lg border-l-4 border-yellow-500 bg-yellow-900/30 p-4"
+      >
+        <p class="font-bold text-yellow-300">⚠️ {{ value.emphasis }}</p>
+      </div>
 
       <div
         class="mt-8"
@@ -38,7 +117,7 @@
         <img
           :src="item.src"
           :alt="item.alt"
-          class="mt-4 max-h-[60vh] rounded-lg border-2 border-teal-400"
+          class="mt-4 max-h-[60vh] cursor-pointer rounded-lg border-2 border-teal-400"
           @click="() => showImg(sectionIndex, imageIndex)"
         />
       </div>
@@ -52,7 +131,7 @@
     />
 
     <div
-      v-if="moduleData.keyPoints?.length > 0"
+      v-if="moduleData?.keyPoints?.length > 0"
       class="mb-8 rounded-lg border-2 border-teal-400 bg-darkblue-900 p-4"
     >
       <h2
@@ -70,6 +149,7 @@
 
     <template #footer>
       <Button
+        class="mt-4"
         label="Fermer"
         text
         severity="success"

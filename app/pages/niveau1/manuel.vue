@@ -109,6 +109,7 @@
           :style="{ width: '90%' }"
           :closable="true"
           header="Manuel Officiel FFESSM - Niveau 1 (PDF)"
+          blockScroll
         >
           <div class="w-full">
             <iframe

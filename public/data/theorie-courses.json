@@ -94,19 +94,142 @@
     "title": "Audition en Milieu Aquatique",
     "description": "Découvrez la propagation du son dans l'eau et ses implications pour la sécurité.",
     "duration": "5 mins",
-    "icon": "material-symbols:ear-sound"
+    "icon": "material-symbols:ear-sound",
+    "sections": [
+      {
+        "heading": "Propagation du son dans l'eau",
+        "content": "L'eau étant plus dense que l'air, les vibrations sonores s'y propagent mieux et plus loin. Donc, on entend très bien dans l'eau, voire trop bien.",
+        "detail": "Notamment les sons s'y propagent plus vite: ~1500 m/s, pour 330 m/s dans l'air."
+      },
+      {
+        "heading": "Localisation des sons",
+        "content": "De fait, notre oreille n'est pas assez rapide pour déterminer l'origine d'un son dans l'eau, d'où l'intérêt de faire un tour d'horizon en remontant, avant d'arriver à la surface."
+      }
+    ],
+    "keyPoints": [
+      "L'eau est plus dense que l'air",
+      "Les vibrations sonores se propagent mieux et plus loin dans l'eau",
+      "On entend très bien dans l'eau, voire trop bien",
+      "Les sons se propagent plus vite dans l'eau : ~1500 m/s (vs 330 m/s dans l'air)",
+      "Notre oreille ne peut pas déterminer l'origine d'un son dans l'eau",
+      "Importance de faire un tour d'horizon en remontant avant d'arriver à la surface"
+    ]
   },
   {
     "id": 4,
     "title": "Pression et Loi de Mariotte-Boyle",
     "description": "Maîtrisez les concepts de pression atmosphérique, pression de l'eau et leurs effets sur les gaz.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "Qu'est-ce que la pression ?",
+        "content": "Eau et air, par leur masse et mouvements internes appliquent une 'force'. Intuitivement, on voit bien ce qu'est une force : toute action susceptible de modifier le mouvement. On dit aussi 'poussée'. Pour les fluides (liquides ou gaz), qui n'ont pas de volume délimité et ont tendance à se répandre, on parle de 'pression'.",
+        "formula": "P = F / S",
+        "formulaDescription": "Pour une force exercée de manière uniforme et perpendiculairement à une surface, la pression est la force par unité de surface"
+      },
+      {
+        "heading": "L'unité de mesure",
+        "content": "L'unité de mesure de la pression, en plongée, est le bar."
+      },
+      {
+        "heading": "Les différentes sources de pression",
+        "subsections": [
+          {
+            "title": "Pression atmosphérique",
+            "content": "C'est la pression exercée par l'ensemble de l'atmosphère. Au niveau de la mer, elle vaut 1 bar."
+          },
+          {
+            "title": "Pression de l'eau",
+            "content": "Au fur et à mesure que l'on descend dans l'eau, la pression exercée par celle-ci augmente (de plus en plus de masse au-dessus de nous) : 1 bar tous les 10 mètres."
+          },
+          {
+            "title": "Pression absolue",
+            "content": "C'est la somme de la pression atmosphérique et de la pression de l'eau à la profondeur considérée. Elle correspond à la pression totale subie par le plongeur.",
+            "examples": [
+              "À 0 m : Pression absolue = 1 bar",
+              "À 10 m : Pression absolue = 2 bars (1 bar atmosphérique + 1 bar d'eau)",
+              "À 20 m : Pression absolue = 3 bars (1 bar atmosphérique + 2 bars d'eau)"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Loi de Mariotte-Boyle",
+        "content": "La pression a un effet sur les gaz, qui sont compressibles, pas sur les liquides et les solides (incompressibles, mais qui transmettent la pression).",
+        "principle": "Ainsi l'air que l'on respire, dans un volume clos et à température constante, se met à la pression environnante ou pression ambiante. Le volume de l'air que l'on respire varie donc au cours de la plongée lorsque la pression varie.",
+        "law": "La loi de Mariotte-Boyle dit que pour un système fermé et à température constante, le produit de la pression (P) par le volume (V) est constant.",
+        "formula": "PV = Cste ou P₁V₁ = P₂V₂",
+        "consequences": [
+          "Si P augmente ⇒ l'air est comprimé ⇒ V diminue",
+          "Si P diminue ⇒ l'air se détend ⇒ V augmente"
+        ],
+        "examples": [
+          "À 0 m (1 bar) : Volume = 15 l",
+          "À 10 m (2 bars) : Volume = 7,5 l",
+          "À 20 m (3 bars) : Volume = 5 l"
+        ]
+      },
+      {
+        "heading": "Point important de sécurité",
+        "emphasis": "Attention, les variations relatives de pression les plus importantes prennent place près de la surface : donc prudence !"
+      }
+    ],
+    "duration": "2 heures",
+    "keyPoints": [
+      "La pression est une force par unité de surface (P = F/S)",
+      "L'unité de mesure en plongée est le bar",
+      "Pression atmosphérique = 1 bar au niveau de la mer",
+      "Pression de l'eau augmente de 1 bar tous les 10 mètres",
+      "Pression absolue = Pression atmosphérique + Pression de l'eau",
+      "Les gaz sont compressibles, pas les liquides et solides",
+      "Loi de Mariotte-Boyle : PV = Constante",
+      "Quand la pression augmente, le volume diminue et inversement",
+      "Les variations de pression les plus importantes sont près de la surface"
+    ]
   },
   {
     "id": 5,
     "title": "Flottabilité et Poussée d'Archimède",
     "description": "Apprenez la flottabilité, le poumon-ballast et le lestage optimal pour une plongée équilibrée.",
-    "duration": "5 mins"
+    "sections": [
+      {
+        "heading": "La sensation de flotter",
+        "content": "Lorsque l'on saute à l'eau, on a la sensation de flotter. C'est bien le cas. Cette sensation est liée à la poussée d'Archimède : 'tout corps plongé dans un fluide reçoit de la part de ce fluide une force dirigée du bas vers le haut et égale au poids du volume de fluide déplacé'."
+      },
+      {
+        "heading": "Principe de la flottabilité",
+        "content": "Considérons qu'un litre d'eau pèse environ 1kg. Ainsi, un plongeur ayant un volume de 85 litres, déplacent 85 litres d'eau et donc reçoit une poussée de 85 kg vers le haut.",
+        "examples": [
+          "S'il pèse 80 kg, il flotte",
+          "S'il pèse 90 kg, il coule",
+          "S'il pèse 85 kg, il ne bouge pas"
+        ]
+      },
+      {
+        "heading": "Le poumon-ballast",
+        "content": "Si je gonfle mes poumons en respirant, j'augmente le volume de ma cage thoracique, donc la poussée exercée par l'eau vers le haut, et vice et versa, si je souffle, je diminue la poussée. C'est ce que l'on appelle le poumon-ballast.",
+        "emphasis": "Le poumon-ballast permet de contrôler sa flottabilité en jouant sur le volume d'air dans les poumons."
+      },
+      {
+        "heading": "La combinaison de plongée",
+        "content": "La combinaison fait flotter, car la matière qui la compose, le néoprène, est remplie de bulles de gaz."
+      },
+      {
+        "heading": "Le lestage",
+        "content": "Il faut une ceinture de plombs pour compenser l'effet de la combinaison. Un lestage idéal est celui qui permet d'être bien équilibré à trois mètres, c'est-à-dire qu'à cette profondeur, la poussée due à l'eau vers le haut, annule mon poids en fin de plongée.",
+        "detail": "En général, il faut entre 2 et 6 kilos."
+      }
+    ],
+    "duration": "1h30",
+    "keyPoints": [
+      "Poussée d'Archimède : force dirigée du bas vers le haut égale au poids du volume de fluide déplacé",
+      "Un litre d'eau pèse environ 1 kg",
+      "La flottabilité dépend du rapport entre le poids et le volume déplacé",
+      "Le poumon-ballast permet de contrôler sa flottabilité",
+      "La combinaison en néoprène fait flotter (bulles de gaz)",
+      "Le lestage compense l'effet de la combinaison",
+      "Lestage idéal : équilibre à 3 mètres en fin de plongée",
+      "Lestage habituel : entre 2 et 6 kg"
+    ]
   },
   {
     "id": 6,
