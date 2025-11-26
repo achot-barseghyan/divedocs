@@ -1,20 +1,8 @@
 <template>
-  <div class="relative min-h-screen w-full pt-[5rem]">
-    <img
-      src="/img/bg.webp"
-      class="absolute inset-0 h-full w-full object-cover object-center"
-      alt="underwater background"
-    />
+  <div class="relative min-h-screen w-full">
     <div
-      class="absolute inset-0 bg-gradient-to-b from-[#001a23]/60 to-[#001a23]/90"
-    ></div>
-
-    <div
-      class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-8"
+      class="relative z-10 flex min-h-screen flex-col items-center justify-normal px-4"
     >
-      <div class="mb-10 mr-auto">
-        <CommonGoBack useRouter />
-      </div>
       <ProgressSpinner v-if="loading" class="mb-8" />
 
       <Message

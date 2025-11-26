@@ -1,18 +1,6 @@
 <template>
-  <div class="min-h-screen bg-[#00131a] text-white">
-    <!-- Hero Section -->
-    <img
-      src="/img/bg.webp"
-      class="fixed inset-0 h-full w-full object-cover object-center"
-      alt="underwater background"
-    />
-    <div
-      class="fixed inset-0 bg-gradient-to-b from-[#001a23]/60 to-[#001a23]/90"
-    ></div>
+  <div class="min-h-screen text-white">
     <div class="relative mt-[3rem] overflow-hidden px-4 py-20">
-      <div class="mb-10 mr-auto">
-        <CommonGoBack useRouter />
-      </div>
       <div class="relative z-10 mx-auto max-w-7xl px-6">
         <h1 class="mb-4 text-center text-6xl font-bold">
           <span class="text-yellow-500">Niveau 1</span>
@@ -24,7 +12,7 @@
       </div>
     </div>
 
-    <main class="mx-auto -mt-12 max-w-7xl px-6 pb-20">
+    <div class="mx-auto -mt-12 max-w-7xl px-6 pb-20">
       <!-- Intro Card -->
       <Card class="mb-10 border border-white/10 bg-white/5 backdrop-blur-md">
         <template #content>
@@ -420,19 +408,7 @@
           </div>
         </template>
       </Card>
-    </main>
-
-    <footer class="mx-auto max-w-7xl px-6 py-8 text-sm text-gray-400">
-      <div
-        class="flex flex-col items-center gap-4 md:flex-row md:justify-between"
-      >
-        <div>
-          Contenu pédagogique — vérifie toujours les procédures auprès de ton
-          instructeur.
-        </div>
-        <div>© Club / Projet — Tous droits réservés</div>
-      </div>
-    </footer>
+    </div>
   </div>
 </template>
 

@@ -1,26 +1,12 @@
 <template>
   <div class="relative h-screen w-screen overflow-hidden">
-    <!-- Background -->
-    <div class="absolute inset-0 z-0">
-      <img
-        src="/img/bg3.webp"
-        alt="Diving background"
-        class="h-full w-full object-cover object-center"
-      />
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-[#00191f]/20 to-[#0a1e26]/40"
-      ></div>
-    </div>
-
     <!-- Bubble Container -->
     <div
       class="bubble-container pointer-events-none absolute inset-0 z-20"
     ></div>
 
     <!-- Title -->
-    <div
-      class="relative z-10 flex h-full items-center justify-center pt-[100px]"
-    >
+    <div class="relative z-10 flex h-full items-center justify-center">
       <h1 class="text-6xl font-black tracking-wider md:text-9xl">
         <span
           v-for="(letter, i) in letters"

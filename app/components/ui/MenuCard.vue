@@ -27,7 +27,6 @@
 
 <script setup lang="ts">
 import { defineProps, ref, onMounted } from 'vue'
-import { gsap } from 'gsap'
 
 interface Props {
   title: string
@@ -37,25 +36,4 @@ interface Props {
   isDevBanner?: boolean
 }
 defineProps<Props>()
-
-const cardRef = ref(null)
-
-onMounted(() => {
-  const el = cardRef.value?.$el || cardRef.value
-
-  gsap.from(el, {
-    opacity: 0,
-    y: 30,
-    duration: 0.8,
-    ease: 'power3.out',
-  })
-
-  gsap.to(el, {
-    y: '+=5',
-    repeat: -1,
-    yoyo: true,
-    duration: 4,
-    ease: 'sine.inOut',
-  })
-})
 </script>

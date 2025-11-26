@@ -1,19 +1,6 @@
 <template>
-  <div
-    class="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-teal-900 pt-20"
-  >
-    <img
-      src="/img/bg.webp"
-      class="fixed inset-0 h-full w-full object-cover object-center"
-      alt="underwater background"
-    />
-    <div
-      class="fixed inset-0 bg-gradient-to-b from-[#001a23]/60 to-[#001a23]/90"
-    ></div>
+  <div class="min-h-screen">
     <div class="relative overflow-hidden px-4 py-20">
-      <div class="mb-10 mr-auto">
-        <CommonGoBack useRouter />
-      </div>
       <div class="relative z-10 mx-auto max-w-7xl px-6">
         <h1 class="mb-4 text-center text-6xl font-bold">
           <span class="text-yellow-500">Niveau 1</span>
