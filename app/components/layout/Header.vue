@@ -1,7 +1,7 @@
 <template>
   <div>
     <header
-      class="fixed left-0 top-0 z-[1000] mb-[120px] h-[50px] w-full bg-gradient-to-b from-transparent backdrop-blur-sm transition-transform duration-300 md:h-[100px]"
+      class="fixed left-0 top-0 z-[1000] mb-[120px] h-[70px] w-full bg-gradient-to-b from-transparent backdrop-blur-sm transition-transform duration-300 md:h-[100px]"
       :class="{ '-translate-y-full': hideHeader }"
     >
       <div
@@ -29,7 +29,7 @@ const handleScroll = () => {
 
   if (currentScrollY > lastScrollY && currentScrollY > 100) {
     hideHeader.value = true
-  } else if (currentScrollY < lastScrollY) {
+  } else if (currentScrollY + 70 < lastScrollY) {
     hideHeader.value = false
   }
 

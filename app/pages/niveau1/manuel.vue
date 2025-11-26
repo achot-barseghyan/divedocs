@@ -1,7 +1,7 @@
 <template>
   <div class="relative min-h-screen w-full">
     <div
-      class="relative z-10 flex min-h-screen flex-col items-center justify-normal px-4"
+      class="relative z-10 flex min-h-screen flex-col items-center justify-normal md:px-4"
     >
       <ProgressSpinner v-if="loading" class="mb-8" />
 
@@ -13,19 +13,31 @@
       />
 
       <div v-else-if="currentPageData" class="w-full max-w-4xl">
-        <div class="mb-8 text-center">
-          <h1 class="mb-4 text-4xl font-extrabold text-white">
-            {{ currentPageData.title }}
-          </h1>
-          <Tag
-            :value="`Page ${currentPage} / ${totalPages}`"
-            severity="warning"
-            class="text-center"
-          />
-        </div>
-
-        <Card class="mb-8 !bg-white px-4">
+        <Card class="!bg-white md:mb-8 md:px-4">
           <template #content>
+            <div class="mb-8 flex items-center justify-between gap-6 text-left">
+              <div>
+                <h1
+                  class="mb-4 w-[100px] text-xl font-extrabold text-darkblue-500 md:w-[300px] md:text-4xl"
+                >
+                  {{ currentPageData.title }}
+                </h1>
+                <Tag
+                  :value="`Page ${currentPage} / ${totalPages}`"
+                  severity="warning"
+                  class="text-center"
+                />
+              </div>
+              <div class="flex gap-4">
+                <Button @click="prevPage" size="large">
+                  <Icon name="ic:baseline-arrow-back-ios"></Icon>
+                </Button>
+                <Button @click="nextPage" size="large">
+                  <Icon name="ic:outline-arrow-forward-ios"></Icon>
+                </Button>
+              </div>
+            </div>
+
             <div class="max-h-[60vh] min-h-[360px] w-full overflow-auto">
               <p class="mb-6 text-lg leading-relaxed text-black">
                 {{ currentPageData.content }}
@@ -126,6 +138,8 @@ const {
   error,
   getCurrentPageData,
   goToPage,
+  nextPage,
+  prevPage,
 } = useManuelPages()
 
 const currentPageData = computed(() => getCurrentPageData())
