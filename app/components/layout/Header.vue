@@ -1,7 +1,7 @@
 <template>
   <div>
     <header
-      class="fixed left-0 top-0 z-[1000] mb-[120px] h-[100px] w-full bg-gradient-to-b from-transparent backdrop-blur-sm transition-transform duration-300"
+      class="fixed left-0 top-0 z-[1000] mb-[120px] h-[50px] w-full bg-gradient-to-b from-transparent backdrop-blur-sm transition-transform duration-300 md:h-[100px]"
       :class="{ '-translate-y-full': hideHeader }"
     >
       <div
