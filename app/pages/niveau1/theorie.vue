@@ -84,7 +84,7 @@
         </div>
       </div>
     </div>
-    <UiTheorieModuleDialog ref="ModuleDialog" />
+    <ModalsTheorieModuleDialog ref="ModuleDialog" />
   </div>
 </template>
 

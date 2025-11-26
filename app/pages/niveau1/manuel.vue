@@ -75,10 +75,22 @@
                 </p>
               </div>
             </div>
-            <div class="text-center">
+            <div
+              class="mt-3 flex items-center justify-center gap-2 text-center"
+            >
               <span class="text-sm italic text-gray-500">
                 FFESSM officiel - Version Mai 2024
               </span>
+              <span class="text-black">|</span>
+              <Button
+                label="Voir le PDF officiel"
+                icon="pi pi-file-pdf"
+                variant="text"
+                severity="danger"
+                class="text-red-500"
+                @click="openPdf"
+                size="small"
+              />
             </div>
           </template>
         </Card>
@@ -91,37 +103,16 @@
             :currentPageReportTemplate="'Page {currentPage} / {totalPages}'"
             showCurrentPageReport
             class="w-full"
+            :pageLinkSize="3"
+            :pt="{
+              page: 'text-white',
+              first: 'text-white',
+              prev: 'text-white',
+              next: 'text-white',
+              last: 'text-white',
+            }"
           />
         </div>
-
-        <div class="mb-4 flex justify-start">
-          <Button
-            label="Voir le PDF officiel"
-            icon="pi pi-file-pdf"
-            variant="text"
-            severity="danger"
-            class="text-red-500"
-            @click="showPdfModal = true"
-          />
-        </div>
-
-        <!-- PDF Modal Dialog -->
-        <Dialog
-          v-model:visible="showPdfModal"
-          modal
-          :style="{ width: '90%' }"
-          :closable="true"
-          header="Manuel Officiel FFESSM - Niveau 1 (PDF)"
-          blockScroll
-        >
-          <div class="w-full">
-            <iframe
-              src="/data/manuel.pdf"
-              class="h-[75vh] w-full border"
-              frameborder="0"
-            ></iframe>
-          </div>
-        </Dialog>
       </div>
     </div>
   </div>
@@ -144,11 +135,11 @@ const {
 
 const currentPageData = computed(() => getCurrentPageData())
 
-const showPdfModal = ref(false)
-
 const onPageChange = (event: any) => {
   goToPage(event.page + 1)
 }
-</script>
 
-<style scoped></style>
+const openPdf = () => {
+  window.open('/data/manuel.pdf', '_blank')
+}
+</script>

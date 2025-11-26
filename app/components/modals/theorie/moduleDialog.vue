@@ -2,18 +2,19 @@
   <Dialog
     v-model:visible="visible"
     modal
-    header="Edit Profile"
-    class="w-full max-w-none rounded-none bg-darkblue-800 sm:!h-screen sm:!w-screen sm:rounded-none md:max-h-[90vh] md:w-[70%] md:max-w-6xl md:rounded-lg"
     blockScroll
+    class="mobile-full-dialog"
+    content-class="mobile-full-dialog__content"
+    :closable="true"
   >
     <template #header>
-      <div class="flex flex-col gap-6">
-        <h1 class="text-2xl font-extrabold text-yellow-500">
+      <div class="flex flex-col gap-1 md:gap-6">
+        <h1 class="text-lg font-extrabold text-yellow-500 md:text-2xl">
           {{ moduleData?.title }}
         </h1>
-        <span class="block text-white/90">
+        <p class="block text-base text-white/90">
           {{ moduleData?.description }}
-        </span>
+        </p>
       </div>
     </template>
 
@@ -157,17 +158,6 @@
         </li>
       </ul>
     </div>
-
-    <template #footer>
-      <Button
-        class="mt-4"
-        label="Fermer"
-        text
-        severity="success"
-        @click="visible = false"
-        autofocus
-      />
-    </template>
   </Dialog>
 </template>
 
@@ -205,4 +195,73 @@ defineExpose({
 })
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+/* mobile-full-dialog overrides - mobile only */
+@media (max-width: 767px) {
+  /* Make dialog root full-screen and remove fancy radius */
+  .mobile-full-dialog.p-dialog {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+  }
+
+  /* Ensure the content area becomes a flex column that fills the dialog */
+  .mobile-full-dialog__content {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    padding: 1rem !important; /* adjust if you want spacing */
+  }
+
+  /* Header/footer keep intrinsic size */
+  .mobile-full-dialog__content .p-dialog-header,
+  .mobile-full-dialog__content .p-dialog-footer {
+    flex: 0 0 auto !important;
+    z-index: 2;
+  }
+
+  /* Body takes remaining space and scrolls */
+  .mobile-full-dialog__content .p-dialog-content,
+  .mobile-full-dialog__content .p-dialog-body {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 1rem !important; /* adjust spacing */
+  }
+
+  /* Optional: keep overlay visible below dialog */
+  .p-dialog-mask {
+    align-items: stretch !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-full-dialog.p-dialog {
+    width: 70% !important;
+    max-width: 70% !important;
+    height: auto !important;
+    max-height: 90vh !important;
+    margin: auto !important;
+    border-radius: 12px !important;
+  }
+
+  .mobile-full-dialog__content {
+    max-height: 90vh !important;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .mobile-full-dialog__content .p-dialog-content,
+  .mobile-full-dialog__content .p-dialog-body {
+    overflow-y: auto !important;
+  }
+}
+</style>

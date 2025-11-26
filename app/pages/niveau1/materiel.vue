@@ -26,7 +26,7 @@
                 de palmes, type de jupe de masque, DIN/K pour bloc).
               </p>
             </div>
-            <div class="flex items-center gap-3">
+            <!-- <div class="flex items-center gap-3">
               <Button
                 label="Voir le matériel"
                 class="border-gray-500 bg-transparent text-teal-200"
@@ -37,7 +37,7 @@
                 class="border-none bg-teal-600 hover:bg-teal-700"
                 @click="scrollToSection('schemas')"
               />
-            </div>
+            </div> -->
           </div>
         </template>
       </Card>
@@ -86,19 +86,50 @@
                   <span>Sangle confortable, neoprene si long usage</span>
                 </li>
               </ul>
-              <!-- <div class="flex gap-3">
-                <Button label="Voir modèles" outlined class="flex-1" />
-                <Button label="Acheter" severity="info" class="flex-1" />
-              </div> -->
+            </template>
+            <template #footer>
+              <div class="flex flex-col gap-2">
+                <Button
+                  label="Bien choisir son masque"
+                  severity="contrast"
+                  class="flex-1"
+                  size="small"
+                  @click="
+                    openVideoDialog(
+                      'https://www.youtube.com/embed/DcoorOWgQTM?si=_f3nyuE9Uh2-0szA',
+                      402
+                    )
+                  "
+                >
+                  <template #icon>
+                    <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                  </template>
+                </Button>
+                <Button
+                  label="Les différents technologies de masques"
+                  severity="contrast"
+                  class="flex-1"
+                  size="small"
+                  @click="
+                    openVideoDialog(
+                      'https://www.youtube.com/embed/tWfsGohE5wY?si=OAjOFWcW-vOz-o8p'
+                    )
+                  "
+                >
+                  <template #icon>
+                    <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                  </template>
+                </Button>
+              </div>
             </template>
           </Card>
 
           <!-- Tuba -->
           <Card
-            class="border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:transform"
+            class="relative flex flex-col border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:transform"
           >
             <template #content>
-              <div class="mb-4 flex items-start gap-4">
+              <div class="mb-4 flex gap-4">
                 <div
                   class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-gradient-to-b from-[#0b6470] to-[#04363a]"
                 >
@@ -126,10 +157,6 @@
                   <span>Anti-retour pour eau éventuelle (optionnel)</span>
                 </li>
               </ul>
-              <!-- <div class="flex gap-3">
-                <Button label="Guide d'achat" outlined class="flex-1" />
-                <Button label="Acheter" severity="info" class="flex-1" />
-              </div> -->
             </template>
           </Card>
 
@@ -170,16 +197,29 @@
                   <span>Chausson si eau froide</span>
                 </li>
               </ul>
-              <!-- <div class="flex gap-3">
-                <Button label="Comparatif" outlined class="flex-1" />
-                <Button label="Acheter" severity="info" class="flex-1" />
-              </div> -->
+            </template>
+            <template #footer>
+              <Button
+                label="Bien choisir ses palmes"
+                severity="contrast"
+                class="flex-1"
+                size="small"
+                @click="
+                  openVideoDialog(
+                    'https://www.youtube.com/embed/ikKRWVigOz8?si=_pA-JXsZ7s0k7vE5'
+                  )
+                "
+              >
+                <template #icon>
+                  <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                </template>
+              </Button>
             </template>
           </Card>
         </div>
 
         <!-- Autres équipements -->
-        <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <!-- <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           <Card
             class="border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:transform"
           >
@@ -219,7 +259,7 @@
               </p>
             </template>
           </Card>
-        </div>
+        </div> -->
       </section>
 
       <!-- Schémas Section -->
@@ -410,14 +450,14 @@
       </Card>
     </div>
   </div>
+  <ModalsMaterielVideoDialog ref="ModalsMaterielDialog" />
 </template>
 
-<script setup>
-const scrollToSection = (id) => {
-  const element = document.getElementById(id)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
+<script setup lang="ts">
+const ModalsMaterielDialog = ref()
+
+const openVideoDialog = (url: string, startTime?: number) => {
+  ModalsMaterielDialog.value.open(url, startTime)
 }
 </script>
 
