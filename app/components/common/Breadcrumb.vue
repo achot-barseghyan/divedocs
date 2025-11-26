@@ -5,7 +5,7 @@
     <Breadcrumb
       :home="home"
       :model="breadcrumbs"
-      class="bg-transparent text-white"
+      class="!bg-transparent md:bg-transparent text-white"
     >
       <template #item="{ item }">
         <NuxtLink :to="item.url" class="flex items-center gap-2">

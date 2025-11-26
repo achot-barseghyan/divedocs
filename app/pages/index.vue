@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-screen w-screen overflow-hidden">
+  <div class="relative h-screen w-screen !overflow-hidden">
     <!-- Bubble Container -->
     <div
       class="bubble-container pointer-events-none absolute inset-0 z-20"
