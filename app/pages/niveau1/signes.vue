@@ -21,7 +21,7 @@
             :class="[
               'transition-all duration-300',
               selectedCategory === category.id
-                ? `${category.bgClass} scale-105 shadow-lg`
+                ? `scale-105 shadow-lg`
                 : 'bg-white/10 hover:bg-white/20',
             ]"
             class="text-white"
