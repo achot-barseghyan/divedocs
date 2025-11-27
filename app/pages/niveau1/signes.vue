@@ -1,8 +1,6 @@
 <template>
-  <div
-    class="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-slate-900 p-6"
-  >
-    <div class="mx-auto -mt-12 flex max-w-7xl flex-col gap-[2rem] px-6 pb-20">
+  <div class="min-h-screen p-6">
+    <div class="mx-auto flex max-w-7xl flex-col gap-[2rem] px-6 pb-20">
       <!-- Header -->
       <div class="mx-auto mb-8 max-w-6xl">
         <div class="mb-6 text-center">
@@ -57,7 +55,6 @@
                 </h3>
                 <Tag
                   :value="getCategoryName(sign.category)"
-                  :class="getCategoryColor(sign.category)"
                   class="text-white"
                   rounded
                 />
@@ -283,13 +280,13 @@ const signs = [
 ]
 
 const categories = [
-  { id: 'all', name: 'Tous les signes', bgClass: 'bg-teal-500' },
-  { id: 'communication', name: 'Communication', bgClass: 'bg-blue-500' },
-  { id: 'sécurité', name: 'Sécurité', bgClass: 'bg-yellow-500' },
-  { id: 'urgence', name: 'Urgence', bgClass: 'bg-red-500' },
-  { id: 'direction', name: 'Direction', bgClass: 'bg-purple-500' },
-  { id: 'sensation', name: 'Sensations', bgClass: 'bg-orange-500' },
-  { id: 'technique', name: 'Technique', bgClass: 'bg-green-500' },
+  { id: 'all', name: 'Tous les signes' },
+  { id: 'communication', name: 'Communication' },
+  { id: 'sécurité', name: 'Sécurité' },
+  { id: 'urgence', name: 'Urgence' },
+  { id: 'direction', name: 'Direction' },
+  { id: 'sensation', name: 'Sensations' },
+  { id: 'technique', name: 'Technique' },
 ]
 
 const filteredSigns = computed(() => {
@@ -297,11 +294,6 @@ const filteredSigns = computed(() => {
     ? signs
     : signs.filter((sign) => sign.category === selectedCategory.value)
 })
-
-const getCategoryColor = (category: string) => {
-  const cat = categories.find((c) => c.id === category)
-  return cat ? cat.bgClass : 'bg-gray-500'
-}
 
 const getCategoryName = (category: string) => {
   const cat = categories.find((c) => c.id === category)
