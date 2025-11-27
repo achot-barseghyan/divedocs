@@ -57,7 +57,9 @@ defineExpose({
 </script>
 
 <style lang="scss">
-/* mobile-full-dialog overrides - mobile only */
+.mobile-full-dialog .p-dialog-header {
+  padding: 0.5rem;
+}
 @media (max-width: 767px) {
   /* Make dialog root full-screen and remove fancy radius */
   .mobile-full-dialog.p-dialog {
@@ -79,7 +81,7 @@ defineExpose({
     flex-direction: column !important;
     height: 100vh !important;
     max-height: 100vh !important;
-    padding: 1rem !important; /* adjust if you want spacing */
+    padding: 0.5rem !important; /* adjust if you want spacing */
   }
 
   /* Header/footer keep intrinsic size */

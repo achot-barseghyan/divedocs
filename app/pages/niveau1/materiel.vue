@@ -278,7 +278,7 @@
                 alt="Gréer son bloc"
                 class="h-48 w-full object-cover"
               />
-              <div class="p-4">
+              <div class="pt-4">
                 <h4 class="mb-2 text-lg font-semibold">
                   Gréer son bloc — pas à pas
                 </h4>
@@ -288,19 +288,28 @@
                 </p>
                 <div class="flex gap-3">
                   <Button
-                    label="Voir le PDF"
+                    label="Guide écrit"
                     outlined
                     class="flex-1"
-                    icon="pi pi-file-pdf"
+                    icon="pi pi-file"
                     disabled
                   />
                   <Button
-                    label="Tutoriel vidéo"
-                    severity="info"
+                    label="Guide en vidéo"
+                    severity="contrast"
                     class="flex-1"
-                    icon="pi pi-video"
-                    disabled
-                  />
+                    size="small"
+                    @click="
+                      openVideoDialog(
+                        'https://www.youtube.com/embed/C_1XvAmCV20?si=sj9DpFTEG8pUMJq3',
+                        6
+                      )
+                    "
+                  >
+                    <template #icon>
+                      <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                    </template>
+                  </Button>
                 </div>
               </div>
             </template>
@@ -323,19 +332,21 @@
                 </p>
                 <div class="flex gap-3">
                   <Button
-                    label="Télécharger"
-                    outlined
+                    label="Guide en vidéo"
+                    severity="contrast"
                     class="flex-1"
-                    icon="pi pi-download"
-                    disabled
-                  />
-                  <Button
-                    label="Voir la fiche"
-                    severity="info"
-                    class="flex-1"
-                    icon="pi pi-file"
-                    disabled
-                  />
+                    size="small"
+                    @click="
+                      openVideoDialog(
+                        'https://www.youtube.com/embed/-ZTXdm8S5PQ?si=-wvsU-rdWu_pnLJ3',
+                        5
+                      )
+                    "
+                  >
+                    <template #icon>
+                      <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                    </template>
+                  </Button>
                 </div>
               </div>
             </template>
@@ -367,10 +378,10 @@
                     disabled
                   />
                   <Button
-                    label="Planning"
+                    label="Voir la list"
                     severity="info"
                     class="flex-1"
-                    icon="pi pi-calendar"
+                    icon="pi pi-list"
                     disabled
                   />
                 </div>
