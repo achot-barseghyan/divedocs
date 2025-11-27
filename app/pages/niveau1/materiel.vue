@@ -33,15 +33,15 @@
                 <li class="flex items-start gap-2">
                   <i class="pi pi-info-circle mt-1 text-teal-400"></i>
                   <span>
-                    Demander au club si certaines pièces (détendeur, bloc) sont
-                    fournies.
+                    Demander au club pour avoir l'avis et conseils des
+                    formateurs.
                   </span>
                 </li>
                 <li class="flex items-start gap-2">
                   <i class="pi pi-info-circle mt-1 text-teal-400"></i>
                   <span>
-                    Garder les factures et garanties — entretien annuel
-                    recommandé.
+                    Garder les factures et garanties - entretien annuel
+                    recommandé (détendeurs, gilet etc...).
                   </span>
                 </li>
               </ul>
@@ -100,7 +100,6 @@
                 <Button
                   label="Bien choisir son masque"
                   severity="contrast"
-                  class="flex-1"
                   size="small"
                   @click="
                     openVideoDialog(
@@ -116,7 +115,6 @@
                 <Button
                   label="Les différents technologies de masques"
                   severity="contrast"
-                  class="flex-1"
                   size="small"
                   @click="
                     openVideoDialog(
@@ -210,7 +208,7 @@
               <Button
                 label="Bien choisir ses palmes"
                 severity="contrast"
-                class="flex-1"
+                class="w-full flex-1"
                 size="small"
                 @click="
                   openVideoDialog(
@@ -225,49 +223,6 @@
             </template>
           </Card>
         </div>
-
-        <!-- Autres équipements -->
-        <!-- <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Card
-            class="border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
-          >
-            <template #content>
-              <h4 class="mb-2 text-lg font-semibold">
-                Gilet stabilisateur (BCD)
-              </h4>
-              <p class="text-sm text-gray-400">
-                Doit permettre une bonne assise du bloc, avoir des purges
-                accessibles et un inflateur fonctionnel.
-              </p>
-            </template>
-          </Card>
-
-          <Card
-            class="border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
-          >
-            <template #content>
-              <h4 class="mb-2 text-lg font-semibold">Détendeur (si acheté)</h4>
-              <p class="text-sm text-gray-400">
-                1er + 2e étage de qualité, octopus et manomètre. Vérifier
-                compatibilité DIN/INT avec ton club.
-              </p>
-            </template>
-          </Card>
-
-          <Card
-            class="border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
-          >
-            <template #content>
-              <h4 class="mb-2 text-lg font-semibold">
-                Équipement complémentaire
-              </h4>
-              <p class="text-sm text-gray-400">
-                Combinaison, bottillons, gants fins, couteau de plongée, lampe
-                si plongées sombres.
-              </p>
-            </template>
-          </Card>
-        </div> -->
       </section>
 
       <!-- Schémas Section -->
@@ -287,12 +242,10 @@
                 class="h-48 w-full object-cover"
               />
               <div class="pt-4">
-                <h4 class="mb-2 text-lg font-semibold">
-                  Gréer son bloc — pas à pas
-                </h4>
+                <h4 class="mb-2 text-lg font-semibold">Gréer son bloc</h4>
                 <p class="mb-4 text-sm text-gray-400">
                   Positionnement du bloc, sangle, raccordement du détendeur,
-                  vérifications visuelles et sonores.
+                  vérifications.
                 </p>
                 <div class="flex gap-3">
                   <Button
@@ -324,37 +277,41 @@
           </Card>
 
           <Card
-            class="overflow-hidden border border-white/10 bg-white/5 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
+            class="overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
           >
             <template #content>
-              <img
-                src="https://i.ytimg.com/vi/bDXVO8kkgj4/maxresdefault.jpg"
-                alt="Dégréer son bloc"
-                class="h-48 w-full object-cover"
-              />
-              <div class="p-4">
-                <h4 class="mb-2 text-lg font-semibold">Dégréer son bloc</h4>
-                <p class="mb-4 text-sm text-gray-400">
-                  Ordre des opérations, vidange d'air, sécurisation, transport
-                  du bloc.
-                </p>
-                <div class="flex gap-3">
-                  <Button
-                    label="Guide en vidéo"
-                    severity="contrast"
-                    class="flex-1"
-                    size="small"
-                    @click="
-                      openVideoDialog(
-                        'https://www.youtube.com/embed/-ZTXdm8S5PQ?si=-wvsU-rdWu_pnLJ3',
-                        5
-                      )
-                    "
-                  >
-                    <template #icon>
-                      <Icon name="logos:youtube-icon" class="m-0 p-0" />
-                    </template>
-                  </Button>
+              <div class="flex h-full flex-col p-0">
+                <img
+                  src="https://i.ytimg.com/vi/bDXVO8kkgj4/maxresdefault.jpg"
+                  alt="Dégréer son bloc"
+                  class="h-48 w-full object-cover"
+                />
+                <div class="flex flex-1 flex-col justify-between p-4">
+                  <div>
+                    <h4 class="mb-2 text-lg font-semibold">Dégréer son bloc</h4>
+                    <p class="mb-4 text-sm text-gray-400">
+                      Ordre des opérations, vidange d'air, sécurisation,
+                      transport du bloc.
+                    </p>
+                  </div>
+                  <div class="flex gap-3">
+                    <Button
+                      label="Guide en vidéo"
+                      severity="contrast"
+                      class="flex-1"
+                      size="small"
+                      @click="
+                        openVideoDialog(
+                          'https://www.youtube.com/embed/-ZTXdm8S5PQ?si=-wvsU-rdWu_pnLJ3',
+                          5
+                        )
+                      "
+                    >
+                      <template #icon>
+                        <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                      </template>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </template>
@@ -369,7 +326,7 @@
                 alt="Checklist sécurité"
                 class="h-48 w-full object-cover"
               />
-              <div class="p-4">
+              <div class="flex flex-col justify-between p-4">
                 <h4 class="mb-2 text-lg font-semibold">
                   Checklist sécurité pré-immersion
                 </h4>
@@ -379,338 +336,102 @@
                 </p>
                 <div class="flex gap-3">
                   <Button
-                    label="Imprimer"
-                    outlined
-                    class="flex-1"
-                    icon="pi pi-print"
-                    disabled
-                  />
-                  <Button
                     label="Voir la list"
-                    severity="info"
+                    severity="contrast"
                     class="flex-1"
                     icon="pi pi-list"
-                    @click="visibleDialogChecklist = true"
+                    @click="openChecklistDialog"
                   />
                 </div>
               </div>
             </template>
           </Card>
-          <Dialog
-            v-model:visible="visibleDialogChecklist"
-            modal
-            header="Checklist Sécurité Pré-Immersion"
-            :style="{ width: '70%' }"
-            closable
-            :pt="{
-              header: {
-                class: ' text-white',
-              },
-              content: { class: 'p-0' },
-            }"
+          <ModalsMaterielChecklistDialog
+            ref="ModalsMaterielChecklistDialogRef"
+          />
+        </div>
+      </section>
+
+      <section id="autres" class="mb-12">
+        <h3 class="mb-6 text-3xl font-bold text-teal-200">
+          Comprendre les matériels de plongée & Divers
+        </h3>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <Card
+            class="overflow-hidden border border-white/10 bg-white/5 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
           >
-            <div class="p-6">
-              <!-- Introduction avec Message -->
-              <Message severity="info" :closable="false" class="mb-6">
-                <template #icon>
-                  <i class="pi pi-info-circle text-2xl"></i>
-                </template>
-                <div>
-                  <h3 class="mb-2 text-lg font-semibold">
-                    Pourquoi cette checklist ?
-                  </h3>
-                  <p class="text-sm">
-                    Comme un pilote avant le décollage, le
-                    <strong>contrôle pré-plongée (buddy check)</strong>
-                    assure que tout l'équipement est en place et fonctionne
-                    parfaitement. L'acronyme
-                    <strong class="text-blue-700">AGLLO</strong>
-                    aide à ne rien oublier.
-                  </p>
+            <template #content>
+              <img
+                src="https://www.subchandlers.com/blog/wp-content/uploads/2022/08/choisir-son-detendeur-de-plongee-sous-marine-1.jpg"
+                alt="Checklist sécurité"
+                class="h-48 w-full object-cover"
+              />
+              <div class="flex flex-col justify-between p-4">
+                <h4 class="mb-2 text-lg font-semibold">
+                  Détendeur de plongée : Comment ça marche ?
+                </h4>
+                <p class="mb-4 text-sm text-gray-400">
+                  Plonger, c’est respirer librement sous l’eau – et cela ne
+                  serait jamais possible sans un détendeur, pièce maîtresse de
+                  l'équipement du plongeur sous-marin.
+                </p>
+                <div class="flex gap-3">
+                  <Button
+                    label="Voir la vidéo"
+                    severity="contrast"
+                    class="flex-1"
+                    @click="
+                      openVideoDialog(
+                        'https://www.youtube.com/embed/Cd5bagFseME?si=ufciVIwXL_d8bwIa'
+                      )
+                    "
+                  >
+                    <template #icon>
+                      <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                    </template>
+                  </Button>
                 </div>
-              </Message>
-
-              <!-- Checklist Items avec Accordion -->
-              <Accordion :multiple="true" :activeIndex="[0]">
-                <!-- A - Air -->
-                <AccordionTab>
-                  <template #header>
-                    <div class="flex w-full items-center gap-3">
-                      <div
-                        class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-700"
-                      >
-                        A
-                      </div>
-                      <div class="flex-1">
-                        <h3 class="text-lg font-bold">Air</h3>
-                        <p class="text-sm text-gray-600">
-                          Vérification de la bouteille et des détendeurs
-                        </p>
-                      </div>
-                      <span class="text-3xl">💨</span>
-                    </div>
-                  </template>
-                  <div class="pl-4">
-                    <ul class="space-y-2">
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Bouteille
-                          <strong>correctement ouverte</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Sangle de sécurité du gilet
-                          <strong>bien placée</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Tester les
-                          <strong>détendeurs</strong>
-                          (principal + secours)
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Vérifier la pression:
-                          <strong class="text-blue-700">180-220 bars</strong>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </AccordionTab>
-
-                <!-- G - Gilet -->
-                <AccordionTab>
-                  <template #header>
-                    <div class="flex w-full items-center gap-3">
-                      <div
-                        class="flex h-12 w-12 items-center justify-center rounded-full bg-cyan-100 text-xl font-bold text-cyan-700"
-                      >
-                        G
-                      </div>
-                      <div class="flex-1">
-                        <h3 class="text-lg font-bold">
-                          Gilet stabilisateur (BCD)
-                        </h3>
-                        <p class="text-sm text-gray-600">
-                          Contrôle de la flottabilité
-                        </p>
-                      </div>
-                      <span class="text-3xl">🎈</span>
-                    </div>
-                  </template>
-                  <div class="pl-4">
-                    <ul class="space-y-2">
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Gonfler avec
-                          <strong>l'inflator</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Gonfler
-                          <strong>à la bouche</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Tester
-                          <strong>toutes les purges</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>Vérifier le système de contrôle</span>
-                      </li>
-                    </ul>
-                  </div>
-                </AccordionTab>
-
-                <!-- L - Lestage -->
-                <AccordionTab>
-                  <template #header>
-                    <div class="flex w-full items-center gap-3">
-                      <div
-                        class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-100 text-xl font-bold text-teal-700"
-                      >
-                        L
-                      </div>
-                      <div class="flex-1">
-                        <h3 class="text-lg font-bold">Lestage</h3>
-                        <p class="text-sm text-gray-600">Poids et équilibre</p>
-                      </div>
-                      <span class="text-3xl">⚖️</span>
-                    </div>
-                  </template>
-                  <div class="pl-4">
-                    <ul class="space-y-2">
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Vérifier la
-                          <strong>présence du lestage</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Quantité
-                          <strong>adaptée au plongeur</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Ceinture ou
-                          <strong>poches à plombs</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>Ajusté selon l'eau et la combinaison</span>
-                      </li>
-                    </ul>
-                  </div>
-                </AccordionTab>
-
-                <!-- L - Largage -->
-                <AccordionTab>
-                  <template #header>
-                    <div class="flex w-full items-center gap-3">
-                      <div
-                        class="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-100 text-xl font-bold text-indigo-700"
-                      >
-                        L
-                      </div>
-                      <div class="flex-1">
-                        <h3 class="text-lg font-bold">Largage / Liens</h3>
-                        <p class="text-sm text-gray-600">Sécurité et sangles</p>
-                      </div>
-                      <span class="text-3xl">🔗</span>
-                    </div>
-                  </template>
-                  <div class="pl-4">
-                    <ul class="space-y-2">
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Ceinture:
-                          <strong>ouverture main droite</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Poches à plombs
-                          <strong>bien accrochées</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Toutes les
-                          <strong>boucles serrées</strong>
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Sangles du gilet
-                          <strong>ajustées</strong>
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </AccordionTab>
-
-                <!-- O - OK Final -->
-                <AccordionTab>
-                  <template #header>
-                    <div class="flex w-full items-center gap-3">
-                      <div
-                        class="flex h-12 w-12 items-center justify-center rounded-full bg-green-100 text-xl font-bold text-green-700"
-                      >
-                        O
-                      </div>
-                      <div class="flex-1">
-                        <h3 class="text-lg font-bold">OK Final</h3>
-                        <p class="text-sm text-gray-600">
-                          Dernier contrôle avant la plongée
-                        </p>
-                      </div>
-                      <span class="text-3xl">✓</span>
-                    </div>
-                  </template>
-                  <div class="pl-4">
-                    <ul class="space-y-2">
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          <strong>Masque et palmes</strong>
-                          en place
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          <strong>Ordinateur de plongée</strong>
-                          fonctionnel
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          Accessoires attachés (
-                          <strong>lampe, compas</strong>
-                          )
-                        </span>
-                      </li>
-                      <li class="flex items-start gap-2">
-                        <i class="pi pi-check-circle mt-1 text-green-600"></i>
-                        <span>
-                          <strong>Marqueur de surface</strong>
-                          présent
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-                </AccordionTab>
-              </Accordion>
-
-              <!-- Footer avec Card -->
-              <Card
-                class="mt-6 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50"
-              >
-                <template #content>
-                  <div class="flex items-start gap-3">
-                    <i class="pi pi-lightbulb text-2xl text-yellow-600"></i>
-                    <div>
-                      <h4 class="mb-2 font-semibold text-gray-900">
-                        Deviendra un automatisme !
-                      </h4>
-                      <p class="text-sm text-gray-700">
-                        Ces vérifications paraissent longues, mais après
-                        quelques plongées, vous les effectuerez
-                        <strong>instinctivement en quelques minutes</strong>
-                        . Mieux vaut multiplier les contrôles pour que la
-                        plongée reste toujours un plaisir en toute sécurité.
-                      </p>
-                    </div>
-                  </div>
-                </template>
-              </Card>
-            </div>
-          </Dialog>
+              </div>
+            </template>
+          </Card>
+          <Card
+            class="overflow-hidden border border-white/10 bg-white/5 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
+          >
+            <template #content>
+              <img
+                src="https://www.subchandlers.com/blog/wp-content/uploads/2022/08/choisir-son-detendeur-de-plongee-sous-marine-1.jpg"
+                alt="Checklist sécurité"
+                class="h-48 w-full object-cover"
+              />
+              <div class="flex flex-col justify-between p-4">
+                <h4 class="mb-2 text-lg font-semibold">
+                  Détendeur de plongée : Comment ça marche ?
+                </h4>
+                <p class="mb-4 text-sm text-gray-400">
+                  Plonger, c’est respirer librement sous l’eau – et cela ne
+                  serait jamais possible sans un détendeur, pièce maîtresse de
+                  l'équipement du plongeur sous-marin.
+                </p>
+                <div class="flex gap-3">
+                  <Button
+                    label="Voir la vidéo"
+                    severity="contrast"
+                    class="flex-1"
+                    @click="
+                      openVideoDialog(
+                        'https://www.youtube.com/embed/Cd5bagFseME?si=ufciVIwXL_d8bwIa'
+                      )
+                    "
+                  >
+                    <template #icon>
+                      <Icon name="logos:youtube-icon" class="m-0 p-0" />
+                    </template>
+                  </Button>
+                </div>
+              </div>
+            </template>
+          </Card>
         </div>
       </section>
     </div>
@@ -721,10 +442,14 @@
 
 <script setup lang="ts">
 const ModalsMaterielDialog = ref()
-const visibleDialogChecklist = ref(false)
+const ModalsMaterielChecklistDialogRef = ref()
 
 const openVideoDialog = (url: string, startTime?: number) => {
   ModalsMaterielDialog.value.open(url, startTime)
+}
+
+const openChecklistDialog = () => {
+  ModalsMaterielChecklistDialogRef.value.open()
 }
 </script>
 
