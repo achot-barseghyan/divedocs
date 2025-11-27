@@ -20,9 +20,11 @@
             :label="category.name"
             :class="[
               'transition-all duration-300',
-              selectedCategory === category.id
-                ? `scale-105 shadow-lg`
-                : 'bg-white/10 hover:bg-white/20',
+              {
+                'scale-105 shadow-lg': selectedCategory === category.id,
+                'bg-white/10 hover:bg-white/20':
+                  selectedCategory !== category.id,
+              },
             ]"
             class="text-white"
             rounded
@@ -37,12 +39,10 @@
           <Card
             v-for="sign in filteredSigns"
             :key="sign.id"
-            class="border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:bg-white/10"
+            class="border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2"
           >
             <template #content>
-              <div
-                class="mb-4 overflow-hidden rounded-xl bg-gradient-to-b from-[#0b6470] to-[#04363a]"
-              >
+              <div class="mb-4 overflow-hidden rounded-xl">
                 <img
                   :src="sign.image"
                   :alt="sign.name"
