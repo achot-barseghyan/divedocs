@@ -12,8 +12,8 @@
     </div>
 
     <div class="flex flex-col items-center space-y-4 text-center">
-      <div class="text-5xl opacity-80 transition group-hover:opacity-100">
-        <i :class="`pi pi-${icon}`" style="color: white"></i>
+      <div class="text-3xl opacity-80 transition group-hover:opacity-100">
+        <Icon :name="icon" style="color: white" />
       </div>
       <h2 class="text-2xl font-bold tracking-wide text-teal-600">
         {{ title }}

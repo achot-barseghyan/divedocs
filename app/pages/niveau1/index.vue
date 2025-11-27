@@ -13,26 +13,32 @@
         <UiMenuCard
           title="Manuel de Formation Technique Niveau 1"
           desc="Documents officiels, compétences, protocoles"
-          icon="book"
+          icon="solar:book-bold"
           link="/niveau1/manuel"
         />
         <UiMenuCard
           title="Théorie"
           desc="Pression, flottabilité, accidents, prévention"
-          icon="graduation-cap"
+          icon="streamline-plump:class-lesson-solid"
           link="/niveau1/theorie"
         />
         <UiMenuCard
           title="Matériel"
           desc="Équipement, entretien, choix du matériel"
-          icon="inbox"
+          icon="tabler:scuba-diving-tank-filled"
           link="/niveau1/materiel"
         />
         <UiMenuCard
-          title="Exercices"
-          desc="Entraînements, signes, préparation physique"
-          icon="dumbbell"
-          isDevBanner
+          title="Les signes"
+          desc="Voir les signes de plongée"
+          icon="streamline-plump:ok-hand-solid"
+          link="/niveau1/signes"
+        />
+        <UiMenuCard
+          title="Exercices pratiques"
+          desc="Vidage de masque, lâcher-reprise, remontées, palmage"
+          icon="game-icons:scuba-mask"
+          link="/niveau1/exercices"
         />
         <UiMenuCard
           title="Sécurité"

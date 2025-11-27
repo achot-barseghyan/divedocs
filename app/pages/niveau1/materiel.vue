@@ -395,49 +395,12 @@
               </div>
             </template>
           </Card>
-          <Card
-            class="overflow-hidden border border-white/10 bg-white/5 p-0 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:transform"
-          >
-            <template #content>
-              <img
-                src="https://www.subchandlers.com/blog/wp-content/uploads/2022/08/choisir-son-detendeur-de-plongee-sous-marine-1.jpg"
-                alt="Checklist sécurité"
-                class="h-48 w-full object-cover"
-              />
-              <div class="flex flex-col justify-between p-4">
-                <h4 class="mb-2 text-lg font-semibold">
-                  Détendeur de plongée : Comment ça marche ?
-                </h4>
-                <p class="mb-4 text-sm text-gray-400">
-                  Plonger, c’est respirer librement sous l’eau – et cela ne
-                  serait jamais possible sans un détendeur, pièce maîtresse de
-                  l'équipement du plongeur sous-marin.
-                </p>
-                <div class="flex gap-3">
-                  <Button
-                    label="Voir la vidéo"
-                    severity="contrast"
-                    class="flex-1"
-                    @click="
-                      openVideoDialog(
-                        'https://www.youtube.com/embed/Cd5bagFseME?si=ufciVIwXL_d8bwIa'
-                      )
-                    "
-                  >
-                    <template #icon>
-                      <Icon name="logos:youtube-icon" class="m-0 p-0" />
-                    </template>
-                  </Button>
-                </div>
-              </div>
-            </template>
-          </Card>
         </div>
       </section>
     </div>
   </div>
 
-  <ModalsMaterielVideoDialog ref="ModalsMaterielDialog" />
+  <CommonVideoDialog ref="ModalsMaterielDialog" />
 </template>
 
 <script setup lang="ts">
