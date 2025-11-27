@@ -29,7 +29,7 @@ const handleScroll = () => {
 
   if (currentScrollY > lastScrollY && currentScrollY > 100) {
     hideHeader.value = true
-  } else if (currentScrollY + 70 < lastScrollY) {
+  } else if (currentScrollY < lastScrollY) {
     hideHeader.value = false
   }
 
