@@ -33,8 +33,7 @@
                 <li class="flex items-start gap-2">
                   <i class="pi pi-info-circle mt-1 text-teal-400"></i>
                   <span>
-                    Demander au club pour avoir l'avis et conseils des
-                    formateurs.
+                    Demander aux formateurs du club pour avoir des conseils.
                   </span>
                 </li>
                 <li class="flex items-start gap-2">
