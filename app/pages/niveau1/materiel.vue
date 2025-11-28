@@ -252,7 +252,7 @@
                     outlined
                     class="flex-1"
                     icon="pi pi-file"
-                    disabled
+                    @click="openGreerBlocDialog"
                   />
                   <Button
                     label="Guide en vidéo"
@@ -348,6 +348,9 @@
           <ModalsMaterielChecklistDialog
             ref="ModalsMaterielChecklistDialogRef"
           />
+          <ModalsMaterielGreerBlocDialog
+            ref="ModalsMaterielGreerBlocDialogRef"
+          />
         </div>
       </section>
 
@@ -405,6 +408,7 @@
 <script setup lang="ts">
 const ModalsMaterielDialog = ref()
 const ModalsMaterielChecklistDialogRef = ref()
+const ModalsMaterielGreerBlocDialogRef = ref()
 
 const openVideoDialog = (url: string, startTime?: number) => {
   ModalsMaterielDialog.value.open(url, startTime)
@@ -412,6 +416,10 @@ const openVideoDialog = (url: string, startTime?: number) => {
 
 const openChecklistDialog = () => {
   ModalsMaterielChecklistDialogRef.value.open()
+}
+
+const openGreerBlocDialog = () => {
+  ModalsMaterielGreerBlocDialogRef.value.open()
 }
 </script>
 
