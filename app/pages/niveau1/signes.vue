@@ -70,9 +70,6 @@
       <!-- Info Footer -->
       <div class="mx-auto mt-12 max-w-6xl">
         <Message severity="info" class="border-teal-500/30 bg-teal-500/20">
-          <template #icon>
-            <span class="text-2xl">💡</span>
-          </template>
           <div>
             <h3 class="mb-2 text-lg font-bold text-white">
               Conseils importants
@@ -124,7 +121,7 @@ const signs = [
     id: 1,
     name: 'OK / Ça va ?',
     description:
-      "Pouce et index forment un cercle, autres doigts tendus. Ce signe représente une question et une réponse : est-ce OK ? Oui c'est OK.",
+      'Ce signe est le plus important en plongée. Utilisez-le régulièrement pour communiquer avec votre binôme et votre guide. Attendez toujours une réponse claire avant de continuer.',
     category: 'communication',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_OK.jpeg',
@@ -133,7 +130,7 @@ const signs = [
     id: 2,
     name: 'Ça va pas / problème',
     description:
-      "Main à plat qui oscille horizontalement. Ne minimisez pas ce signe. Si un membre de votre palanquée indique que ça ne va pas, apportez votre aide et n'hésitez jamais à terminer la plongée.",
+      "Ne minimisez pas ce signe. Si un membre de votre palanquée indique que ça ne va pas, apportez votre aide et n'hésitez jamais à terminer la plongée. Un petit problème sous l'eau peut rapidement s'aggraver.",
     category: 'sécurité',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_ca-ne-va-pas.jpeg',
@@ -141,7 +138,8 @@ const signs = [
   {
     id: 3,
     name: 'Stop / Attends',
-    description: 'Main levée à plat, paume face au binôme',
+    description:
+      "Utilisez ce signe pour arrêter immédiatement la progression de la palanquée. Peut indiquer un danger, un besoin de vérification ou simplement qu'il faut ralentir. Tout le monde doit respecter ce signe sans discussion.",
     category: 'sécurité',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Stop.jpeg',
@@ -149,7 +147,8 @@ const signs = [
   {
     id: 4,
     name: 'Monter',
-    description: 'Pouce levé vers la surface',
+    description:
+      "Indique la volonté ou l'ordre de remonter vers la surface. La remontée doit toujours être contrôlée (maximum 10-15 mètres par minute) avec des paliers de sécurité si nécessaire.",
     category: 'direction',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Monter.jpeg',
@@ -157,7 +156,8 @@ const signs = [
   {
     id: 5,
     name: 'Descendre',
-    description: 'Pouce pointé vers le bas',
+    description:
+      'Signal pour commencer ou continuer la descente. Descendez toujours à la vitesse de votre binôme le plus lent et équilibrez régulièrement vos oreilles pour éviter les barotraumatismes.',
     category: 'direction',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Descendre.jpeg',
@@ -165,7 +165,8 @@ const signs = [
   {
     id: 6,
     name: "Panne d'air",
-    description: 'Main en travers de la gorge, mouvement de va-et-vient',
+    description:
+      "Situation d'urgence critique. Le binôme doit immédiatement fournir son octopus (détendeur de secours). Remontez ensemble de manière contrôlée en maintenant le contact visuel. Entraînez régulièrement cette procédure.",
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Panne-dair.jpeg',
@@ -173,7 +174,8 @@ const signs = [
   {
     id: 7,
     name: 'Quel est ton stock de gaz ?',
-    description: 'Main à plat sur la poitrine (manomètre)',
+    description:
+      'Question cruciale à poser régulièrement durant la plongée. Chacun doit connaître sa consommation et celle de son binôme. Planifiez le retour avec une marge de sécurité (règle des tiers en exploration).',
     category: 'communication',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Stock-dair.jpeg',
@@ -181,7 +183,8 @@ const signs = [
   {
     id: 8,
     name: "J'ai froid",
-    description: 'Bras croisés sur la poitrine en se serrant',
+    description:
+      "Le froid augmente la consommation d'air et peut entraîner des crampes ou une perte de dextérité. Si vous avez vraiment froid, il vaut mieux écourter la plongée. Une hypothermie peut être dangereuse.",
     category: 'sensation',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Froid.jpeg',
@@ -189,7 +192,8 @@ const signs = [
   {
     id: 9,
     name: 'Restez groupé',
-    description: 'Poing fermé au-dessus de la tête',
+    description:
+      'Signal important du guide pour maintenir la cohésion de la palanquée. Ne vous éloignez jamais de votre groupe, surtout en cas de courant, de mauvaise visibilité ou dans un environnement inconnu.',
     category: 'direction',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_-Rester-groupe.jpeg',
@@ -198,7 +202,7 @@ const signs = [
     id: 10,
     name: 'Palier / Stabilise-toi',
     description:
-      'Mains à plat horizontales qui montent et descendent légèrement',
+      "Indique qu'il faut maintenir une profondeur stable, souvent lors d'un palier de décompression ou de sécurité. Une bonne stabilisation évite les yo-yos dangereux et permet de respecter les paliers obligatoires.",
     category: 'technique',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Palier.jpeg',
@@ -206,7 +210,8 @@ const signs = [
   {
     id: 12,
     name: "L'un derrière l'autre",
-    description: "Deux doigts se suivent l'un derrière l'autre",
+    description:
+      'Formation en file indienne utilisée dans les passages étroits, les grottes, ou en cas de courant fort. Suivez le binôme devant vous en gardant une distance de sécurité suffisante.',
     category: 'direction',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Se-suivre.jpeg',
@@ -214,7 +219,8 @@ const signs = [
   {
     id: 13,
     name: 'Mi-bouteille',
-    description: 'Main horizontale à mi-hauteur',
+    description:
+      "Point de contrôle important : avec la moitié de votre air consommée, il est temps de planifier le retour ou la remontée. C'est un repère crucial pour la gestion de votre autonomie.",
     category: 'communication',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Mi-bouteille.jpeg',
@@ -223,7 +229,7 @@ const signs = [
     id: 14,
     name: 'Je suis sur la réserve',
     description:
-      'Poing fermé sur le détendeur ou main qui tape sur la bouteille',
+      "Signale qu'il reste environ 50 bars de pression. Il faut remonter immédiatement de manière contrôlée. Ne jamais attendre d'être complètement vide : gardez toujours une marge de sécurité pour la remontée.",
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Reserve.jpeg',
@@ -231,7 +237,8 @@ const signs = [
   {
     id: 15,
     name: "Fin d'exercice / Fin de plongée",
-    description: 'Les deux mains se croisent devant soi',
+    description:
+      "Marque la fin officielle d'un exercice de formation ou de la plongée. Après ce signe, effectuez toujours un palier de sécurité de 3 minutes à 5 mètres avant de sortir de l'eau.",
     category: 'communication',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Fin-de-plongee.jpeg',
@@ -239,7 +246,8 @@ const signs = [
   {
     id: 16,
     name: 'Je suis essoufflé(e)',
-    description: 'Main devant la bouche avec mouvement rapide',
+    description:
+      'Situation potentiellement dangereuse qui peut mener à une surpression pulmonaire. Arrêtez tout effort, stabilisez-vous, respirez calmement et lentement. Si ça ne passe pas, remontez progressivement.',
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Essouflement.jpeg',
@@ -247,7 +255,8 @@ const signs = [
   {
     id: 17,
     name: "J'ai des vertiges",
-    description: 'Doigt qui fait des cercles devant le front',
+    description:
+      "Peut indiquer un problème d'oreille interne, de désorientation ou le début d'un accident de plongée. Arrêtez la descente immédiatement et remontez lentement si les symptômes persistent. Consultez un médecin après la plongée.",
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Vertifge.jpeg',
@@ -255,7 +264,8 @@ const signs = [
   {
     id: 18,
     name: 'Je suis narcosé(e)',
-    description: 'Main à plat qui tape plusieurs fois sur le sommet du crâne',
+    description:
+      "La narcose à l'azote affecte le jugement et les capacités cognitives. Il faut remonter de quelques mètres immédiatement pour retrouver ses esprits. Ne jamais continuer à descendre en état de narcose.",
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Narcose.jpeg',
@@ -264,7 +274,7 @@ const signs = [
     id: 19,
     name: 'Danger dans cette direction',
     description:
-      "Poing fermé qui tape sur la paume de l'autre main puis indique la direction",
+      'Alerte sur un danger immédiat : courant fort, animal dangereux, filet, épave instable, etc. Éloignez-vous de la zone indiquée et restez vigilant. Le guide prendra une route alternative.',
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Danger.jpeg',
@@ -272,13 +282,13 @@ const signs = [
   {
     id: 20,
     name: 'Palier de trois minutes',
-    description: 'Trois doigts levés',
+    description:
+      "Indique la durée du palier de sécurité à effectuer, généralement à 5 mètres de profondeur. Ce palier n'est pas toujours obligatoire mais fortement recommandé pour éliminer l'azote résiduel et prévenir les accidents de décompression.",
     category: 'technique',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Palier-3-minutes.jpeg',
   },
 ]
-
 const categories = [
   { id: 'all', name: 'Tous les signes' },
   { id: 'communication', name: 'Communication' },
