@@ -12,15 +12,25 @@
     </div>
 
     <div class="mx-auto mb-12 max-w-7xl px-6">
-      <div class="relative mx-auto max-w-2xl">
-        <IconField>
-          <InputIcon class="pi pi-search" />
-          <InputText
-            v-model="searchTerm"
-            placeholder="Search"
-            class="w-full rounded-xl border border-teal-500/30 bg-slate-800/50 py-4 pl-12 pr-4 text-white placeholder-gray-400 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-400"
-          />
-        </IconField>
+      <div class="flex items-center justify-between gap-4">
+        <div class="relative mx-auto max-w-2xl flex-1">
+          <IconField>
+            <InputIcon class="pi pi-search" />
+            <InputText
+              v-model="searchTerm"
+              placeholder="Search"
+              class="w-full rounded-xl border border-teal-500/30 bg-slate-800/50 py-4 pl-12 pr-4 text-white placeholder-gray-400 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-400"
+            />
+          </IconField>
+        </div>
+        <Button
+          @click="handleExportPDF"
+          :loading="isExporting"
+          icon="pi pi-file-pdf"
+          label="Export PDF"
+          severity="secondary"
+          class="whitespace-nowrap rounded-xl border border-teal-500/30 bg-slate-800/50 px-6 py-3 text-white transition-all hover:border-teal-400/50 hover:bg-slate-800/60"
+        />
       </div>
     </div>
 
@@ -91,11 +101,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useTheorieCourses } from '~/composables/useTheorieCourses'
+import { useExportPDF } from '~/composables/useExportPDF'
 
 const ModuleDialog = ref()
 
 const { courses, loading, error, fetchCourses, searchCourses, totalCourses } =
   useTheorieCourses()
+
+const { exportAllModulesToPDF } = useExportPDF()
+
+const isExporting = ref(false)
 
 onMounted(async () => {
   await fetchCourses()
@@ -106,5 +121,16 @@ const filteredCourses = searchCourses(searchTerm)
 
 const openModuleDialog = (idModule: number) => {
   ModuleDialog.value.open(idModule)
+}
+
+const handleExportPDF = async () => {
+  try {
+    isExporting.value = true
+    await exportAllModulesToPDF()
+  } catch (error) {
+    console.error("Erreur lors de l'export PDF:", error)
+  } finally {
+    isExporting.value = false
+  }
 }
 </script>

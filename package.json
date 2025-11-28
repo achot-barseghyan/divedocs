@@ -23,6 +23,8 @@
     "clsx": "^2.1.1",
     "eslint": "^9.38.0",
     "gsap": "^3.13.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.4",
     "nuxt": "^4.2.0",
     "nuxt-easy-lightbox": "1.1.0",
     "primeicons": "^7.0.0",
