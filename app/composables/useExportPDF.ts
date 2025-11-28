@@ -28,7 +28,28 @@ export const useExportPDF = () => {
     const maxWidth = pageWidth - 2 * margin
     let yPosition = margin
 
-    // Optional: embed Unicode font if available in /public/fonts
+    // Fonction pour nettoyer le texte des caractères spéciaux
+    const sanitizeText = (text: string): string => {
+      return text
+        .replace(/'/g, "'") // Apostrophe typographique -> simple
+        .replace(/'/g, "'") // Autre apostrophe typographique
+        .replace(/"/g, '"') // Guillemets typographiques ouvrants
+        .replace(/"/g, '"') // Guillemets typographiques fermants
+        .replace(/°/g, ' deg') // Degré
+        .replace(/→/g, '->') // Flèche vers la droite
+        .replace(/⇒/g, '=>') // Double flèche
+        .replace(/₁/g, '1') // Indice 1
+        .replace(/₂/g, '2') // Indice 2
+        .replace(/₃/g, '3') // Indice 3
+        .replace(/₄/g, '4') // Indice 4
+        .replace(/…/g, '...') // Points de suspension
+        .replace(/–/g, '-') // Tiret demi-cadratin
+        .replace(/—/g, '-') // Tiret cadratin
+        .replace(/~/g, '~') // Tilde
+        .replace(/≈/g, '~') // Environ/approximativement
+    }
+
+    // Fonction pour convertir un ArrayBuffer en Base64
     const toBase64 = (buffer: ArrayBuffer) => {
       let binary = ''
       const bytes = new Uint8Array(buffer)
@@ -43,6 +64,8 @@ export const useExportPDF = () => {
     }
 
     let activeFontFamily: 'times' | 'NotoSans' = 'times'
+
+    // Fonction pour charger une police
     const tryLoadFont = async (
       url: string,
       vfsName: string,
@@ -51,18 +74,24 @@ export const useExportPDF = () => {
     ) => {
       try {
         const res = await fetch(url)
-        if (!res.ok) return false
+        if (!res.ok) {
+          console.warn(`Police non trouvée: ${url}`)
+          return false
+        }
         const ab = await res.arrayBuffer()
         const b64 = toBase64(ab)
         doc.addFileToVFS(vfsName, b64)
         doc.addFont(vfsName, family, style)
+        console.log(`Police chargée: ${family} ${style}`)
         return true
-      } catch {
+      } catch (error) {
+        console.warn(`Erreur lors du chargement de ${url}:`, error)
         return false
       }
     }
 
-    // Try to register Noto Sans fonts if present
+    // Essayer de charger les polices Noto Sans
+    console.log('Tentative de chargement des polices Noto Sans...')
     const hasRegular = await tryLoadFont(
       '/fonts/NotoSans-Regular.ttf',
       'NotoSans-Regular.ttf',
@@ -82,44 +111,57 @@ export const useExportPDF = () => {
       'italic'
     )
 
+    // Utiliser Noto Sans si au moins Regular est chargé
     if (hasRegular) {
       activeFontFamily = 'NotoSans'
       doc.setFont(activeFontFamily, 'normal')
+      console.log('✓ Polices Noto Sans chargées avec succès')
+    } else {
+      console.warn(
+        "⚠ Utilisation de la police par défaut (certains caractères peuvent ne pas s'afficher correctement)"
+      )
+      console.log(
+        '💡 Pour corriger : téléchargez Noto Sans et placez les fichiers .ttf dans /public/fonts/'
+      )
     }
 
+    // Fonction pour définir la police
     const setFont = (
       style: 'normal' | 'bold' | 'italic' | 'bolditalic',
       size?: number
     ) => {
       if (size) doc.setFontSize(size)
-      // If bold/italic not available for NotoSans, jsPDF will still render using normal
       doc.setFont(activeFontFamily, style)
     }
 
-    // Page de couverture
+    // ============= PAGE DE COUVERTURE =============
     doc.setFontSize(24)
     setFont('bold')
-    doc.text('Théorie de Plongée', pageWidth / 2, 40, { align: 'center' })
+    doc.text(sanitizeText('Théorie de Plongée'), pageWidth / 2, 40, {
+      align: 'center',
+    })
 
     doc.setFontSize(18)
-    doc.text('Niveau 1 - FFESSM', pageWidth / 2, 55, { align: 'center' })
+    doc.text(sanitizeText('Niveau 1 - FFESSM'), pageWidth / 2, 55, {
+      align: 'center',
+    })
 
     doc.setFontSize(12)
     setFont('normal')
     doc.text(
-      `Date d'export: ${new Date().toLocaleDateString('fr-FR')}`,
+      sanitizeText(`Date d'export: ${new Date().toLocaleDateString('fr-FR')}`),
       pageWidth / 2,
       70,
       { align: 'center' }
     )
 
+    // ============= TABLE DES MATIÈRES =============
     doc.addPage()
     yPosition = margin
 
-    // Table des matières
     doc.setFontSize(18)
     setFont('bold')
-    doc.text('Table des Matières', margin, yPosition)
+    doc.text(sanitizeText('Table des Matières'), margin, yPosition)
     yPosition += 10
 
     doc.setFontSize(11)
@@ -129,11 +171,15 @@ export const useExportPDF = () => {
         doc.addPage()
         yPosition = margin
       }
-      doc.text(`${index + 1}. ${course.title}`, margin + 5, yPosition)
+      doc.text(
+        sanitizeText(`${index + 1}. ${course.title}`),
+        margin + 5,
+        yPosition
+      )
       yPosition += 7
     })
 
-    // Contenu des modules
+    // ============= CONTENU DES MODULES =============
     for (let i = 0; i < coursesData.length; i++) {
       const course = coursesData[i]
 
@@ -142,13 +188,13 @@ export const useExportPDF = () => {
       yPosition = margin
 
       // Titre du module
-      doc.setFillColor(20, 184, 166) // Teal color
+      doc.setFillColor(20, 184, 166) // Teal
       doc.rect(margin, yPosition - 5, maxWidth, 15, 'F')
       doc.setTextColor(255, 255, 255)
       doc.setFontSize(16)
       setFont('bold')
       doc.text(
-        `Module ${course.id}: ${course.title}`,
+        sanitizeText(`Module ${course.id}: ${course.title}`),
         margin + 3,
         yPosition + 5
       )
@@ -158,13 +204,16 @@ export const useExportPDF = () => {
       doc.setTextColor(0, 0, 0)
       doc.setFontSize(10)
       setFont('normal')
-      doc.text(`Durée: ${course.duration}`, margin, yPosition)
+      doc.text(sanitizeText(`Durée: ${course.duration}`), margin, yPosition)
       yPosition += 10
 
       // Description
       doc.setFontSize(11)
       setFont('normal')
-      const descLines = doc.splitTextToSize(course.description, maxWidth)
+      const descLines = doc.splitTextToSize(
+        sanitizeText(course.description),
+        maxWidth
+      )
 
       for (const line of descLines) {
         if (yPosition > pageHeight - margin) {
@@ -176,7 +225,7 @@ export const useExportPDF = () => {
       }
       yPosition += 5
 
-      // Sections
+      // ============= SECTIONS =============
       if (course.sections && course.sections.length > 0) {
         for (const section of course.sections) {
           // Vérifier si on doit ajouter une nouvelle page
@@ -185,11 +234,14 @@ export const useExportPDF = () => {
             yPosition = margin
           }
 
-          // Heading de la section
+          // Heading
           if (section.heading) {
             doc.setFontSize(13)
             setFont('bold')
-            const headingLines = doc.splitTextToSize(section.heading, maxWidth)
+            const headingLines = doc.splitTextToSize(
+              sanitizeText(section.heading),
+              maxWidth
+            )
 
             for (const line of headingLines) {
               if (yPosition > pageHeight - margin) {
@@ -202,11 +254,14 @@ export const useExportPDF = () => {
             yPosition += 3
           }
 
-          // Contenu de la section
+          // Contenu
           if (section.content) {
             doc.setFontSize(10)
             setFont('normal')
-            const contentLines = doc.splitTextToSize(section.content, maxWidth)
+            const contentLines = doc.splitTextToSize(
+              sanitizeText(section.content),
+              maxWidth
+            )
 
             for (const line of contentLines) {
               if (yPosition > pageHeight - margin) {
@@ -225,7 +280,10 @@ export const useExportPDF = () => {
             setFont('normal')
 
             for (const item of section.list) {
-              const itemLines = doc.splitTextToSize(`• ${item}`, maxWidth - 5)
+              const itemLines = doc.splitTextToSize(
+                sanitizeText(`• ${item}`),
+                maxWidth - 5
+              )
 
               for (const line of itemLines) {
                 if (yPosition > pageHeight - margin) {
@@ -244,7 +302,7 @@ export const useExportPDF = () => {
             doc.setFontSize(10)
             setFont('bold')
             const emphasisLines = doc.splitTextToSize(
-              section.emphasis,
+              sanitizeText(section.emphasis),
               maxWidth
             )
 
@@ -269,9 +327,14 @@ export const useExportPDF = () => {
             doc.rect(margin, yPosition - 3, maxWidth, 10, 'F')
             doc.setFontSize(11)
             doc.setFont('courier', 'bold')
-            doc.text(section.formula, pageWidth / 2, yPosition + 3, {
-              align: 'center',
-            })
+            doc.text(
+              sanitizeText(section.formula),
+              pageWidth / 2,
+              yPosition + 3,
+              {
+                align: 'center',
+              }
+            )
             yPosition += 12
           }
 
@@ -282,7 +345,7 @@ export const useExportPDF = () => {
 
             for (const example of section.examples) {
               const exampleLines = doc.splitTextToSize(
-                `• ${example}`,
+                sanitizeText(`• ${example}`),
                 maxWidth - 5
               )
 
@@ -309,7 +372,7 @@ export const useExportPDF = () => {
               if (subsection.title) {
                 doc.setFontSize(11)
                 setFont('bold')
-                doc.text(subsection.title, margin + 3, yPosition)
+                doc.text(sanitizeText(subsection.title), margin + 3, yPosition)
                 yPosition += 7
               }
 
@@ -317,7 +380,7 @@ export const useExportPDF = () => {
                 doc.setFontSize(10)
                 setFont('normal')
                 const subContentLines = doc.splitTextToSize(
-                  subsection.content,
+                  sanitizeText(subsection.content),
                   maxWidth - 6
                 )
 
@@ -338,7 +401,7 @@ export const useExportPDF = () => {
 
                 for (const item of subsection.list) {
                   const itemLines = doc.splitTextToSize(
-                    `• ${item}`,
+                    sanitizeText(`• ${item}`),
                     maxWidth - 10
                   )
 
@@ -360,7 +423,7 @@ export const useExportPDF = () => {
 
                 for (const example of subsection.examples) {
                   const exampleLines = doc.splitTextToSize(
-                    `• ${example}`,
+                    sanitizeText(`• ${example}`),
                     maxWidth - 10
                   )
 
@@ -382,7 +445,7 @@ export const useExportPDF = () => {
         }
       }
 
-      // Points clés
+      // ============= POINTS CLÉS =============
       if (course.keyPoints && course.keyPoints.length > 0) {
         if (yPosition > pageHeight - 50) {
           doc.addPage()
@@ -391,14 +454,17 @@ export const useExportPDF = () => {
 
         doc.setFontSize(13)
         setFont('bold')
-        doc.text('Points Clés à Retenir', margin, yPosition)
+        doc.text(sanitizeText('Points Clés à Retenir'), margin, yPosition)
         yPosition += 8
 
         doc.setFontSize(10)
         setFont('normal')
 
         for (const point of course.keyPoints) {
-          const pointLines = doc.splitTextToSize(`• ${point}`, maxWidth - 5)
+          const pointLines = doc.splitTextToSize(
+            sanitizeText(`• ${point}`),
+            maxWidth - 5
+          )
 
           for (const line of pointLines) {
             if (yPosition > pageHeight - margin) {
@@ -413,7 +479,7 @@ export const useExportPDF = () => {
       }
     }
 
-    // Ajouter les numéros de page
+    // ============= NUMÉROS DE PAGE =============
     const totalPages = doc.internal.pages.length - 1
     for (let i = 1; i <= totalPages; i++) {
       doc.setPage(i)
@@ -425,7 +491,7 @@ export const useExportPDF = () => {
       })
     }
 
-    // Sauvegarder le PDF
+    // ============= SAUVEGARDE =============
     doc.save(
       `theorie-plongee-niveau1-${new Date().toISOString().split('T')[0]}.pdf`
     )
