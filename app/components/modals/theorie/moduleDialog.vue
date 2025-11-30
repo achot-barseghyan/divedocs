@@ -8,13 +8,24 @@
     :closable="true"
   >
     <template #header>
-      <div class="flex flex-col gap-1 md:gap-6">
+      <div class="flex w-full flex-col gap-1 md:gap-6">
         <h1 class="text-lg font-extrabold text-yellow-500 md:text-2xl">
           {{ moduleData?.title }}
         </h1>
-        <p class="block text-base text-white/90">
-          {{ moduleData?.description }}
-        </p>
+        <div class="flex items-start justify-between gap-4">
+          <p class="block flex-1 text-base text-white/90">
+            {{ moduleData?.description }}
+          </p>
+          <Button
+            v-if="moduleData?.id"
+            :loading="isExporting"
+            :disabled="isExporting"
+            icon="pi pi-file-pdf"
+            label="Exporter"
+            class="whitespace-nowrap rounded-xl border border-teal-500/30 bg-slate-800/50 px-4 py-2 text-white hover:border-teal-400/50 hover:bg-slate-800/60"
+            @click.stop.prevent="onExportModule"
+          />
+        </div>
       </div>
     </template>
 
@@ -164,6 +175,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { useTheorieCourses } from '~/composables/useTheorieCourses'
+import { useExportPDF } from '~/composables/useExportPDF'
 
 const { courses, fetchCourses, getCourseById } = useTheorieCourses()
 
@@ -180,6 +192,8 @@ const onHide = () => (visibleLighboxRef.value = false)
 
 const visible = ref(false)
 const moduleData: any = ref(null)
+const isExporting = ref(false)
+const { exportModuleToPDF } = useExportPDF()
 
 const open = async (idModule: number) => {
   if (!courses.value.length) {
@@ -193,6 +207,18 @@ defineExpose({
   visible,
   open,
 })
+
+const onExportModule = async () => {
+  if (!moduleData.value?.id) return
+  try {
+    isExporting.value = true
+    await exportModuleToPDF(moduleData.value.id)
+  } catch (e) {
+    console.error('Export PDF module échoué', e)
+  } finally {
+    isExporting.value = false
+  }
+}
 </script>
 
 <style lang="scss">

@@ -171,7 +171,7 @@
         "content": "La pression a un effet sur les gaz, qui sont compressibles, pas sur les liquides et les solides (incompressibles, mais qui transmettent la pression).",
         "principle": "Ainsi l'air que l'on respire, dans un volume clos et à température constante, se met à la pression environnante ou pression ambiante. Le volume de l'air que l'on respire varie donc au cours de la plongée lorsque la pression varie.",
         "law": "La loi de Mariotte-Boyle dit que pour un système fermé et à température constante, le produit de la pression (P) par le volume (V) est constant.",
-        "formula": "PV = Cste ou P₁V₁ = P₂V₂",
+        "formula": "PV = Cste ou P1V1 = P2V2",
         "consequences": [
           "Si P augmente ⇒ l'air est comprimé ⇒ V diminue",
           "Si P diminue ⇒ l'air se détend ⇒ V augmente"

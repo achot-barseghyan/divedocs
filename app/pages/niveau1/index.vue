@@ -43,13 +43,13 @@
         <UiMenuCard
           title="Sécurité"
           desc="Procédures, signaux, planification"
-          icon="shield"
+          icon=""
           isDevBanner
         />
         <UiMenuCard
           title="Révisions & Quiz"
           desc="Test, vocabulaire, validation connaissances"
-          icon="clipboard-check"
+          icon=""
           isDevBanner
         />
       </div>

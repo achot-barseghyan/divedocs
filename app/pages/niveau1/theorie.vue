@@ -80,13 +80,13 @@
             {{ course.description }}
           </p>
 
-          <div class="flex items-center gap-2 text-sm text-white">
+          <!-- <div class="flex items-center gap-2 text-sm text-white">
             <Icon
               name="material-symbols:nest-clock-farsight-analog-outline"
               size="1.2rem"
             />
             <span>{{ course.duration }}</span>
-          </div>
+          </div> -->
 
           <div
             class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/0 to-blue-500/0 transition-all duration-300 group-hover:from-teal-500/5 group-hover:to-blue-500/5"

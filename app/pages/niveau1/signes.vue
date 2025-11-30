@@ -311,6 +311,4 @@ const getCategoryName = (category: string) => {
 }
 </script>
 
-<style scoped>
-/* Styles personnalisés si nécessaire */
-</style>
+<style></style>
