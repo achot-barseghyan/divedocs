@@ -1,0 +1,799 @@
+[
+  {
+    "id": "essoufflement",
+    "title": "Essoufflement en plongée",
+    "difficulty": "facile",
+    "description": "Tu commences à te sentir essoufflé à 15 mètres de profondeur. Ta respiration devient rapide et superficielle.",
+    "icon": "mdi:lungs",
+    "category": "respiration",
+    "context": "Tu es à 15 mètres, en train d'explorer une épave avec ta palanquée. Soudain, tu sens que ta respiration s'accélère. Tu as du mal à reprendre ton souffle.",
+    "situation": {
+      "depth": 15,
+      "airPressure": 120,
+      "visibility": "bonne",
+      "current": "léger"
+    },
+    "steps": [
+      {
+        "id": 1,
+        "question": "Quelle est la première chose à faire ?",
+        "image": null,
+        "options": [
+          {
+            "id": "a",
+            "text": "Remonter immédiatement à la surface",
+            "correct": false,
+            "feedback": "❌ Non ! Remonter en essoufflement est dangereux. Tu risques une surpression pulmonaire.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Cesser tout effort et rester immobile",
+            "correct": true,
+            "feedback": "✅ Excellent ! Arrêter tout effort permet à ton corps de récupérer.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Nager plus vite pour rejoindre le bateau",
+            "correct": false,
+            "feedback": "❌ Non ! Augmenter l'effort va aggraver l'essoufflement.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Continuer normalement, ça va passer",
+            "correct": false,
+            "feedback": "❌ Non ! Ignorer l'essoufflement peut conduire à la panique ou la noyade.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Maintenant que tu es immobile, que dois-tu faire ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Alerter le guide de palanquée avec le signe 'essoufflement'",
+            "correct": true,
+            "feedback": "✅ Parfait ! Communiquer est essentiel pour ta sécurité.",
+            "points": 100
+          },
+          {
+            "id": "b",
+            "text": "Enlever ton détendeur pour respirer plus facilement",
+            "correct": false,
+            "feedback": "❌ Danger ! Jamais sans détendeur sous l'eau !",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "Retenir ta respiration quelques secondes",
+            "correct": false,
+            "feedback": "❌ Non ! Retenir sa respiration aggrave le manque d'oxygène.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Respirer uniquement par le nez",
+            "correct": false,
+            "feedback": "❌ Non ! Tu dois utiliser ton détendeur normalement.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "Comment adapter ta respiration ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Forcer des inspirations courtes et rapides",
+            "correct": false,
+            "feedback": "❌ Non ! Cela maintient l'essoufflement.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Se forcer à expirer profondément et lentement",
+            "correct": true,
+            "feedback": "✅ Bravo ! Expirer profondément évacue le CO2 et calme la respiration.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Alterner apnée et respiration rapide",
+            "correct": false,
+            "feedback": "❌ Non ! Cela perturbe encore plus ton rythme respiratoire.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Respirer uniquement par petites bouffées",
+            "correct": false,
+            "feedback": "❌ Non ! Il faut au contraire des respirations amples.",
+            "points": 0
+          }
+        ]
+      }
+    ],
+    "prevention": [
+      "Surveiller sa respiration : pouvoir tenir 1-2 secondes en apnée expiratoire",
+      "Avoir un lestage adapté et une bonne stabilisation",
+      "Éviter les efforts inutiles, ne pas hésiter à demander de ralentir",
+      "Attention au froid qui favorise l'essoufflement"
+    ],
+    "maxPoints": 300,
+    "timeLimit": 180
+  },
+  {
+    "id": "panne-air",
+    "title": "Panne d'air totale",
+    "difficulty": "moyen",
+    "description": "Ton détendeur ne délivre plus d'air. Tu es à 18 mètres avec ton binôme.",
+    "icon": "mdi:air-filter-off",
+    "category": "respiration",
+    "context": "À 18 mètres, tu inspires mais rien ne vient. Ton robinet était mal ouvert ou tu es arrivé en réserve sans t'en rendre compte.",
+    "situation": {
+      "depth": 18,
+      "airPressure": 0,
+      "visibility": "bonne",
+      "current": "nul"
+    },
+    "steps": [
+      {
+        "id": 1,
+        "question": "Réaction immédiate ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Paniquer et remonter en urgence",
+            "correct": false,
+            "feedback": "❌ La panique est ton pire ennemi sous l'eau !",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Faire le signe 'panne d'air' à ton binôme",
+            "correct": true,
+            "feedback": "✅ Excellent réflexe ! Communication = survie.",
+            "points": 150
+          },
+          {
+            "id": "c",
+            "text": "Nager vers la surface en apnée",
+            "correct": false,
+            "feedback": "❌ 18m en apnée = très dangereux. Toujours privilégier l'aide.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Chercher de l'air dans ton gilet",
+            "correct": false,
+            "feedback": "❌ L'air du gilet n'est pas respirable !",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Ton binôme arrive. Que fais-tu ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Lui arracher son détendeur de la bouche",
+            "correct": false,
+            "feedback": "❌ Non ! Tu risques de créer deux pannes d'air.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Prendre calmement son octopus (détendeur de secours)",
+            "correct": true,
+            "feedback": "✅ Parfait ! L'octopus est justement fait pour ça.",
+            "points": 150
+          },
+          {
+            "id": "c",
+            "text": "Partager son détendeur en alternance",
+            "correct": false,
+            "feedback": "⚠️ Possible mais dangereux. L'octopus est plus sûr.",
+            "points": 50
+          },
+          {
+            "id": "d",
+            "text": "Utiliser sa bouteille à lui",
+            "correct": false,
+            "feedback": "❌ Trop compliqué et dangereux. Utilise l'octopus !",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "Une fois l'octopus en bouche, quelle est la procédure ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Remonter immédiatement le plus vite possible",
+            "correct": false,
+            "feedback": "❌ Vitesse de remontée respectée même en urgence !",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Rester au fond jusqu'à ce que le binôme soit en réserve aussi",
+            "correct": false,
+            "feedback": "❌ Non ! Il faut remonter dès que possible.",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "Remonter ensemble à 15m/min en se tenant",
+            "correct": true,
+            "feedback": "✅ Excellent ! Vitesse contrôlée et cohésion de la palanquée.",
+            "points": 150
+          },
+          {
+            "id": "d",
+            "text": "Faire un palier de sécurité à 3m",
+            "correct": false,
+            "feedback": "⚠️ En panne d'air partagée, on peut skipper le palier de sécu.",
+            "points": 50
+          }
+        ]
+      }
+    ],
+    "prevention": [
+      "Toujours vérifier que le robinet est complètement ouvert avant de plonger",
+      "Surveiller son manomètre régulièrement (toutes les 5 minutes)",
+      "Prévenir le guide à 100 bars (mi-pression) et remonter à 50 bars (réserve)",
+      "Savoir où se trouve l'octopus de son binôme AVANT de plonger"
+    ],
+    "maxPoints": 450,
+    "timeLimit": 120
+  },
+  {
+    "id": "placage-masque",
+    "title": "Placage de masque",
+    "difficulty": "facile",
+    "description": "À la descente, tu sens ton masque se plaquer contre ton visage.",
+    "icon": "mdi:diving-mask",
+    "category": "barotraumatisme",
+    "context": "Tu descends vers 12 mètres. Ton masque commence à se plaquer douloureusement sur ton visage, tu sens une pression au niveau des yeux.",
+    "situation": {
+      "depth": 12,
+      "airPressure": 150,
+      "visibility": "bonne",
+      "current": "nul"
+    },
+    "steps": [
+      {
+        "id": 1,
+        "question": "Pourquoi le masque se plaque-t-il ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Le masque est trop petit",
+            "correct": false,
+            "feedback": "❌ Non, c'est un problème de pression.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "La pression extérieure augmente mais pas celle dans le masque",
+            "correct": true,
+            "feedback": "✅ Exact ! Loi de Mariotte : la pression écrase le volume d'air.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Il y a de l'eau dans le masque",
+            "correct": false,
+            "feedback": "❌ Non, c'est bien une question de pression d'air.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "C'est normal en plongée",
+            "correct": false,
+            "feedback": "❌ Non ! C'est un barotraumatisme à éviter.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Que dois-tu faire immédiatement ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Remonter rapidement",
+            "correct": false,
+            "feedback": "❌ Pas nécessaire, la solution est plus simple.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Souffler un peu d'air par le nez dans le masque",
+            "correct": true,
+            "feedback": "✅ Parfait ! Équilibrer la pression dans le masque résout le problème.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Serrer plus fort la sangle du masque",
+            "correct": false,
+            "feedback": "❌ Au contraire, ça aggraverait le placage !",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Enlever le masque",
+            "correct": false,
+            "feedback": "❌ Non ! On peut facilement corriger sans l'enlever.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "Comment prévenir ce problème ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Serrer très fort le masque avant de descendre",
+            "correct": false,
+            "feedback": "❌ Non, c'est même contre-productif !",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Souffler régulièrement par le nez pendant la descente",
+            "correct": true,
+            "feedback": "✅ Bravo ! Prévention = équilibrage régulier de la pression.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Descendre plus vite",
+            "correct": false,
+            "feedback": "❌ Au contraire, descendre vite aggrave les barotraumatismes.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Mettre deux masques",
+            "correct": false,
+            "feedback": "❌ Sérieusement ? 😅",
+            "points": 0
+          }
+        ]
+      }
+    ],
+    "prevention": [
+      "Ne pas trop serrer la sangle du masque",
+      "Souffler régulièrement par le nez durant la descente",
+      "Vérifier qu'aucun cheveu ne gêne l'étanchéité",
+      "Choisir un masque adapté à sa morphologie"
+    ],
+    "maxPoints": 300,
+    "timeLimit": 120
+  },
+  {
+    "id": "remontee-rapide",
+    "title": "Remontée incontrôlée",
+    "difficulty": "difficile",
+    "description": "Ton gilet se gonfle de plus en plus vite et tu remontes de manière incontrôlée.",
+    "icon": "mdi:arrow-up-bold-circle",
+    "category": "flottabilite",
+    "context": "Tu es à 20 mètres. Ton gilet était trop gonflé. En remontant, l'air se dilate (loi de Mariotte) et tu commences à remonter de plus en plus vite !",
+    "situation": {
+      "depth": 20,
+      "airPressure": 100,
+      "visibility": "moyenne",
+      "current": "modéré"
+    },
+    "steps": [
+      {
+        "id": 1,
+        "question": "Que se passe-t-il physiquement ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Le gilet aspire de l'air automatiquement",
+            "correct": false,
+            "feedback": "❌ Non, c'est la physique : l'air se dilate en remontant.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "La pression diminue, l'air du gilet prend plus de volume",
+            "correct": true,
+            "feedback": "✅ Exact ! PV = constante (Mariotte). P baisse → V augmente.",
+            "points": 150
+          },
+          {
+            "id": "c",
+            "text": "C'est un courant ascendant",
+            "correct": false,
+            "feedback": "❌ Non, c'est bien ton gilet qui te fait remonter.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Ton lestage a disparu",
+            "correct": false,
+            "feedback": "❌ Non, c'est un problème de flottabilité positive.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Action immédiate ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Purger le gilet en urgence",
+            "correct": true,
+            "feedback": "✅ Oui ! Évacuer l'air rapidement est prioritaire.",
+            "points": 150
+          },
+          {
+            "id": "b",
+            "text": "Gonfler encore plus pour aller plus vite en surface",
+            "correct": false,
+            "feedback": "❌ Dangereux ! Risque de surpression pulmonaire et accident.",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "Larguer la ceinture de plombs",
+            "correct": false,
+            "feedback": "❌ Trop drastique. À faire uniquement en dernier recours.",
+            "points": 50
+          },
+          {
+            "id": "d",
+            "text": "S'accrocher à un rocher",
+            "correct": false,
+            "feedback": "❌ Dangereux pour toi et pour le milieu. Purge d'abord !",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "Pendant la remontée, que faire avec ta respiration ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Bloquer ta respiration pour ralentir",
+            "correct": false,
+            "feedback": "❌ JAMAIS ! Risque de surpression pulmonaire = accident gravissime.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Expirer continuellement",
+            "correct": true,
+            "feedback": "✅ ESSENTIEL ! Toujours expirer en remontant, même vite.",
+            "points": 200
+          },
+          {
+            "id": "c",
+            "text": "Respirer normalement",
+            "correct": false,
+            "feedback": "⚠️ Mieux vaut expirer activement en remontée rapide.",
+            "points": 50
+          },
+          {
+            "id": "d",
+            "text": "Alterner inspiration et apnée",
+            "correct": false,
+            "feedback": "❌ Non ! Apnée = danger de surpression pulmonaire.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "question": "Une fois en surface, que faire ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Gonfler le gilet et faire signe OK au bateau",
+            "correct": true,
+            "feedback": "✅ Oui ! Assurer ta sécurité en surface et informer.",
+            "points": 150
+          },
+          {
+            "id": "b",
+            "text": "Replonger pour faire un palier",
+            "correct": false,
+            "feedback": "❌ Trop tard, ne jamais replonger après être remonté.",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "Nager vers le bateau sous l'eau",
+            "correct": false,
+            "feedback": "❌ Tu es déjà en surface, reste visible.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Rien, tout va bien",
+            "correct": false,
+            "feedback": "❌ Il faut surveiller les symptômes d'ADD pendant 24h.",
+            "points": 0
+          }
+        ]
+      }
+    ],
+    "prevention": [
+      "Ne jamais trop gonfler le gilet, ajuster progressivement",
+      "Utiliser le poumon-ballast en priorité pour l'équilibre",
+      "Purger régulièrement le gilet en remontant",
+      "Toujours remonter à la vitesse des petites bulles (15m/min max)"
+    ],
+    "maxPoints": 650,
+    "timeLimit": 150
+  },
+  {
+    "id": "crampe",
+    "title": "Crampe au mollet",
+    "difficulty": "facile",
+    "description": "En pleine eau, tu ressens une violente crampe au mollet.",
+    "icon": "mdi:lightning-bolt",
+    "category": "physique",
+    "context": "Tu palmes depuis 10 minutes à 15 mètres. Soudain, une douleur intense contracte ton mollet gauche.",
+    "situation": {
+      "depth": 15,
+      "airPressure": 130,
+      "visibility": "excellente",
+      "current": "modéré"
+    },
+    "steps": [
+      {
+        "id": 1,
+        "question": "Première réaction ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Continuer à palmer en serrant les dents",
+            "correct": false,
+            "feedback": "❌ Aggraver la crampe peut causer une blessure musculaire.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Arrêter de palmer et faire le signe 'crampe'",
+            "correct": true,
+            "feedback": "✅ Oui ! Stop effort + communication.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Remonter en urgence",
+            "correct": false,
+            "feedback": "❌ Pas nécessaire, une crampe n'est pas une urgence vitale.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Enlever la palme",
+            "correct": false,
+            "feedback": "❌ D'abord alerter, ensuite on verra.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Comment soulager la crampe ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Masser vigoureusement le mollet",
+            "correct": false,
+            "feedback": "⚠️ Le massage aide mais ce n'est pas la priorité.",
+            "points": 50
+          },
+          {
+            "id": "b",
+            "text": "Étirer le muscle en tirant la pointe du pied vers soi",
+            "correct": true,
+            "feedback": "✅ Parfait ! L'étirement relâche la contraction.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Frapper le mollet pour le détendre",
+            "correct": false,
+            "feedback": "❌ Non ! Tu risques de te blesser.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Attendre que ça passe tout seul",
+            "correct": false,
+            "feedback": "⚠️ Mieux vaut agir activement pour soulager.",
+            "points": 30
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "Que faire ensuite ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Reprendre le palmage normalement",
+            "correct": false,
+            "feedback": "❌ Risque de rechute immédiate.",
+            "points": 0
+          },
+          {
+            "id": "b",
+            "text": "Se faire tracter par le binôme si besoin",
+            "correct": true,
+            "feedback": "✅ Excellente idée ! Solidarité de palanquée.",
+            "points": 100
+          },
+          {
+            "id": "c",
+            "text": "Palmer uniquement avec l'autre jambe",
+            "correct": false,
+            "feedback": "⚠️ Possible mais fatiguant. Mieux vaut se faire aider.",
+            "points": 50
+          },
+          {
+            "id": "d",
+            "text": "Abandonner la plongée immédiatement",
+            "correct": false,
+            "feedback": "❌ Pas forcément nécessaire si la crampe passe.",
+            "points": 0
+          }
+        ]
+      }
+    ],
+    "prevention": [
+      "S'échauffer avant la plongée",
+      "Bien s'hydrater (l'eau, pas l'alcool !)",
+      "Ne pas forcer sur le palmage, privilégier l'efficacité",
+      "Avoir des palmes adaptées à sa force musculaire"
+    ],
+    "maxPoints": 300,
+    "timeLimit": 100
+  },
+  {
+    "id": "froid",
+    "title": "Sensation de froid intense",
+    "difficulty": "moyen",
+    "description": "Tu commences à avoir très froid, avec des frissons importants.",
+    "icon": "mdi:snowflake",
+    "category": "thermorégulation",
+    "context": "Cela fait 30 minutes que tu es dans une eau à 14°C. Tu commences à frissonner de manière incontrôlable.",
+    "situation": {
+      "depth": 12,
+      "airPressure": 110,
+      "visibility": "moyenne",
+      "current": "faible"
+    },
+    "steps": [
+      {
+        "id": 1,
+        "question": "Que se passe-t-il dans ton organisme ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Ton corps perd de la chaleur plus vite qu'il n'en produit",
+            "correct": true,
+            "feedback": "✅ Exact ! L'eau refroidit 20x plus vite que l'air.",
+            "points": 100
+          },
+          {
+            "id": "b",
+            "text": "C'est juste une sensation, pas de danger",
+            "correct": false,
+            "feedback": "❌ Le froid en plongée est dangereux !",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "La combinaison est trouée",
+            "correct": false,
+            "feedback": "⚠️ Peut-être, mais ce n'est pas la seule explication.",
+            "points": 30
+          },
+          {
+            "id": "d",
+            "text": "Tu manques d'air",
+            "correct": false,
+            "feedback": "❌ Non, c'est un problème de thermorégulation.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "question": "Quels sont les signes qui doivent t'alerter ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Frissons, extrémités froides, envie d'uriner",
+            "correct": true,
+            "feedback": "✅ Ce sont les signes classiques d'hypothermie.",
+            "points": 100
+          },
+          {
+            "id": "b",
+            "text": "Sensation de chaleur et transpiration",
+            "correct": false,
+            "feedback": "❌ C'est l'inverse du froid !",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "Juste un petit inconfort",
+            "correct": false,
+            "feedback": "❌ Les frissons incontrôlables sont un signe sérieux.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Rien de particulier",
+            "correct": false,
+            "feedback": "❌ Le froid a des symptômes clairs.",
+            "points": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "question": "Que dois-tu faire ?",
+        "options": [
+          {
+            "id": "a",
+            "text": "Prévenir IMMÉDIATEMENT le guide et remonter",
+            "correct": true,
+            "feedback": "✅ Parfait ! Le froid en plongée n'est PAS anodin.",
+            "points": 150
+          },
+          {
+            "id": "b",
+            "text": "Continuer la plongée en bougeant plus",
+            "correct": false,
+            "feedback": "❌ Augmenter l'effort aggrave le problème !",
+            "points": 0
+          },
+          {
+            "id": "c",
+            "text": "Attendre la fin de la plongée normalement",
+            "correct": false,
+            "feedback": "❌ Le froid peut mener à l'hypothermie grave.",
+            "points": 0
+          },
+          {
+            "id": "d",
+            "text": "Boire l'eau de mer pour se réchauffer",
+            "correct": false,
+            "feedback": "❌ Sérieusement ? 🤦",
+            "points": 0
+          }
+        ]
+      }
+    ],
+    "prevention": [
+      "Porter une combinaison adaptée à la température de l'eau (5-7mm en eau froide)",
+      "Ne pas plonger fatigué",
+      "Bien manger avant la plongée",
+      "Limiter la durée de plongée en eau froide"
+    ],
+    "maxPoints": 350,
+    "timeLimit": 120
+  }
+]

@@ -41,6 +41,12 @@
           link="/niveau1/exercices"
         />
         <UiMenuCard
+          title="Simulateur d'Urgences"
+          desc="Scénarios interactifs, gestion des situations d'urgence"
+          icon="mdi:alarm-light"
+          link="/niveau1/simulateur"
+        />
+        <UiMenuCard
           title="Sécurité"
           desc="Procédures, signaux, planification"
           icon=""
