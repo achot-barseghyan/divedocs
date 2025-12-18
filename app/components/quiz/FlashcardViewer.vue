@@ -192,9 +192,7 @@ onUnmounted(() => {
               class="backface-hidden absolute h-full w-full border-2 border-blue-500/30"
             >
               <template #header>
-                <div
-                  class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-indigo-50 p-6"
-                >
+                <div class="flex items-center gap-3 bg-blue-900/80 p-6">
                   <div class="text-3xl">❓</div>
                   <div class="flex-1">
                     <Tag
@@ -202,7 +200,7 @@ onUnmounted(() => {
                       severity="info"
                       class="mb-2"
                     />
-                    <div class="d text-sm text-gray-600">
+                    <div class="text-sm text-gray-200">
                       Cliquez pour révéler la réponse
                     </div>
                   </div>
@@ -228,9 +226,7 @@ onUnmounted(() => {
               style="transform: rotateY(180deg)"
             >
               <template #header>
-                <div
-                  class="flex items-center gap-3 bg-gradient-to-r from-green-50 to-emerald-50 p-6 dark:from-green-900/20 dark:to-emerald-900/20"
-                >
+                <div class="flex items-center gap-3 bg-green-900/80 p-6">
                   <div class="text-3xl">💡</div>
                   <div class="flex-1">
                     <Tag
@@ -238,7 +234,7 @@ onUnmounted(() => {
                       severity="success"
                       class="mb-2"
                     />
-                    <div class="text-sm text-gray-600">Réponse</div>
+                    <div class="text-sm text-gray-200">Réponse</div>
                   </div>
                 </div>
               </template>
@@ -315,9 +311,7 @@ onUnmounted(() => {
       </div>
 
       <!-- Raccourcis clavier -->
-      <div
-        class="border-t pt-4 text-center text-xs text-gray-500 dark:text-gray-500"
-      >
+      <div class="border-t pt-4 text-center text-xs text-gray-300">
         <p>
           Raccourcis :
           <kbd>Espace</kbd>
@@ -353,19 +347,19 @@ onUnmounted(() => {
           <div class="space-y-6">
             <!-- Statistiques -->
             <div class="grid grid-cols-3 gap-4">
-              <div class="rounded-lg bg-green-50 p-4">
-                <div class="text-3xl font-bold text-green-500">
+              <div class="rounded-lg bg-green-900/50 p-4">
+                <div class="text-3xl font-bold text-green-400">
                   {{ knownCards.length }}
                 </div>
-                <div class="text-sm text-gray-600">Cartes connues</div>
+                <div class="text-sm text-gray-200">Cartes connues</div>
               </div>
-              <div class="rounded-lg bg-red-50 p-4 dark:bg-red-900/20">
-                <div class="text-3xl font-bold text-red-500">
+              <div class="rounded-lg bg-red-900/50 p-4">
+                <div class="text-3xl font-bold text-red-400">
                   {{ unknownCards.length }}
                 </div>
-                <div class="text-sm text-gray-600">À revoir</div>
+                <div class="text-sm text-gray-200">À revoir</div>
               </div>
-              <div class="rounded-lg bg-gray-50 p-4">
+              <div class="rounded-lg bg-gray-800/50 p-4">
                 <div
                   class="text-3xl font-bold"
                   :class="performanceMessage.color"
@@ -377,28 +371,28 @@ onUnmounted(() => {
                     )
                   }}%
                 </div>
-                <div class="text-sm text-gray-600">Réussite</div>
+                <div class="text-sm text-gray-200">Réussite</div>
               </div>
             </div>
 
             <!-- Liste des cartes à revoir -->
             <div v-if="unknownCards.length > 0" class="border-t pt-6">
-              <h3 class="mb-4 text-left text-lg font-bold">
+              <h3 class="mb-4 text-left text-lg font-bold text-white">
                 Cartes à revoir ({{ unknownCards.length }})
               </h3>
               <div class="space-y-2 text-left">
                 <div
                   v-for="cardId in unknownCards"
                   :key="cardId"
-                  class="rounded-lg bg-red-50 p-3"
+                  class="rounded-lg bg-red-900/30 p-3"
                 >
-                  <p class="font-medium">
+                  <p class="font-medium text-white">
                     {{
                       flashcardData.flashcards.find((c) => c.id === cardId)
                         ?.question
                     }}
                   </p>
-                  <p class="mt-1 text-sm text-gray-600">
+                  <p class="mt-1 whitespace-pre-line text-sm text-gray-300">
                     {{
                       flashcardData.flashcards.find((c) => c.id === cardId)
                         ?.answer
