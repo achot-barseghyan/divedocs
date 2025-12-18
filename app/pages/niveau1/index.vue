@@ -47,14 +47,14 @@
           link="/niveau1/simulateur"
         />
         <UiMenuCard
-          title="Sécurité"
-          desc="Procédures, signaux, planification"
-          icon=""
-          isDevBanner
+          title="Révisions & Quiz"
+          desc="Réglementation FFESSM, flashcards, QCM interactifs"
+          icon="mdi:school"
+          link="/niveau1/revisions"
         />
         <UiMenuCard
-          title="Révisions & Quiz"
-          desc="Test, vocabulaire, validation connaissances"
+          title="Sécurité"
+          desc="Procédures, signaux, planification"
           icon=""
           isDevBanner
         />

@@ -1,0 +1,419 @@
+{
+  "title": "Réglementation & FFESSM",
+  "description": "Questions sur la réglementation de la plongée en France et les prérogatives FFESSM",
+  "icon": "mdi:gavel",
+  "flashcards": [
+    {
+      "id": 1,
+      "question": "Slide 1 : Justification de la plongée en scaphandre",
+      "answer": "CONDITIONS D'ACCÈS :\n• Âge minimum : 12 ans\n• Certificat médical de non contre-indication à la pratique de la plongée subaquatique\n• Délivré par un médecin\n• Valable 1 an\n\nPOURQUOI UN BREVET ?\n• Apprendre les techniques de sécurité\n• Connaître le matériel et savoir l'utiliser\n• Comprendre les phénomènes physiques\n• Respecter l'environnement marin\n• Plonger en autonomie progressive selon le niveau",
+      "category": "Conditions d'accès"
+    },
+    {
+      "id": 2,
+      "question": "Slide 2 : Qu'est-ce que la FFESSM ?",
+      "answer": "FFESSM = Fédération Française d'Étude et de Sport Sous-Marin\n\nORGANISATION :\n• Siège national à Marseille\n• Comités régionaux dans toute la France\n• Comités départementaux\n• Clubs affiliés\n\nRECONNAISSANCE :\n• Agréée par le Ministère des Sports\n• Reconnue mondialement par la CMAS (Confédération Mondiale des Activités Subaquatiques)\n• Plus grande fédération de plongée en France\n\nCOMMISSIONS :\n• Commission Technique Nationale\n• Commission Médicale et de Prévention\n• Commission Environnement et Biologie Subaquatiques",
+      "category": "FFESSM"
+    },
+    {
+      "id": 3,
+      "question": "Slide 3 : La licence FFESSM",
+      "answer": "DURÉE DE VALIDITÉ :\n• 15 mois (du 1er octobre au 31 décembre de l'année suivante)\n\nCE QU'ELLE PERMET :\n• Passer les brevets fédéraux\n• Participer aux formations\n• Obtenir les qualifications\n• Accès aux compétitions fédérales\n• Permis de pêche sous-marine (à partir de 16 ans)\n\nASSURANCE INCLUSE :\n• Responsabilité civile\n• Protection juridique\n• Dommages corporels : garantie illimitée\n• Dommages matériels : garantie avec plafond\n• Valable dans le monde entier pour la pratique\n• Rapatriement sanitaire",
+      "category": "Licence"
+    },
+    {
+      "id": 4,
+      "question": "Slide 4 : Prérogatives du Niveau 1 (N1)",
+      "answer": "PROFONDEUR :\n• 0 à 20 mètres en palanquée encadrée\n• Accidentellement jusqu'à 25 mètres maximum\n\nENCADREMENT OBLIGATOIRE :\n• Guide de Palanquée (niveau 4 minimum)\n• Moniteur fédéral (E1, E2, E3, E4)\n• Initiateur (sous certaines conditions)\n\nCOMPOSITION DE LA PALANQUÉE :\n• Maximum 4 plongeurs + 1 encadrant = 5 personnes\n• Le guide est responsable de la sécurité\n• Le guide décide du profil de plongée\n\nRESTRICTIONS :\n• Plongée uniquement en exploration (pas d'enseignement)\n• Pas de plongée en autonomie\n• Profil de plongée imposé par le guide",
+      "category": "Prérogatives N1"
+    },
+    {
+      "id": 5,
+      "question": "Slide 5 : Qualifications complémentaires au N1",
+      "answer": "QUALIFICATION PE40 (Plongeur Encadré 40m) :\n• Permet d'évoluer de 0 à 40 mètres\n• Toujours en palanquée encadrée\n• Nécessite une formation complémentaire\n• Maximum 4 plongeurs + 1 encadrant\n\nQUALIFICATION PA20 (Plongeur Autonome 20m) :\n• Permet la plongée en autonomie de 0 à 20 mètres\n• Sans guide de palanquée\n• Palanquée de 2 ou 3 plongeurs autonomes\n• Formation à la gestion de palanquée autonome\n• Prise de décision collective\n\nQUALIFICATION PE20 (Aptitude à évoluer en palanquée à 20m) :\n• Valide les compétences de base\n• Précède le N1 complet",
+      "category": "Qualifications"
+    },
+    {
+      "id": 6,
+      "question": "Slide 6 : Le système de brevets FFESSM",
+      "answer": "NIVEAU 1 (N1) :\n• 0-20m en palanquée encadrée\n• Découverte et apprentissage\n\nNIVEAU 2 (N2) :\n• 0-20m en autonomie\n• 0-40m en palanquée encadrée\n• Gestion de sa plongée\n\nNIVEAU 3 (N3) :\n• 0-60m en autonomie\n• Guide de palanquée occasionnel (GPO)\n• Expertise technique\n\nNIVEAU 4 (N4) :\n• Guide de Palanquée (GP)\n• Encadrement jusqu'à 40m (ou 60m)\n• Direction de plongée\n• Enseignement possible\n\nNIVEAU 5 (N5) :\n• Directeur de Plongée (DP)\n• Organisation de la plongée\n• Gestion de la sécurité surface",
+      "category": "Brevets"
+    },
+    {
+      "id": 7,
+      "question": "Slide 7 : Rôle du Guide de Palanquée",
+      "answer": "AVANT LA PLONGÉE :\n• Briefing complet de la plongée\n• Vérification du matériel de chaque plongeur\n• Définition des objectifs\n• Explication des signes spécifiques\n• Présentation du profil de plongée\n\nPENDANT LA PLONGÉE :\n• Premier à l'eau, dernier à sortir\n• Gestion de l'orientation\n• Surveillance continue de la palanquée\n• Gestion de la profondeur et du temps\n• Adaptation du profil selon les conditions\n• Vérification régulière de l'air des plongeurs\n\nAPRÈS LA PLONGÉE :\n• Débriefing avec les plongeurs\n• Points positifs et axes d'amélioration\n• Compte-rendu au Directeur de Plongée",
+      "category": "Encadrement"
+    },
+    {
+      "id": 8,
+      "question": "Slide 8 : Règles de sécurité fondamentales",
+      "answer": "RÈGLES ABSOLUES :\n1. Ne JAMAIS plonger seul\n2. Toujours plonger avec un binôme minimum\n3. Respecter les profondeurs autorisées\n4. Ne jamais bloquer sa respiration\n5. Remonter à la vitesse des petites bulles (15m/min maximum)\n\nAVANT CHAQUE PLONGÉE :\n• Vérifier son matériel\n• Écouter le briefing\n• Connaître le plan de plongée\n• Vérifier son lestage\n• Convenir des signes avec son binôme\n\nCOMMUNICATION :\n• Maintenir le contact visuel avec la palanquée\n• Utiliser les signes conventionnels\n• Alerter immédiatement en cas de problème\n• Rester groupés",
+      "category": "Sécurité"
+    },
+    {
+      "id": 9,
+      "question": "Slide 9 : Le Pavillon Alpha",
+      "answer": "DESCRIPTION :\n• Pavillon blanc avec une bande verticale bleue au centre\n• Code international maritime\n• Signal obligatoire pour toute activité de plongée depuis un bateau\n\nSIGNIFICATION :\n• \"J'ai un plongeur en immersion, écartez-vous et passez à petite vitesse\"\n• Activité de plongée en cours\n\nDISTANCES DE SÉCURITÉ :\n• Plongeurs : ne pas s'éloigner de plus de 50 mètres du bateau\n• Autres bateaux : rester à plus de 100 mètres\n• Zone de sécurité matérialisée\n\nOBLIGATIONS DU BATEAU :\n• Parachute de palier déployé\n• Moyen de rappel des plongeurs (corne de brume)\n• Surveillance permanente",
+      "category": "Sécurité"
+    },
+    {
+      "id": 10,
+      "question": "Slide 10 : Matériel de sécurité obligatoire sur le bateau",
+      "answer": "MATÉRIEL OBLIGATOIRE :\n• Pavillon Alpha\n• Matériel d'oxygénothérapie normobare (15L/min)\n• Trousse de secours complète\n• Moyen de rappel des plongeurs (corne, sifflet)\n• Bloc de secours avec détendeur\n• Moyen de communication (VHF, téléphone)\n• Parachute de palier\n• Ligne de vie\n\nPROTOCOLE D'URGENCE :\n• Numéros d'urgence affichés (15, 18, 196)\n• Plan d'action en cas d'accident\n• Coordonnées du caisson hyperbare le plus proche\n• Fiche de sécurité remplie pour chaque plongeur",
+      "category": "Sécurité"
+    },
+    {
+      "id": 11,
+      "question": "Slide 11 : Procédure en cas de perte de palanquée",
+      "answer": "SI VOUS PERDEZ VOTRE PALANQUÉE :\n\n1. NE PAS PANIQUER\n• Restez calme\n• Contrôlez votre respiration\n\n2. CHERCHER (30 secondes à 1 minute maximum)\n• Regarder autour de vous sur 360°\n• Regarder en haut et en bas\n• Écouter les bulles\n• Rester à la même profondeur\n\n3. REMONTER SI VOUS NE TROUVEZ PAS\n• Remontée à la vitesse des petites bulles (15m/min)\n• Sans palier de sécurité\n• Regarder vers la surface\n• Bras levé pour se protéger\n• Déployer le parachute si vous en avez un\n\n4. CE QU'IL NE FAUT JAMAIS FAIRE\n• Ne JAMAIS rejoindre une autre palanquée\n• Ne pas descendre plus profond pour chercher\n• Ne pas attendre trop longtemps au fond",
+      "category": "Procédures"
+    },
+    {
+      "id": 12,
+      "question": "Slide 12 : Pourquoi ne jamais rejoindre une autre palanquée",
+      "answer": "RAISONS DE SÉCURITÉ :\n\n1. PARAMÈTRES DIFFÉRENTS\n• Profondeurs différentes\n• Temps de plongée différents\n• Paliers calculés différemment\n• Risque d'accident de décompression\n\n2. CONFUSION\n• Le directeur de plongée va déclencher les secours\n• Recherche inutile déclenchée\n• Mobilisation des moyens de secours\n• Inquiétude pour votre binôme\n• Votre guide ne sait pas où vous êtes\n\n3. RESPONSABILITÉ\n• Le guide de l'autre palanquée n'a pas briefé votre plongée\n• Il ne connaît pas votre niveau\n• Il ne connaît pas votre consommation\n• Il n'est pas responsable de vous\n\nCONDUITE À TENIR :\n• Appliquer strictement la procédure de remontée\n• Signaler votre présence en surface\n• Rejoindre le bateau",
+      "category": "Procédures"
+    },
+    {
+      "id": 13,
+      "question": "Slide 13 : Protection de l'environnement marin",
+      "answer": "PRINCIPES FONDAMENTAUX :\n\n1. NE RIEN TOUCHER\n• La faune et la flore sont fragiles\n• Certains organismes mettent des années à se développer\n• Le toucher peut détruire le mucus protecteur\n• Respecter la vie marine\n\n2. NE RIEN REMONTER\n• Interdit de remonter quoi que ce soit d'une plongée en scaphandre\n• Sanctions pénales possibles\n• Protection du patrimoine sous-marin\n• Exception : ramasser les déchets (dans un filet prévu)\n\n3. NE PAS NOURRIR\n• Perturbe le comportement naturel\n• Déséquilibre l'écosystème\n• Rend les animaux dépendants\n• Certains aliments sont toxiques pour eux\n\n4. GÉRER SON PALMAGE\n• Ne pas toucher le fond\n• Attention aux coups de palmes\n• Flottabilité contrôlée\n• Distance de sécurité avec le relief\n\n5. OBSERVER SANS DÉRANGER\n• Approche lente et calme\n• Pas de flash trop proche\n• Ne pas poursuivre les animaux\n• Respect des zones protégées",
+      "category": "Environnement"
+    },
+    {
+      "id": 14,
+      "question": "Slide 14 : Comportement responsable du plongeur",
+      "answer": "AVANT LA PLONGÉE :\n• Se renseigner sur le site (zones protégées, espèces sensibles)\n• Vérifier la météo et les conditions\n• Écouter attentivement le briefing\n• Poser des questions si besoin\n\nPENDANT LA PLONGÉE :\n• Rester groupé avec sa palanquée\n• Suivre les consignes du guide\n• Maintenir une bonne flottabilité\n• Observer sans toucher\n• Ne pas soulever de sédiments\n• Contrôler régulièrement ses instruments\n• Communiquer avec son binôme\n\nAPRÈS LA PLONGÉE :\n• Partager ses observations\n• Signaler tout comportement inhabituel de la faune\n• Respecter les temps de surface\n• Ne pas prendre l'avion dans les 12-24h\n• Participer au débriefing\n• Nettoyer son matériel à l'eau douce\n\nÉTHIQUE :\n• Être un ambassadeur du milieu marin\n• Sensibiliser son entourage\n• Participer aux actions de nettoyage\n• Respecter la réglementation locale",
+      "category": "Comportement"
+    },
+    {
+      "id": 15,
+      "question": "Slide 15 : Récapitulatif - Points clés du Niveau 1",
+      "answer": "CONDITIONS :\n✓ Âge minimum : 12 ans\n✓ Certificat médical valide (1 an)\n✓ Licence FFESSM (15 mois)\n\nPRÉROGATIVES :\n✓ Plongée encadrée de 0 à 20m (max 25m accidentellement)\n✓ Palanquée de 4 plongeurs + 1 guide\n✓ Qualifications possibles : PE40, PA20\n\nSÉCURITÉ :\n✓ Ne jamais plonger seul\n✓ Respecter le pavillon Alpha (50m max)\n✓ Procédure perte palanquée : chercher 1 min puis remonter\n✓ Ne jamais rejoindre une autre palanquée\n✓ Vitesse de remontée : 15m/min max\n\nENVIRONNEMENT :\n✓ Ne rien toucher\n✓ Ne rien remonter\n✓ Ne pas nourrir\n✓ Maîtriser sa flottabilité\n✓ Observer avec respect\n\nPROGRESSION :\n✓ N1 → N2 (autonomie 20m, encadré 40m)\n✓ N2 → N3 (autonomie 60m)\n✓ N3 → N4 (Guide de Palanquée)\n✓ N4 → N5 (Directeur de Plongée)",
+      "category": "Récapitulatif"
+    }
+  ],
+  "quiz": [
+    {
+      "id": 1,
+      "question": "Quelle est la profondeur maximale autorisée pour un plongeur niveau 1 encadré ?",
+      "options": [
+        { "id": "a", "text": "12 mètres", "correct": false },
+        { "id": "b", "text": "20 mètres", "correct": true },
+        { "id": "c", "text": "25 mètres", "correct": false },
+        { "id": "d", "text": "40 mètres", "correct": false }
+      ],
+      "explanation": "Un plongeur niveau 1 peut évoluer de 0 à 20 mètres en palanquée encadrée (accidentellement jusqu'à 25m).",
+      "category": "Prérogatives"
+    },
+    {
+      "id": 2,
+      "question": "Quel est l'âge minimum pour passer le niveau 1 FFESSM ?",
+      "options": [
+        { "id": "a", "text": "10 ans", "correct": false },
+        { "id": "b", "text": "12 ans", "correct": true },
+        { "id": "c", "text": "14 ans", "correct": false },
+        { "id": "d", "text": "16 ans", "correct": false }
+      ],
+      "explanation": "L'âge minimum pour passer le niveau 1 est de 12 ans (avec autorisation parentale).",
+      "category": "Conditions"
+    },
+    {
+      "id": 3,
+      "question": "Combien de plongeurs maximum dans une palanquée niveau 1 ?",
+      "options": [
+        { "id": "a", "text": "3 plongeurs", "correct": false },
+        { "id": "b", "text": "4 plongeurs + le guide", "correct": true },
+        { "id": "c", "text": "6 plongeurs + le guide", "correct": false },
+        { "id": "d", "text": "Pas de limite", "correct": false }
+      ],
+      "explanation": "Une palanquée niveau 1 comprend maximum 5 personnes : 4 plongeurs + 1 Guide de Palanquée.",
+      "category": "Palanquée"
+    },
+    {
+      "id": 4,
+      "question": "Qui peut encadrer des plongeurs niveau 1 en exploration ?",
+      "options": [
+        { "id": "a", "text": "Un plongeur niveau 2", "correct": false },
+        { "id": "b", "text": "Un plongeur niveau 3", "correct": false },
+        { "id": "c", "text": "Un plongeur niveau 4 minimum", "correct": true },
+        {
+          "id": "d",
+          "text": "N'importe quel plongeur autonome",
+          "correct": false
+        }
+      ],
+      "explanation": "Seul un Guide de Palanquée (niveau 4 minimum) ou un Moniteur peut encadrer des niveau 1.",
+      "category": "Encadrement"
+    },
+    {
+      "id": 5,
+      "question": "Quelle est la durée de validité de la licence FFESSM ?",
+      "options": [
+        { "id": "a", "text": "1 an", "correct": false },
+        { "id": "b", "text": "15 mois", "correct": true },
+        { "id": "c", "text": "2 ans", "correct": false },
+        { "id": "d", "text": "Illimitée", "correct": false }
+      ],
+      "explanation": "La licence FFESSM est valable 15 mois, du 1er octobre au 31 décembre de l'année suivante.",
+      "category": "Licence"
+    },
+    {
+      "id": 6,
+      "question": "Que signifie le pavillon Alpha ?",
+      "options": [
+        { "id": "a", "text": "Bateau en détresse", "correct": false },
+        { "id": "b", "text": "Activité de plongée en cours", "correct": true },
+        { "id": "c", "text": "Interdiction d'approcher", "correct": false },
+        { "id": "d", "text": "Zone de baignade", "correct": false }
+      ],
+      "explanation": "Le pavillon Alpha (blanc et bleu) signale l'activité de plongée depuis un bateau.",
+      "category": "Sécurité"
+    },
+    {
+      "id": 7,
+      "question": "Quelle distance doivent respecter les plongeurs par rapport au pavillon Alpha ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ne pas s'éloigner de plus de 25m",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "Ne pas s'éloigner de plus de 50m",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Ne pas s'éloigner de plus de 100m",
+          "correct": false
+        },
+        { "id": "d", "text": "Aucune limite", "correct": false }
+      ],
+      "explanation": "Les plongeurs ne doivent pas s'éloigner de plus de 50m du pavillon Alpha.",
+      "category": "Sécurité"
+    },
+    {
+      "id": 8,
+      "question": "Première règle de sécurité absolue en plongée ?",
+      "options": [
+        { "id": "a", "text": "Toujours avoir un couteau", "correct": false },
+        { "id": "b", "text": "Ne jamais plonger seul", "correct": true },
+        {
+          "id": "c",
+          "text": "Toujours plonger avec un ordinateur",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Porter une combinaison épaisse",
+          "correct": false
+        }
+      ],
+      "explanation": "La règle fondamentale : ne jamais plonger seul.",
+      "category": "Sécurité"
+    },
+    {
+      "id": 9,
+      "question": "Peut-on remonter un objet trouvé lors d'une plongée en scaphandre ?",
+      "options": [
+        { "id": "a", "text": "Oui, tout ce qu'on trouve", "correct": false },
+        {
+          "id": "b",
+          "text": "Oui, sauf les organismes vivants",
+          "correct": false
+        },
+        { "id": "c", "text": "Non, ne rien remonter", "correct": true },
+        { "id": "d", "text": "Oui, seulement des déchets", "correct": false }
+      ],
+      "explanation": "Règle stricte : ne rien remonter d'une plongée en scaphandre (sauf déchets pour protection du milieu).",
+      "category": "Protection du milieu"
+    },
+    {
+      "id": 10,
+      "question": "Que faire si on perd sa palanquée sous l'eau ?",
+      "options": [
+        { "id": "a", "text": "Remonter immédiatement", "correct": false },
+        {
+          "id": "b",
+          "text": "Chercher 30s-1min puis remonter",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Attendre au fond qu'ils reviennent",
+          "correct": false
+        },
+        { "id": "d", "text": "Rejoindre une autre palanquée", "correct": false }
+      ],
+      "explanation": "Chercher sur place 30 secondes à 1 minute maximum, puis remonter à la vitesse des petites bulles.",
+      "category": "Procédures"
+    },
+    {
+      "id": 11,
+      "question": "Qui est le premier à entrer dans l'eau ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Le plongeur le plus expérimenté",
+          "correct": false
+        },
+        { "id": "b", "text": "Le guide de palanquée", "correct": true },
+        {
+          "id": "c",
+          "text": "Le plongeur le moins expérimenté",
+          "correct": false
+        },
+        { "id": "d", "text": "Peu importe l'ordre", "correct": false }
+      ],
+      "explanation": "Le guide de palanquée est toujours le premier à l'eau et le dernier à sortir.",
+      "category": "Procédures"
+    },
+    {
+      "id": 12,
+      "question": "Quelle est la durée de validité du certificat médical ?",
+      "options": [
+        { "id": "a", "text": "6 mois", "correct": false },
+        { "id": "b", "text": "1 an", "correct": true },
+        { "id": "c", "text": "2 ans", "correct": false },
+        { "id": "d", "text": "3 ans", "correct": false }
+      ],
+      "explanation": "Le certificat médical de non contre-indication est valable 1 an.",
+      "category": "Conditions"
+    },
+    {
+      "id": 13,
+      "question": "Peut-on toucher les animaux marins lors d'une plongée ?",
+      "options": [
+        { "id": "a", "text": "Oui, pour mieux les observer", "correct": false },
+        {
+          "id": "b",
+          "text": "Oui, s'ils ne sont pas dangereux",
+          "correct": false
+        },
+        { "id": "c", "text": "Non, éviter tout contact", "correct": true },
+        { "id": "d", "text": "Oui, mais avec des gants", "correct": false }
+      ],
+      "explanation": "Éviter tout contact avec la faune et la flore. Les organismes sont fragiles.",
+      "category": "Protection du milieu"
+    },
+    {
+      "id": 14,
+      "question": "Qu'est-ce que la qualification PE40 ?",
+      "options": [
+        { "id": "a", "text": "Plongée autonome à 40m", "correct": false },
+        { "id": "b", "text": "Plongée encadrée à 40m", "correct": true },
+        { "id": "c", "text": "Plongée en eau froide", "correct": false },
+        { "id": "d", "text": "Plongée de nuit", "correct": false }
+      ],
+      "explanation": "PE40 = Plongeur Encadré à 40 mètres. Qualification complémentaire au niveau 1.",
+      "category": "Qualifications"
+    },
+    {
+      "id": 15,
+      "question": "Peut-on rejoindre une autre palanquée si on est perdu ?",
+      "options": [
+        { "id": "a", "text": "Oui, pour plus de sécurité", "correct": false },
+        { "id": "b", "text": "Oui, si on les connaît", "correct": false },
+        { "id": "c", "text": "Non, jamais", "correct": true },
+        {
+          "id": "d",
+          "text": "Oui, après avoir fait signe au guide",
+          "correct": false
+        }
+      ],
+      "explanation": "Ne jamais rejoindre une autre palanquée : paramètres de plongée différents et risque d'alerte inutile.",
+      "category": "Procédures"
+    },
+    {
+      "id": 16,
+      "question": "Quel matériel de sécurité est obligatoire sur un bateau de plongée ?",
+      "options": [
+        { "id": "a", "text": "Seulement le pavillon Alpha", "correct": false },
+        {
+          "id": "b",
+          "text": "Pavillon Alpha et trousse de secours",
+          "correct": false
+        },
+        {
+          "id": "c",
+          "text": "Pavillon Alpha, O2, trousse, moyen de rappel, bloc secours, radio",
+          "correct": true
+        },
+        { "id": "d", "text": "Rien n'est obligatoire", "correct": false }
+      ],
+      "explanation": "Le bateau doit avoir : pavillon Alpha, oxygénothérapie, trousse de secours, moyen de rappel, bloc de secours et radio/téléphone.",
+      "category": "Sécurité"
+    },
+    {
+      "id": 17,
+      "question": "À quelle distance les autres bateaux doivent-ils se tenir du pavillon Alpha ?",
+      "options": [
+        { "id": "a", "text": "Plus de 50m", "correct": false },
+        { "id": "b", "text": "Plus de 100m", "correct": true },
+        { "id": "c", "text": "Plus de 200m", "correct": false },
+        { "id": "d", "text": "Aucune obligation", "correct": false }
+      ],
+      "explanation": "Les autres embarcations ne doivent pas s'approcher à moins de 100m du pavillon Alpha.",
+      "category": "Sécurité"
+    },
+    {
+      "id": 18,
+      "question": "Que couvre l'assurance de la licence FFESSM ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uniquement les accidents en France",
+          "correct": false
+        },
+        {
+          "id": "b",
+          "text": "RC, dommages corporels illimités, dommages matériels avec plafond",
+          "correct": true
+        },
+        {
+          "id": "c",
+          "text": "Uniquement la responsabilité civile",
+          "correct": false
+        },
+        {
+          "id": "d",
+          "text": "Rien, c'est juste pour la carte",
+          "correct": false
+        }
+      ],
+      "explanation": "L'assurance couvre : RC, protection juridique, dommages corporels illimités, dommages matériels plafonnés, valable dans le monde entier.",
+      "category": "Assurance"
+    },
+    {
+      "id": 19,
+      "question": "Doit-on nourrir les poissons en plongée ?",
+      "options": [
+        { "id": "a", "text": "Oui, pour mieux les observer", "correct": false },
+        {
+          "id": "b",
+          "text": "Oui, avec de la nourriture adaptée",
+          "correct": false
+        },
+        { "id": "c", "text": "Non, jamais", "correct": true },
+        { "id": "d", "text": "Oui, mais rarement", "correct": false }
+      ],
+      "explanation": "Ne jamais nourrir la faune marine. Cela pervertit leur comportement et déséquilibre l'écosystème.",
+      "category": "Protection du milieu"
+    },
+    {
+      "id": 20,
+      "question": "Où se trouve le siège national de la FFESSM ?",
+      "options": [
+        { "id": "a", "text": "Paris", "correct": false },
+        { "id": "b", "text": "Lyon", "correct": false },
+        { "id": "c", "text": "Marseille", "correct": true },
+        { "id": "d", "text": "Nice", "correct": false }
+      ],
+      "explanation": "Le siège national de la FFESSM se trouve à Marseille.",
+      "category": "FFESSM"
+    }
+  ]
+}
