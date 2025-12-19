@@ -254,7 +254,7 @@ const signs = [
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Vertifge.jpeg',
   },
-  {
+  /*   {
     id: 18,
     name: 'Je suis narcosé(e)',
     description:
@@ -262,8 +262,8 @@ const signs = [
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Narcose.jpeg',
-  },
-  {
+  }, */
+  /*   {
     id: 19,
     name: 'Danger dans cette direction',
     description:
@@ -271,7 +271,7 @@ const signs = [
     category: 'urgence',
     image:
       'https://differentdive.com/wp-content/uploads/2021/04/Signes-de-plongee_Danger.jpeg',
-  },
+  }, */
   {
     id: 20,
     name: 'Palier de trois minutes',
