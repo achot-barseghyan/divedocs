@@ -52,12 +52,6 @@
           icon="mdi:school"
           link="/niveau1/revisions"
         />
-        <UiMenuCard
-          title="Sécurité"
-          desc="Procédures, signaux, planification"
-          icon=""
-          isDevBanner
-        />
       </div>
     </div>
   </div>

@@ -231,13 +231,6 @@ onMounted(async () => {
     if (savedStats) {
       scenarioStats.value = JSON.parse(savedStats)
     }
-
-    toast.add({
-      severity: 'success',
-      summary: 'Prêt !',
-      detail: `${scenarios.value.length} scénarios disponibles`,
-      life: 3000,
-    })
   } catch (error) {
     console.error('Erreur lors du chargement des scénarios:', error)
     toast.add({
@@ -253,15 +246,6 @@ onMounted(async () => {
 const selectMode = (mode: 'training' | 'evaluation') => {
   console.log('Mode sélectionné:', mode)
   selectedMode.value = mode
-  toast.add({
-    severity: 'info',
-    summary: mode === 'training' ? 'Mode Entraînement' : 'Mode Évaluation',
-    detail:
-      mode === 'training'
-        ? 'Apprends à ton rythme sans limite de temps'
-        : 'Teste tes connaissances avec un chronomètre',
-    life: 2000,
-  })
 }
 
 // Sélectionner un scénario
