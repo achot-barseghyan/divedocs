@@ -127,38 +127,34 @@ const modes = [
       <div v-if="!quizData" class="flex h-64 items-center justify-center">
         <div class="text-center">
           <i class="pi pi-spin pi-spinner mb-4 text-4xl text-blue-500"></i>
-          <p class="text-gray-600 dark:text-gray-400">Chargement...</p>
+          <p class="text-gray-200">Chargement...</p>
         </div>
       </div>
 
       <!-- Sélection du mode -->
       <div v-else-if="!isPlaying" class="space-y-6">
         <!-- Informations du sujet -->
-        <Card
-          class="border-2 border-blue-500/30 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20"
-        >
+        <Card class="border-2 border-blue-500/30 bg-gray-900/50">
           <template #content>
             <div class="flex items-start gap-4">
               <div class="text-5xl">⚓</div>
               <div class="flex-1">
-                <h2
-                  class="mb-2 text-2xl font-bold text-gray-900 dark:text-white"
-                >
+                <h2 class="mb-2 text-2xl font-bold text-white">
                   {{ quizData.title }}
                 </h2>
-                <p class="mb-4 text-gray-700 dark:text-gray-300">
+                <p class="mb-4 text-gray-200">
                   {{ quizData.description }}
                 </p>
                 <div class="flex gap-4 text-sm">
                   <span class="flex items-center gap-2">
                     <span class="text-2xl">📝</span>
-                    <span class="font-medium text-black">
+                    <span class="font-medium text-white">
                       {{ quizData.quiz.length }} questions
                     </span>
                   </span>
                   <span class="flex items-center gap-2">
                     <span class="text-2xl">🎴</span>
-                    <span class="font-medium text-black">
+                    <span class="font-medium text-white">
                       {{ quizData.flashcards.length }} flashcards
                     </span>
                   </span>
@@ -173,13 +169,13 @@ const modes = [
           <Card
             v-for="mode in modes"
             :key="mode.id"
-            class="cursor-pointer border-2 transition-all duration-300 hover:border-blue-500 hover:shadow-xl"
+            class="cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
             @click="selectMode(mode.id as 'quiz' | 'flashcard')"
           >
             <template #header>
               <div
                 class="p-6"
-                :class="`bg-gradient-to-r ${mode.color} text-white`"
+                :class="`bg-gradient-to-r ${mode.color} rounded-md text-white`"
               >
                 <div class="mb-3 text-6xl">{{ mode.icon }}</div>
                 <h3 class="text-2xl font-bold">{{ mode.title }}</h3>
@@ -187,12 +183,12 @@ const modes = [
             </template>
 
             <template #content>
-              <p class="mb-4 text-gray-700 dark:text-gray-300">
+              <p class="mb-4 text-gray-200">
                 {{ mode.description }}
               </p>
 
               <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-600 dark:text-gray-400">
+                <span class="text-sm text-gray-300">
                   {{
                     mode.id === 'quiz'
                       ? `${mode.questionsCount} questions`
@@ -215,8 +211,8 @@ const modes = [
         <!-- Statistiques -->
         <Card>
           <template #header>
-            <div class="bg-gray-50 p-4 dark:bg-gray-800">
-              <h3 class="flex items-center gap-2 text-xl font-bold">
+            <div class="bg-gray-800/50 p-4">
+              <h3 class="flex items-center gap-2 text-xl font-bold text-white">
                 <span>📊</span>
                 <span>Vos statistiques</span>
               </h3>
@@ -225,40 +221,26 @@ const modes = [
 
           <template #content>
             <div class="grid gap-4 md:grid-cols-4">
-              <div
-                class="rounded-lg bg-blue-50 p-4 text-center dark:bg-blue-900/20"
-              >
-                <div class="text-3xl font-bold text-blue-500">
+              <div class="rounded-lg bg-blue-900/30 p-4 text-center">
+                <div class="text-3xl font-bold text-blue-400">
                   {{ quizStats['reglementation']?.attempts || 0 }}
                 </div>
-                <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Tentatives
-                </div>
+                <div class="mt-1 text-sm text-gray-200">Tentatives</div>
               </div>
-              <div
-                class="rounded-lg bg-green-50 p-4 text-center dark:bg-green-900/20"
-              >
-                <div class="text-3xl font-bold text-green-500">
+              <div class="rounded-lg bg-green-900/30 p-4 text-center">
+                <div class="text-3xl font-bold text-green-400">
                   {{ quizStats['reglementation']?.bestScore || 0 }}
                 </div>
-                <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Meilleur score
-                </div>
+                <div class="mt-1 text-sm text-gray-200">Meilleur score</div>
               </div>
-              <div
-                class="rounded-lg bg-yellow-50 p-4 text-center dark:bg-yellow-900/20"
-              >
-                <div class="text-3xl font-bold text-yellow-500">
+              <div class="rounded-lg bg-yellow-900/30 p-4 text-center">
+                <div class="text-3xl font-bold text-yellow-400">
                   {{ quizStats['reglementation']?.lastScore || 0 }}
                 </div>
-                <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Dernier score
-                </div>
+                <div class="mt-1 text-sm text-gray-200">Dernier score</div>
               </div>
-              <div
-                class="rounded-lg bg-purple-50 p-4 text-center dark:bg-purple-900/20"
-              >
-                <div class="text-3xl font-bold text-purple-500">
+              <div class="rounded-lg bg-purple-900/30 p-4 text-center">
+                <div class="text-3xl font-bold text-purple-400">
                   {{
                     quizStats['reglementation']?.attempts
                       ? Math.round(
@@ -270,9 +252,7 @@ const modes = [
                       : 0
                   }}%
                 </div>
-                <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  Moyenne
-                </div>
+                <div class="mt-1 text-sm text-gray-200">Moyenne</div>
               </div>
             </div>
           </template>

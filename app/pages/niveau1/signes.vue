@@ -18,18 +18,11 @@
             v-for="category in categories"
             :key="category.id"
             :label="category.name"
-            :class="[
-              'transition-all duration-300',
-              {
-                'scale-105 shadow-lg': selectedCategory === category.id,
-                'bg-white/10 hover:bg-white/20':
-                  selectedCategory !== category.id,
-              },
-            ]"
-            class="text-white"
-            rounded
+            :severity="selectedCategory === category.id ? 'info' : 'secondary'"
             @click="selectedCategory = category.id"
-          />
+            class="text-white"
+            size="small"
+          ></Button>
         </div>
       </div>
 

@@ -113,6 +113,7 @@
           :severity="filterCategory === null ? 'info' : 'secondary'"
           @click="filterCategory = null"
           size="small"
+          class="text-white"
         />
         <Button
           v-for="category in categories"
@@ -120,6 +121,7 @@
           :label="`${category.label} (${getCategoryCount(category.id)})`"
           :severity="filterCategory === category.id ? 'info' : 'secondary'"
           @click="filterCategory = category.id"
+          class="text-white"
           size="small"
         >
           <template #icon>

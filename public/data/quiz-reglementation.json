@@ -156,7 +156,7 @@
         { "id": "c", "text": "2 ans", "correct": false },
         { "id": "d", "text": "Illimitée", "correct": false }
       ],
-      "explanation": "La licence FFESSM est valable 15 mois, du 1er octobre au 31 décembre de l'année suivante.",
+      "explanation": "La licence FFESSM est valable 15 mois, du 15 septembre de l'année en cours au 31 décembre de l'année suivante.",
       "category": "Licence"
     },
     {
@@ -226,9 +226,9 @@
           "correct": false
         },
         { "id": "c", "text": "Non, ne rien remonter", "correct": true },
-        { "id": "d", "text": "Oui, seulement des déchets", "correct": false }
+        { "id": "d", "text": "Oui, uniquement les déchets", "correct": false }
       ],
-      "explanation": "Règle stricte : ne rien remonter d'une plongée en scaphandre (sauf déchets pour protection du milieu).",
+      "explanation": "Règle stricte : interdit de remonter quoi que ce soit d'une plongée en scaphandre. Sanctions pénales possibles. Protection du patrimoine sous-marin.",
       "category": "Protection du milieu"
     },
     {
