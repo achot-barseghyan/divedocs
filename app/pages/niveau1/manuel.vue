@@ -97,6 +97,7 @@
 
         <div class="mb-8 flex justify-center">
           <Paginator
+            :first="paginatorFirst"
             :rows="1"
             :totalRecords="totalPages"
             @page="onPageChange"
@@ -119,7 +120,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { useManuelPages } from '~/composables/useManuelPages'
 
 const {
@@ -134,6 +135,7 @@ const {
 } = useManuelPages()
 
 const currentPageData = computed(() => getCurrentPageData())
+const paginatorFirst = computed(() => Math.max(currentPage.value - 1, 0))
 
 const onPageChange = (event: any) => {
   goToPage(event.page + 1)
