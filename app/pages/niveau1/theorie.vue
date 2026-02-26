@@ -38,7 +38,7 @@
                 : 'text-gray-300 hover:text-white',
             ]"
           >
-            Modules
+            Modules écrits
           </button>
         </div>
       </div>
