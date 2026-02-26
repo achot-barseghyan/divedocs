@@ -165,7 +165,10 @@
       </div>
     </template>
 
-    <ModalsTheorieModuleDialog ref="ModuleDialog" />
+    <ModalsTheorieModuleDialog
+      ref="ModuleDialog"
+      :data-path="NIVEAU1_THEORIE_DATA_PATH"
+    />
   </div>
 </template>
 
@@ -175,10 +178,13 @@ import { useTheorieCourses } from '~/composables/useTheorieCourses'
 import { useExportPDF } from '~/composables/useExportPDF'
 
 const ModuleDialog = ref()
+const NIVEAU1_THEORIE_DATA_PATH = '/data/theorie-courses-niveau1.json'
 
-const { loading, fetchCourses, searchCourses } = useTheorieCourses()
+const { loading, fetchCourses, searchCourses } = useTheorieCourses(
+  NIVEAU1_THEORIE_DATA_PATH
+)
 
-const { exportAllModulesToPDF } = useExportPDF()
+const { exportAllModulesToPDF } = useExportPDF(NIVEAU1_THEORIE_DATA_PATH)
 
 const isExporting = ref(false)
 const activeTab = ref<'videos' | 'modules'>('videos')

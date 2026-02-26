@@ -177,7 +177,18 @@ import { ref } from 'vue'
 import { useTheorieCourses } from '~/composables/useTheorieCourses'
 import { useExportPDF } from '~/composables/useExportPDF'
 
-const { courses, fetchCourses, getCourseById } = useTheorieCourses()
+const props = withDefaults(
+  defineProps<{
+    dataPath?: string
+  }>(),
+  {
+    dataPath: '/data/theorie-courses.json',
+  }
+)
+
+const { courses, fetchCourses, getCourseById } = useTheorieCourses(
+  props.dataPath
+)
 
 const visibleLighboxRef = ref(false)
 const indexLightboxRef = ref(0)
@@ -193,7 +204,7 @@ const onHide = () => (visibleLighboxRef.value = false)
 const visible = ref(false)
 const moduleData: any = ref(null)
 const isExporting = ref(false)
-const { exportModuleToPDF } = useExportPDF()
+const { exportModuleToPDF } = useExportPDF(props.dataPath)
 
 const open = async (idModule: number) => {
   if (!courses.value.length) {

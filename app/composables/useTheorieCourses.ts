@@ -6,7 +6,9 @@ export interface Course {
   icon: string
 }
 
-export const useTheorieCourses = () => {
+export const useTheorieCourses = (
+  dataPath: string = '/data/theorie-courses.json'
+) => {
   const courses = ref<Course[]>([])
   const loading = ref(false)
   const error = ref<Error | null>(null)
@@ -18,7 +20,7 @@ export const useTheorieCourses = () => {
 
     try {
       // Option 1: From public folder
-      const response = await fetch('/data/theorie-courses.json')
+      const response = await fetch(dataPath)
       if (!response.ok) {
         throw new Error('Failed to fetch courses')
       }

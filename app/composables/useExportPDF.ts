@@ -3,13 +3,15 @@ import { jsPDF } from 'jspdf'
 // Global single-flight guard to prevent concurrent exports
 let exportInProgress = false
 
-export const useExportPDF = () => {
+export const useExportPDF = (
+  dataPath: string = '/data/theorie-courses.json'
+) => {
   const exportAllModulesToPDF = async () => {
     if (exportInProgress) return
     exportInProgress = true
     try {
       // Charger les données directement depuis le fichier JSON
-      const response = await fetch('/data/theorie-courses.json')
+      const response = await fetch(dataPath)
       if (!response.ok) {
         throw new Error('Impossible de charger les données des cours')
       }
@@ -586,7 +588,7 @@ export const useExportPDF = () => {
       exportInProgress = true
       try {
         // Charger les données directement depuis le fichier JSON
-        const response = await fetch('/data/theorie-courses.json')
+        const response = await fetch(dataPath)
         if (!response.ok) {
           throw new Error('Impossible de charger les données des cours')
         }

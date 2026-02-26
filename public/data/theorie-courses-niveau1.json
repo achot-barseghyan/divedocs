@@ -1,0 +1,286 @@
+[
+  {
+    "id": 1,
+    "title": "Découvrir la Plongée N1",
+    "description": "Comprendre l'objectif du niveau 1, le rôle du moniteur et les règles de base pour plonger en sécurité.",
+    "duration": "30 min",
+    "icon": "material-symbols:scuba-diving",
+    "sections": [
+      {
+        "heading": "Objectif du niveau 1",
+        "content": "Le niveau 1 permet de découvrir la plongée en étant encadré. L'objectif principal est de rester en sécurité, de respecter les consignes et de profiter de l'exploration sous-marine."
+      },
+      {
+        "heading": "Ce que vous devez retenir",
+        "list": [
+          "Toujours plonger avec un encadrant",
+          "Respecter la profondeur et le temps donnés",
+          "Rester calme et respirer normalement",
+          "Signaler immédiatement tout inconfort"
+        ]
+      }
+    ],
+    "keyPoints": [
+      "Niveau 1 = plongée encadrée",
+      "Sécurité avant performance",
+      "Respect strict des consignes",
+      "Communication permanente avec le moniteur"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Le Matériel Essentiel",
+    "description": "Identifier les éléments de l'équipement et comprendre leur rôle avant la mise à l'eau.",
+    "duration": "35 min",
+    "icon": "material-symbols:inventory-2-outline",
+    "sections": [
+      {
+        "heading": "Équipement de base",
+        "list": [
+          "Masque, palmes, tuba",
+          "Combinaison adaptée à la température",
+          "Bloc, détendeur, manomètre",
+          "Gilet stabilisateur",
+          "Ceinture ou poches de lest"
+        ]
+      },
+      {
+        "heading": "Vérifications avant départ",
+        "content": "Avant chaque plongée, vérifier l'ouverture du bloc, le bon fonctionnement du détendeur, la fixation du matériel et la pression disponible au manomètre."
+      }
+    ],
+    "keyPoints": [
+      "Connaître son matériel",
+      "Contrôler son équipement avant immersion",
+      "Ne pas entrer à l'eau en cas de doute"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Respiration et Pression",
+    "description": "Comprendre pourquoi la respiration doit rester continue et comment la pression évolue en profondeur.",
+    "duration": "40 min",
+    "icon": "material-symbols:air",
+    "sections": [
+      {
+        "heading": "Règle d'or",
+        "emphasis": "Ne jamais bloquer sa respiration, ni à la descente, ni à la remontée."
+      },
+      {
+        "heading": "Effet de la profondeur",
+        "content": "Plus on descend, plus la pression augmente. Cette pression agit sur l'air dans le corps et sur la consommation. Il faut donc évoluer lentement et contrôler sa ventilation."
+      },
+      {
+        "heading": "Bonnes habitudes",
+        "list": [
+          "Inspirer et expirer calmement",
+          "Éviter les efforts inutiles",
+          "Alerter en cas d'essoufflement"
+        ]
+      }
+    ],
+    "keyPoints": [
+      "Respirer en continu",
+      "La pression augmente avec la profondeur",
+      "Une respiration calme limite le stress"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Équilibrer les Oreilles et le Masque",
+    "description": "Apprendre à compenser dès le début de la descente pour éviter les douleurs liées à la pression.",
+    "duration": "30 min",
+    "icon": "material-symbols:ear-sound",
+    "sections": [
+      {
+        "heading": "Pourquoi équilibrer ?",
+        "content": "À la descente, la pression extérieure augmente. Sans compensation, les oreilles, les sinus et le masque peuvent devenir douloureux."
+      },
+      {
+        "heading": "Techniques simples",
+        "list": [
+          "Compenser les oreilles tôt et souvent",
+          "Souffler légèrement par le nez dans le masque",
+          "Descendre lentement",
+          "S'arrêter en cas de douleur"
+        ]
+      },
+      {
+        "heading": "Conduite à tenir",
+        "emphasis": "Si la douleur persiste, prévenir le moniteur et interrompre la descente."
+      }
+    ],
+    "keyPoints": [
+      "Compenser avant d'avoir mal",
+      "Ne jamais forcer",
+      "La douleur est un signal d'alerte"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Flottabilité et Lestage",
+    "description": "Gérer son équilibre dans l'eau avec la respiration, le gilet et un lestage adapté.",
+    "duration": "45 min",
+    "icon": "material-symbols:balance",
+    "sections": [
+      {
+        "heading": "Principe",
+        "content": "Le plongeur doit rester stable : ni monter sans contrôle, ni couler. Cette maîtrise se fait avec le poumon-ballast, le gilet et le lestage."
+      },
+      {
+        "heading": "Réglages à connaître",
+        "list": [
+          "Lestage adapté à la combinaison",
+          "Gonflage/dégonflage progressif du gilet",
+          "Petites corrections avec la respiration"
+        ]
+      }
+    ],
+    "keyPoints": [
+      "Stabilité = confort + sécurité",
+      "Le lestage ne doit pas être excessif",
+      "Respiration et gilet se complètent"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Communication Sous l'Eau",
+    "description": "Utiliser les signes de base pour communiquer efficacement avec son binôme et son encadrant.",
+    "duration": "25 min",
+    "icon": "material-symbols:sign-language",
+    "sections": [
+      {
+        "heading": "Signes indispensables",
+        "list": [
+          "OK",
+          "Ça ne va pas",
+          "Monter",
+          "Descendre",
+          "Plus d'air / réserve"
+        ]
+      },
+      {
+        "heading": "Règles de communication",
+        "content": "Faire des signes clairs, attendre une réponse et rester visuellement proche de son binôme et du guide."
+      }
+    ],
+    "keyPoints": [
+      "Un signe doit être vu et confirmé",
+      "Ne pas s'isoler",
+      "Informer dès qu'un problème apparaît"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Conduite de la Plongée",
+    "description": "Suivre les étapes de la plongée : mise à l'eau, descente, exploration et retour en surface.",
+    "duration": "40 min",
+    "icon": "material-symbols:route",
+    "sections": [
+      {
+        "heading": "Avant immersion",
+        "list": [
+          "Écouter le briefing",
+          "Vérifier son matériel",
+          "Connaître son binôme",
+          "Identifier le signal de mise à l'eau"
+        ]
+      },
+      {
+        "heading": "Pendant l'exploration",
+        "list": [
+          "Rester groupé",
+          "Contrôler sa profondeur",
+          "Surveiller l'air régulièrement",
+          "Respecter le rythme du guide"
+        ]
+      }
+    ],
+    "keyPoints": [
+      "Le briefing guide toute la plongée",
+      "Discipline de palanquée obligatoire",
+      "Anticiper plutôt que subir"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Remontée et Sécurité Surface",
+    "description": "Effectuer une remontée lente, maîtrisée et conforme aux règles de sécurité du niveau 1.",
+    "duration": "35 min",
+    "icon": "material-symbols:trending-up",
+    "sections": [
+      {
+        "heading": "Règles de remontée",
+        "list": [
+          "Remonter lentement",
+          "Expirer en continu",
+          "Rester sous le contrôle du moniteur",
+          "Observer la surface avant de sortir"
+        ]
+      },
+      {
+        "heading": "À l'arrivée en surface",
+        "content": "Faire le signe OK, regrouper la palanquée et attendre les consignes pour rejoindre le bateau ou le bord."
+      }
+    ],
+    "keyPoints": [
+      "Remontée contrôlée et calme",
+      "Jamais de blocage respiratoire",
+      "Validation OK en surface"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Prévenir les Incidents Courants",
+    "description": "Reconnaître les situations fréquentes (froid, stress, essoufflement) et réagir rapidement.",
+    "duration": "45 min",
+    "icon": "material-symbols:health-and-safety-outline",
+    "sections": [
+      {
+        "heading": "Signes à surveiller",
+        "list": [
+          "Respiration trop rapide",
+          "Fatigue inhabituelle",
+          "Frissons importants",
+          "Panique ou inconfort"
+        ]
+      },
+      {
+        "heading": "Conduite à tenir",
+        "content": "Stopper l'effort, avertir immédiatement le moniteur, se concentrer sur une expiration longue et suivre les consignes."
+      }
+    ],
+    "keyPoints": [
+      "Détecter tôt les signaux",
+      "Alerter sans attendre",
+      "Le calme améliore la sécurité"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Réglementation de Base N1",
+    "description": "Connaître les limites et responsabilités d'un plongeur niveau 1 en milieu encadré.",
+    "duration": "30 min",
+    "icon": "material-symbols:gavel",
+    "sections": [
+      {
+        "heading": "Cadre général",
+        "content": "Le plongeur niveau 1 évolue en zone encadrée, avec un guide qualifié, dans des limites de profondeur définies par la réglementation et la structure."
+      },
+      {
+        "heading": "Règles essentielles",
+        "list": [
+          "Ne jamais plonger seul",
+          "Respecter les limites annoncées",
+          "Ne pas remonter d'objet",
+          "Suivre les consignes du directeur de plongée"
+        ]
+      }
+    ],
+    "keyPoints": [
+      "N1 = autonomie limitée et encadrée",
+      "Le respect des règles est obligatoire",
+      "La sécurité collective prime"
+    ]
+  }
+]
