@@ -12,7 +12,41 @@
     </div>
 
     <div class="mx-auto mb-12 max-w-7xl px-6">
-      <div class="flex items-center justify-between gap-4">
+      <div class="mb-8 flex justify-center">
+        <div
+          class="inline-flex rounded-xl border border-teal-500/30 bg-slate-800/50 p-1"
+        >
+          <button
+            type="button"
+            @click="activeTab = 'videos'"
+            :class="[
+              'rounded-lg px-6 py-2 text-sm font-medium transition-all',
+              activeTab === 'videos'
+                ? 'bg-teal-500/20 text-teal-300'
+                : 'text-gray-300 hover:text-white',
+            ]"
+          >
+            Vidéos
+          </button>
+          <button
+            type="button"
+            @click="activeTab = 'modules'"
+            :class="[
+              'rounded-lg px-6 py-2 text-sm font-medium transition-all',
+              activeTab === 'modules'
+                ? 'bg-teal-500/20 text-teal-300'
+                : 'text-gray-300 hover:text-white',
+            ]"
+          >
+            Modules
+          </button>
+        </div>
+      </div>
+
+      <div
+        v-if="activeTab === 'modules'"
+        class="flex items-center justify-between gap-4"
+      >
         <div class="relative mx-auto max-w-2xl flex-1">
           <IconField>
             <InputIcon class="pi pi-search" />
@@ -34,66 +68,103 @@
       </div>
     </div>
 
-    <div
-      v-if="filteredCourses.length === 0 && !loading"
-      class="relative z-10 mx-auto max-w-7xl px-6 pb-20"
-    >
-      <h2 class="text-center text-xl text-gray-300">
-        Aucun résultat ne correspond actuellement à cette recherche.
-      </h2>
-    </div>
-
-    <div class="mx-auto max-w-7xl px-6 pb-20">
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div v-if="activeTab === 'videos'" class="mx-auto max-w-7xl px-6 pb-20">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div
-          v-for="course in filteredCourses"
-          :key="course.id"
-          @click="openModuleDialog(course.id)"
-          class="group relative cursor-pointer rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-800/60"
+          class="overflow-hidden rounded-2xl border border-teal-500/20 bg-slate-800/40 p-3 backdrop-blur-sm"
         >
-          <div class="mb-4">
-            <div
-              class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 transition-colors group-hover:bg-teal-500/20"
-            >
-              <Icon
-                v-if="course.icon"
-                :name="course.icon"
-                size="1.2rem"
-                style="color: white"
-              />
-              <Icon
-                v-else
-                name="icon-park-outline:diving"
-                size="1.2rem"
-                style="color: white"
-              />
-            </div>
+          <div class="aspect-video overflow-hidden rounded-xl">
+            <iframe
+              class="h-full w-full"
+              src="https://www.youtube.com/embed/OU_q2xnfvCA"
+              title="Vidéo théorie 1"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
           </div>
-
-          <h3
-            class="mb-3 text-xl font-semibold text-teal-400 transition-colors group-hover:text-teal-300"
-          >
-            {{ course.title }}
+          <h3 class="mt-3 text-base font-semibold text-teal-300">
+            Cours n°1 : la réglementation N1 et le matériel
           </h3>
+        </div>
 
-          <p class="mb-4 line-clamp-3 text-sm text-gray-400">
-            {{ course.description }}
-          </p>
-
-          <!-- <div class="flex items-center gap-2 text-sm text-white">
-            <Icon
-              name="material-symbols:nest-clock-farsight-analog-outline"
-              size="1.2rem"
-            />
-            <span>{{ course.duration }}</span>
-          </div> -->
-
-          <div
-            class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/0 to-blue-500/0 transition-all duration-300 group-hover:from-teal-500/5 group-hover:to-blue-500/5"
-          ></div>
+        <div
+          class="overflow-hidden rounded-2xl border border-teal-500/20 bg-slate-800/40 p-3 backdrop-blur-sm"
+        >
+          <div class="aspect-video overflow-hidden rounded-xl">
+            <iframe
+              class="h-full w-full"
+              src="https://www.youtube.com/embed/y71zsFE3mww"
+              title="Vidéo théorie 2"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <h3 class="mt-3 text-base font-semibold text-teal-300">
+            Cours n°2 : la flottabilité
+          </h3>
         </div>
       </div>
     </div>
+
+    <template v-else>
+      <div
+        v-if="filteredCourses.length === 0 && !loading"
+        class="relative z-10 mx-auto max-w-7xl px-6 pb-20"
+      >
+        <h2 class="text-center text-xl text-gray-300">
+          Aucun résultat ne correspond actuellement à cette recherche.
+        </h2>
+      </div>
+
+      <div class="mx-auto max-w-7xl px-6 pb-20">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            v-for="course in filteredCourses"
+            :key="course.id"
+            @click="openModuleDialog(course.id)"
+            class="group relative cursor-pointer rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-800/60"
+          >
+            <div class="mb-4">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 transition-colors group-hover:bg-teal-500/20"
+              >
+                <Icon
+                  v-if="course.icon"
+                  :name="course.icon"
+                  size="1.2rem"
+                  style="color: white"
+                />
+                <Icon
+                  v-else
+                  name="icon-park-outline:diving"
+                  size="1.2rem"
+                  style="color: white"
+                />
+              </div>
+            </div>
+
+            <h3
+              class="mb-3 text-xl font-semibold text-teal-400 transition-colors group-hover:text-teal-300"
+            >
+              {{ course.title }}
+            </h3>
+
+            <p class="mb-4 line-clamp-3 text-sm text-gray-400">
+              {{ course.description }}
+            </p>
+
+            <div
+              class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/0 to-blue-500/0 transition-all duration-300 group-hover:from-teal-500/5 group-hover:to-blue-500/5"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </template>
+
     <ModalsTheorieModuleDialog ref="ModuleDialog" />
   </div>
 </template>
@@ -105,12 +176,12 @@ import { useExportPDF } from '~/composables/useExportPDF'
 
 const ModuleDialog = ref()
 
-const { courses, loading, error, fetchCourses, searchCourses, totalCourses } =
-  useTheorieCourses()
+const { loading, fetchCourses, searchCourses } = useTheorieCourses()
 
 const { exportAllModulesToPDF } = useExportPDF()
 
 const isExporting = ref(false)
+const activeTab = ref<'videos' | 'modules'>('videos')
 
 onMounted(async () => {
   await fetchCourses()
