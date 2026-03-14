@@ -20,74 +20,70 @@
     >
       <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         <!-- Mode Entraînement -->
-        <Card
+        <div
           @click="selectMode('training')"
           :class="[
-            'group cursor-pointer border-2 bg-navy-900/90 transition-all duration-300',
+            'group cursor-pointer rounded-2xl border-2 bg-navy-900/90 p-6 transition-all duration-300',
             selectedMode === 'training'
               ? 'border-teal-400 bg-teal-500/30'
               : 'border-teal-500/20 hover:border-teal-400/50 hover:bg-slate-800/60',
           ]"
         >
-          <template #content>
-            <div class="space-y-4 text-center">
-              <div
-                class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-teal-500/20"
-              >
-                <Icon name="mdi:school" size="3rem" class="text-teal-400" />
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold text-teal-400">
-                  Mode Entraînement
-                </h3>
-                <p class="mt-2 text-gray-300">
-                  Apprends à ton rythme, sans pression. Pas de limite de temps.
-                </p>
-              </div>
-              <div
-                class="flex items-center justify-center gap-2 text-sm text-gray-400"
-              >
-                <Icon name="mdi:infinity" />
-                <span>Temps illimité</span>
-              </div>
+          <div class="space-y-4 text-center">
+            <div
+              class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-teal-500/20"
+            >
+              <Icon name="mdi:school" size="3rem" class="text-teal-400" />
             </div>
-          </template>
-        </Card>
+            <div>
+              <h3 class="text-2xl font-bold text-teal-400">
+                Mode Entraînement
+              </h3>
+              <p class="mt-2 text-gray-300">
+                Apprends à ton rythme, sans pression. Pas de limite de temps.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-center gap-2 text-sm text-gray-400"
+            >
+              <Icon name="mdi:infinity" />
+              <span>Temps illimité</span>
+            </div>
+          </div>
+        </div>
 
         <!-- Mode Évaluation -->
-        <Card
+        <div
           @click="selectMode('evaluation')"
           :class="[
-            'group cursor-pointer border-2 bg-navy-900/90 transition-all duration-300',
+            'group cursor-pointer rounded-2xl border-2 bg-navy-900/90 p-6 transition-all duration-300',
             selectedMode === 'evaluation'
               ? 'border-yellow-400 bg-yellow-500/30'
               : 'border-yellow-500/20 hover:border-yellow-400/50 hover:bg-slate-800/60',
           ]"
         >
-          <template #content>
-            <div class="space-y-4 text-center">
-              <div
-                class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-yellow-500/20"
-              >
-                <Icon name="mdi:trophy" size="3rem" class="text-yellow-400" />
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold text-yellow-400">
-                  Mode Évaluation
-                </h3>
-                <p class="mt-2 text-gray-300">
-                  Teste tes connaissances avec un chronomètre et un score final.
-                </p>
-              </div>
-              <div
-                class="flex items-center justify-center gap-2 text-sm text-gray-400"
-              >
-                <Icon name="mdi:timer" />
-                <span>Temps limité</span>
-              </div>
+          <div class="space-y-4 text-center">
+            <div
+              class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-yellow-500/20"
+            >
+              <Icon name="mdi:trophy" size="3rem" class="text-yellow-400" />
             </div>
-          </template>
-        </Card>
+            <div>
+              <h3 class="text-2xl font-bold text-yellow-400">
+                Mode Évaluation
+              </h3>
+              <p class="mt-2 text-gray-300">
+                Teste tes connaissances avec un chronomètre et un score final.
+              </p>
+            </div>
+            <div
+              class="flex items-center justify-center gap-2 text-sm text-gray-400"
+            >
+              <Icon name="mdi:timer" />
+              <span>Temps limité</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -154,17 +150,17 @@
       v-if="isPlaying && selectedScenario"
       class="mx-auto h-[calc(100vh-8rem)] max-w-7xl px-6 pb-12"
     >
-      <Card class="mb-8 border border-teal-500/30 bg-slate-800/40 p-0">
-        <template #content>
-          <SimulatorEngine
-            :scenario="selectedScenario as any"
-            :mode="selectedMode!"
-            @complete="handleComplete"
-            @retry="retryScenario"
-            @back-to-menu="backToMenu"
-          />
-        </template>
-      </Card>
+      <div
+        class="mb-8 rounded-2xl border border-teal-500/30 bg-slate-800/40 p-6"
+      >
+        <SimulatorEngine
+          :scenario="selectedScenario as any"
+          :mode="selectedMode!"
+          @complete="handleComplete"
+          @retry="retryScenario"
+          @back-to-menu="backToMenu"
+        />
+      </div>
     </div>
 
     <!-- Toast pour les notifications -->

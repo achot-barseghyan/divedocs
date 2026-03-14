@@ -279,28 +279,26 @@
         </AccordionTab>
       </Accordion>
 
-      <!-- Footer avec Card -->
-      <Card
-        class="mt-6 border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50"
+      <!-- Footer custom card -->
+      <div
+        class="mt-6 rounded-xl border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 p-6"
       >
-        <template #content>
-          <div class="flex items-start gap-3">
-            <i class="pi pi-lightbulb text-2xl text-yellow-600"></i>
-            <div>
-              <h4 class="mb-2 font-semibold text-gray-900">
-                Deviendra un automatisme !
-              </h4>
-              <p class="text-sm text-gray-700">
-                Ces vérifications paraissent longues, mais après quelques
-                plongées, vous les effectuerez
-                <strong>instinctivement en quelques minutes</strong>
-                . Mieux vaut multiplier les contrôles pour que la plongée reste
-                toujours un plaisir en toute sécurité.
-              </p>
-            </div>
+        <div class="flex items-start gap-3">
+          <i class="pi pi-lightbulb text-2xl text-yellow-600"></i>
+          <div>
+            <h4 class="mb-2 font-semibold text-gray-900">
+              Deviendra un automatisme !
+            </h4>
+            <p class="text-sm text-gray-700">
+              Ces vérifications paraissent longues, mais après quelques
+              plongées, vous les effectuerez
+              <strong>instinctivement en quelques minutes</strong>
+              . Mieux vaut multiplier les contrôles pour que la plongée reste
+              toujours un plaisir en toute sécurité.
+            </p>
           </div>
-        </template>
-      </Card>
+        </div>
+      </div>
     </div>
   </Dialog>
 </template>

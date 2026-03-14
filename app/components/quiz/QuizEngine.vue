@@ -168,64 +168,56 @@ const getOptionIcon = (option: any) => {
       </div>
 
       <!-- Question -->
-      <Card
-        class="border-2 border-blue-500/30 !bg-white bg-navy-800/90 text-white dark:!bg-navy-800/90"
+      <div
+        class="rounded-xl border-2 border-blue-500/30 bg-navy-800/90 text-white dark:!bg-navy-800/90"
       >
-        <template #header>
-          <div class="flex items-start gap-3 p-6">
-            <div class="text-3xl">❓</div>
-            <div class="flex-1">
-              <Tag
-                :value="currentQuestion.category"
-                severity="secondary"
-                class="mb-3"
-              />
-              <h3 class="text-xl font-bold text-white">
-                {{ currentQuestion.question }}
-              </h3>
-            </div>
+        <div class="flex items-start gap-3 p-6">
+          <div class="text-3xl">❓</div>
+          <div class="flex-1">
+            <Tag
+              :value="currentQuestion.category"
+              severity="secondary"
+              class="mb-3"
+            />
+            <h3 class="text-xl font-bold text-white">
+              {{ currentQuestion.question }}
+            </h3>
           </div>
-        </template>
-
-        <template #content>
-          <div class="space-y-3">
-            <button
-              v-for="option in currentQuestion.options"
-              :key="option.id"
-              @click="selectAnswer(option.id)"
-              :disabled="isAnswered"
-              :class="[
-                'w-full rounded-lg border-2 p-4 text-left transition-all duration-200',
-                'flex items-center gap-3',
-                getOptionClass(option),
-              ]"
+        </div>
+        <div class="space-y-3 px-6 pb-6">
+          <button
+            v-for="option in currentQuestion.options"
+            :key="option.id"
+            @click="selectAnswer(option.id)"
+            :disabled="isAnswered"
+            :class="[
+              'w-full rounded-lg border-[1px] p-4 text-left transition-all duration-200',
+              'flex items-center gap-3',
+              getOptionClass(option),
+            ]"
+          >
+            <span
+              class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2"
+              :class="{
+                'border-blue-500': selectedAnswer === option.id && !isAnswered,
+                'border-green-500': isAnswered && option.correct,
+                'border-red-500':
+                  isAnswered && selectedAnswer === option.id && !option.correct,
+                'border-gray-300 text-white dark:border-gray-600':
+                  !isAnswered && selectedAnswer !== option.id,
+              }"
             >
-              <span
-                class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border-2"
-                :class="{
-                  'border-blue-500':
-                    selectedAnswer === option.id && !isAnswered,
-                  'border-green-500': isAnswered && option.correct,
-                  'border-red-500':
-                    isAnswered &&
-                    selectedAnswer === option.id &&
-                    !option.correct,
-                  'border-gray-300 text-white dark:border-gray-600':
-                    !isAnswered && selectedAnswer !== option.id,
-                }"
-              >
-                <span v-if="isAnswered" class="text-lg">
-                  {{ getOptionIcon(option) }}
-                </span>
-                <span v-else class="font-bold text-white">
-                  {{ option.id.toUpperCase() }}
-                </span>
+              <span v-if="isAnswered" class="text-lg">
+                {{ getOptionIcon(option) }}
               </span>
-              <span class="flex-1 font-medium text-white">
-                {{ option.text }}
+              <span v-else class="font-bold text-white">
+                {{ option.id.toUpperCase() }}
               </span>
-            </button>
-          </div>
+            </span>
+            <span class="flex-1 font-medium text-white">
+              {{ option.text }}
+            </span>
+          </button>
 
           <!-- Explication (visible après réponse) -->
           <div
@@ -244,118 +236,95 @@ const getOptionIcon = (option: any) => {
               </div>
             </div>
           </div>
-        </template>
-
-        <template #footer>
-          <div class="flex items-center justify-between">
-            <Button
-              label="Quitter"
-              severity="secondary"
-              text
-              @click="emit('exit')"
-            />
-            <Button
-              v-if="isAnswered"
-              :label="
-                isLastQuestion ? 'Voir les résultats' : 'Question suivante'
-              "
-              @click="nextQuestion"
-              icon="pi pi-arrow-right"
-              iconPos="right"
-            />
-          </div>
-        </template>
-      </Card>
+        </div>
+        <div class="flex items-center justify-between px-6 pb-6">
+          <Button
+            class="!text-white"
+            label="Quitter"
+            severity="danger"
+            @click="emit('exit')"
+          />
+          <Button
+            v-if="isAnswered"
+            :label="isLastQuestion ? 'Voir les résultats' : 'Question suivante'"
+            @click="nextQuestion"
+            icon="pi pi-arrow-right"
+            iconPos="right"
+          />
+        </div>
+      </div>
     </div>
 
     <!-- Vue Résultats -->
     <div v-else class="space-y-6">
-      <Card class="text-center">
-        <template #header>
-          <div class="p-8">
-            <div class="mb-4 text-8xl">{{ performanceMessage.icon }}</div>
-            <h2
-              class="mb-2 text-3xl font-bold"
-              :class="performanceMessage.color"
-            >
-              {{ performanceMessage.text }}
-            </h2>
-          </div>
-        </template>
-
-        <template #content>
-          <div class="space-y-6">
-            <!-- Score -->
-            <div class="grid grid-cols-3 gap-4">
-              <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-                <div class="text-3xl font-bold text-blue-500">{{ score }}</div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">
-                  Bonnes réponses
-                </div>
-              </div>
-              <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-                <div class="text-3xl font-bold text-gray-900 dark:text-white">
-                  {{ quizData.quiz.length }}
-                </div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">
-                  Questions
-                </div>
-              </div>
-              <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
-                <div
-                  class="text-3xl font-bold"
-                  :class="performanceMessage.color"
-                >
-                  {{ Math.round((score / quizData.quiz.length) * 100) }}%
-                </div>
-                <div class="text-sm text-gray-600 dark:text-gray-400">
-                  Score
-                </div>
+      <div class="rounded-xl bg-gray-900/90 p-8 text-center">
+        <div class="mb-4 text-8xl">{{ performanceMessage.icon }}</div>
+        <h2 class="mb-2 text-3xl font-bold" :class="performanceMessage.color">
+          {{ performanceMessage.text }}
+        </h2>
+        <div class="mt-6 space-y-6">
+          <!-- Score -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+              <div class="text-3xl font-bold text-blue-500">{{ score }}</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                Bonnes réponses
               </div>
             </div>
+            <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+              <div class="text-3xl font-bold text-gray-900 dark:text-white">
+                {{ quizData.quiz.length }}
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">
+                Questions
+              </div>
+            </div>
+            <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
+              <div class="text-3xl font-bold" :class="performanceMessage.color">
+                {{ Math.round((score / quizData.quiz.length) * 100) }}%
+              </div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">Score</div>
+            </div>
+          </div>
 
-            <!-- Détail des réponses -->
-            <div class="border-t pt-6">
-              <h3 class="mb-4 text-left text-lg font-bold">
-                Détail de vos réponses
-              </h3>
-              <div class="space-y-2">
-                <div
-                  v-for="(answer, index) in answers"
-                  :key="answer.questionId"
-                  class="flex items-center justify-between rounded-lg p-3"
-                  :class="
-                    answer.correct
-                      ? 'bg-green-50 dark:bg-green-900/20'
-                      : 'bg-red-50 dark:bg-red-900/20'
-                  "
-                >
-                  <span class="font-medium">Question {{ index + 1 }}</span>
-                  <span class="text-2xl">{{ answer.correct ? '✓' : '✗' }}</span>
-                </div>
+          <!-- Détail des réponses -->
+          <div class="border-t pt-6">
+            <h3 class="mb-4 text-left text-lg font-bold">
+              Détail de vos réponses
+            </h3>
+            <div class="space-y-2">
+              <div
+                v-for="(answer, index) in answers"
+                :key="answer.questionId"
+                class="flex items-center justify-between rounded-lg p-3"
+                :class="
+                  answer.correct
+                    ? 'bg-green-50 dark:bg-green-900/20'
+                    : 'bg-red-50 dark:bg-red-900/20'
+                "
+              >
+                <span class="font-medium">Question {{ index + 1 }}</span>
+                <span class="text-2xl">{{ answer.correct ? '✓' : '✗' }}</span>
               </div>
             </div>
           </div>
-        </template>
-
-        <template #footer>
-          <div class="flex gap-3">
-            <Button
-              label="Recommencer"
-              severity="secondary"
-              icon="pi pi-refresh"
-              @click="restart"
-              class="flex-1"
-            />
-            <Button
-              label="Terminer"
-              @click="emit('exit')"
-              icon="pi pi-check"
-              class="flex-1"
-            />
-          </div>
-        </template>
-      </Card>
+        </div>
+        <div class="mt-8 flex gap-3">
+          <Button
+            label="Recommencer"
+            severity="secondary"
+            icon="pi pi-refresh"
+            @click="restart"
+            class="flex-1"
+          />
+          <Button
+            label="Terminer"
+            @click="emit('exit')"
+            icon="pi pi-check"
+            class="flex-1"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>

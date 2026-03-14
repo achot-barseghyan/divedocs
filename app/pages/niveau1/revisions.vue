@@ -134,59 +134,53 @@ const modes = [
       <!-- Sélection du mode -->
       <div v-else-if="!isPlaying" class="space-y-6">
         <!-- Informations du sujet -->
-        <Card class="border-2 border-blue-500/30 bg-gray-900/70">
-          <template #content>
-            <div class="flex items-start gap-4">
-              <div class="text-5xl">⚓</div>
-              <div class="flex-1">
-                <h2 class="mb-2 text-2xl font-bold text-white">
-                  {{ quizData.title }}
-                </h2>
-                <p class="mb-4 text-gray-200">
-                  {{ quizData.description }}
-                </p>
-                <div class="flex gap-4 text-sm">
-                  <span class="flex items-center gap-2">
-                    <span class="text-2xl">📝</span>
-                    <span class="font-medium text-white">
-                      {{ quizData.quiz.length }} questions
-                    </span>
+        <div class="rounded-2xl border-2 border-blue-500/30 bg-gray-900/70 p-6">
+          <div class="flex items-start gap-4">
+            <div class="text-5xl">⚓</div>
+            <div class="flex-1">
+              <h2 class="mb-2 text-2xl font-bold text-white">
+                {{ quizData.title }}
+              </h2>
+              <p class="mb-4 text-gray-200">
+                {{ quizData.description }}
+              </p>
+              <div class="flex gap-4 text-sm">
+                <span class="flex items-center gap-2">
+                  <span class="text-2xl">📝</span>
+                  <span class="font-medium text-white">
+                    {{ quizData.quiz.length }} questions
                   </span>
-                  <span class="flex items-center gap-2">
-                    <span class="text-2xl">🎴</span>
-                    <span class="font-medium text-white">
-                      {{ quizData.flashcards.length }} flashcards
-                    </span>
+                </span>
+                <span class="flex items-center gap-2">
+                  <span class="text-2xl">🎴</span>
+                  <span class="font-medium text-white">
+                    {{ quizData.flashcards.length }} flashcards
                   </span>
-                </div>
+                </span>
               </div>
             </div>
-          </template>
-        </Card>
+          </div>
+        </div>
 
         <!-- Sélection du mode -->
         <div class="grid gap-6 md:grid-cols-2">
-          <Card
+          <div
             v-for="mode in modes"
             :key="mode.id"
-            class="cursor-pointer bg-navy-800/70 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            class="cursor-pointer overflow-hidden rounded-2xl bg-navy-800/70 transition-all duration-300 hover:scale-105 hover:shadow-xl"
             @click="selectMode(mode.id as 'quiz' | 'flashcard')"
           >
-            <template #header>
-              <div
-                class="p-6"
-                :class="`bg-gradient-to-r ${mode.color} rounded-md text-white`"
-              >
-                <div class="mb-3 text-6xl">{{ mode.icon }}</div>
-                <h3 class="text-2xl font-bold">{{ mode.title }}</h3>
-              </div>
-            </template>
-
-            <template #content>
+            <div
+              class="p-6"
+              :class="`bg-gradient-to-r ${mode.color} rounded-md text-white`"
+            >
+              <div class="mb-3 text-6xl">{{ mode.icon }}</div>
+              <h3 class="text-2xl font-bold">{{ mode.title }}</h3>
+            </div>
+            <div class="p-6">
               <p class="mb-4 text-gray-200">
                 {{ mode.description }}
               </p>
-
               <div class="flex items-center justify-between">
                 <span class="text-sm text-gray-300">
                   {{
@@ -204,22 +198,21 @@ const modes = [
                   "
                 />
               </div>
-            </template>
-          </Card>
+            </div>
+          </div>
         </div>
 
         <!-- Statistiques -->
-        <Card class="mt-8 border-2 border-blue-500/30 bg-gray-900/90">
-          <template #header>
-            <div class="bg-gray-800/50 p-4">
-              <h3 class="flex items-center gap-2 text-xl font-bold text-white">
-                <span>📊</span>
-                <span>Vos statistiques</span>
-              </h3>
-            </div>
-          </template>
-
-          <template #content>
+        <div
+          class="mt-8 overflow-hidden rounded-2xl border-2 border-blue-500/30 bg-gray-900/90"
+        >
+          <div class="bg-gray-800/50 p-4">
+            <h3 class="flex items-center gap-2 text-xl font-bold text-white">
+              <span>📊</span>
+              <span>Vos statistiques</span>
+            </h3>
+          </div>
+          <div class="p-6">
             <div class="grid gap-4 md:grid-cols-4">
               <div class="rounded-lg bg-blue-900/30 p-4 text-center">
                 <div class="text-3xl font-bold text-blue-400">
@@ -255,8 +248,8 @@ const modes = [
                 <div class="mt-1 text-sm text-gray-200">Moyenne</div>
               </div>
             </div>
-          </template>
-        </Card>
+          </div>
+        </div>
       </div>
 
       <!-- Mode Quiz -->

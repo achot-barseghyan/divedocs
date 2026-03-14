@@ -29,34 +29,32 @@
       <!-- Signs Grid -->
       <div class="mx-auto max-w-6xl">
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Card
+          <div
             v-for="sign in filteredSigns"
             :key="sign.id"
-            class="border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2"
+            class="flex flex-col rounded-xl border border-white/10 bg-navy-900/30 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 dark:bg-navy-800/90"
           >
-            <template #content>
-              <div class="mb-4 overflow-hidden rounded-xl">
-                <img
-                  :src="sign.image"
-                  :alt="sign.name"
-                  class="aspect-square w-full object-cover opacity-95"
-                />
-              </div>
-              <div class="mb-3">
-                <h3 class="mb-2 text-xl font-bold text-white">
-                  {{ sign.name }}
-                </h3>
-                <Tag
-                  :value="getCategoryName(sign.category)"
-                  class="bg-cyan-500/100 text-white"
-                  rounded
-                />
-              </div>
-              <p class="text-sm leading-relaxed text-gray-300">
-                {{ sign.description }}
-              </p>
-            </template>
-          </Card>
+            <div class="mb-4 overflow-hidden rounded-xl">
+              <img
+                :src="sign.image"
+                :alt="sign.name"
+                class="aspect-square w-full object-cover opacity-95"
+              />
+            </div>
+            <div class="mb-3">
+              <h3 class="mb-2 text-xl font-bold text-white">
+                {{ sign.name }}
+              </h3>
+              <Tag
+                :value="getCategoryName(sign.category)"
+                class="bg-cyan-500/100 text-white"
+                rounded
+              />
+            </div>
+            <p class="text-sm leading-relaxed text-gray-300 dark:text-gray-300">
+              {{ sign.description }}
+            </p>
+          </div>
         </div>
       </div>
 

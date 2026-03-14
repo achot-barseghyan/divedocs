@@ -188,69 +188,59 @@ onUnmounted(() => {
             }"
           >
             <!-- Face avant (Question) -->
-            <Card
-              class="backface-hidden absolute h-full w-full border-2 border-blue-500/30"
+            <div
+              class="backface-hidden absolute flex h-full w-full flex-col rounded-xl border-2 border-blue-500/30 bg-navy-900/80"
             >
-              <template #header>
-                <div class="flex items-center gap-3 bg-blue-900/80 p-6">
-                  <div class="text-3xl">❓</div>
-                  <div class="flex-1">
-                    <Tag
-                      :value="currentCard.category"
-                      severity="info"
-                      class="mb-2"
-                    />
-                    <div class="text-sm text-gray-200">
-                      Cliquez pour révéler la réponse
-                    </div>
+              <div class="flex items-center gap-3 p-6">
+                <div class="text-3xl">❓</div>
+                <div class="flex-1">
+                  <Tag
+                    :value="currentCard.category"
+                    severity="info"
+                    class="mb-2"
+                  />
+                  <div class="text-sm text-gray-200">
+                    Cliquez pour révéler la réponse
                   </div>
                 </div>
-              </template>
-
-              <template #content>
-                <div
-                  class="flex h-48 items-center justify-center overflow-y-auto"
+              </div>
+              <div
+                class="flex h-48 flex-1 items-center justify-center overflow-y-auto"
+              >
+                <p
+                  class="whitespace-pre-line px-8 text-center text-xl font-bold text-white"
                 >
-                  <p
-                    class="whitespace-pre-line px-8 text-center text-xl font-bold text-white"
-                  >
-                    {{ currentCard.question }}
-                  </p>
-                </div>
-              </template>
-            </Card>
+                  {{ currentCard.question }}
+                </p>
+              </div>
+            </div>
 
             <!-- Face arrière (Réponse) -->
-            <Card
-              class="backface-hidden absolute h-full w-full border-2 border-green-500/30"
+            <div
+              class="backface-hidden absolute flex h-full w-full flex-col rounded-xl border-2 border-green-500/30 bg-green-900/80"
               style="transform: rotateY(180deg)"
             >
-              <template #header>
-                <div class="flex items-center gap-3 bg-green-900/80 p-6">
-                  <div class="text-3xl">💡</div>
-                  <div class="flex-1">
-                    <Tag
-                      :value="currentCard.category"
-                      severity="success"
-                      class="mb-2"
-                    />
-                    <div class="text-sm text-gray-200">Réponse</div>
-                  </div>
+              <div class="flex items-center gap-3 p-6">
+                <div class="text-3xl">💡</div>
+                <div class="flex-1">
+                  <Tag
+                    :value="currentCard.category"
+                    severity="success"
+                    class="mb-2"
+                  />
+                  <div class="text-sm text-gray-200">Réponse</div>
                 </div>
-              </template>
-
-              <template #content>
-                <div
-                  class="flex h-96 items-start justify-center overflow-y-auto p-4"
+              </div>
+              <div
+                class="flex h-96 flex-1 items-start justify-center overflow-y-auto p-4"
+              >
+                <p
+                  class="whitespace-pre-line px-8 text-left text-base leading-relaxed text-white"
                 >
-                  <p
-                    class="whitespace-pre-line px-8 text-left text-base leading-relaxed text-white"
-                  >
-                    {{ currentCard.answer }}
-                  </p>
-                </div>
-              </template>
-            </Card>
+                  {{ currentCard.answer }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -330,107 +320,90 @@ onUnmounted(() => {
 
     <!-- Vue Résultats -->
     <div v-else class="space-y-6">
-      <Card class="text-center">
-        <template #header>
-          <div class="p-8">
-            <div class="mb-4 text-8xl">{{ performanceMessage.icon }}</div>
-            <h2
-              class="mb-2 text-3xl font-bold"
-              :class="performanceMessage.color"
-            >
-              {{ performanceMessage.text }}
-            </h2>
+      <div class="rounded-xl bg-gray-900/90 p-8 text-center">
+        <div class="mb-4 text-8xl">{{ performanceMessage.icon }}</div>
+        <h2 class="mb-2 text-3xl font-bold" :class="performanceMessage.color">
+          {{ performanceMessage.text }}
+        </h2>
+        <div class="mt-6 space-y-6">
+          <!-- Statistiques -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="rounded-lg bg-green-900/50 p-4">
+              <div class="text-3xl font-bold text-green-400">
+                {{ knownCards.length }}
+              </div>
+              <div class="text-sm text-gray-200">Cartes connues</div>
+            </div>
+            <div class="rounded-lg bg-red-900/50 p-4">
+              <div class="text-3xl font-bold text-red-400">
+                {{ unknownCards.length }}
+              </div>
+              <div class="text-sm text-gray-200">À revoir</div>
+            </div>
+            <div class="rounded-lg bg-gray-800/50 p-4">
+              <div class="text-3xl font-bold" :class="performanceMessage.color">
+                {{
+                  Math.round(
+                    (knownCards.length / flashcardData.flashcards.length) * 100
+                  )
+                }}%
+              </div>
+              <div class="text-sm text-gray-200">Réussite</div>
+            </div>
           </div>
-        </template>
 
-        <template #content>
-          <div class="space-y-6">
-            <!-- Statistiques -->
-            <div class="grid grid-cols-3 gap-4">
-              <div class="rounded-lg bg-green-900/50 p-4">
-                <div class="text-3xl font-bold text-green-400">
-                  {{ knownCards.length }}
-                </div>
-                <div class="text-sm text-gray-200">Cartes connues</div>
-              </div>
-              <div class="rounded-lg bg-red-900/50 p-4">
-                <div class="text-3xl font-bold text-red-400">
-                  {{ unknownCards.length }}
-                </div>
-                <div class="text-sm text-gray-200">À revoir</div>
-              </div>
-              <div class="rounded-lg bg-gray-800/50 p-4">
-                <div
-                  class="text-3xl font-bold"
-                  :class="performanceMessage.color"
-                >
+          <!-- Liste des cartes à revoir -->
+          <div v-if="unknownCards.length > 0" class="border-t pt-6">
+            <h3 class="mb-4 text-left text-lg font-bold text-white">
+              Cartes à revoir ({{ unknownCards.length }})
+            </h3>
+            <div class="space-y-2 text-left">
+              <div
+                v-for="cardId in unknownCards"
+                :key="cardId"
+                class="rounded-lg bg-red-900/30 p-3"
+              >
+                <p class="font-medium text-white">
                   {{
-                    Math.round(
-                      (knownCards.length / flashcardData.flashcards.length) *
-                        100
-                    )
-                  }}%
-                </div>
-                <div class="text-sm text-gray-200">Réussite</div>
-              </div>
-            </div>
-
-            <!-- Liste des cartes à revoir -->
-            <div v-if="unknownCards.length > 0" class="border-t pt-6">
-              <h3 class="mb-4 text-left text-lg font-bold text-white">
-                Cartes à revoir ({{ unknownCards.length }})
-              </h3>
-              <div class="space-y-2 text-left">
-                <div
-                  v-for="cardId in unknownCards"
-                  :key="cardId"
-                  class="rounded-lg bg-red-900/30 p-3"
-                >
-                  <p class="font-medium text-white">
-                    {{
-                      flashcardData.flashcards.find((c) => c.id === cardId)
-                        ?.question
-                    }}
-                  </p>
-                  <p class="mt-1 whitespace-pre-line text-sm text-gray-300">
-                    {{
-                      flashcardData.flashcards.find((c) => c.id === cardId)
-                        ?.answer
-                    }}
-                  </p>
-                </div>
+                    flashcardData.flashcards.find((c) => c.id === cardId)
+                      ?.question
+                  }}
+                </p>
+                <p class="mt-1 whitespace-pre-line text-sm text-gray-300">
+                  {{
+                    flashcardData.flashcards.find((c) => c.id === cardId)
+                      ?.answer
+                  }}
+                </p>
               </div>
             </div>
           </div>
-        </template>
-
-        <template #footer>
-          <div class="flex gap-3">
-            <Button
-              v-if="unknownCards.length > 0"
-              label="Revoir les cartes manquées"
-              severity="warning"
-              icon="pi pi-refresh"
-              @click="restart"
-              class="flex-1"
-            />
-            <Button
-              v-else
-              label="Recommencer"
-              severity="secondary"
-              icon="pi pi-refresh"
-              @click="restart"
-              class="flex-1"
-            />
-            <Button
-              label="Terminer"
-              @click="emit('exit')"
-              icon="pi pi-check"
-              class="flex-1"
-            />
-          </div>
-        </template>
-      </Card>
+        </div>
+        <div class="mt-8 flex gap-3">
+          <Button
+            v-if="unknownCards.length > 0"
+            label="Revoir les cartes manquées"
+            severity="warning"
+            icon="pi pi-refresh"
+            @click="restart"
+            class="flex-1"
+          />
+          <Button
+            v-else
+            label="Recommencer"
+            severity="secondary"
+            icon="pi pi-refresh"
+            @click="restart"
+            class="flex-1"
+          />
+          <Button
+            label="Terminer"
+            @click="emit('exit')"
+            icon="pi pi-check"
+            class="flex-1"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
