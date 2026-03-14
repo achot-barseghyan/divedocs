@@ -168,7 +168,9 @@ const getOptionIcon = (option: any) => {
       </div>
 
       <!-- Question -->
-      <Card class="border-2 border-blue-500/30 bg-navy-800/90 text-white">
+      <Card
+        class="border-2 border-blue-500/30 !bg-white bg-navy-800/90 text-white dark:!bg-navy-800/90"
+      >
         <template #header>
           <div class="flex items-start gap-3 p-6">
             <div class="text-3xl">❓</div>
