@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen text-white">
+  <div class="mb-8 min-h-screen text-white">
     <!-- En-tête -->
     <div class="relative overflow-hidden px-4 py-20">
       <div class="relative z-10 mx-auto max-w-7xl px-6">
@@ -23,9 +23,9 @@
         <Card
           @click="selectMode('training')"
           :class="[
-            'group cursor-pointer border-2 transition-all duration-300',
+            'group cursor-pointer border-2 bg-navy-900/90 transition-all duration-300',
             selectedMode === 'training'
-              ? 'border-teal-400 bg-teal-500/10'
+              ? 'border-teal-400 bg-teal-500/30'
               : 'border-teal-500/20 hover:border-teal-400/50 hover:bg-slate-800/60',
           ]"
         >
@@ -58,9 +58,9 @@
         <Card
           @click="selectMode('evaluation')"
           :class="[
-            'group cursor-pointer border-2 transition-all duration-300',
+            'group cursor-pointer border-2 bg-navy-900/90 transition-all duration-300',
             selectedMode === 'evaluation'
-              ? 'border-yellow-400 bg-yellow-500/10'
+              ? 'border-yellow-400 bg-yellow-500/30'
               : 'border-yellow-500/20 hover:border-yellow-400/50 hover:bg-slate-800/60',
           ]"
         >
@@ -110,18 +110,24 @@
       <div class="mb-6 flex flex-wrap gap-3">
         <Button
           :label="`Tous (${scenarios.length})`"
-          :severity="filterCategory === null ? 'info' : 'secondary'"
+          :class="
+            filterCategory !== null
+              ? 'bg-navy-700 text-white'
+              : 'bg-cyan-60/90 hover:bg-navy-500'
+          "
           @click="filterCategory = null"
           size="small"
-          class="text-white"
         />
         <Button
           v-for="category in categories"
           :key="category.id"
           :label="`${category.label} (${getCategoryCount(category.id)})`"
-          :severity="filterCategory === category.id ? 'info' : 'secondary'"
+          :class="
+            filterCategory !== category.id
+              ? 'bg-navy-700 text-white'
+              : 'bg-cyan-600/90 hover:bg-navy-500'
+          "
           @click="filterCategory = category.id"
-          class="text-white"
           size="small"
         >
           <template #icon>
@@ -148,7 +154,7 @@
       v-if="isPlaying && selectedScenario"
       class="mx-auto h-[calc(100vh-8rem)] max-w-7xl px-6 pb-12"
     >
-      <Card class="h-full border border-teal-500/30 bg-slate-800/40">
+      <Card class="mb-8 border border-teal-500/30 bg-slate-800/40 p-0">
         <template #content>
           <SimulatorEngine
             :scenario="selectedScenario as any"

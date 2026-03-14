@@ -3,7 +3,7 @@
     v-model:visible="visible"
     modal
     blockScroll
-    class="mobile-full-dialog"
+    class="mobile-full-dialog bg-navy-900/90 text-white"
     content-class="mobile-full-dialog__content"
     :closable="true"
   >

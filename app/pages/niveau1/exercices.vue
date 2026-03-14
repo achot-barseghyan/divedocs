@@ -21,6 +21,7 @@
             label="Voir en vidéo"
             severity="contrast"
             size="small"
+            class="bg-white text-black"
             @click="
               openVideoDialog(
                 'https://www.youtube.com/embed/rf-w0LmaDyk?si=_TTLqxKMziZ6FRCT'
@@ -42,6 +43,7 @@
             label="Voir en vidéo"
             severity="contrast"
             size="small"
+            class="bg-white text-black"
             @click="
               openVideoDialog(
                 'https://www.youtube.com/embed/MJ3-_PwSyIQ?si=lTpboiD7AhZIhqYN'

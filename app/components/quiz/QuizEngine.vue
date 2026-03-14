@@ -151,7 +151,7 @@ const getOptionIcon = (option: any) => {
       <!-- Barre de progression -->
       <div class="space-y-2">
         <div class="flex items-center justify-between text-sm">
-          <span class="font-medium">
+          <span class="font-medium text-white">
             Question {{ currentQuestionIndex + 1 }} / {{ quizData.quiz.length }}
           </span>
           <span class="text-white">
@@ -168,7 +168,7 @@ const getOptionIcon = (option: any) => {
       </div>
 
       <!-- Question -->
-      <Card class="border-2 border-blue-500/30">
+      <Card class="border-2 border-blue-500/30 bg-navy-800/90 text-white">
         <template #header>
           <div class="flex items-start gap-3 p-6">
             <div class="text-3xl">❓</div>
@@ -208,7 +208,7 @@ const getOptionIcon = (option: any) => {
                     isAnswered &&
                     selectedAnswer === option.id &&
                     !option.correct,
-                  'border-gray-300 dark:border-gray-600':
+                  'border-gray-300 text-white dark:border-gray-600':
                     !isAnswered && selectedAnswer !== option.id,
                 }"
               >
@@ -219,7 +219,9 @@ const getOptionIcon = (option: any) => {
                   {{ option.id.toUpperCase() }}
                 </span>
               </span>
-              <span class="flex-1 font-medium">{{ option.text }}</span>
+              <span class="flex-1 font-medium text-white">
+                {{ option.text }}
+              </span>
             </button>
           </div>
 

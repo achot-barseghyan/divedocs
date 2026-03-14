@@ -132,7 +132,7 @@
     "title": "Panne d'air totale",
     "difficulty": "moyen",
     "description": "Ton détendeur ne délivre plus d'air. Tu es à 18 mètres avec ton binôme.",
-    "icon": "mdi:air-filter-off",
+    "icon": "mdi:weather-windy",
     "category": "respiration",
     "context": "À 18 mètres, tu inspires mais rien ne vient. Ton robinet était mal ouvert ou tu es arrivé en réserve sans t'en rendre compte.",
     "situation": {
@@ -259,7 +259,7 @@
     "title": "Placage de masque",
     "difficulty": "facile",
     "description": "À la descente, tu sens ton masque se plaquer contre ton visage.",
-    "icon": "mdi:diving-mask",
+    "icon": "mdi:glasses",
     "category": "barotraumatisme",
     "context": "Tu descends vers 12 mètres. Ton masque commence à se plaquer douloureusement sur ton visage, tu sens une pression au niveau des yeux.",
     "situation": {

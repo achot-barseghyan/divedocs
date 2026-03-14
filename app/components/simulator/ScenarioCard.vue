@@ -4,6 +4,7 @@
     :class="[
       'group cursor-pointer transition-all duration-300',
       'border-2',
+      'bg-navy-900/70',
       isSelected
         ? 'border-teal-400 bg-teal-500/10'
         : 'border-teal-500/20 hover:border-teal-400/50 hover:bg-slate-800/60',
@@ -54,7 +55,7 @@
         </div>
 
         <!-- Description -->
-        <p class="text-sm leading-relaxed text-gray-300">
+        <p class="text-sm leading-relaxed text-white">
           {{ scenario.description }}
         </p>
 
@@ -120,7 +121,9 @@
         >
           <div class="flex items-center justify-between text-sm">
             <span class="text-gray-400">Meilleur score:</span>
-            <span class="font-bold text-teal-400">{{ stats.bestScore }}</span>
+            <span class="font-bold text-teal-400">
+              {{ stats.bestScore }} / {{ scenario.maxPoints }}
+            </span>
           </div>
           <div class="mt-1 flex items-center justify-between text-sm">
             <span class="text-gray-400">Tentatives:</span>

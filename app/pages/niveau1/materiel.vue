@@ -14,7 +14,7 @@
 
     <div class="mx-auto -mt-12 flex max-w-7xl flex-col gap-[2rem] px-6 pb-20">
       <Card
-        class="mb-[2rem] border border-white/10 bg-white/5 backdrop-blur-sm"
+        class="mb-[2rem] border border-white/10 bg-navy-900/90 text-white backdrop-blur-sm"
       >
         <template #content>
           <div class="flex flex-col gap-6 md:flex-row md:justify-between">
@@ -100,6 +100,7 @@
                   label="Bien choisir son masque"
                   severity="contrast"
                   size="small"
+                  class="bg-white text-black"
                   @click="
                     openVideoDialog(
                       'https://www.youtube.com/embed/DcoorOWgQTM?si=_f3nyuE9Uh2-0szA',
@@ -115,6 +116,7 @@
                   label="Les différents technologies de masques"
                   severity="contrast"
                   size="small"
+                  class="bg-white text-black"
                   @click="
                     openVideoDialog(
                       'https://www.youtube.com/embed/tWfsGohE5wY?si=OAjOFWcW-vOz-o8p'
@@ -207,7 +209,7 @@
               <Button
                 label="Bien choisir ses palmes"
                 severity="contrast"
-                class="w-full flex-1"
+                class="w-full flex-1 bg-white text-black"
                 size="small"
                 @click="
                   openVideoDialog(
@@ -257,7 +259,7 @@
                   <Button
                     label="Guide en vidéo"
                     severity="contrast"
-                    class="flex-1"
+                    class="flex-1 bg-white text-black"
                     size="small"
                     @click="
                       openVideoDialog(
@@ -297,7 +299,7 @@
                     <Button
                       label="Guide en vidéo"
                       severity="contrast"
-                      class="flex-1"
+                      class="flex-1 bg-white text-black"
                       size="small"
                       @click="
                         openVideoDialog(
@@ -337,7 +339,7 @@
                   <Button
                     label="Voir la list"
                     severity="contrast"
-                    class="flex-1"
+                    class="flex-1 bg-white text-black"
                     icon="pi pi-list"
                     @click="openChecklistDialog"
                   />
@@ -382,7 +384,7 @@
                   <Button
                     label="Voir la vidéo"
                     severity="contrast"
-                    class="flex-1"
+                    class="flex-1 bg-white text-black"
                     @click="
                       openVideoDialog(
                         'https://www.youtube.com/embed/Cd5bagFseME?si=ufciVIwXL_d8bwIa'
@@ -424,6 +426,9 @@ const openGreerBlocDialog = () => {
 </script>
 
 <style scoped>
+h4 {
+  color: white;
+}
 /* PrimeVue Card customization */
 :deep(.p-card) {
   box-shadow: none;

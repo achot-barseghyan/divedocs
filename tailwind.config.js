@@ -85,11 +85,11 @@ export default {
         },
       },
       backgroundColor: {
-        'app-light': '#e8edef', // Light navy
+        'app-light': '#0a1e26', // Light navy
         'app-dark': '#0a1e26', // Deep navy
       },
       textColor: {
-        'app-light': '#00191f', // Dark blue text
+        'app-light': '#e6fffe', // Dark blue text
         'app-dark': '#e6fffe', // Light turquoise text
       },
     },

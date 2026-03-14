@@ -3,7 +3,7 @@
     <!-- Contexte de la situation -->
     <div
       v-if="currentStep === 0"
-      class="flex h-full flex-col items-center justify-center p-8"
+      class="flex h-full flex-col items-center justify-center"
     >
       <div class="max-w-3xl space-y-6 text-center">
         <div
@@ -81,7 +81,7 @@
     <!-- Questions du scénario -->
     <div
       v-else-if="currentStep <= scenario.steps.length"
-      class="flex h-full flex-col p-8"
+      class="flex h-full flex-col"
     >
       <!-- Header avec progression -->
       <div class="mb-6 flex items-center justify-between">
@@ -119,6 +119,9 @@
 
       <!-- Question actuelle -->
       <div class="flex-1 space-y-6">
+        <p class="text-sm leading-relaxed text-white">
+          {{ scenario.description }}
+        </p>
         <h3 class="text-2xl font-bold text-teal-400">
           {{ currentQuestion.question }}
         </h3>
@@ -131,14 +134,26 @@
             @click="!answerSelected && selectAnswer(option)"
             :class="[
               'cursor-pointer rounded-xl border-2 p-4 transition-all duration-300',
-              getOptionClass(option),
+              answerSelected
+                ? option.correct
+                  ? 'border-green-500 bg-green-500/10'
+                  : selectedOption?.id === option.id
+                    ? 'border-red-500 bg-red-500/10'
+                    : 'border-slate-700 opacity-50'
+                : 'border-slate-700 hover:border-teal-500/50 hover:bg-slate-800/50',
             ]"
           >
             <div class="flex items-start gap-3">
               <div
                 :class="[
                   'flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-lg font-bold',
-                  getOptionIconClass(option),
+                  answerSelected
+                    ? option.correct
+                      ? 'bg-green-500 text-white'
+                      : selectedOption?.id === option.id
+                        ? 'bg-red-500 text-white'
+                        : 'bg-slate-700 text-white'
+                    : 'bg-slate-700 text-white',
                 ]"
               >
                 {{ option.id.toUpperCase() }}
@@ -313,6 +328,7 @@ interface Scenario {
   title: string
   icon: string
   context: string
+  description: string
   situation: any
   steps: Question[]
   prevention: string[]

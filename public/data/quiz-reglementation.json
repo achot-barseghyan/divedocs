@@ -24,7 +24,7 @@
     {
       "id": 4,
       "question": "Slide 4 : Prérogatives du Niveau 1 (N1)",
-      "answer": "PROFONDEUR :\n• 0 à 20 mètres en palanquée encadrée\n• Accidentellement jusqu'à 25 mètres maximum\n\nENCADREMENT OBLIGATOIRE :\n• Guide de Palanquée (niveau 4 minimum)\n• Moniteur fédéral (E1, E2, E3, E4)\n• Initiateur (sous certaines conditions)\n\nCOMPOSITION DE LA PALANQUÉE :\n• Maximum 4 plongeurs + 1 encadrant = 5 personnes\n• Le guide est responsable de la sécurité\n• Le guide décide du profil de plongée\n\nRESTRICTIONS :\n• Plongée uniquement en exploration (pas d'enseignement)\n• Pas de plongée en autonomie\n• Profil de plongée imposé par le guide",
+      "answer": "PROFONDEUR :\n• 0 à 20 mètres en palanquée encadrée\n• Accidentellement jusqu'à 22 mètres maximum\n\nENCADREMENT OBLIGATOIRE :\n• Guide de Palanquée (niveau 4 minimum)\n• Moniteur fédéral (E1, E2, E3, E4)\n• Initiateur (sous certaines conditions)\n\nCOMPOSITION DE LA PALANQUÉE :\n• Maximum 4 plongeurs + 1 encadrant = 5 personnes\n• Le guide est responsable de la sécurité\n• Le guide décide du profil de plongée\n\nRESTRICTIONS :\n• Plongée uniquement en exploration (pas d'enseignement)\n• Pas de plongée en autonomie\n• Profil de plongée imposé par le guide",
       "category": "Prérogatives N1"
     },
     {
@@ -101,10 +101,10 @@
       "options": [
         { "id": "a", "text": "12 mètres", "correct": false },
         { "id": "b", "text": "20 mètres", "correct": true },
-        { "id": "c", "text": "25 mètres", "correct": false },
+        { "id": "c", "text": "22 mètres", "correct": false },
         { "id": "d", "text": "40 mètres", "correct": false }
       ],
-      "explanation": "Un plongeur niveau 1 peut évoluer de 0 à 20 mètres en palanquée encadrée (accidentellement jusqu'à 25m).",
+      "explanation": "Un plongeur niveau 1 peut évoluer de 0 à 20 mètres en palanquée encadrée (accidentellement jusqu'à 22m).",
       "category": "Prérogatives"
     },
     {

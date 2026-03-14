@@ -134,7 +134,7 @@ const modes = [
       <!-- Sélection du mode -->
       <div v-else-if="!isPlaying" class="space-y-6">
         <!-- Informations du sujet -->
-        <Card class="border-2 border-blue-500/30 bg-gray-900/50">
+        <Card class="border-2 border-blue-500/30 bg-gray-900/70">
           <template #content>
             <div class="flex items-start gap-4">
               <div class="text-5xl">⚓</div>
@@ -169,7 +169,7 @@ const modes = [
           <Card
             v-for="mode in modes"
             :key="mode.id"
-            class="cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            class="cursor-pointer bg-navy-800/70 transition-all duration-300 hover:scale-105 hover:shadow-xl"
             @click="selectMode(mode.id as 'quiz' | 'flashcard')"
           >
             <template #header>
@@ -209,7 +209,7 @@ const modes = [
         </div>
 
         <!-- Statistiques -->
-        <Card>
+        <Card class="mt-8 border-2 border-blue-500/30 bg-gray-900/90">
           <template #header>
             <div class="bg-gray-800/50 p-4">
               <h3 class="flex items-center gap-2 text-xl font-bold text-white">

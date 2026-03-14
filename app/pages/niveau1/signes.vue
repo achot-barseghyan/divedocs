@@ -18,9 +18,9 @@
             v-for="category in categories"
             :key="category.id"
             :label="category.name"
-            :severity="selectedCategory === category.id ? 'info' : 'secondary'"
             @click="selectedCategory = category.id"
-            class="text-white"
+            class="border-none bg-navy-600 text-white hover:bg-sky-700"
+            :class="selectedCategory === category.id ? 'bg-sky-700' : ''"
             size="small"
           ></Button>
         </div>
@@ -48,7 +48,7 @@
                 </h3>
                 <Tag
                   :value="getCategoryName(sign.category)"
-                  class="text-white"
+                  class="bg-cyan-500/100 text-white"
                   rounded
                 />
               </div>

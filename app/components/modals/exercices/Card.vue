@@ -14,7 +14,7 @@
           />
         </div>
         <div class="flex-1">
-          <h4 class="mb-2 text-xl font-semibold">{{ title }}</h4>
+          <h4 class="mb-2 text-xl font-semibold text-white">{{ title }}</h4>
           <p class="mb-3 text-sm text-gray-400">
             {{ description }}
           </p>
