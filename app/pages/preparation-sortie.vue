@@ -233,7 +233,7 @@ const bagGroups = reactive<BagGroup[]>([
         label: 'Crème solaire respectueuse des récifs',
         checked: false,
       },
-      { id: 'surf-2', label: 'Chapeau de soleil', checked: false },
+      { id: 'surf-2', label: 'Casquette', checked: false },
       { id: 'surf-3', label: 'Gourde', checked: false },
       { id: 'surf-4', label: 'Serviette à séchage rapide', checked: false },
       { id: 'surf-5', label: 'Lunettes de soleil', checked: false },
