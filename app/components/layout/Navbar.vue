@@ -85,6 +85,7 @@ const items = ref([
   { name: 'Niveau 1', link: '/niveau1' },
   { name: 'Niveau 2', link: '/niveau2' },
   { name: 'Niveau 3', link: '/niveau3' },
+  { name: 'Préparation sortie', link: '/preparation-sortie' },
   { name: 'Asprenaut.fr', link: 'https://asprenaut.fr/', blank: true },
   { name: 'ffessm.fr', link: 'https://ffessm.fr/', blank: true },
 ])
