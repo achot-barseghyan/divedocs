@@ -11,7 +11,24 @@
       </div>
     </div>
 
-    <div class="mx-auto -mt-12 max-w-5xl px-6 pb-20">
+    <div class="relative mx-auto -mt-12 max-w-5xl px-6 pb-20">
+      <!-- Profile selector -->
+      <div class="mb-6 flex justify-center gap-3">
+        <button
+          v-for="profile in profiles"
+          :key="profile.id"
+          class="rounded-xl border px-5 py-2 text-sm font-semibold transition-all"
+          :class="
+            activeProfile === profile.id
+              ? 'border-teal-400 bg-teal-400/20 text-teal-300'
+              : 'border-white/10 bg-white/5 text-gray-400 hover:border-white/20 hover:text-gray-200'
+          "
+          @click="switchProfile(profile.id)"
+        >
+          {{ profile.emoji }} {{ profile.label }}
+        </button>
+      </div>
+
       <!-- Progress bar -->
       <div
         class="mb-8 rounded-2xl border border-white/10 bg-navy-900/90 p-6 backdrop-blur-sm"
@@ -156,10 +173,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch, onMounted } from 'vue'
+import { computed, watch, onMounted, ref } from 'vue'
 import { useConfirm } from 'primevue/useconfirm'
 
-const STORAGE_KEY = 'preparation-sortie-checked'
 const confirm = useConfirm()
 
 interface CheckItem {
@@ -174,109 +190,261 @@ interface BagGroup {
   items: CheckItem[]
 }
 
-const bagGroups = reactive<BagGroup[]>([
-  {
-    title: 'Équipement de plongée',
-    emoji: '🤿',
-    items: [
-      { id: 'eq-1', label: 'Masque et tuba', checked: false },
-      { id: 'eq-2', label: 'Anti-buée respectueux des récifs', checked: false },
-      { id: 'eq-3', label: 'Palmes et chaussons', checked: false },
-      { id: 'eq-4', label: 'Gilet stabilisateur', checked: false },
-      { id: 'eq-5', label: 'Maillot de bain', checked: false },
-      { id: 'eq-6', label: 'Combinaison', checked: false },
-      { id: 'eq-7', label: 'Gants', checked: false },
-      {
-        id: 'eq-8',
-        label: 'Bottillons / chaussons de plongée',
-        checked: false,
-      },
-      { id: 'eq-9', label: 'Outil de coupe', checked: false },
-      { id: 'eq-10', label: 'Montre / ordinateur de plongée', checked: false },
-      {
-        id: 'eq-11',
-        label: 'Lampes de plongée / lampes de signalisation',
-        checked: false,
-      },
-      { id: 'eq-12', label: 'Sac étanche', checked: false },
-    ],
-  },
-  {
-    title: 'Kit de dépannage',
-    emoji: '🔧',
-    items: [
-      { id: 'kit-1', label: 'Sangles de palmes de rechange', checked: false },
-      { id: 'kit-2', label: 'Sangles de masque de rechange', checked: false },
-      { id: 'kit-3', label: 'Mousquetons de rechange', checked: false },
-      { id: 'kit-4', label: 'Masque de secours', checked: false },
-    ],
-  },
-  {
-    title: 'Documents',
-    emoji: '📋',
-    items: [
-      {
-        id: 'doc-1',
-        label: 'Carte(s) de certification / niveau',
-        checked: false,
-      },
-      { id: 'doc-3', label: 'Assurance plongée', checked: false },
-      { id: 'doc-2', label: 'Carnet de plongée', checked: false },
-    ],
-  },
-  {
-    title: 'Sac étanche (surface / bateau)',
-    emoji: '☀️',
-    items: [
-      {
-        id: 'surf-1',
-        label: 'Crème solaire respectueuse des récifs',
-        checked: false,
-      },
-      { id: 'surf-2', label: 'Casquette', checked: false },
-      { id: 'surf-3', label: 'Gourde', checked: false },
-      { id: 'surf-4', label: 'Serviette à séchage rapide', checked: false },
-      { id: 'surf-5', label: 'Lunettes de soleil', checked: false },
-      { id: 'surf-6', label: 'Veste coupe-vent', checked: false },
-      { id: 'surf-7', label: 'Piles / chargeurs de rechange', checked: false },
-      {
-        id: 'surf-8',
-        label: "Produit contre l'otite du nageur",
-        checked: false,
-      },
-      { id: 'surf-9', label: 'En-cas', checked: false },
-    ],
-  },
-  {
-    title: 'Trousse de premiers secours',
-    emoji: '🩹',
-    items: [
-      {
-        id: 'med-1',
-        label: 'Médicaments contre le mal des transports',
-        checked: false,
-      },
-      { id: 'med-2', label: 'Aspirine / antidouleur', checked: false },
-      { id: 'med-3', label: 'Antihistaminique', checked: false },
-      { id: 'med-4', label: 'Pansements', checked: false },
-      { id: 'med-5', label: 'Masque de poche (RCP)', checked: false },
-      { id: 'med-6', label: 'Pince à épiler', checked: false },
-      { id: 'med-7', label: 'Gants en nitrile', checked: false },
-      { id: 'med-8', label: 'Antiacide', checked: false },
-      {
-        id: 'med-9',
-        label: 'Bande élastique (type Ace Bandage)',
-        checked: false,
-      },
-      { id: 'med-10', label: 'Guide de premiers secours', checked: false },
-    ],
-  },
-])
+type ProfileId = 'essentiel' | 'complet'
+
+const profiles = [
+  { id: 'essentiel' as ProfileId, label: 'Essentiel', emoji: '⚡' },
+  { id: 'complet' as ProfileId, label: 'Complet', emoji: '✅' },
+]
+
+const STORAGE_KEYS: Record<ProfileId, string> = {
+  essentiel: 'preparation-sortie-essentiel',
+  complet: 'preparation-sortie-complet',
+}
+
+const PROFILE_KEY = 'preparation-sortie-profile'
+
+const profilesData: Record<ProfileId, BagGroup[]> = {
+  essentiel: [
+    {
+      title: 'Équipement de plongée',
+      emoji: '🤿',
+      items: [
+        { id: 'eq-1', label: 'Masque et tuba', checked: false },
+        { id: 'eq-3', label: 'Palmes', checked: false },
+        { id: 'eq-4', label: 'Gilet stabilisateur', checked: false },
+        { id: 'eq-6', label: 'Combinaison', checked: false },
+        {
+          id: 'eq-7',
+          label: 'Bottillons / chaussons de plongée',
+          checked: false,
+        },
+        { id: 'eq-8', label: 'Ordinateur de plongée', checked: false },
+      ],
+    },
+    {
+      title: 'Kit de dépannage',
+      emoji: '🔧',
+      items: [{ id: 'kit-4', label: 'Masque de secours', checked: false }],
+    },
+    {
+      title: 'Documents',
+      emoji: '📋',
+      items: [
+        {
+          id: 'doc-1',
+          label: 'Carte(s) de certification / niveau',
+          checked: false,
+        },
+        { id: 'doc-3', label: 'Assurance plongée', checked: false },
+        { id: 'doc-2', label: 'Carnet de plongée', checked: false },
+      ],
+    },
+    {
+      title: 'Sac étanche (surface / bateau)',
+      emoji: '☀️',
+      items: [
+        {
+          id: 'surf-1',
+          label: 'Crème solaire respectueuse des récifs',
+          checked: false,
+        },
+        { id: 'surf-2', label: 'Casquette', checked: false },
+        { id: 'surf-3', label: 'Gourde', checked: false },
+        { id: 'surf-4', label: 'Serviette à séchage rapide', checked: false },
+        { id: 'surf-5', label: 'Lunettes de soleil', checked: false },
+        {
+          id: 'surf-7',
+          label: 'Piles / chargeurs de rechange',
+          checked: false,
+        },
+      ],
+    },
+    {
+      title: 'Trousse de premiers secours',
+      emoji: '🩹',
+      items: [
+        {
+          id: 'med-1',
+          label: 'Médicaments contre le mal des transports',
+          checked: false,
+        },
+        { id: 'med-2', label: 'Aspirine / antidouleur', checked: false },
+        { id: 'med-4', label: 'Pansements', checked: false },
+      ],
+    },
+  ],
+  complet: [
+    {
+      title: 'Équipement de plongée',
+      emoji: '🤿',
+      items: [
+        { id: 'eq-1', label: 'Masque et tuba', checked: false },
+        {
+          id: 'eq-2',
+          label: 'Anti-buée respectueux des récifs',
+          checked: false,
+        },
+        { id: 'eq-3', label: 'Palmes et chaussons', checked: false },
+        { id: 'eq-4', label: 'Gilet stabilisateur', checked: false },
+        { id: 'eq-5', label: 'Maillot de bain', checked: false },
+        { id: 'eq-6', label: 'Combinaison', checked: false },
+        { id: 'eq-7', label: 'Gants', checked: false },
+        {
+          id: 'eq-8',
+          label: 'Bottillons / chaussons de plongée',
+          checked: false,
+        },
+        { id: 'eq-9', label: 'Outil de coupe', checked: false },
+        {
+          id: 'eq-10',
+          label: 'Montre / ordinateur de plongée',
+          checked: false,
+        },
+        {
+          id: 'eq-11',
+          label: 'Lampes de plongée / lampes de signalisation',
+          checked: false,
+        },
+        { id: 'eq-12', label: 'Sac étanche', checked: false },
+      ],
+    },
+    {
+      title: 'Kit de dépannage',
+      emoji: '🔧',
+      items: [
+        { id: 'kit-1', label: 'Sangles de palmes de rechange', checked: false },
+        { id: 'kit-2', label: 'Sangles de masque de rechange', checked: false },
+        { id: 'kit-3', label: 'Mousquetons de rechange', checked: false },
+        { id: 'kit-4', label: 'Masque de secours', checked: false },
+      ],
+    },
+    {
+      title: 'Documents',
+      emoji: '📋',
+      items: [
+        {
+          id: 'doc-1',
+          label: 'Carte(s) de certification / niveau',
+          checked: false,
+        },
+        { id: 'doc-3', label: 'Assurance plongée', checked: false },
+        { id: 'doc-2', label: 'Carnet de plongée', checked: false },
+      ],
+    },
+    {
+      title: 'Sac étanche (surface / bateau)',
+      emoji: '☀️',
+      items: [
+        {
+          id: 'surf-1',
+          label: 'Crème solaire respectueuse des récifs',
+          checked: false,
+        },
+        { id: 'surf-2', label: 'Casquette', checked: false },
+        { id: 'surf-3', label: 'Gourde', checked: false },
+        { id: 'surf-4', label: 'Serviette à séchage rapide', checked: false },
+        { id: 'surf-5', label: 'Lunettes de soleil', checked: false },
+        { id: 'surf-6', label: 'Veste coupe-vent', checked: false },
+        {
+          id: 'surf-7',
+          label: 'Piles / chargeurs de rechange',
+          checked: false,
+        },
+        {
+          id: 'surf-8',
+          label: "Produit contre l'otite du nageur",
+          checked: false,
+        },
+        { id: 'surf-9', label: 'En-cas', checked: false },
+      ],
+    },
+    {
+      title: 'Trousse de premiers secours',
+      emoji: '🩹',
+      items: [
+        {
+          id: 'med-1',
+          label: 'Médicaments contre le mal des transports',
+          checked: false,
+        },
+        { id: 'med-2', label: 'Aspirine / antidouleur', checked: false },
+        { id: 'med-3', label: 'Antihistaminique', checked: false },
+        { id: 'med-4', label: 'Pansements', checked: false },
+        { id: 'med-5', label: 'Masque de poche (RCP)', checked: false },
+        { id: 'med-6', label: 'Pince à épiler', checked: false },
+        { id: 'med-7', label: 'Gants en nitrile', checked: false },
+        { id: 'med-8', label: 'Antiacide', checked: false },
+        {
+          id: 'med-9',
+          label: 'Bande élastique (type Ace Bandage)',
+          checked: false,
+        },
+        { id: 'med-10', label: 'Guide de premiers secours', checked: false },
+      ],
+    },
+  ],
+}
+
+const activeProfile = ref<ProfileId>('essentiel')
+
+const bagGroups = reactive<BagGroup[]>([])
+
+function loadProfile(profile: ProfileId) {
+  activeProfile.value = profile
+  localStorage.setItem(PROFILE_KEY, profile)
+  const defaultData = profilesData[profile]
+  const saved = localStorage.getItem(STORAGE_KEYS[profile])
+
+  let newGroups: BagGroup[]
+  if (saved) {
+    try {
+      const savedGroups: Array<{ title: string; items: CheckItem[] }> =
+        JSON.parse(saved)
+      newGroups = defaultData.map((defaultGroup) => {
+        const savedGroup = savedGroups.find(
+          (sg) => sg.title === defaultGroup.title
+        )
+        return {
+          title: defaultGroup.title,
+          emoji: defaultGroup.emoji,
+          items: savedGroup
+            ? savedGroup.items
+            : defaultGroup.items.map((i) => ({ ...i })),
+        }
+      })
+    } catch {
+      newGroups = defaultData.map((g) => ({
+        title: g.title,
+        emoji: g.emoji,
+        items: g.items.map((i) => ({ ...i })),
+      }))
+    }
+  } else {
+    newGroups = defaultData.map((g) => ({
+      title: g.title,
+      emoji: g.emoji,
+      items: g.items.map((i) => ({ ...i })),
+    }))
+  }
+
+  bagGroups.splice(0, bagGroups.length, ...newGroups)
+}
+
+function switchProfile(profile: ProfileId) {
+  if (profile === activeProfile.value) return
+  loadProfile(profile)
+}
 
 const newItemLabels = reactive<Record<string, string>>({})
 
-const defaultItems: Record<string, CheckItem[]> = Object.fromEntries(
-  bagGroups.map((g) => [g.title, g.items.map((i) => ({ ...i }))])
+const defaultItems = computed(() =>
+  Object.fromEntries(
+    profilesData[activeProfile.value].map((g) => [
+      g.title,
+      g.items.map((i) => ({ ...i })),
+    ])
+  )
 )
 
 function addItem(group: BagGroup) {
@@ -307,24 +475,20 @@ const allItems = computed<CheckItem[]>(() => [
 ])
 
 onMounted(() => {
-  const saved = localStorage.getItem(STORAGE_KEY)
-  if (saved) {
-    const savedGroups: Array<{ title: string; items: CheckItem[] }> =
-      JSON.parse(saved)
-    savedGroups.forEach((savedGroup) => {
-      const group = bagGroups.find((g) => g.title === savedGroup.title)
-      if (group) {
-        group.items = savedGroup.items
-      }
-    })
-  }
+  const savedProfile = localStorage.getItem(PROFILE_KEY) as ProfileId | null
+  loadProfile(
+    savedProfile && savedProfile in STORAGE_KEYS ? savedProfile : 'essentiel'
+  )
 })
 
 watch(
   bagGroups,
   (groups) => {
     const data = groups.map((g) => ({ title: g.title, items: g.items }))
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+    localStorage.setItem(
+      STORAGE_KEYS[activeProfile.value],
+      JSON.stringify(data)
+    )
   },
   { deep: true }
 )
@@ -369,12 +533,12 @@ function resetAll() {
     acceptClass: 'p-button-danger',
     accept: () => {
       bagGroups.forEach((group) => {
-        group.items = defaultItems[group.title].map((i) => ({
+        group.items = (defaultItems.value[group.title] ?? []).map((i) => ({
           ...i,
           checked: false,
         }))
       })
-      localStorage.removeItem(STORAGE_KEY)
+      localStorage.removeItem(STORAGE_KEYS[activeProfile.value])
     },
   })
 }
