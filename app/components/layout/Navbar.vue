@@ -11,6 +11,66 @@
       >
         {{ item.name }}
       </NuxtLink>
+
+      <!-- Dropdown liens externes -->
+      <div
+        class="relative mx-4"
+        @mouseenter="isDropdownOpen = true"
+        @mouseleave="isDropdownOpen = false"
+      >
+        <button
+          type="button"
+          class="flex items-center gap-1 text-lg font-extrabold text-white hover:text-yellow-500"
+        >
+          Liens
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 transition-transform"
+            :class="isDropdownOpen ? 'rotate-180' : ''"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+        <transition name="fade">
+          <div
+            v-if="isDropdownOpen"
+            class="absolute right-0 top-full z-50 mt-2 w-44 rounded-lg bg-white/95 py-2 shadow-lg backdrop-blur-sm"
+          >
+            <a
+              v-for="(link, i) in externalLinks"
+              :key="i"
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-bold text-black hover:bg-gray-100 hover:text-yellow-600"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-3.5 w-3.5 shrink-0 opacity-50"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                />
+              </svg>
+              {{ link.name }}
+            </a>
+          </div>
+        </transition>
+      </div>
     </div>
 
     <!-- Mobile toggle -->
@@ -68,10 +128,21 @@
           :to="item.link"
           class="block py-2 text-[1.6rem] font-extrabold text-black hover:text-darkblue-300"
           @click="isOpen = false"
-          :target="item.blank ? '_blank' : '_self'"
         >
           {{ item.name }}
         </NuxtLink>
+        <div class="my-1 border-t border-gray-200"></div>
+        <a
+          v-for="(link, i) in externalLinks"
+          :key="'ext-' + i"
+          :href="link.url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block py-2 text-[1.4rem] font-bold text-gray-500 hover:text-yellow-600"
+          @click="isOpen = false"
+        >
+          ↗ {{ link.name }}
+        </a>
       </div>
     </transition>
   </nav>
@@ -86,11 +157,17 @@ const items = ref([
   { name: 'Niveau 2', link: '/niveau2' },
   { name: 'Niveau 3', link: '/niveau3' },
   { name: 'Préparation sortie', link: '/preparation-sortie' },
-  { name: 'Asprenaut.fr', link: 'https://asprenaut.fr/', blank: true },
-  { name: 'ffessm.fr', link: 'https://ffessm.fr/', blank: true },
+  { name: 'Tables MN90', link: '/tables' },
+  { name: 'Graphiques', link: '/graphiques' },
 ])
 
+const externalLinks = [
+  { name: 'Asprenaut.fr', url: 'https://asprenaut.fr/' },
+  { name: 'ffessm.fr', url: 'https://ffessm.fr/' },
+]
+
 const isOpen = ref(false)
+const isDropdownOpen = ref(false)
 const navRef = ref<HTMLElement | null>(null)
 
 function onDocumentClick(e: MouseEvent) {
