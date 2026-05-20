@@ -156,6 +156,7 @@ const items = ref([
   { name: 'Niveau 1', link: '/niveau1' },
   { name: 'Niveau 2', link: '/niveau2' },
   { name: 'Niveau 3', link: '/niveau3' },
+  { name: 'Biologie Marine', link: '/biologie-marine' },
   { name: 'Préparation sortie', link: '/preparation-sortie' },
   { name: 'Tables MN90', link: '/tables' },
   { name: 'Graphiques', link: '/graphiques' },
