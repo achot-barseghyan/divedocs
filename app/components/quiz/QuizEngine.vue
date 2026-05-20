@@ -37,15 +37,19 @@ const answers = ref<
 >([])
 const showResults = ref(false)
 
+const shuffle = <T,>(arr: T[]): T[] => [...arr].sort(() => Math.random() - 0.5)
+const shuffledQuestions = ref(shuffle(props.quizData.quiz))
+
 // Question actuelle
 const currentQuestion = computed(
-  () => props.quizData.quiz[currentQuestionIndex.value]
+  () => shuffledQuestions.value[currentQuestionIndex.value]
 )
 const progress = computed(
-  () => ((currentQuestionIndex.value + 1) / props.quizData.quiz.length) * 100
+  () =>
+    ((currentQuestionIndex.value + 1) / shuffledQuestions.value.length) * 100
 )
 const isLastQuestion = computed(
-  () => currentQuestionIndex.value === props.quizData.quiz.length - 1
+  () => currentQuestionIndex.value === shuffledQuestions.value.length - 1
 )
 
 // Sélectionner une réponse
@@ -75,11 +79,11 @@ const nextQuestion = () => {
     showResults.value = true
 
     const percentage = Math.round(
-      (score.value / props.quizData.quiz.length) * 100
+      (score.value / shuffledQuestions.value.length) * 100
     )
     emit('complete', {
       score: score.value,
-      total: props.quizData.quiz.length,
+      total: shuffledQuestions.value.length,
       percentage,
     })
   } else {
@@ -91,6 +95,7 @@ const nextQuestion = () => {
 
 // Recommencer le quiz
 const restart = () => {
+  shuffledQuestions.value = shuffle(props.quizData.quiz)
   currentQuestionIndex.value = 0
   selectedAnswer.value = null
   isAnswered.value = false
@@ -102,7 +107,7 @@ const restart = () => {
 // Calculer le message de performance
 const performanceMessage = computed(() => {
   const percentage = Math.round(
-    (score.value / props.quizData.quiz.length) * 100
+    (score.value / shuffledQuestions.value.length) * 100
   )
 
   if (percentage >= 90)
@@ -152,7 +157,8 @@ const getOptionIcon = (option: any) => {
       <div class="space-y-2">
         <div class="flex items-center justify-between text-sm">
           <span class="font-medium text-white">
-            Question {{ currentQuestionIndex + 1 }} / {{ quizData.quiz.length }}
+            Question {{ currentQuestionIndex + 1 }} /
+            {{ shuffledQuestions.length }}
           </span>
           <span class="text-white">
             Score: {{ score }} /
@@ -273,7 +279,7 @@ const getOptionIcon = (option: any) => {
             </div>
             <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
               <div class="text-3xl font-bold text-gray-900 dark:text-white">
-                {{ quizData.quiz.length }}
+                {{ shuffledQuestions.length }}
               </div>
               <div class="text-sm text-gray-600 dark:text-gray-400">
                 Questions
@@ -281,7 +287,7 @@ const getOptionIcon = (option: any) => {
             </div>
             <div class="rounded-lg bg-gray-50 p-4 dark:bg-gray-800">
               <div class="text-3xl font-bold" :class="performanceMessage.color">
-                {{ Math.round((score / quizData.quiz.length) * 100) }}%
+                {{ Math.round((score / shuffledQuestions.length) * 100) }}%
               </div>
               <div class="text-sm text-gray-600 dark:text-gray-400">Score</div>
             </div>
