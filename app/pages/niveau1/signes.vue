@@ -1,109 +1,101 @@
 <template>
-  <div class="min-h-screen p-6">
-    <div class="mx-auto flex max-w-7xl flex-col gap-[2rem] px-6 pb-20">
-      <!-- Header -->
-      <div class="mx-auto mb-8 max-w-6xl">
-        <div class="mb-6 text-center">
-          <h1 class="mb-3 text-4xl font-bold text-yellow-500 md:text-5xl">
-            Les signes de plongée
-          </h1>
-          <p class="text-xl text-teal-300">
-            Niveau 1 - Communication sous-marine
-          </p>
-        </div>
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
 
-        <!-- Category Filters -->
-        <div class="flex flex-wrap justify-center gap-2">
-          <Button
+    <main class="mx-auto max-w-[1280px] px-8 pb-24">
+      <UiPageHero
+        eyebrow="Niveau 1 - Communication sous-marine"
+        title="Les signes de plongée"
+        size="md"
+      />
+
+      <!-- Filters (sticky) -->
+      <div
+        class="sticky top-0 z-[5] mb-2 flex flex-wrap items-center gap-4 border-b border-[rgba(232,241,244,0.1)] bg-[rgba(8,28,42,0.88)] py-3.5 backdrop-blur-[8px]"
+      >
+        <div
+          class="flex flex-1 flex-wrap gap-1.5"
+          role="group"
+          aria-label="Filtrer par catégorie"
+        >
+          <button
             v-for="category in categories"
             :key="category.id"
-            :label="category.name"
+            type="button"
+            :class="chipClass(selectedCategory === category.id)"
+            :aria-pressed="selectedCategory === category.id"
             @click="selectedCategory = category.id"
-            class="border-none bg-navy-600 text-white hover:bg-sky-700"
-            :class="selectedCategory === category.id ? 'bg-sky-700' : ''"
-            size="small"
-          ></Button>
+          >
+            {{ category.name }}
+            <span class="font-mono text-xs opacity-70">
+              {{ countFor(category.id) }}
+            </span>
+          </button>
         </div>
+        <span class="font-mono text-[13px] text-[#7f97a2]">
+          {{ filteredSigns.length }} / {{ signs.length }} signes
+        </span>
       </div>
 
-      <!-- Signs Grid -->
-      <div class="mx-auto max-w-6xl">
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div
-            v-for="sign in filteredSigns"
-            :key="sign.id"
-            class="flex flex-col rounded-xl border border-white/10 bg-navy-900/30 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 dark:bg-navy-800/90"
-          >
-            <div class="mb-4 overflow-hidden rounded-xl">
-              <img
-                :src="sign.image"
-                :alt="sign.name"
-                class="aspect-square w-full object-cover opacity-95"
-              />
+      <!-- Signs -->
+      <div
+        class="mt-6 grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-4"
+      >
+        <article
+          v-for="sign in filteredSigns"
+          :key="sign.id"
+          :class="[cardBase, 'flex flex-col overflow-hidden']"
+        >
+          <div class="aspect-square bg-[#0e2737]">
+            <img
+              :src="sign.image"
+              :alt="sign.name"
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div class="flex flex-col gap-2.5 px-[22px] pb-6 pt-5">
+            <div class="flex items-center justify-between gap-3">
+              <span
+                :class="
+                  tagClass(sign.category === 'urgence' ? 'yellow' : 'aqua')
+                "
+              >
+                {{ getCategoryName(sign.category) }}
+              </span>
+              <span class="font-mono text-xs text-[#7f97a2]">
+                {{ pad2(signs.indexOf(sign) + 1) }}
+              </span>
             </div>
-            <div class="mb-3">
-              <h3 class="mb-2 text-xl font-bold text-white">
-                {{ sign.name }}
-              </h3>
-              <Tag
-                :value="getCategoryName(sign.category)"
-                class="bg-cyan-500/100 text-white"
-                rounded
-              />
-            </div>
-            <p class="text-sm leading-relaxed text-gray-300 dark:text-gray-300">
+            <h2
+              class="m-0 mt-1 text-[22px] font-semibold leading-[1.2] tracking-[-0.01em] text-white"
+            >
+              {{ sign.name }}
+            </h2>
+            <p
+              v-if="sign.description"
+              class="m-0 text-[15px] leading-[1.55] text-[#9fb4bd] [text-wrap:pretty]"
+            >
               {{ sign.description }}
             </p>
           </div>
-        </div>
+        </article>
       </div>
 
-      <!-- Info Footer -->
-      <div class="mx-auto mt-12 max-w-6xl">
-        <Message severity="info" class="border-teal-500/30 bg-teal-500/20">
-          <div>
-            <h3 class="mb-2 text-lg font-bold text-white">
-              Conseils importants
-            </h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-              <li class="flex items-start gap-2">
-                <i class="pi pi-check mt-1 text-teal-400"></i>
-                <span>
-                  Toujours faire les signes lentement et distinctement
-                </span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="pi pi-check mt-1 text-teal-400"></i>
-                <span>
-                  S'assurer que votre binôme a bien compris avant de continuer
-                </span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="pi pi-check mt-1 text-teal-400"></i>
-                <span>
-                  En cas de doute, répéter le signe ou remonter en sécurité
-                </span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i class="pi pi-check mt-1 text-teal-400"></i>
-                <span>
-                  Pratiquer régulièrement les signes en surface avant la plongée
-                </span>
-              </li>
-            </ul>
-          </div>
-        </Message>
-      </div>
-    </div>
+      <UiTipsCallout
+        class="mt-20"
+        title="Conseils importants"
+        :tips="tips"
+        accent="aqua"
+      />
+    </main>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue'
-import Button from 'primevue/button'
-import Card from 'primevue/card'
-import Tag from 'primevue/tag'
-import Message from 'primevue/message'
+
+definePageMeta({ breadcrumb: 'Signes' })
 
 const selectedCategory = ref('all')
 
@@ -290,16 +282,22 @@ const categories = [
   { id: 'technique', name: 'Technique' },
 ]
 
-const filteredSigns = computed(() => {
-  return selectedCategory.value === 'all'
+const tips = [
+  'Toujours faire les signes lentement et distinctement',
+  "S'assurer que votre binôme a bien compris avant de continuer",
+  'En cas de doute, répéter le signe ou remonter en sécurité',
+  'Pratiquer régulièrement les signes en surface avant la plongée',
+]
+
+const filteredSigns = computed(() =>
+  selectedCategory.value === 'all'
     ? signs
     : signs.filter((sign) => sign.category === selectedCategory.value)
-})
+)
 
-const getCategoryName = (category: string) => {
-  const cat = categories.find((c) => c.id === category)
-  return cat ? cat.name : category
-}
+const countFor = (id: string) =>
+  id === 'all' ? signs.length : signs.filter((s) => s.category === id).length
+
+const getCategoryName = (category: string) =>
+  categories.find((c) => c.id === category)?.name ?? category
 </script>
-
-<style></style>

@@ -17,10 +17,9 @@ const route = useRoute()
     <!-- Page content -->
     <LayoutHeader />
     <ConfirmDialog />
-    <div class="relative z-10" :class="route.path !== '/' ? 'pt-[100px]' : ''">
+    <div class="relative z-10" :class="route.path !== '/' ? 'pt-[75px]' : ''">
       <CommonBreadcrumb v-if="route.path !== '/'" />
       <NuxtPage />
     </div>
-    <LayoutFooter />
   </div>
 </template>

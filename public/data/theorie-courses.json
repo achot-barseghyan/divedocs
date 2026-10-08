@@ -6,8 +6,8 @@
     "icon": "material-symbols:scuba-diving",
     "sections": [
       {
-        "heading": "Objectif du Niveau 1",
-        "content": "La plongée est un sport technique pratiqué dans l'eau, milieu différent de celui dans lequel nous évoluons habituellement. \nLe milieu aquatique et ses caractéristiques physiques ont une influence non négligeable sur notre organisme. Au cours d'une plongée, les plongeurs niveau 1 doivent être capables d'assurer leur propre sécurité."
+        "heading": "Objectif du Niveau 2",
+        "content": "La plongée est un sport technique pratiqué dans l'eau, milieu différent de celui dans lequel nous évoluons habituellement. \nLe milieu aquatique et ses caractéristiques physiques ont une influence non négligeable sur notre organisme. Au cours d'une plongée, les plongeurs niveau 2 doivent être capables d'assurer leur propre sécurité et celle de leur palanquée."
       },
       {
         "heading": "Ce que vous allez apprendre",
@@ -28,7 +28,7 @@
     ],
     "duration": "5 mins",
     "keyPoints": [
-      "Les plongeurs niveau 1 doivent être capables d'assurer leur propre sécurité",
+      "Les plongeurs niveau 2 doivent être capables d'assurer leur propre sécurité et celle de leur palanquée",
       "Comprendre les paramètres physiques du milieu aquatique",
       "Connaître les accidents de plongée et comment les éviter",
       "Respecter la courbe de sécurité",
@@ -784,17 +784,17 @@
   {
     "id": 17,
     "title": "Réglementation FFESSM",
-    "description": "Comprenez les règles légales, prérogatives et limites du niveau 1.",
+    "description": "Comprenez les règles légales, prérogatives et limites du niveau 2.",
     "sections": [
       {
         "heading": "Cadre légal",
         "content": "La plongée subaquatique en mer, pratiquée dans les clubs associatifs ou dans les structures commerciales, est régie par la loi (arrêté ministériel du 22 juin 1998). En particulier, les prérogatives des différents niveaux de plongée y sont définies."
       },
       {
-        "heading": "Prérogatives des niveaux 1",
+        "heading": "Prérogatives du niveau 2",
         "list": [
-          "Les plongeurs niveau 1 peuvent plonger uniquement dans l'espace médian, soit entre 0 et 20 m (accidentellement jusqu'à 25 m)",
-          "Ils doivent être encadrés, en exploration, par un plongeur au moins de niveau 4",
+          "En autonomie, les plongeurs niveau 2 peuvent plonger jusqu'à 20 m (PA20), en palanquée de 3 plongeurs au maximum, sous la responsabilité d'un directeur de plongée",
+          "Encadrés par un guide de palanquée (au moins niveau 4), ils peuvent plonger jusqu'à 40 m (PE40)",
           "Ils doivent être encadrés, en enseignement, par un moniteur au moins 1er degré (fédéral 1er degré, MF1 ou brevet d'état d'éducateur sportif 1er degré, BEES1)"
         ]
       },
@@ -807,7 +807,7 @@
       },
       {
         "heading": "La licence FFESSM",
-        "content": "L'AS Paris 6 est affilié à la Fédération Française d'Etudes et de Sport Sous-Marins (FFESSM). Pour passer un diplôme fédéral, tel le niveau 1, il faut être titulaire d'une licence fédérale (il ne peut en être délivré qu'une).",
+        "content": "L'AS Paris 6 est affilié à la Fédération Française d'Etudes et de Sport Sous-Marins (FFESSM). Pour passer un diplôme fédéral, tel le niveau 2, il faut être titulaire d'une licence fédérale (il ne peut en être délivré qu'une).",
         "detail": "La licence vaut :",
         "list": [
           "Affiliation à la FFESSM",
@@ -832,35 +832,35 @@
       },
       {
         "heading": "Équivalence internationale",
-        "content": "Il existe une équivalence internationale des niveaux de plongée fédéraux, délivrée par la Confédération Mondiale des Activités Subaquatiques (CMAS). Le niveau 1 correspond au niveau CMAS 1 étoiles."
+        "content": "Il existe une équivalence internationale des niveaux de plongée fédéraux, délivrée par la Confédération Mondiale des Activités Subaquatiques (CMAS). Le niveau 2 correspond au niveau CMAS 2 étoiles."
       }
     ],
     "duration": "1h15",
     "keyPoints": [
       "Arrêté ministériel du 22 juin 1998",
-      "Niveau 1 : espace médian 0-20m (max 25m accidentel)",
-      "Encadrement obligatoire par niveau 4 minimum",
+      "Niveau 2 : autonome jusqu'à 20 m (PA20), encadré jusqu'à 40 m (PE40)",
+      "Au-delà de 20 m : encadrement par un niveau 4 minimum",
       "Enseignement par moniteur 1er degré minimum",
       "Ne jamais plonger seul",
       "Ne rien remonter d'une plongée",
-      "Licence FFESSM obligatoire pour passer le niveau 1",
+      "Licence FFESSM obligatoire pour passer le niveau 2",
       "Licence valable 15 mois (1er oct. au 31 déc. année suivante)",
       "Assurance responsabilité civile incluse",
-      "Équivalence CMAS : 1 étoile"
+      "Équivalence CMAS : 2 étoiles"
     ]
   },
   {
     "id": 18,
-    "title": "Parcours Niveau 1 Complet",
-    "description": "Parcours complet regroupant tous les modules pour obtenir votre certification FFESSM Niveau 1.",
+    "title": "Parcours Niveau 2 Complet",
+    "description": "Parcours complet regroupant tous les modules pour obtenir votre certification FFESSM Niveau 2.",
     "sections": [
       {
         "heading": "Conclusion",
-        "content": "Vous possédez maintenant toutes les informations qui doivent vous permettre d'aborder la plongée en ayant conscience des risques, mais aussi en sachant que ces risques sont parfaitement maîtrisables si l'on respecte des règles de sécurité claires. Une fois de plus, vous devez vous mettre à l'eau en étant capable d'assurer votre propre sécurité. C'est la condition 'sine qua none' pour plonger sereinement et apprécier pleinement l'émerveillement de vos évolutions sous-marines."
+        "content": "Vous possédez maintenant toutes les informations qui doivent vous permettre d'aborder la plongée en ayant conscience des risques, mais aussi en sachant que ces risques sont parfaitement maîtrisables si l'on respecte des règles de sécurité claires. Une fois de plus, vous devez vous mettre à l'eau en étant capable d'assurer votre propre sécurité et celle de votre palanquée. C'est la condition 'sine qua none' pour plonger sereinement et apprécier pleinement l'émerveillement de vos évolutions sous-marines."
       },
       {
-        "heading": "Le niveau 1 en France",
-        "content": "En France, le niveau 1 est la seconde étape, après le baptême, dans la formation d'un plongeur. Il permet de plonger en étant encadré. L'étape suivante est le niveau 2, qui amène à l'autonomie, c'est-à-dire à la possibilité de plonger avec un ou deux plongeurs du même niveau, sans encadrement."
+        "heading": "Le niveau 2 en France",
+        "content": "En France, le niveau 2 est la troisième étape, après le baptême et le niveau 1, dans la formation d'un plongeur. Il amène à l'autonomie, c'est-à-dire à la possibilité de plonger avec un ou deux plongeurs du même niveau, sans encadrement, jusqu'à 20 m, et en étant encadré jusqu'à 40 m. L'étape suivante est le niveau 3, qui étend l'autonomie jusqu'à 60 m."
       }
     ],
     "duration": "30 heures",
@@ -869,9 +869,9 @@
       "Respecter les règles de sécurité claires",
       "Être capable d'assurer sa propre sécurité",
       "Condition pour plonger sereinement",
-      "Niveau 1 : seconde étape après le baptême",
-      "Permet de plonger encadré",
-      "Niveau 2 : accès à l'autonomie",
+      "Niveau 2 : troisième étape après le baptême et le niveau 1",
+      "Permet de plonger en autonomie jusqu'à 20 m",
+      "Niveau 3 : autonomie jusqu'à 60 m",
       "Formation complète regroupant tous les modules"
     ]
   }

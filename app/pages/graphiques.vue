@@ -1,36 +1,22 @@
 <template>
-  <div class="mb-8 min-h-screen text-white">
-    <div class="relative overflow-hidden px-4 py-16">
-      <div class="relative z-10 mx-auto max-w-7xl px-6 text-center">
-        <h1 class="mb-4 text-5xl font-bold">
-          <span class="text-teal-400">Graphiques</span>
-          &
-          <span class="text-yellow-500">Visualisations</span>
-        </h1>
-        <p class="mx-auto max-w-3xl text-xl text-gray-300">
-          Physique de la plongée, décompression et données de sécurité
-        </p>
-      </div>
-    </div>
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
 
-    <div class="mx-auto max-w-7xl space-y-10 px-6 pb-16">
-      <!-- ===== SECTION PHYSIQUE ===== -->
+    <main class="mx-auto max-w-[1280px] px-8 pb-24">
+      <UiPageHero
+        eyebrow="Données & physique"
+        title="Graphiques & Visualisations"
+        subtitle="Physique de la plongée, décompression et données de sécurité"
+        size="md"
+      />
+
+      <!-- ===== PHYSIQUE ===== -->
       <section>
-        <h2
-          class="mb-6 flex items-center gap-3 text-2xl font-bold text-teal-300"
-        >
-          <Icon name="mdi:atom" />
-          Physique de la plongée
-        </h2>
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <!-- Loi de Mariotte — Pression/Volume -->
-          <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Loi de Mariotte — P × V = constante
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+        <UiSectionHeading>Physique de la plongée</UiSectionHeading>
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Loi de Mariotte — P × V = constante</h3>
+            <p :class="chartDesc">
               Volume d'un poumon / espace gazeux en fonction de la profondeur
             </p>
             <Chart
@@ -39,70 +25,49 @@
               :options="boyleOptions"
               class="h-64"
             />
-            <div class="mt-4 grid grid-cols-3 gap-3 text-center text-xs">
-              <div class="rounded-xl bg-slate-700/50 p-3">
-                <div class="text-xl font-bold text-teal-400">× 2</div>
-                <div class="text-gray-400">Pression à 10 m</div>
-              </div>
-              <div class="rounded-xl bg-slate-700/50 p-3">
-                <div class="text-xl font-bold text-yellow-400">÷ 2</div>
-                <div class="text-gray-400">Volume à 10 m</div>
-              </div>
-              <div class="rounded-xl bg-slate-700/50 p-3">
-                <div class="text-xl font-bold text-orange-400">÷ 4</div>
-                <div class="text-gray-400">Volume à 30 m</div>
+            <div :class="statStrip" class="grid-cols-3">
+              <div
+                v-for="stat in boyleStats"
+                :key="stat.label"
+                :class="statCell"
+              >
+                <span class="text-2xl font-semibold text-[#7fe3d6]">
+                  {{ stat.value }}
+                </span>
+                <span :class="statLabel">{{ stat.label }}</span>
               </div>
             </div>
-          </div>
+          </article>
 
-          <!-- Pression absolue selon profondeur -->
-          <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Pression absolue selon la profondeur
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
-              En bar — 1 bar tous les 10 m en eau de mer
-            </p>
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Pression absolue selon la profondeur</h3>
+            <p :class="chartDesc">En bar — 1 bar tous les 10 m en eau de mer</p>
             <Chart
               type="bar"
               :data="pressureData"
               :options="pressureOptions"
               class="h-64"
             />
-            <p class="mt-3 text-center text-xs text-gray-500">
-              P (bar) = profondeur (m) / 10 + 1
-            </p>
-          </div>
+            <p :class="chartNote">P (bar) = profondeur (m) / 10 + 1</p>
+          </article>
 
-          <!-- Densité de l'air respiré -->
-          <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Consommation d'air selon la profondeur
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Consommation d'air selon la profondeur</h3>
+            <p :class="chartDesc">
               Litres consommés par minute pour un effort donné (base 20 L/min
               surface)
             </p>
             <Chart
               type="line"
               :data="airConsumptionData"
-              :options="lineOptions"
+              :options="airOptions"
               class="h-64"
             />
-          </div>
+          </article>
 
-          <!-- Flottabilité — poussée d'Archimède -->
-          <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Volume de la combinaison vs profondeur
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Volume de la combinaison vs profondeur</h3>
+            <p :class="chartDesc">
               Compression du néoprène — perte de flottabilité en fonction de la
               profondeur
             </p>
@@ -112,27 +77,19 @@
               :options="lineOptions"
               class="h-64"
             />
-          </div>
+          </article>
         </div>
       </section>
 
-      <!-- ===== SECTION DÉCOMPRESSION ===== -->
-      <section>
-        <h2
-          class="mb-6 flex items-center gap-3 text-2xl font-bold text-yellow-300"
-        >
-          <Icon name="mdi:lungs" />
-          Décompression & azote
-        </h2>
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <!-- Courbe de sécurité MN90 — version visuelle fidèle à l'image -->
-          <div
-            class="rounded-2xl border border-yellow-500/20 bg-slate-800/40 p-6 lg:col-span-2"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
+      <!-- ===== DÉCOMPRESSION ===== -->
+      <section class="mt-20">
+        <UiSectionHeading>Décompression &amp; azote</UiSectionHeading>
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <article :class="[chartCard, 'lg:col-span-2']">
+            <h3 :class="chartTitle">
               Courbe de sécurité — Zone sans palier (MN90 / FFESSM)
             </h3>
-            <p class="mb-4 text-sm text-gray-400">
+            <p :class="chartDesc">
               Profondeur versus durée de fond — première plongée de la journée
             </p>
             <Chart
@@ -141,35 +98,30 @@
               :options="safeZoneCurveOptions"
               class="h-80"
             />
-            <div
-              class="mt-3 flex flex-wrap justify-center gap-6 text-xs text-gray-400"
-            >
-              <div class="flex items-center gap-2">
-                <span class="inline-block h-0.5 w-6 bg-yellow-400"></span>
+            <div :class="legendRow">
+              <span class="flex items-center gap-2">
+                <span class="inline-block h-0.5 w-6 bg-[#f5d547]"></span>
                 Courbe de sécurité (LSP)
-              </div>
-              <div class="flex items-center gap-2">
+              </span>
+              <span class="flex items-center gap-2">
                 <span
-                  class="inline-block h-2.5 w-2.5 rounded-full bg-red-500"
+                  class="inline-block h-2.5 w-2.5 rounded-full bg-[#ff8f80]"
                 ></span>
                 Valeurs tabulées MN90
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="inline-block h-3 w-6 rounded bg-sky-400/30"></span>
+              </span>
+              <span class="flex items-center gap-2">
+                <span
+                  class="inline-block h-3 w-6 rounded-sm bg-[rgba(127,227,214,0.18)]"
+                ></span>
                 Zone sans palier obligatoire
-              </div>
-              <span class="text-gray-500">* 10 m → 5h30 (hors échelle)</span>
+              </span>
+              <span>* 10 m → 5h30 (hors échelle)</span>
             </div>
-          </div>
+          </article>
 
-          <!-- LSP selon profondeur — courbe simple -->
-          <div
-            class="rounded-2xl border border-yellow-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Courbe de sécurité MN90
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Courbe de sécurité MN90</h3>
+            <p :class="chartDesc">
               Limite sans palier (LSP) en minutes selon la profondeur
             </p>
             <Chart
@@ -178,19 +130,14 @@
               :options="noStopOptions"
               class="h-64"
             />
-            <p class="mt-3 text-center text-xs text-gray-500">
-              Zone verte = sans palier · Zone orange = paliers obligatoires
+            <p :class="chartNote">
+              Sous la courbe = sans palier · Au-dessus = paliers obligatoires
             </p>
-          </div>
+          </article>
 
-          <!-- Temps de palier selon dépassement de LSP -->
-          <div
-            class="rounded-2xl border border-yellow-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Palier à 3 m selon dépassement LSP
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Palier à 3 m selon dépassement LSP</h3>
+            <p :class="chartDesc">
               Durée du palier en fonction du temps passé au-delà de la LSP à 20
               m
             </p>
@@ -200,16 +147,25 @@
               :options="stopTimeOptions"
               class="h-64"
             />
-          </div>
+            <div :class="legendRow">
+              <span class="flex items-center gap-2">
+                <span
+                  class="inline-block h-3 w-3 rounded-sm bg-[#7fe3d6]"
+                ></span>
+                Sans palier
+              </span>
+              <span class="flex items-center gap-2">
+                <span
+                  class="inline-block h-3 w-3 rounded-sm bg-[#ff8f80]"
+                ></span>
+                Palier obligatoire
+              </span>
+            </div>
+          </article>
 
-          <!-- Saturation azote conceptuelle -->
-          <div
-            class="rounded-2xl border border-yellow-500/20 bg-slate-800/40 p-6 lg:col-span-2"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Saturation / désaturation de l'azote
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="[chartCard, 'lg:col-span-2']">
+            <h3 :class="chartTitle">Saturation / désaturation de l'azote</h3>
+            <p :class="chartDesc">
               Évolution schématique de la charge en azote sur un profil typique
               (descente → fond → remontée avec palier)
             </p>
@@ -219,116 +175,139 @@
               :options="saturationOptions"
               class="h-72"
             />
-            <div
-              class="mt-3 flex flex-wrap justify-center gap-6 text-xs text-gray-400"
-            >
-              <div class="flex items-center gap-2">
-                <span class="inline-block h-0.5 w-6 bg-teal-400"></span>
+            <div :class="legendRow">
+              <span class="flex items-center gap-2">
+                <span class="inline-block h-0.5 w-6 bg-[#7fe3d6]"></span>
                 Charge N₂ (% limite)
-              </div>
-              <div class="flex items-center gap-2">
+              </span>
+              <span class="flex items-center gap-2">
                 <span
-                  class="inline-block h-0.5 w-6 border-t-2 border-dashed border-red-400"
+                  class="inline-block w-6 border-t-2 border-dashed border-[#ff8f80]"
                 ></span>
                 Seuil de supersaturation
-              </div>
+              </span>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
-      <!-- ===== SECTION ACCIDENTOLOGIE ===== -->
-      <section>
-        <h2
-          class="mb-6 flex items-center gap-3 text-2xl font-bold text-orange-300"
-        >
-          <Icon name="mdi:alert-circle" />
-          Accidentologie
-        </h2>
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <!-- Répartition par type d'accident -->
-          <div
-            class="rounded-2xl border border-orange-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Répartition des accidents
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
-              Sources : rapports FFESSM / DAN France
-            </p>
+      <!-- ===== ACCIDENTOLOGIE ===== -->
+      <section class="mt-20">
+        <UiSectionHeading>Accidentologie</UiSectionHeading>
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Répartition des accidents</h3>
+            <p :class="chartDesc">Sources : rapports FFESSM / DAN France</p>
             <Chart
               type="doughnut"
               :data="accidentTypeData"
               :options="doughnutOptions"
-              class="h-64"
+              class="h-72"
             />
-          </div>
+          </article>
 
-          <!-- Accidents par niveau de profondeur -->
-          <div
-            class="rounded-2xl border border-orange-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Profondeur lors de l'accident
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Profondeur lors de l'accident</h3>
+            <p :class="chartDesc">
               % des accidents selon la tranche de profondeur
             </p>
             <Chart
               type="bar"
               :data="accidentDepthData"
               :options="accidentDepthOptions"
-              class="h-64"
+              class="h-72"
             />
-          </div>
+          </article>
 
-          <!-- Facteurs contributifs -->
-          <div
-            class="rounded-2xl border border-orange-500/20 bg-slate-800/40 p-6"
-          >
-            <h3 class="mb-1 text-lg font-semibold text-white">
-              Facteurs contributifs
-            </h3>
-            <p class="mb-4 text-sm text-gray-400">
+          <article :class="chartCard">
+            <h3 :class="chartTitle">Facteurs contributifs</h3>
+            <p :class="chartDesc">
               Principaux facteurs identifiés dans les rapports d'accident
             </p>
             <Chart
               type="radar"
               :data="riskFactorData"
               :options="radarOptions"
-              class="h-64"
+              class="h-72"
             />
-          </div>
+          </article>
         </div>
 
-        <div
-          class="mt-4 rounded-xl border border-slate-600/30 bg-slate-800/20 p-4 text-center text-xs text-gray-500"
+        <p
+          class="mt-4 rounded-[14px] border border-[rgba(245,213,71,0.25)] bg-[rgba(245,213,71,0.05)] px-5 py-4 text-sm leading-relaxed text-[#d4e2e7]"
         >
           Données indicatives à visée pédagogique. Pour des statistiques
           officielles, consultez les rapports annuels FFESSM et DAN Europe.
-        </div>
+        </p>
       </section>
-    </div>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import ChartJS from 'chart.js/auto'
 
-const gridColor = 'rgba(100,116,139,0.2)'
-const tickColor = '#94a3b8'
-const tooltipBg = '#1e293b'
+definePageMeta({ breadcrumb: 'Graphiques' })
+
+// Site palette (dark only). Single series use aqua; the 2-series and 6-category
+// charts use the validated dark categorical slots (blue, orange, aqua, yellow, magenta, green).
+const aqua = '#7fe3d6'
+const yellow = '#f5d547'
+const coral = '#ff8f80'
+const series = [
+  '#3987e5',
+  '#d95926',
+  '#199e70',
+  '#c98500',
+  '#d55181',
+  '#008300',
+]
+const aquaFill = 'rgba(127,227,214,0.12)'
+
+const gridColor = 'rgba(232,241,244,0.08)'
+const tickColor = '#7f97a2'
+const tooltipBg = '#0b2130'
+
+// Chart text in the site fonts (PrimeVue's <Chart> uses this same chart.js/auto instance)
+ChartJS.defaults.font.family = "'Familjen Grotesk', system-ui, sans-serif"
+ChartJS.defaults.font.size = 12
+ChartJS.defaults.color = tickColor
+ChartJS.defaults.borderColor = gridColor
+Object.assign(ChartJS.defaults.plugins.tooltip, {
+  backgroundColor: tooltipBg,
+  borderColor: 'rgba(232,241,244,0.12)',
+  borderWidth: 1,
+  padding: 10,
+  cornerRadius: 8,
+  titleColor: '#e8f1f4',
+  bodyColor: '#d4e2e7',
+})
+
+const chartCard = `${cardBase} flex flex-col p-6`
+const chartTitle = 'm-0 text-lg font-semibold tracking-[-0.01em] text-white'
+const chartDesc = 'mb-5 mt-1 text-sm leading-normal text-[#9fb4bd]'
+const chartNote = 'mt-3 text-center font-mono text-xs text-[#7f97a2]'
+const legendRow =
+  'mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs text-[#b7c9d1]'
+const statStrip =
+  'mt-5 grid gap-px overflow-hidden rounded-xl border border-[rgba(232,241,244,0.1)] bg-[rgba(232,241,244,0.1)]'
+const statCell = 'flex flex-col gap-1 bg-[#0b2130] px-4 py-3'
+const statLabel =
+  'font-mono text-[11px] uppercase tracking-[0.08em] text-[#7f97a2]'
+
+const boyleStats = [
+  { value: '× 2', label: 'Pression à 10 m' },
+  { value: '÷ 2', label: 'Volume à 10 m' },
+  { value: '÷ 4', label: 'Volume à 30 m' },
+]
 
 const baseLineOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },
-    tooltip: {
-      backgroundColor: tooltipBg,
-      titleColor: '#e2e8f0',
-      bodyColor: '#cbd5e1',
-    },
+    tooltip: {},
   },
   scales: {
     x: {
@@ -352,11 +331,12 @@ const boyleData = computed(() => ({
     {
       label: 'Volume relatif',
       data: depths.map((d) => +(1 / (d / 10 + 1)).toFixed(3)),
-      borderColor: '#14b8a6',
-      backgroundColor: 'rgba(20,184,166,0.1)',
+      borderColor: aqua,
+      backgroundColor: aquaFill,
+      borderWidth: 2,
       tension: 0.4,
       fill: true,
-      pointBackgroundColor: '#14b8a6',
+      pointBackgroundColor: aqua,
     },
   ],
 }))
@@ -396,11 +376,10 @@ const pressureData = computed(() => ({
     {
       label: 'Pression (bar)',
       data: pressureDepths.map((d) => +(d / 10 + 1).toFixed(1)),
-      backgroundColor: pressureDepths.map(
-        (_, i) => `rgba(99,102,241,${0.3 + i * 0.1})`
-      ),
-      borderColor: '#818cf8',
-      borderWidth: 1,
+      backgroundColor: aqua,
+      borderRadius: 4,
+      borderSkipped: 'bottom',
+      maxBarThickness: 36,
     },
   ],
 }))
@@ -423,23 +402,42 @@ const airConsumptionData = computed(() => ({
     {
       label: 'Repos (20 L/min surface)',
       data: depths.map((d) => +(20 * (d / 10 + 1)).toFixed(0)),
-      borderColor: '#22c55e',
-      backgroundColor: 'rgba(34,197,94,0.1)',
+      borderColor: series[0],
+      backgroundColor: series[0],
+      borderWidth: 2,
       tension: 0.4,
       fill: false,
-      pointBackgroundColor: '#22c55e',
+      pointBackgroundColor: series[0],
     },
     {
       label: 'Effort modéré (40 L/min surface)',
       data: depths.map((d) => +(40 * (d / 10 + 1)).toFixed(0)),
-      borderColor: '#f59e0b',
-      backgroundColor: 'rgba(245,158,11,0.1)',
+      borderColor: series[1],
+      backgroundColor: series[1],
+      borderWidth: 2,
       tension: 0.4,
       fill: false,
-      pointBackgroundColor: '#f59e0b',
+      pointBackgroundColor: series[1],
     },
   ],
 }))
+
+const airOptions = {
+  ...baseLineOptions,
+  plugins: {
+    ...baseLineOptions.plugins,
+    legend: {
+      display: true,
+      position: 'bottom' as const,
+      labels: {
+        boxWidth: 12,
+        boxHeight: 12,
+        useBorderRadius: true,
+        borderRadius: 3,
+      },
+    },
+  },
+}
 
 // ── Compression néoprène ─────────────────────────────────────────────────────
 const wetsuiteData = computed(() => ({
@@ -448,11 +446,12 @@ const wetsuiteData = computed(() => ({
     {
       label: 'Volume combinaison 5mm (L)',
       data: depths.map((d) => +(8 / (d / 10 + 1)).toFixed(2)),
-      borderColor: '#38bdf8',
-      backgroundColor: 'rgba(56,189,248,0.1)',
+      borderColor: aqua,
+      backgroundColor: aquaFill,
+      borderWidth: 2,
       tension: 0.4,
       fill: true,
-      pointBackgroundColor: '#38bdf8',
+      pointBackgroundColor: aqua,
     },
   ],
 }))
@@ -468,7 +467,7 @@ const safeZoneCurveData = computed(() => ({
         { x: 80, y: 0 },
       ],
       borderColor: 'transparent',
-      backgroundColor: 'rgba(56,189,248,0.18)',
+      backgroundColor: 'rgba(127,227,214,0.18)',
       borderWidth: 0,
       pointRadius: 0,
       fill: '+1',
@@ -488,9 +487,9 @@ const safeZoneCurveData = computed(() => ({
         { x: 75, y: 15 },
         { x: 80, y: 15 },
       ],
-      borderColor: '#eab308',
+      borderColor: yellow,
       backgroundColor: 'transparent',
-      borderWidth: 3,
+      borderWidth: 2.5,
       fill: false,
       tension: 0,
       pointRadius: 0,
@@ -506,7 +505,9 @@ const safeZoneCurveData = computed(() => ({
         { x: 40, y: 20 },
         { x: 75, y: 15 },
       ],
-      backgroundColor: '#ef4444',
+      backgroundColor: coral,
+      borderColor: tooltipBg,
+      borderWidth: 2,
       pointRadius: 5,
       pointHoverRadius: 9,
       label: 'Valeurs tabulées',
@@ -521,9 +522,6 @@ const safeZoneCurveOptions = {
     legend: { display: false },
     tooltip: {
       filter: (item: any) => item.datasetIndex === 2,
-      backgroundColor: tooltipBg,
-      titleColor: '#e2e8f0',
-      bodyColor: '#cbd5e1',
       callbacks: {
         title: (items: any[]) => `Profondeur : ${items[0].raw.y} m`,
         label: (item: any) => ` LSP : ${item.raw.x} min`,
@@ -584,12 +582,13 @@ const noStopData = computed(() => ({
     {
       label: 'LSP (min)',
       data: lspValues,
-      borderColor: '#22c55e',
-      backgroundColor: 'rgba(34,197,94,0.15)',
+      borderColor: aqua,
+      backgroundColor: aquaFill,
+      borderWidth: 2,
       tension: 0.4,
       fill: true,
-      pointBackgroundColor: '#22c55e',
-      pointRadius: 5,
+      pointBackgroundColor: aqua,
+      pointRadius: 4,
     },
   ],
 }))
@@ -625,11 +624,10 @@ const stopTimeData = computed(() => ({
     {
       label: 'Palier 3 m (min)',
       data: stopDurations,
-      backgroundColor: overshoot.map((v) =>
-        v === 0 ? 'rgba(34,197,94,0.6)' : `rgba(249,115,22,${0.3 + v / 160})`
-      ),
-      borderColor: overshoot.map((v) => (v === 0 ? '#22c55e' : '#f97316')),
-      borderWidth: 1,
+      backgroundColor: overshoot.map((v) => (v === 0 ? aqua : coral)),
+      borderRadius: 4,
+      borderSkipped: 'bottom',
+      maxBarThickness: 36,
     },
   ],
 }))
@@ -675,8 +673,9 @@ const saturationData = computed(() => ({
     {
       label: 'Charge N₂',
       data: satValues,
-      borderColor: '#14b8a6',
-      backgroundColor: 'rgba(20,184,166,0.12)',
+      borderColor: aqua,
+      backgroundColor: aquaFill,
+      borderWidth: 2,
       tension: 0.4,
       fill: true,
       pointRadius: 0,
@@ -684,7 +683,7 @@ const saturationData = computed(() => ({
     {
       label: 'Seuil supersaturation',
       data: satLabels.map(() => 85),
-      borderColor: 'rgba(239,68,68,0.7)',
+      borderColor: coral,
       borderDash: [6, 4],
       borderWidth: 1.5,
       pointRadius: 0,
@@ -697,17 +696,14 @@ const saturationOptions = {
   ...baseLineOptions,
   plugins: {
     ...baseLineOptions.plugins,
-    legend: {
-      display: true,
-      labels: { color: tickColor, boxWidth: 24 },
-    },
+    legend: { display: false },
     annotation: {
       annotations: {
         line1: {
           type: 'line',
           xMin: '30 min',
           xMax: '30 min',
-          borderColor: '#f59e0b',
+          borderColor: yellow,
           borderWidth: 1.5,
           label: { content: 'Remontée', enabled: true },
         },
@@ -738,23 +734,10 @@ const accidentTypeData = computed(() => ({
   datasets: [
     {
       data: [32, 22, 18, 12, 10, 6],
-      backgroundColor: [
-        'rgba(239,68,68,0.7)',
-        'rgba(249,115,22,0.7)',
-        'rgba(234,179,8,0.7)',
-        'rgba(34,197,94,0.7)',
-        'rgba(99,102,241,0.7)',
-        'rgba(100,116,139,0.7)',
-      ],
-      borderColor: [
-        '#ef4444',
-        '#f97316',
-        '#eab308',
-        '#22c55e',
-        '#6366f1',
-        '#64748b',
-      ],
-      borderWidth: 1,
+      backgroundColor: series,
+      // 2px surface gap between segments
+      borderColor: '#0f2331',
+      borderWidth: 2,
     },
   ],
 }))
@@ -766,13 +749,16 @@ const doughnutOptions = {
     legend: {
       display: true,
       position: 'bottom' as const,
-      labels: { color: tickColor, boxWidth: 14, font: { size: 10 } },
+      labels: {
+        boxWidth: 10,
+        boxHeight: 10,
+        useBorderRadius: true,
+        borderRadius: 3,
+        padding: 10,
+        font: { size: 11 },
+      },
     },
-    tooltip: {
-      backgroundColor: tooltipBg,
-      bodyColor: '#cbd5e1',
-      titleColor: '#e2e8f0',
-    },
+    tooltip: {},
   },
 }
 
@@ -783,15 +769,10 @@ const accidentDepthData = computed(() => ({
     {
       label: '% accidents',
       data: [15, 28, 32, 18, 7],
-      backgroundColor: [
-        'rgba(34,197,94,0.6)',
-        'rgba(234,179,8,0.6)',
-        'rgba(249,115,22,0.6)',
-        'rgba(239,68,68,0.6)',
-        'rgba(139,92,246,0.6)',
-      ],
-      borderColor: ['#22c55e', '#eab308', '#f97316', '#ef4444', '#8b5cf6'],
-      borderWidth: 1,
+      backgroundColor: aqua,
+      borderRadius: 4,
+      borderSkipped: 'bottom',
+      maxBarThickness: 36,
     },
   ],
 }))
@@ -821,9 +802,9 @@ const riskFactorData = computed(() => ({
     {
       label: 'Fréquence relative (%)',
       data: [65, 70, 55, 45, 30, 40],
-      backgroundColor: 'rgba(249,115,22,0.2)',
-      borderColor: '#f97316',
-      pointBackgroundColor: '#f97316',
+      backgroundColor: aquaFill,
+      borderColor: aqua,
+      pointBackgroundColor: aqua,
       borderWidth: 2,
     },
   ],
@@ -834,11 +815,7 @@ const radarOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: { display: false },
-    tooltip: {
-      backgroundColor: tooltipBg,
-      bodyColor: '#cbd5e1',
-      titleColor: '#e2e8f0',
-    },
+    tooltip: {},
   },
   scales: {
     r: {
@@ -846,7 +823,7 @@ const radarOptions = {
       max: 100,
       grid: { color: gridColor },
       angleLines: { color: gridColor },
-      pointLabels: { color: tickColor, font: { size: 10 } },
+      pointLabels: { color: '#b7c9d1', font: { size: 11 } },
       ticks: { color: tickColor, backdropColor: 'transparent', stepSize: 25 },
     },
   },

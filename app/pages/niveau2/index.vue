@@ -1,38 +1,85 @@
 <template>
-  <div class="relative min-h-full w-full">
-    <div
-      class="relative z-10 flex h-screen w-full flex-col items-center px-6 py-20"
-    >
-      <h1
-        class="mb-14 text-center text-4xl font-black tracking-wide text-yellow-500 md:text-6xl"
-      >
-        Niveau 2
-      </h1>
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
 
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <UiMenuCard
-          title="Théorie"
-          desc="Cours théoriques, recherche, ouverture des modules et export PDF"
-          icon="streamline-plump:class-lesson-solid"
-          link="/niveau2/theorie"
-        />
-      </div>
-    </div>
+    <main class="mx-auto max-w-[1280px] px-8 pb-24">
+      <!-- Hero -->
+      <section
+        class="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-end gap-12 pb-16 pt-[72px]"
+      >
+        <div>
+          <div
+            class="mb-5 font-mono text-[13px] uppercase tracking-[0.12em] text-[#f5d547]"
+          >
+            Plongeur autonome · FFESSM
+          </div>
+          <h1
+            class="m-0 text-[clamp(56px,9vw,120px)] font-bold leading-[0.92] tracking-[-0.035em] text-white"
+          >
+            Niveau 2
+          </h1>
+        </div>
+        <dl class="m-0 flex flex-wrap gap-10 pb-3">
+          <div
+            v-for="stat in stats"
+            :key="stat.label"
+            class="flex flex-col gap-1.5"
+          >
+            <dt
+              class="font-mono text-xs uppercase tracking-[0.08em] text-[#7f97a2]"
+            >
+              {{ stat.label }}
+            </dt>
+            <dd
+              class="m-0 text-4xl font-semibold tracking-[-0.02em] text-[#7fe3d6]"
+            >
+              {{ stat.value }}
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="mt-10">
+        <div class="mb-5 flex items-center gap-4">
+          <h2
+            class="m-0 font-mono text-sm font-medium uppercase tracking-[0.12em] text-[#b7c9d1]"
+          >
+            Apprendre
+          </h2>
+          <div class="h-px flex-1 bg-[rgba(232,241,244,0.1)]"></div>
+        </div>
+        <div
+          class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-4"
+        >
+          <UiIndexCard
+            v-for="(mod, i) in modules"
+            :key="mod.link"
+            :n="pad2(i + 1)"
+            :title="mod.title"
+            :desc="mod.desc"
+            :to="mod.link"
+          />
+        </div>
+      </section>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { gsap } from 'gsap'
+definePageMeta({ breadcrumb: 'Niveau 2' })
 
-onMounted(() => {
-  gsap.from('h1', {
-    opacity: 0,
-    y: -30,
-    duration: 1,
-    ease: 'power3.out',
-  })
-})
+const modules = [
+  {
+    title: 'Théorie',
+    desc: 'Cours théoriques, recherche, ouverture des modules et export PDF',
+    link: '/niveau2/theorie',
+  },
+]
+
+// N2: autonomous to 20 m, supervised to 40 m (FFESSM PA20 / PE40)
+const stats = [
+  { label: 'Autonome', value: '20 m' },
+  { label: 'Encadré', value: '40 m' },
+  { label: 'Modules', value: String(modules.length) },
+]
 </script>
-
-<style></style>

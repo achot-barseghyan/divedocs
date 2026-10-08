@@ -1,180 +1,265 @@
 <template>
-  <div class="min-h-screen text-white">
-    <div class="relative mt-[3rem] overflow-hidden px-4 py-20">
-      <div class="relative z-10 mx-auto max-w-7xl px-6">
-        <h1 class="mb-4 text-center text-5xl font-bold md:text-6xl">
-          <span class="text-yellow-500">Préparation sortie</span>
-        </h1>
-        <p class="mx-auto max-w-3xl text-center text-xl text-gray-300">
-          Checklist complète pour ne rien oublier avant de partir plonger.
-        </p>
-      </div>
-    </div>
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
 
-    <div class="relative mx-auto -mt-12 max-w-5xl px-6 pb-20">
-      <!-- Profile selector -->
-      <div class="mb-6 flex justify-center gap-3">
-        <button
-          v-for="profile in profiles"
-          :key="profile.id"
-          class="rounded-xl border px-5 py-2 text-sm font-semibold transition-all"
-          :class="
-            activeProfile === profile.id
-              ? 'border-teal-400 bg-teal-400/20 text-teal-300'
-              : 'border-white/10 bg-white/5 text-gray-400 hover:border-white/20 hover:text-gray-200'
-          "
-          @click="switchProfile(profile.id)"
+    <main class="mx-auto max-w-[1280px] px-8 pb-24">
+      <UiPageHero
+        eyebrow="Checklist"
+        title="Préparation sortie"
+        subtitle="Checklist complète pour ne rien oublier avant de partir plonger."
+        size="md"
+      />
+
+      <div class="flex flex-wrap items-start gap-8">
+        <!-- Sidebar: profile + progress -->
+        <aside
+          class="flex max-w-[260px] flex-[1_1_220px] flex-col gap-3 md:sticky md:top-24"
         >
-          {{ profile.emoji }} {{ profile.label }}
-        </button>
-      </div>
-
-      <!-- Progress bar -->
-      <div
-        class="mb-8 rounded-2xl border border-white/10 bg-navy-900/90 p-6 backdrop-blur-sm"
-      >
-        <div class="mb-3 flex items-center justify-between">
-          <span class="text-lg font-semibold">Progression</span>
-          <span class="text-2xl font-bold text-teal-400">
-            {{ checkedCount }} / {{ totalCount }}
-          </span>
-        </div>
-        <div class="h-3 w-full overflow-hidden rounded-full bg-white/10">
           <div
-            class="h-full rounded-full bg-teal-400 transition-all duration-500"
-            :style="{ width: progressPercent + '%' }"
-          ></div>
-        </div>
-        <div class="mt-4 flex flex-wrap justify-end gap-2">
-          <Button
-            label="Tout cocher"
-            icon="pi pi-check-square"
-            size="small"
-            severity="secondary"
-            @click="checkAll"
-          />
-          <Button
-            label="Tout décocher"
-            icon="pi pi-stop"
-            size="small"
-            severity="secondary"
-            @click="uncheckAll"
-          />
-          <Button
-            label="Réinitialiser"
-            icon="pi pi-refresh"
-            size="small"
-            severity="secondary"
-            @click="resetAll"
-          />
-        </div>
-      </div>
-
-      <!-- Sections -->
-      <div class="flex flex-col gap-6">
-        <div
-          v-for="group in bagGroups"
-          :key="group.title"
-          class="rounded-2xl border border-white/10 bg-navy-900/90 p-5 backdrop-blur-sm"
-        >
-          <div class="mb-4 flex items-center gap-2">
-            <h2
-              class="flex flex-1 items-center gap-2 text-xl font-bold text-teal-300"
-            >
-              <span class="text-2xl">{{ group.emoji }}</span>
-              {{ group.title }}
-            </h2>
+            class="grid grid-cols-2 gap-0.5 rounded-[10px] border border-white/[0.08] bg-white/5 p-[3px]"
+            role="tablist"
+            aria-label="Profil de checklist"
+          >
             <button
-              class="text-xs text-gray-400 transition hover:text-teal-300"
-              @click="checkGroup(group)"
+              v-for="profile in profiles"
+              :key="profile.id"
+              type="button"
+              role="tab"
+              :aria-selected="activeProfile === profile.id"
+              class="rounded-[7px] px-3 py-2 text-sm transition-colors"
+              :class="
+                activeProfile === profile.id
+                  ? 'bg-[#7fe3d6] font-semibold text-[#05111a]'
+                  : 'font-medium text-[#b7c9d1] hover:bg-white/[0.06] hover:text-white'
+              "
+              @click="switchProfile(profile.id)"
             >
-              Tout cocher
-            </button>
-            <span class="text-gray-600">|</span>
-            <button
-              class="text-xs text-gray-400 transition hover:text-teal-300"
-              @click="uncheckGroup(group)"
-            >
-              Tout décocher
+              {{ profile.label }}
             </button>
           </div>
-          <ul class="grid gap-2 sm:grid-cols-2">
-            <li
-              v-for="item in group.items"
-              :key="item.id"
-              class="group/item flex items-center gap-3 rounded-lg p-2 transition hover:bg-white/5"
+
+          <section :class="[cardBase, 'flex flex-col gap-4 p-[18px]']">
+            <span
+              class="font-mono text-[11px] uppercase tracking-[0.12em] text-[#7f97a2]"
+            >
+              Progression
+            </span>
+            <div class="flex items-baseline gap-1.5">
+              <span
+                class="text-5xl font-bold leading-none tracking-[-0.03em]"
+                :class="allDone ? 'text-[#7fe3d6]' : 'text-white'"
+              >
+                {{ checkedCount }}
+              </span>
+              <span class="text-lg font-semibold text-[#7f97a2]">
+                / {{ totalCount }}
+              </span>
+            </div>
+            <div
+              class="h-1.5 overflow-hidden rounded-full bg-[rgba(232,241,244,0.12)]"
+              role="progressbar"
+              :aria-valuenow="progressPercent"
+              aria-valuemin="0"
+              aria-valuemax="100"
             >
               <div
-                class="flex h-6 w-6 flex-shrink-0 cursor-pointer items-center justify-center rounded border-2 transition-all"
-                :class="
-                  item.checked
-                    ? 'border-teal-400 bg-teal-400'
-                    : 'border-white/30 bg-transparent'
-                "
-                @click="toggle(item)"
+                class="h-full rounded-full bg-[#7fe3d6] transition-[width] duration-300"
+                :style="{ width: progressPercent + '%' }"
+              ></div>
+            </div>
+
+            <ul
+              class="m-0 flex list-none flex-col gap-2.5 border-t border-[rgba(232,241,244,0.08)] p-0 pt-4"
+            >
+              <li
+                v-for="group in bagGroups"
+                :key="group.title"
+                class="flex items-start justify-between gap-3 text-[13px] font-medium leading-snug"
+                :class="groupDone(group) ? 'text-[#7fe3d6]' : 'text-[#d4e2e7]'"
               >
-                <i
-                  v-if="item.checked"
-                  class="pi pi-check text-xs font-bold text-navy-900"
-                ></i>
-              </div>
+                <span>{{ group.title }}</span>
+                <span
+                  class="shrink-0 font-mono text-[11px]"
+                  :class="
+                    groupDone(group) ? 'text-[#7fe3d6]' : 'text-[#7f97a2]'
+                  "
+                >
+                  {{ doneIn(group) }} / {{ group.items.length }}
+                </span>
+              </li>
+            </ul>
+
+            <div
+              class="grid grid-cols-2 gap-2 border-t border-[rgba(232,241,244,0.08)] pt-4"
+            >
+              <button
+                type="button"
+                :class="[secondaryButton, 'h-8 px-2.5 text-xs']"
+                @click="checkAll"
+              >
+                Tout cocher
+              </button>
+              <button
+                type="button"
+                :class="[secondaryButton, 'h-8 px-2.5 text-xs']"
+                @click="uncheckAll"
+              >
+                Tout décocher
+              </button>
+              <button
+                type="button"
+                :class="[
+                  secondaryButton,
+                  'col-span-2 h-8 border-[rgba(255,143,128,0.35)] px-2.5 text-xs text-[#ff8f80] hover:border-[rgba(255,143,128,0.6)] hover:bg-[rgba(255,143,128,0.08)]',
+                ]"
+                @click="resetAll"
+              >
+                ↻ Réinitialiser
+              </button>
+            </div>
+          </section>
+        </aside>
+
+        <!-- Groups -->
+        <div class="flex min-w-0 flex-[999_1_480px] flex-col gap-3">
+          <section
+            v-if="allDone"
+            class="flex items-center gap-4 rounded-[14px] border border-[rgba(127,227,214,0.4)] bg-[rgba(127,227,214,0.07)] px-6 py-5"
+            role="status"
+          >
+            <span
+              class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#7fe3d6] font-bold text-[#05111a]"
+              aria-hidden="true"
+            >
+              ✓
+            </span>
+            <div>
+              <h2 class="m-0 text-lg font-semibold text-white">
+                Tout est prêt !
+              </h2>
+              <p class="m-0 text-[15px] text-[#d4e2e7]">
+                Bonne plongée et pensez toujours à la sécurité.
+              </p>
+            </div>
+          </section>
+
+          <section
+            v-for="(group, g) in bagGroups"
+            :key="group.title"
+            class="rounded-[14px] border bg-white/[0.035] px-5 py-[18px] transition-colors"
+            :class="
+              groupDone(group)
+                ? 'border-[rgba(127,227,214,0.45)]'
+                : 'border-[rgba(232,241,244,0.09)]'
+            "
+          >
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="font-mono text-[13px] text-[#7fe3d6]">
+                {{ pad2(g + 1) }}
+              </span>
+              <h2
+                class="m-0 flex-1 text-lg font-semibold tracking-[-0.01em] text-white"
+              >
+                {{ group.title }}
+              </h2>
               <span
-                class="min-w-0 flex-1 cursor-pointer break-words text-sm transition"
-                :class="
-                  item.checked ? 'text-gray-500 line-through' : 'text-gray-200'
-                "
-                @click="toggle(item)"
+                class="font-mono text-xs"
+                :class="groupDone(group) ? 'text-[#7fe3d6]' : 'text-[#7f97a2]'"
               >
-                {{ item.label }}
+                {{ doneIn(group) }} / {{ group.items.length }}
               </span>
               <button
-                class="ml-auto flex-shrink-0 p-1 text-gray-500 transition hover:text-red-400 sm:opacity-0 sm:group-hover/item:opacity-100"
-                @click.stop="deleteItem(group, item)"
-                title="Supprimer"
+                type="button"
+                :class="[secondaryButton, 'h-7 rounded-lg px-2.5 text-xs']"
+                @click="
+                  groupDone(group) ? uncheckGroup(group) : checkGroup(group)
+                "
               >
-                <i class="pi pi-times text-xs"></i>
+                {{ groupDone(group) ? 'Tout décocher' : 'Tout cocher' }}
               </button>
-            </li>
-          </ul>
-          <div class="mt-3 flex gap-2">
-            <InputText
-              v-model="newItemLabels[group.title]"
-              :placeholder="'Ajouter un item...'"
-              size="small"
-              class="flex-1 !bg-white/5 !text-white placeholder:text-gray-500"
-              @keyup.enter="addItem(group)"
-            />
-            <Button
-              icon="pi pi-plus"
-              size="small"
-              severity="secondary"
-              :disabled="!newItemLabels[group.title]?.trim()"
-              @click="addItem(group)"
-            />
-          </div>
+            </div>
+
+            <ul
+              class="m-0 mt-3 grid list-none grid-cols-[repeat(auto-fill,minmax(min(100%,200px),1fr))] gap-x-3 gap-y-1 p-0"
+            >
+              <li
+                v-for="item in group.items"
+                :key="item.id"
+                class="group/item flex items-center rounded-lg transition-colors hover:bg-white/[0.04]"
+              >
+                <button
+                  type="button"
+                  role="checkbox"
+                  :aria-checked="item.checked"
+                  class="grid min-h-11 flex-1 grid-cols-[20px_1fr] items-center gap-3 rounded-lg px-2 py-1.5 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#7fe3d6]"
+                  @click="toggle(item)"
+                >
+                  <span
+                    class="grid h-5 w-5 place-items-center rounded-md border-[1.5px] text-xs font-bold text-[#05111a] transition-colors"
+                    :class="
+                      item.checked
+                        ? 'border-[#7fe3d6] bg-[#7fe3d6]'
+                        : 'border-[rgba(232,241,244,0.3)]'
+                    "
+                    aria-hidden="true"
+                  >
+                    {{ item.checked ? '✓' : '' }}
+                  </span>
+                  <span
+                    class="break-words text-sm leading-snug transition-colors"
+                    :class="
+                      item.checked
+                        ? 'text-[#7f97a2] line-through'
+                        : 'text-[#e8f1f4]'
+                    "
+                  >
+                    {{ item.label }}
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="mr-1 grid h-7 w-7 shrink-0 place-items-center rounded-md text-xs text-[#7f97a2] transition hover:bg-[rgba(255,143,128,0.1)] hover:text-[#ff8f80] focus-visible:opacity-100 sm:opacity-0 sm:group-hover/item:opacity-100"
+                  :aria-label="`Supprimer ${item.label}`"
+                  title="Supprimer"
+                  @click="deleteItem(group, item)"
+                >
+                  ✕
+                </button>
+              </li>
+            </ul>
+
+            <form
+              class="mt-3 flex gap-2 border-t border-[rgba(232,241,244,0.08)] pt-3"
+              @submit.prevent="addItem(group)"
+            >
+              <input
+                v-model="newItemLabels[group.title]"
+                type="text"
+                placeholder="Ajouter un item..."
+                :aria-label="`Ajouter un item à ${group.title}`"
+                class="h-10 min-w-0 flex-1 rounded-[10px] border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 text-sm text-[#e8f1f4] placeholder-[#7f97a2] outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
+              />
+              <button
+                type="submit"
+                class="grid h-10 w-10 shrink-0 place-items-center rounded-[10px] border border-[rgba(127,227,214,0.35)] bg-[rgba(127,227,214,0.1)] text-lg text-[#7fe3d6] transition-colors hover:bg-[rgba(127,227,214,0.2)] disabled:opacity-40"
+                :disabled="!newItemLabels[group.title]?.trim()"
+                aria-label="Ajouter"
+              >
+                +
+              </button>
+            </form>
+          </section>
         </div>
       </div>
-
-      <!-- All done message -->
-      <transition name="fade">
-        <div
-          v-if="allDone"
-          class="rounded-2xl border-2 border-teal-400/50 bg-teal-900/30 p-6 text-center backdrop-blur-sm"
-        >
-          <i class="pi pi-check-circle mb-3 text-5xl text-teal-400"></i>
-          <h3 class="mb-2 text-2xl font-bold text-teal-300">Tout est prêt !</h3>
-          <p class="text-gray-300">
-            Bonne plongée et pensez toujours à la sécurité.
-          </p>
-        </div>
-      </transition>
-    </div>
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, watch, onMounted, ref } from 'vue'
 import { useConfirm } from 'primevue/useconfirm'
+
+definePageMeta({ breadcrumb: 'Préparation sortie' })
 
 const confirm = useConfirm()
 
@@ -463,6 +548,7 @@ function deleteItem(group: BagGroup, item: CheckItem) {
     acceptLabel: 'Supprimer',
     rejectLabel: 'Annuler',
     acceptClass: 'p-button-danger',
+    rejectProps: { severity: 'secondary', outlined: true },
     accept: () => {
       const idx = group.items.indexOf(item)
       if (idx !== -1) group.items.splice(idx, 1)
@@ -498,9 +584,17 @@ const checkedCount = computed(
   () => allItems.value.filter((i) => i.checked).length
 )
 const progressPercent = computed(() =>
-  Math.round((checkedCount.value / totalCount.value) * 100)
+  totalCount.value
+    ? Math.round((checkedCount.value / totalCount.value) * 100)
+    : 0
 )
-const allDone = computed(() => checkedCount.value === totalCount.value)
+const allDone = computed(
+  () => totalCount.value > 0 && checkedCount.value === totalCount.value
+)
+
+const doneIn = (group: BagGroup) => group.items.filter((i) => i.checked).length
+const groupDone = (group: BagGroup) =>
+  group.items.length > 0 && doneIn(group) === group.items.length
 
 function toggle(item: CheckItem) {
   item.checked = !item.checked
@@ -531,6 +625,7 @@ function resetAll() {
     acceptLabel: 'Réinitialiser',
     rejectLabel: 'Annuler',
     acceptClass: 'p-button-danger',
+    rejectProps: { severity: 'secondary', outlined: true },
     accept: () => {
       bagGroups.forEach((group) => {
         group.items = (defaultItems.value[group.title] ?? []).map((i) => ({
@@ -543,14 +638,3 @@ function resetAll() {
   })
 }
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.4s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

@@ -1,29 +1,31 @@
 <template>
-  <div
-    class="card relative z-50 my-2 max-w-[250px] bg-gradient-to-b from-transparent backdrop-blur-sm md:ml-[5rem]"
+  <nav
+    aria-label="Fil d'Ariane"
+    class="relative z-50 mx-auto max-w-[1280px] px-8 pt-10 font-mono text-[13px] text-[#7f97a2]"
   >
-    <Breadcrumb
-      :home="home"
-      :model="breadcrumbs"
-      class="!bg-transparent md:bg-transparent text-white"
-    >
-      <template #item="{ item }">
-        <NuxtLink :to="item.url" class="flex items-center gap-2">
-          <span v-if="item.icon" :class="item.icon" class="text-white"></span>
-          <span class="font-semibold text-white">{{ item.label }}</span>
-        </NuxtLink>
+    <ol class="flex flex-wrap items-center gap-2.5">
+      <li>
+        <NuxtLink to="/" class="hover:text-[#f5d547]">Accueil</NuxtLink>
+      </li>
+      <template v-for="(item, i) in breadcrumbs" :key="item.url">
+        <li aria-hidden="true">/</li>
+        <li>
+          <span
+            v-if="i === breadcrumbs.length - 1"
+            class="text-[#e8f1f4]"
+            aria-current="page"
+          >
+            {{ item.label }}
+          </span>
+          <NuxtLink v-else :to="item.url" class="hover:text-[#f5d547]">
+            {{ item.label }}
+          </NuxtLink>
+        </li>
       </template>
-    </Breadcrumb>
-  </div>
+    </ol>
+  </nav>
 </template>
 
 <script setup lang="ts">
-import type { MenuItem } from 'primevue/menuitem'
-
 const { breadcrumbs } = useBreadcrumb()
-
-const home = ref<MenuItem>({
-  icon: 'pi pi-home',
-  url: '/',
-})
 </script>

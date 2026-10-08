@@ -6,6 +6,9 @@ let exportInProgress = false
 export const useExportPDF = (
   dataPath: string = '/data/theorie-courses.json'
 ) => {
+  // Niveau 1 has its own data file; the default file holds the Niveau 2 courses
+  const level = dataPath.includes('niveau1') ? 1 : 2
+
   const exportAllModulesToPDF = async () => {
     if (exportInProgress) return
     exportInProgress = true
@@ -206,7 +209,7 @@ export const useExportPDF = (
       })
 
       doc.setFontSize(18)
-      doc.text(sanitizeText('Niveau 1 - FFESSM'), pageWidth / 2, 55, {
+      doc.text(sanitizeText(`Niveau ${level} - FFESSM`), pageWidth / 2, 55, {
         align: 'center',
       })
 
@@ -574,7 +577,7 @@ export const useExportPDF = (
 
       // ============= SAUVEGARDE =============
       doc.save(
-        `theorie-plongee-niveau1-${new Date().toISOString().split('T')[0]}.pdf`
+        `theorie-plongee-niveau${level}-${new Date().toISOString().split('T')[0]}.pdf`
       )
     } finally {
       exportInProgress = false

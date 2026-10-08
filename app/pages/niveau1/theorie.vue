@@ -1,169 +1,136 @@
 <template>
-  <div class="min-h-screen">
-    <div class="relative overflow-hidden px-4 py-20">
-      <div class="relative z-10 mx-auto max-w-7xl px-6">
-        <h1 class="mb-4 text-center text-6xl font-bold">
-          <span class="text-yellow-500">Niveau 1</span>
-        </h1>
-        <p class="mx-auto max-w-3xl text-center text-xl text-gray-300">
-          Retrouve ici tous les modules théoriques du niveau 1.
-        </p>
-      </div>
-    </div>
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
 
-    <div class="mx-auto mb-12 max-w-7xl px-6">
-      <div class="mb-8 flex justify-center">
+    <main class="mx-auto max-w-[1280px] px-8 pb-24">
+      <UiPageHero
+        title="Théorie"
+        subtitle="Retrouve ici tous les modules théoriques du niveau 1."
+      />
+
+      <!-- Toolbar -->
+      <div
+        class="flex flex-wrap items-center gap-4 border-b border-[rgba(232,241,244,0.1)] pb-6"
+      >
         <div
-          class="inline-flex rounded-xl border border-teal-500/30 bg-slate-800/50 p-1"
+          class="flex gap-0.5 rounded-[10px] border border-white/[0.08] bg-white/5 p-[3px]"
+          role="tablist"
         >
           <button
+            v-for="tab in tabs"
+            :key="tab.id"
             type="button"
-            @click="activeTab = 'videos'"
-            :class="[
-              'rounded-lg px-6 py-2 text-sm font-medium transition-all',
-              activeTab === 'videos'
-                ? 'bg-teal-500/20 text-teal-300'
-                : 'text-gray-300 hover:text-white',
-            ]"
+            role="tab"
+            :aria-selected="activeTab === tab.id"
+            class="flex items-center gap-2 rounded-[7px] px-4 py-2 text-[15px] transition-colors"
+            :class="
+              activeTab === tab.id
+                ? 'bg-[#7fe3d6] font-semibold text-[#05111a]'
+                : 'font-medium text-[#b7c9d1] hover:bg-white/[0.06] hover:text-white'
+            "
+            @click="activeTab = tab.id"
           >
-            Vidéos
-          </button>
-          <button
-            type="button"
-            @click="activeTab = 'modules'"
-            :class="[
-              'rounded-lg px-6 py-2 text-sm font-medium transition-all',
-              activeTab === 'modules'
-                ? 'bg-teal-500/20 text-teal-300'
-                : 'text-gray-300 hover:text-white',
-            ]"
-          >
-            Modules écrits
+            {{ tab.label }}
+            <span class="font-mono text-xs opacity-70">{{ tab.count }}</span>
           </button>
         </div>
-      </div>
 
-      <div
-        v-if="activeTab === 'modules'"
-        class="flex items-center justify-between gap-4"
-      >
-        <div class="relative mx-auto max-w-2xl flex-1">
-          <IconField>
-            <InputIcon class="pi pi-search" />
-            <InputText
+        <template v-if="activeTab === 'modules'">
+          <label
+            class="flex h-11 min-w-0 flex-[1_1_260px] items-center gap-2.5 rounded-[10px] border border-[rgba(232,241,244,0.12)] bg-white/[0.035] px-3.5 transition-colors focus-within:border-[rgba(127,227,214,0.6)]"
+          >
+            <span class="text-[15px] text-[#7f97a2]" aria-hidden="true">⌕</span>
+            <span class="sr-only">Rechercher un module</span>
+            <input
               v-model="searchTerm"
-              placeholder="Search"
-              class="w-full rounded-xl border border-teal-500/30 bg-slate-800/50 py-4 pl-12 pr-4 text-white placeholder-gray-400 transition-all focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-400"
+              type="search"
+              placeholder="Rechercher un module"
+              class="min-w-0 flex-1 border-0 bg-transparent text-[15px] text-[#e8f1f4] placeholder-[#7f97a2] outline-none"
             />
-          </IconField>
-        </div>
-        <Button
-          @click="handleExportPDF"
-          :loading="isExporting"
-          icon="pi pi-file-pdf"
-          label="Export PDF"
-          severity="secondary"
-          class="whitespace-nowrap rounded-xl border border-teal-500/30 bg-slate-800/50 px-6 py-3 text-white transition-all hover:border-teal-400/50 hover:bg-slate-800/60"
-        />
+          </label>
+          <button
+            type="button"
+            :class="[
+              secondaryButton,
+              'h-11 gap-2 border-[rgba(232,241,244,0.12)] px-4 text-[15px]',
+            ]"
+            :disabled="isExporting"
+            @click="handleExportPDF"
+          >
+            {{ isExporting ? 'Export en cours…' : 'Export PDF' }}
+            <span class="font-mono text-xs text-[#7fe3d6]" aria-hidden="true">
+              ↓
+            </span>
+          </button>
+        </template>
       </div>
-    </div>
 
-    <div v-if="activeTab === 'videos'" class="mx-auto max-w-7xl px-6 pb-20">
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        <div
-          class="overflow-hidden rounded-2xl border border-teal-500/20 bg-slate-800/40 p-3 backdrop-blur-sm"
-        >
-          <div class="aspect-video overflow-hidden rounded-xl">
-            <iframe
-              class="h-full w-full"
-              src="https://www.youtube.com/embed/OU_q2xnfvCA"
-              title="Vidéo théorie 1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <h3 class="mt-3 text-base font-semibold text-teal-300">
-            Cours n°1 : la réglementation N1 et le matériel
-          </h3>
-        </div>
-
-        <div
-          class="overflow-hidden rounded-2xl border border-teal-500/20 bg-slate-800/40 p-3 backdrop-blur-sm"
-        >
-          <div class="aspect-video overflow-hidden rounded-xl">
-            <iframe
-              class="h-full w-full"
-              src="https://www.youtube.com/embed/y71zsFE3mww"
-              title="Vidéo théorie 2"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <h3 class="mt-3 text-base font-semibold text-teal-300">
-            Cours n°2 : la flottabilité
-          </h3>
-        </div>
-      </div>
-    </div>
-
-    <template v-else>
+      <!-- Videos -->
       <div
-        v-if="filteredCourses.length === 0 && !loading"
-        class="relative z-10 mx-auto max-w-7xl px-6 pb-20"
+        v-if="activeTab === 'videos'"
+        class="mt-8 grid grid-cols-[repeat(auto-fill,minmax(min(100%,420px),1fr))] gap-6"
       >
-        <h2 class="text-center text-xl text-gray-300">
-          Aucun résultat ne correspond actuellement à cette recherche.
-        </h2>
+        <article
+          v-for="(video, i) in videos"
+          :key="video.id"
+          class="flex flex-col gap-4"
+        >
+          <div
+            class="relative aspect-video overflow-hidden rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-[#0e2737]"
+          >
+            <iframe
+              v-if="playing === video.id"
+              class="absolute inset-0 h-full w-full"
+              :src="`https://www.youtube.com/embed/${video.id}?autoplay=1`"
+              :title="video.title"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <UiPlayThumbnail
+              v-else
+              :src="`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`"
+              :label="`Lire : ${video.title}`"
+              @play="playing = video.id"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <span class="font-mono text-[13px] text-[#7fe3d6]">
+              Cours n°{{ i + 1 }}
+            </span>
+            <h3 class="m-0 text-xl font-semibold leading-[1.25] text-white">
+              {{ video.title }}
+            </h3>
+            <span class="text-sm text-[#7f97a2]">
+              {{ video.channel }} · YouTube
+            </span>
+          </div>
+        </article>
       </div>
 
-      <div class="mx-auto max-w-7xl px-6 pb-20">
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div
+      <!-- Written modules -->
+      <template v-else>
+        <div
+          class="mt-8 grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-4"
+        >
+          <UiIndexCard
             v-for="course in filteredCourses"
             :key="course.id"
+            :n="pad2(course.id)"
+            :title="course.title"
+            :desc="course.description"
             @click="openModuleDialog(course.id)"
-            class="group relative cursor-pointer rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6 backdrop-blur-sm transition-all duration-300 hover:border-teal-400/50 hover:bg-slate-800/60"
-          >
-            <div class="mb-4">
-              <div
-                class="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-500/10 transition-colors group-hover:bg-teal-500/20"
-              >
-                <Icon
-                  v-if="course.icon"
-                  :name="course.icon"
-                  size="1.2rem"
-                  style="color: white"
-                />
-                <Icon
-                  v-else
-                  name="icon-park-outline:diving"
-                  size="1.2rem"
-                  style="color: white"
-                />
-              </div>
-            </div>
-
-            <h3
-              class="mb-3 text-xl font-semibold text-teal-400 transition-colors group-hover:text-teal-300"
-            >
-              {{ course.title }}
-            </h3>
-
-            <p class="mb-4 line-clamp-3 text-sm text-gray-400">
-              {{ course.description }}
-            </p>
-
-            <div
-              class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-teal-500/0 to-blue-500/0 transition-all duration-300 group-hover:from-teal-500/5 group-hover:to-blue-500/5"
-            ></div>
-          </div>
+          />
         </div>
-      </div>
-    </template>
+        <p
+          v-if="filteredCourses.length === 0 && !loading"
+          class="mt-12 text-base text-[#7f97a2]"
+        >
+          Aucun module ne correspond à « {{ searchTerm }} ».
+        </p>
+      </template>
+    </main>
 
     <ModalsTheorieModuleDialog
       ref="ModuleDialog"
@@ -173,21 +140,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useTheorieCourses } from '~/composables/useTheorieCourses'
 import { useExportPDF } from '~/composables/useExportPDF'
+
+definePageMeta({ breadcrumb: 'Théorie' })
 
 const ModuleDialog = ref()
 const NIVEAU1_THEORIE_DATA_PATH = '/data/theorie-courses-niveau1.json'
 
-const { loading, fetchCourses, searchCourses } = useTheorieCourses(
+const { courses, loading, fetchCourses, searchCourses } = useTheorieCourses(
   NIVEAU1_THEORIE_DATA_PATH
 )
 
 const { exportAllModulesToPDF } = useExportPDF(NIVEAU1_THEORIE_DATA_PATH)
 
+const videos = [
+  {
+    id: 'OU_q2xnfvCA',
+    title: 'Cours n°1 : la réglementation N1 et le matériel',
+    channel: 'nicoteacher26',
+  },
+  {
+    id: 'y71zsFE3mww',
+    title: 'Cours n°2 : la flottabilité',
+    channel: 'nicoteacher26',
+  },
+]
+
 const isExporting = ref(false)
-const activeTab = ref<'videos' | 'modules'>('videos')
+const activeTab = ref<'videos' | 'modules'>('modules')
+const playing = ref<string | null>(null)
+
+const tabs = computed(() => [
+  { id: 'videos' as const, label: 'Vidéos', count: videos.length },
+  {
+    id: 'modules' as const,
+    label: 'Modules écrits',
+    count: courses.value.length,
+  },
+])
 
 onMounted(async () => {
   await fetchCourses()

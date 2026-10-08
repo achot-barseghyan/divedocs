@@ -1,5 +1,142 @@
+<template>
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
+
+    <main class="mx-auto max-w-[1280px] px-8 pb-24">
+      <UiPageHero
+        title="Révisions & Quiz"
+        subtitle="Révisez et testez vos connaissances sur la réglementation FFESSM"
+        size="md"
+      />
+
+      <div v-if="loadError" class="text-[#ff8f80]">{{ loadError }}</div>
+      <div v-else-if="!quizData" class="flex justify-center py-24">
+        <ProgressSpinner />
+      </div>
+
+      <div v-else ref="stageEl" class="max-w-[912px] scroll-mt-28">
+        <!-- Menu -->
+        <template v-if="mode === null">
+          <section
+            :class="[
+              cardBase,
+              'flex flex-wrap items-center justify-between gap-6 px-6 py-[22px]',
+            ]"
+          >
+            <div class="flex flex-col gap-1.5">
+              <span
+                class="font-mono text-xs uppercase tracking-[0.12em] text-[#7f97a2]"
+              >
+                Thème
+              </span>
+              <h2
+                class="m-0 text-xl font-semibold tracking-[-0.01em] text-white"
+              >
+                {{ quizData.title }}
+              </h2>
+              <p class="m-0 text-[15px] text-[#9fb4bd]">
+                {{ quizData.description }}
+              </p>
+            </div>
+            <div class="flex gap-8">
+              <div
+                v-for="count in counts"
+                :key="count.label"
+                class="flex flex-col gap-1"
+              >
+                <span
+                  class="text-[26px] font-semibold leading-none"
+                  :class="count.color"
+                >
+                  {{ count.value }}
+                </span>
+                <span
+                  class="font-mono text-[11px] uppercase tracking-[0.08em] text-[#7f97a2]"
+                >
+                  {{ count.label }}
+                </span>
+              </div>
+            </div>
+          </section>
+
+          <div
+            class="mt-3 grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-3"
+          >
+            <button
+              v-for="m in modes"
+              :key="m.id"
+              type="button"
+              class="flex flex-col gap-2.5 rounded-[14px] border p-6 text-left transition-[background-color,border-color,transform] duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7fe3d6]"
+              :class="m.cardClass"
+              @click="startMode(m.id)"
+            >
+              <span
+                class="font-mono text-xs uppercase tracking-[0.08em]"
+                :class="m.accentText"
+              >
+                {{ m.meta }}
+              </span>
+              <span
+                class="text-2xl font-semibold tracking-[-0.015em] text-white"
+              >
+                {{ m.title }}
+              </span>
+              <span class="text-[15px] leading-normal text-[#b7c9d1]">
+                {{ m.desc }}
+              </span>
+              <span
+                class="mt-5 inline-flex h-10 items-center self-start rounded-[10px] px-4 text-sm font-semibold text-[#05111a]"
+                :class="m.buttonClass"
+              >
+                Commencer →
+              </span>
+            </button>
+          </div>
+
+          <section class="mt-16">
+            <UiSectionHeading>Vos statistiques</UiSectionHeading>
+            <div
+              class="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[rgba(232,241,244,0.1)] bg-[rgba(232,241,244,0.1)] sm:grid-cols-4"
+            >
+              <div
+                v-for="cell in statCells"
+                :key="cell.label"
+                class="flex flex-col gap-1.5 bg-[#0b2130] px-[18px] py-4"
+              >
+                <span class="text-[26px] font-semibold" :class="cell.color">
+                  {{ cell.value }}
+                </span>
+                <span
+                  class="font-mono text-[11px] uppercase tracking-[0.08em] text-[#7f97a2]"
+                >
+                  {{ cell.label }}
+                </span>
+              </div>
+            </div>
+          </section>
+        </template>
+
+        <QuizEngine
+          v-else-if="mode === 'quiz'"
+          :quiz-data="quizData"
+          @complete="handleQuizComplete"
+          @exit="backToMenu"
+        />
+
+        <QuizFlashcardViewer
+          v-else
+          :flashcard-data="quizData"
+          @exit="backToMenu"
+        />
+      </div>
+    </main>
+  </div>
+</template>
+
 <script setup lang="ts">
-import { gsap } from 'gsap'
+import { ref, computed, nextTick, onMounted } from 'vue'
+
+definePageMeta({ breadcrumb: 'Révisions' })
 
 interface QuizData {
   title: string
@@ -9,277 +146,129 @@ interface QuizData {
   quiz: any[]
 }
 
-// Données
+interface Stats {
+  attempts: number
+  totalScore: number
+  bestScore: number
+  lastScore: number
+}
+
+const STATS_KEY = 'quiz-stats'
+const TOPIC = 'reglementation'
+
 const quizData = ref<QuizData | null>(null)
-const selectedMode = ref<'quiz' | 'flashcard' | null>(null)
-const isPlaying = ref(false)
+const loadError = ref('')
+const mode = ref<'quiz' | 'flashcard' | null>(null)
+const stats = ref<Stats | null>(null)
+const stageEl = ref<HTMLElement | null>(null)
 
-// Stats (seulement côté client)
-const quizStats = ref<any>({})
-
-// Charger les données
 onMounted(async () => {
   try {
     const response = await fetch('/data/quiz-reglementation.json')
+    if (!response.ok) throw new Error()
     quizData.value = await response.json()
-
-    // Charger les stats depuis localStorage
-    if (typeof window !== 'undefined') {
-      quizStats.value = JSON.parse(localStorage.getItem('quiz-stats') || '{}')
-    }
-  } catch (error) {
-    console.error('Erreur lors du chargement des données:', error)
+  } catch {
+    loadError.value = 'Impossible de charger les questions.'
+  }
+  try {
+    stats.value =
+      JSON.parse(localStorage.getItem(STATS_KEY) || '{}')[TOPIC] ?? null
+  } catch {
+    stats.value = null
   }
 })
 
-// Animation du titre
-onMounted(() => {
-  gsap.from('.page-title', {
-    opacity: 0,
-    y: -30,
-    duration: 0.8,
-    ease: 'power3.out',
-  })
-})
+const nQuestions = computed(() => quizData.value?.quiz.length ?? 0)
+const nCards = computed(() => quizData.value?.flashcards.length ?? 0)
 
-// Sélectionner un mode
-const selectMode = (mode: 'quiz' | 'flashcard') => {
-  console.log('Mode sélectionné:', mode)
-  console.log('Quiz data:', quizData.value)
-  selectedMode.value = mode
-  isPlaying.value = true
-}
+const counts = computed(() => [
+  { label: 'Questions', value: nQuestions.value, color: 'text-[#7fe3d6]' },
+  { label: 'Flashcards', value: nCards.value, color: 'text-[#f5d547]' },
+])
 
-// Retour à la sélection
-const backToSelection = () => {
-  selectedMode.value = null
-  isPlaying.value = false
-}
-
-// Gérer la complétion du quiz
-const handleQuizComplete = (results: {
-  score: number
-  total: number
-  percentage: number
-}) => {
-  console.log('Quiz terminé:', results)
-
-  if (typeof window === 'undefined') return
-
-  // Sauvegarder les stats dans localStorage
-  const stats = JSON.parse(localStorage.getItem('quiz-stats') || '{}')
-  if (!stats['reglementation']) {
-    stats['reglementation'] = {
-      attempts: 0,
-      totalScore: 0,
-      bestScore: 0,
-      lastScore: 0,
-    }
-  }
-
-  stats['reglementation'].attempts++
-  stats['reglementation'].totalScore += results.score
-  stats['reglementation'].lastScore = results.score
-  stats['reglementation'].bestScore = Math.max(
-    stats['reglementation'].bestScore,
-    results.score
-  )
-
-  localStorage.setItem('quiz-stats', JSON.stringify(stats))
-  quizStats.value = stats
-}
-
-// Modes disponibles
-const modes = [
+const modes = computed(() => [
   {
-    id: 'quiz',
+    id: 'quiz' as const,
     title: 'Mode Quiz',
-    description: 'Testez vos connaissances avec 20 questions',
-    icon: '📝',
-    color: 'from-blue-500 to-indigo-500',
-    questionsCount: 20,
+    desc: `Testez vos connaissances avec ${nQuestions.value} questions`,
+    meta: `Mode quiz · ${nQuestions.value} questions`,
+    accentText: 'text-[#7fe3d6]',
+    cardClass:
+      'border-[rgba(127,227,214,0.35)] bg-[rgba(127,227,214,0.05)] hover:border-[rgba(127,227,214,0.6)] hover:bg-[rgba(127,227,214,0.09)]',
+    buttonClass: 'bg-[#7fe3d6]',
   },
   {
-    id: 'flashcard',
+    id: 'flashcard' as const,
     title: 'Mode Révision',
-    description: 'Parcourez les flashcards pour mémoriser',
-    icon: '🎴',
-    color: 'from-green-500 to-emerald-500',
-    cardsCount: 15,
+    desc: 'Parcourez les flashcards pour mémoriser',
+    meta: `Mode révision · ${nCards.value} cartes`,
+    accentText: 'text-[#f5d547]',
+    cardClass:
+      'border-[rgba(245,213,71,0.3)] bg-[rgba(245,213,71,0.04)] hover:border-[rgba(245,213,71,0.55)] hover:bg-[rgba(245,213,71,0.08)]',
+    buttonClass: 'bg-[#f5d547]',
   },
-]
+])
+
+// Scores are stored as a number of correct answers: show them as percentages
+const asPercent = (score: number) =>
+  nQuestions.value ? `${Math.round((score / nQuestions.value) * 100)}%` : '0%'
+
+const statCells = computed(() => {
+  const s = stats.value
+  return [
+    { label: 'Tentatives', value: s?.attempts ?? 0, color: 'text-white' },
+    {
+      label: 'Meilleur score',
+      value: asPercent(s?.bestScore ?? 0),
+      color: 'text-[#7fe3d6]',
+    },
+    {
+      label: 'Dernier score',
+      value: asPercent(s?.lastScore ?? 0),
+      color: 'text-[#f5d547]',
+    },
+    {
+      label: 'Moyenne',
+      value: asPercent(s?.attempts ? s.totalScore / s.attempts : 0),
+      color: 'text-[#d4e2e7]',
+    },
+  ]
+})
+
+const scrollToStage = async () => {
+  await nextTick()
+  stageEl.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+const startMode = (id: 'quiz' | 'flashcard') => {
+  mode.value = id
+  scrollToStage()
+}
+
+const backToMenu = () => {
+  mode.value = null
+  scrollToStage()
+}
+
+const handleQuizComplete = (results: { score: number }) => {
+  const previous = stats.value ?? {
+    attempts: 0,
+    totalScore: 0,
+    bestScore: 0,
+    lastScore: 0,
+  }
+  stats.value = {
+    attempts: previous.attempts + 1,
+    totalScore: previous.totalScore + results.score,
+    lastScore: results.score,
+    bestScore: Math.max(previous.bestScore, results.score),
+  }
+  try {
+    const all = JSON.parse(localStorage.getItem(STATS_KEY) || '{}')
+    all[TOPIC] = stats.value
+    localStorage.setItem(STATS_KEY, JSON.stringify(all))
+  } catch {
+    // Storage unavailable (private mode): stats just aren't kept
+  }
+}
 </script>
-
-<template>
-  <div class="min-h-screen p-6">
-    <div class="mx-auto max-w-6xl">
-      <!-- En-tête -->
-      <div class="mb-8">
-        <h1 class="page-title mb-2 mt-4 text-4xl font-bold text-white">
-          📚 Révisions & Quiz
-        </h1>
-        <p class="text-white/80">
-          Révisez et testez vos connaissances sur la réglementation FFESSM
-        </p>
-      </div>
-
-      <!-- Chargement -->
-      <div v-if="!quizData" class="flex h-64 items-center justify-center">
-        <div class="text-center">
-          <i class="pi pi-spin pi-spinner mb-4 text-4xl text-blue-500"></i>
-          <p class="text-gray-200">Chargement...</p>
-        </div>
-      </div>
-
-      <!-- Sélection du mode -->
-      <div v-else-if="!isPlaying" class="space-y-6">
-        <!-- Informations du sujet -->
-        <div class="rounded-2xl border-2 border-blue-500/30 bg-gray-900/70 p-6">
-          <div class="flex items-start gap-4">
-            <div class="text-5xl">⚓</div>
-            <div class="flex-1">
-              <h2 class="mb-2 text-2xl font-bold text-white">
-                {{ quizData.title }}
-              </h2>
-              <p class="mb-4 text-gray-200">
-                {{ quizData.description }}
-              </p>
-              <div class="flex gap-4 text-sm">
-                <span class="flex items-center gap-2">
-                  <span class="text-2xl">📝</span>
-                  <span class="font-medium text-white">
-                    {{ quizData.quiz.length }} questions
-                  </span>
-                </span>
-                <span class="flex items-center gap-2">
-                  <span class="text-2xl">🎴</span>
-                  <span class="font-medium text-white">
-                    {{ quizData.flashcards.length }} flashcards
-                  </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sélection du mode -->
-        <div class="grid gap-6 md:grid-cols-2">
-          <div
-            v-for="mode in modes"
-            :key="mode.id"
-            class="cursor-pointer overflow-hidden rounded-2xl bg-navy-800/70 transition-all duration-300 hover:scale-105 hover:shadow-xl"
-            @click="selectMode(mode.id as 'quiz' | 'flashcard')"
-          >
-            <div
-              class="p-6"
-              :class="`bg-gradient-to-r ${mode.color} rounded-md text-white`"
-            >
-              <div class="mb-3 text-6xl">{{ mode.icon }}</div>
-              <h3 class="text-2xl font-bold">{{ mode.title }}</h3>
-            </div>
-            <div class="p-6">
-              <p class="mb-4 text-gray-200">
-                {{ mode.description }}
-              </p>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-gray-300">
-                  {{
-                    mode.id === 'quiz'
-                      ? `${mode.questionsCount} questions`
-                      : `${mode.cardsCount} cartes`
-                  }}
-                </span>
-                <Button
-                  label="Commencer"
-                  icon="pi pi-arrow-right"
-                  iconPos="right"
-                  :class="
-                    mode.id === 'quiz' ? 'p-button-primary' : 'p-button-success'
-                  "
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Statistiques -->
-        <div
-          class="mt-8 overflow-hidden rounded-2xl border-2 border-blue-500/30 bg-gray-900/90"
-        >
-          <div class="bg-gray-800/50 p-4">
-            <h3 class="flex items-center gap-2 text-xl font-bold text-white">
-              <span>📊</span>
-              <span>Vos statistiques</span>
-            </h3>
-          </div>
-          <div class="p-6">
-            <div class="grid gap-4 md:grid-cols-4">
-              <div class="rounded-lg bg-blue-900/30 p-4 text-center">
-                <div class="text-3xl font-bold text-blue-400">
-                  {{ quizStats['reglementation']?.attempts || 0 }}
-                </div>
-                <div class="mt-1 text-sm text-gray-200">Tentatives</div>
-              </div>
-              <div class="rounded-lg bg-green-900/30 p-4 text-center">
-                <div class="text-3xl font-bold text-green-400">
-                  {{ quizStats['reglementation']?.bestScore || 0 }}
-                </div>
-                <div class="mt-1 text-sm text-gray-200">Meilleur score</div>
-              </div>
-              <div class="rounded-lg bg-yellow-900/30 p-4 text-center">
-                <div class="text-3xl font-bold text-yellow-400">
-                  {{ quizStats['reglementation']?.lastScore || 0 }}
-                </div>
-                <div class="mt-1 text-sm text-gray-200">Dernier score</div>
-              </div>
-              <div class="rounded-lg bg-purple-900/30 p-4 text-center">
-                <div class="text-3xl font-bold text-purple-400">
-                  {{
-                    quizStats['reglementation']?.attempts
-                      ? Math.round(
-                          ((quizStats['reglementation'].totalScore /
-                            quizStats['reglementation'].attempts) *
-                            100) /
-                            20
-                        )
-                      : 0
-                  }}%
-                </div>
-                <div class="mt-1 text-sm text-gray-200">Moyenne</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mode Quiz -->
-      <div v-else-if="selectedMode === 'quiz'">
-        <QuizEngine
-          v-if="quizData"
-          :quiz-data="quizData"
-          @complete="handleQuizComplete"
-          @exit="backToSelection"
-        />
-        <div v-else class="text-center text-white">Chargement du quiz...</div>
-      </div>
-
-      <!-- Mode Flashcard -->
-      <div v-else-if="selectedMode === 'flashcard'">
-        <QuizFlashcardViewer
-          v-if="quizData"
-          :flashcard-data="quizData"
-          @exit="backToSelection"
-        />
-        <div v-else class="text-center text-white">
-          Chargement des flashcards...
-        </div>
-      </div>
-
-      <!-- Debug fallback -->
-      <div v-else class="text-center text-white">
-        <p>État: selectedMode={{ selectedMode }}, isPlaying={{ isPlaying }}</p>
-        <p>quizData présent: {{ !!quizData }}</p>
-      </div>
-    </div>
-  </div>
-</template>

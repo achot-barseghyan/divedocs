@@ -1,4 +1,235 @@
+<template>
+  <!-- Cards -->
+  <section
+    v-if="!showResults && currentCard"
+    :class="[panelClass, 'overflow-hidden']"
+  >
+    <div
+      class="flex flex-wrap items-center gap-x-5 gap-y-2 border-b border-[rgba(232,241,244,0.08)] px-7 py-[18px] font-mono text-[13px]"
+    >
+      <span class="text-[#e8f1f4]">Flashcards</span>
+      <span class="flex-1"></span>
+      <span class="text-[#f5d547]">
+        Carte {{ currentIndex + 1 }}/{{ cards.length }}
+      </span>
+      <span class="text-[#7fe3d6]">{{ knownCards.length }} connues</span>
+      <span class="text-[#ff8f80]">{{ unknownCards.length }} à revoir</span>
+      <button
+        type="button"
+        class="text-[#7f97a2] hover:text-white"
+        @click="emit('exit')"
+      >
+        Quitter ✕
+      </button>
+    </div>
+    <div
+      class="-mt-px grid gap-1 px-7"
+      :style="{ gridTemplateColumns: `repeat(${cards.length}, 1fr)` }"
+      aria-hidden="true"
+    >
+      <div
+        v-for="(card, i) in cards"
+        :key="card.id"
+        class="h-1 rounded-sm"
+        :class="segmentClass(card.id, i)"
+      ></div>
+    </div>
+
+    <div class="flex flex-col gap-6 px-7 pb-7 pt-8">
+      <!-- The card: click (or Space) to flip -->
+      <button
+        type="button"
+        class="flex min-h-[340px] flex-col gap-5 rounded-[14px] border p-7 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7fe3d6]"
+        :class="
+          isFlipped
+            ? 'cursor-default border-[rgba(245,213,71,0.3)] bg-[rgba(245,213,71,0.04)]'
+            : 'border-[rgba(232,241,244,0.12)] bg-white/[0.03] hover:border-[rgba(245,213,71,0.45)]'
+        "
+        :aria-label="isFlipped ? undefined : 'Retourner la carte'"
+        @click="flipCard"
+      >
+        <span class="flex w-full items-center justify-between gap-3">
+          <span :class="tagClass(isFlipped ? 'yellow' : 'aqua')">
+            {{ isFlipped ? 'Réponse' : 'Question' }}
+          </span>
+          <span class="font-mono text-xs text-[#7f97a2]">
+            {{ currentCard.category }}
+          </span>
+        </span>
+
+        <template v-if="!isFlipped">
+          <span
+            class="my-auto text-[clamp(26px,3.4vw,36px)] font-semibold leading-[1.15] tracking-[-0.02em] text-white [text-wrap:balance]"
+          >
+            {{ cardTitle(currentCard.question) }}
+          </span>
+          <span class="font-mono text-xs text-[#7f97a2]">
+            Cliquer ou Espace pour retourner
+          </span>
+        </template>
+
+        <span v-else class="flex w-full flex-col gap-3">
+          <span class="text-lg font-semibold text-white">
+            {{ cardTitle(currentCard.question) }}
+          </span>
+          <template v-for="(block, b) in answerBlocks" :key="b">
+            <span
+              v-if="block.type === 'heading'"
+              class="mt-2 font-mono text-xs uppercase tracking-[0.12em] text-[#f5d547]"
+            >
+              {{ block.text }}
+            </span>
+            <span v-else-if="block.type === 'list'" class="flex flex-col gap-2">
+              <span
+                v-for="(item, i) in block.items"
+                :key="i"
+                class="grid grid-cols-[16px_1fr] gap-2.5 text-base leading-[1.55] text-[#d4e2e7]"
+              >
+                <span
+                  class="mt-[9px] h-1.5 w-1.5 rounded-full bg-[#7fe3d6]"
+                ></span>
+                <span>{{ item }}</span>
+              </span>
+            </span>
+            <span v-else class="text-base leading-[1.6] text-[#d4e2e7]">
+              {{ block.text }}
+            </span>
+          </template>
+        </span>
+      </button>
+
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <template v-if="isFlipped">
+          <span class="font-mono text-xs text-[#7f97a2]">
+            ← à revoir · → je sais
+          </span>
+          <div class="flex flex-wrap gap-3">
+            <button
+              type="button"
+              :class="[
+                secondaryButton,
+                'h-12 rounded-xl px-5 text-base hover:border-[rgba(255,143,128,0.5)] hover:bg-[rgba(255,143,128,0.08)]',
+              ]"
+              @click="markCard(false)"
+            >
+              À revoir
+            </button>
+            <button
+              type="button"
+              :class="[primaryButton, 'h-12 rounded-xl px-5 text-base']"
+              @click="markCard(true)"
+            >
+              Je sais ✓
+            </button>
+          </div>
+        </template>
+        <template v-else>
+          <button
+            type="button"
+            :class="[secondaryButton, 'h-10 px-4 text-sm']"
+            :disabled="currentIndex === 0"
+            @click="previousCard"
+          >
+            ← Précédente
+          </button>
+          <button
+            type="button"
+            :class="[secondaryButton, 'h-10 px-4 text-sm']"
+            :disabled="isLastCard"
+            @click="nextCard"
+          >
+            Suivante →
+          </button>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section
+    v-else-if="showResults"
+    :class="[panelClass, 'flex flex-col gap-8 p-6 sm:p-10']"
+  >
+    <div class="flex flex-col gap-3">
+      <span
+        class="font-mono text-[13px] uppercase tracking-[0.12em] text-[#7f97a2]"
+      >
+        Révision terminée ! · {{ flashcardData.title }}
+      </span>
+      <div class="flex flex-wrap items-baseline gap-3">
+        <span
+          class="text-[clamp(64px,10vw,112px)] font-bold leading-[0.9] tracking-[-0.04em]"
+          :class="percentage >= 80 ? 'text-[#7fe3d6]' : 'text-[#f5d547]'"
+        >
+          {{ knownCards.length }}
+        </span>
+        <span class="text-[32px] font-semibold text-[#7f97a2]">
+          / {{ cards.length }}
+        </span>
+      </div>
+      <p class="m-0 text-[19px] leading-normal text-[#d4e2e7]">
+        {{ performanceMessage }}
+      </p>
+    </div>
+
+    <div
+      class="grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-[rgba(232,241,244,0.1)] bg-[rgba(232,241,244,0.1)]"
+    >
+      <div
+        v-for="cell in resultCells"
+        :key="cell.label"
+        class="flex flex-col gap-1 bg-[#0b2130] p-[18px]"
+      >
+        <span class="text-[30px] font-semibold" :class="cell.color">
+          {{ cell.value }}
+        </span>
+        <span class="text-sm text-[#9fb4bd]">{{ cell.label }}</span>
+      </div>
+    </div>
+
+    <div
+      v-if="unknownCards.length"
+      class="rounded-[14px] border border-[rgba(245,213,71,0.25)] bg-[rgba(245,213,71,0.05)] p-6"
+    >
+      <h3
+        class="m-0 mb-4 font-mono text-[13px] font-medium uppercase tracking-[0.12em] text-[#f5d547]"
+      >
+        Cartes à revoir
+      </h3>
+      <ul class="m-0 flex list-none flex-col gap-2.5 p-0">
+        <li
+          v-for="card in cardsToReview"
+          :key="card.id"
+          class="grid grid-cols-[16px_1fr] gap-2.5 text-base leading-[1.55] text-[#d4e2e7]"
+        >
+          <span class="mt-[9px] h-1.5 w-1.5 rounded-full bg-[#f5d547]"></span>
+          <span>{{ cardTitle(card.question) }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      <button
+        type="button"
+        :class="[secondaryButton, 'h-12 rounded-xl px-5 text-base']"
+        @click="restart"
+      >
+        ↻ Recommencer
+      </button>
+      <button
+        type="button"
+        :class="[primaryButton, 'h-12 rounded-xl px-5 text-base']"
+        @click="emit('exit')"
+      >
+        Retour au menu
+      </button>
+    </div>
+  </section>
+</template>
+
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
 interface Flashcard {
   id: number
   question: string
@@ -21,66 +252,84 @@ const emit = defineEmits<{
   exit: []
 }>()
 
-// État
+const panelClass =
+  'rounded-[18px] border border-[rgba(232,241,244,0.1)] bg-white/[0.035]'
+
+const cards = computed(() => props.flashcardData.flashcards)
 const currentIndex = ref(0)
 const isFlipped = ref(false)
 const knownCards = ref<number[]>([])
 const unknownCards = ref<number[]>([])
 const showResults = ref(false)
 
-// Carte actuelle
-const currentCard = computed(
-  () => props.flashcardData.flashcards[currentIndex.value]
+const currentCard = computed(() => cards.value[currentIndex.value])
+const isLastCard = computed(() => currentIndex.value === cards.value.length - 1)
+const percentage = computed(() =>
+  Math.round((knownCards.value.length / cards.value.length) * 100)
 )
-const progress = computed(
-  () => ((currentIndex.value + 1) / props.flashcardData.flashcards.length) * 100
-)
-const isLastCard = computed(
-  () => currentIndex.value === props.flashcardData.flashcards.length - 1
-)
-const cardsReviewed = computed(
-  () => knownCards.value.length + unknownCards.value.length
+const cardsToReview = computed(() =>
+  cards.value.filter((c) => unknownCards.value.includes(c.id))
 )
 
-// Debug
-onMounted(() => {
-  console.log('FlashcardViewer monté')
-  console.log('Props:', props.flashcardData)
-  console.log('Nombre de flashcards:', props.flashcardData?.flashcards?.length)
-  console.log('Current card:', currentCard.value)
+// Questions are stored as "Slide 3 : Title": the counter already gives the number
+const cardTitle = (question: string) =>
+  question.replace(/^Slide \d+\s*:\s*/, '')
+
+type Block =
+  | { type: 'heading'; text: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'text'; text: string }
+
+// "TITRE :" lines become headings, "• " lines become list items
+const answerBlocks = computed<Block[]>(() => {
+  const blocks: Block[] = []
+  for (const raw of (currentCard.value?.answer ?? '').split('\n')) {
+    const line = raw.trim()
+    if (!line) continue
+    const last = blocks[blocks.length - 1]
+    if (line.startsWith('•')) {
+      const item = line.replace(/^•\s*/, '')
+      if (last?.type === 'list') last.items.push(item)
+      else blocks.push({ type: 'list', items: [item] })
+    } else if (line === line.toUpperCase() && /[A-Z]/.test(line)) {
+      blocks.push({ type: 'heading', text: line.replace(/\s*:$/, '') })
+    } else {
+      blocks.push({ type: 'text', text: line })
+    }
+  }
+  return blocks
 })
 
-// Retourner la carte
+const segmentClass = (id: number, i: number) => {
+  if (knownCards.value.includes(id)) return 'bg-[#7fe3d6]'
+  if (unknownCards.value.includes(id)) return 'bg-[#ff8f80]'
+  if (i === currentIndex.value) return 'bg-[rgba(245,213,71,0.6)]'
+  return 'bg-[rgba(232,241,244,0.12)]'
+}
+
 const flipCard = () => {
-  isFlipped.value = !isFlipped.value
+  isFlipped.value = true
 }
 
-// Marquer comme connu/inconnu
 const markCard = (known: boolean) => {
-  if (!isFlipped.value || !currentCard.value) return
+  const card = currentCard.value
+  if (!isFlipped.value || !card) return
+  // Re-marking a card (after going back) replaces the previous mark
+  knownCards.value = knownCards.value.filter((id) => id !== card.id)
+  unknownCards.value = unknownCards.value.filter((id) => id !== card.id)
+  ;(known ? knownCards : unknownCards).value.push(card.id)
 
-  if (known) {
-    knownCards.value.push(currentCard.value.id)
-  } else {
-    unknownCards.value.push(currentCard.value.id)
-  }
-
-  if (isLastCard.value) {
-    showResults.value = true
-  } else {
-    nextCard()
-  }
+  if (isLastCard.value) showResults.value = true
+  else nextCard()
 }
 
-// Carte suivante
 const nextCard = () => {
-  if (currentIndex.value < props.flashcardData.flashcards.length - 1) {
+  if (currentIndex.value < cards.value.length - 1) {
     currentIndex.value++
     isFlipped.value = false
   }
 }
 
-// Carte précédente
 const previousCard = () => {
   if (currentIndex.value > 0) {
     currentIndex.value--
@@ -88,7 +337,6 @@ const previousCard = () => {
   }
 }
 
-// Recommencer
 const restart = () => {
   currentIndex.value = 0
   isFlipped.value = false
@@ -97,32 +345,35 @@ const restart = () => {
   showResults.value = false
 }
 
-// Message de performance
-const performanceMessage = computed(() => {
-  const percentage = Math.round(
-    (knownCards.value.length / props.flashcardData.flashcards.length) * 100
-  )
+const resultCells = computed(() => [
+  { label: 'Connues', value: knownCards.value.length, color: 'text-[#7fe3d6]' },
+  {
+    label: 'À revoir',
+    value: unknownCards.value.length,
+    color: 'text-[#ff8f80]',
+  },
+  { label: 'Maîtrise', value: `${percentage.value}%`, color: 'text-white' },
+])
 
-  if (percentage >= 90)
-    return { text: 'Excellent !', icon: '🏆', color: 'text-green-500' }
-  if (percentage >= 75)
-    return { text: 'Très bien !', icon: '⭐', color: 'text-blue-500' }
-  if (percentage >= 60)
-    return { text: 'Bien joué !', icon: '👍', color: 'text-yellow-500' }
-  if (percentage >= 50)
-    return { text: 'Continuez !', icon: '📚', color: 'text-orange-500' }
-  return { text: 'À revoir', icon: '💪', color: 'text-red-500' }
+const performanceMessage = computed(() => {
+  if (percentage.value >= 90) return 'Excellent ! Ces notions sont acquises.'
+  if (percentage.value >= 75)
+    return 'Très bien ! Repasse sur les cartes manquées.'
+  if (percentage.value >= 50) return 'Continue ! Revois les cartes ci-dessous.'
+  return 'À revoir. Reprends les cartes tranquillement avant le quiz.'
 })
 
-// Navigation au clavier
-const handleKeyPress = (event: KeyboardEvent) => {
+// Space/Enter: flip · ←/→: à revoir / je sais · ↑/↓: previous / next card
+useEventListener('keydown', (event: KeyboardEvent) => {
   if (showResults.value) return
+  const target = event.target as HTMLElement | null
+  if (target?.closest('input, textarea, select')) return
+  // Let focused buttons handle their own Space/Enter activation
+  const onButton = !!target?.closest('button')
 
-  if (event.key === ' ' || event.key === 'Enter') {
+  if ((event.key === ' ' || event.key === 'Enter') && !onButton) {
     event.preventDefault()
-    if (!isFlipped.value) {
-      flipCard()
-    }
+    flipCard()
   } else if (event.key === 'ArrowRight' && isFlipped.value) {
     markCard(true)
   } else if (event.key === 'ArrowLeft' && isFlipped.value) {
@@ -134,295 +385,5 @@ const handleKeyPress = (event: KeyboardEvent) => {
     event.preventDefault()
     nextCard()
   }
-}
-
-onMounted(() => {
-  window.addEventListener('keydown', handleKeyPress)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeyPress)
 })
 </script>
-
-<template>
-  <div class="flashcard-viewer">
-    <!-- Vue normale : Flashcards -->
-    <div v-if="!showResults && currentCard" class="space-y-6">
-      <!-- Barre de progression -->
-      <div class="space-y-2">
-        <div class="flex items-center justify-between text-sm">
-          <span class="font-medium">
-            Carte {{ currentIndex + 1 }} / {{ flashcardData.flashcards.length }}
-          </span>
-          <div class="flex gap-4 text-white">
-            <span class="flex items-center gap-1">
-              <span class="text-green-500">✓</span>
-              {{ knownCards.length }}
-            </span>
-            <span class="flex items-center gap-1">
-              <span class="text-red-500">✗</span>
-              {{ unknownCards.length }}
-            </span>
-          </div>
-        </div>
-        <div class="h-2 w-full rounded-full bg-gray-200">
-          <div
-            class="h-2 rounded-full bg-blue-500 transition-all duration-300"
-            :style="{ width: `${progress}%` }"
-          ></div>
-        </div>
-      </div>
-
-      <!-- Carte -->
-      <div class="perspective-1000">
-        <div
-          class="relative w-full cursor-pointer"
-          style="min-height: 500px"
-          @click="flipCard"
-        >
-          <div
-            class="preserve-3d absolute h-full w-full transition-transform duration-500"
-            :style="{
-              transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-            }"
-          >
-            <!-- Face avant (Question) -->
-            <div
-              class="backface-hidden absolute flex h-full w-full flex-col rounded-xl border-2 border-blue-500/30 bg-navy-900/80"
-            >
-              <div class="flex items-center gap-3 p-6">
-                <div class="text-3xl">❓</div>
-                <div class="flex-1">
-                  <Tag
-                    :value="currentCard.category"
-                    severity="info"
-                    class="mb-2"
-                  />
-                  <div class="text-sm text-gray-200">
-                    Cliquez pour révéler la réponse
-                  </div>
-                </div>
-              </div>
-              <div
-                class="flex h-48 flex-1 items-center justify-center overflow-y-auto"
-              >
-                <p
-                  class="whitespace-pre-line px-8 text-center text-xl font-bold text-white"
-                >
-                  {{ currentCard.question }}
-                </p>
-              </div>
-            </div>
-
-            <!-- Face arrière (Réponse) -->
-            <div
-              class="backface-hidden absolute flex h-full w-full flex-col rounded-xl border-2 border-green-500/30 bg-green-900/80"
-              style="transform: rotateY(180deg)"
-            >
-              <div class="flex items-center gap-3 p-6">
-                <div class="text-3xl">💡</div>
-                <div class="flex-1">
-                  <Tag
-                    :value="currentCard.category"
-                    severity="success"
-                    class="mb-2"
-                  />
-                  <div class="text-sm text-gray-200">Réponse</div>
-                </div>
-              </div>
-              <div
-                class="flex h-96 flex-1 items-start justify-center overflow-y-auto p-4"
-              >
-                <p
-                  class="whitespace-pre-line px-8 text-left text-base leading-relaxed text-white"
-                >
-                  {{ currentCard.answer }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Instructions et contrôles -->
-      <div class="mb-4 text-center text-sm text-white">
-        <p v-if="!isFlipped">
-          Cliquez sur la carte ou appuyez sur
-          <kbd class="rounded bg-gray-700 p-2">Espace</kbd>
-          pour voir la réponse
-        </p>
-        <p v-else>Connaissez-vous cette réponse ?</p>
-      </div>
-
-      <!-- Boutons d'action -->
-      <div class="flex gap-3">
-        <Button
-          label="Quitter"
-          severity="primary"
-          text
-          @click="emit('exit')"
-          class="flex-shrink-0"
-        />
-
-        <div class="flex flex-1 gap-3">
-          <Button
-            v-if="isFlipped"
-            label="Non, à revoir"
-            severity="danger"
-            @click="markCard(false)"
-            icon="pi pi-times"
-            class="flex-1"
-          />
-          <Button
-            v-if="isFlipped"
-            label="Oui, je savais"
-            severity="success"
-            @click="markCard(true)"
-            icon="pi pi-check"
-            class="flex-1"
-          />
-
-          <Button
-            v-if="!isFlipped && currentIndex > 0"
-            icon="pi pi-arrow-left"
-            @click="previousCard"
-            text
-            class="flex-shrink-0"
-          />
-          <Button
-            v-if="!isFlipped && !isLastCard"
-            icon="pi pi-arrow-right"
-            @click="nextCard"
-            text
-            class="flex-shrink-0"
-          />
-        </div>
-      </div>
-
-      <!-- Raccourcis clavier -->
-      <div class="border-t pt-4 text-center text-xs text-gray-300">
-        <p>
-          Raccourcis :
-          <kbd>Espace</kbd>
-          Retourner ·
-          <kbd>←</kbd>
-          Non ·
-          <kbd>→</kbd>
-          Oui ·
-          <kbd>↑</kbd>
-          Précédent ·
-          <kbd>↓</kbd>
-          Suivant
-        </p>
-      </div>
-    </div>
-
-    <!-- Vue Résultats -->
-    <div v-else class="space-y-6">
-      <div class="rounded-xl bg-gray-900/90 p-8 text-center">
-        <div class="mb-4 text-8xl">{{ performanceMessage.icon }}</div>
-        <h2 class="mb-2 text-3xl font-bold" :class="performanceMessage.color">
-          {{ performanceMessage.text }}
-        </h2>
-        <div class="mt-6 space-y-6">
-          <!-- Statistiques -->
-          <div class="grid grid-cols-3 gap-4">
-            <div class="rounded-lg bg-green-900/50 p-4">
-              <div class="text-3xl font-bold text-green-400">
-                {{ knownCards.length }}
-              </div>
-              <div class="text-sm text-gray-200">Cartes connues</div>
-            </div>
-            <div class="rounded-lg bg-red-900/50 p-4">
-              <div class="text-3xl font-bold text-red-400">
-                {{ unknownCards.length }}
-              </div>
-              <div class="text-sm text-gray-200">À revoir</div>
-            </div>
-            <div class="rounded-lg bg-gray-800/50 p-4">
-              <div class="text-3xl font-bold" :class="performanceMessage.color">
-                {{
-                  Math.round(
-                    (knownCards.length / flashcardData.flashcards.length) * 100
-                  )
-                }}%
-              </div>
-              <div class="text-sm text-gray-200">Réussite</div>
-            </div>
-          </div>
-
-          <!-- Liste des cartes à revoir -->
-          <div v-if="unknownCards.length > 0" class="border-t pt-6">
-            <h3 class="mb-4 text-left text-lg font-bold text-white">
-              Cartes à revoir ({{ unknownCards.length }})
-            </h3>
-            <div class="space-y-2 text-left">
-              <div
-                v-for="cardId in unknownCards"
-                :key="cardId"
-                class="rounded-lg bg-red-900/30 p-3"
-              >
-                <p class="font-medium text-white">
-                  {{
-                    flashcardData.flashcards.find((c) => c.id === cardId)
-                      ?.question
-                  }}
-                </p>
-                <p class="mt-1 whitespace-pre-line text-sm text-gray-300">
-                  {{
-                    flashcardData.flashcards.find((c) => c.id === cardId)
-                      ?.answer
-                  }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-8 flex gap-3">
-          <Button
-            v-if="unknownCards.length > 0"
-            label="Revoir les cartes manquées"
-            severity="warning"
-            icon="pi pi-refresh"
-            @click="restart"
-            class="flex-1"
-          />
-          <Button
-            v-else
-            label="Recommencer"
-            severity="secondary"
-            icon="pi pi-refresh"
-            @click="restart"
-            class="flex-1"
-          />
-          <Button
-            label="Terminer"
-            @click="emit('exit')"
-            icon="pi pi-check"
-            class="flex-1"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<style scoped>
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
-}
-
-kbd {
-  font-family: monospace;
-  font-size: 0.9em;
-}
-</style>

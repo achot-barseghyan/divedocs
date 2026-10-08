@@ -1,55 +1,56 @@
 <template>
-  <div class="mb-8 min-h-screen text-white">
-    <div class="relative overflow-hidden px-4 py-16">
-      <div class="relative z-10 mx-auto max-w-7xl px-6 text-center">
-        <h1 class="mb-4 text-5xl font-bold">
-          Tables
-          <span class="text-yellow-500">MN90</span>
-          &
-          <span class="text-teal-400">FFESSM</span>
-        </h1>
-        <p class="mx-auto max-w-3xl text-xl text-gray-300">
-          Calcul interactif des paliers de décompression
+  <div class="font-grotesk text-[#e8f1f4] antialiased">
+    <UiPageBackground />
+
+    <div class="mx-auto max-w-[1280px] px-8">
+      <UiPageHero
+        eyebrow="Décompression"
+        title="Tables MN90 & FFESSM"
+        subtitle="Calcul interactif des paliers de décompression"
+        size="md"
+      />
+
+      <div
+        class="flex items-start gap-3 rounded-[14px] border border-[rgba(245,213,71,0.25)] bg-[rgba(245,213,71,0.05)] px-5 py-4"
+        role="note"
+      >
+        <span
+          class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#f5d547] text-sm font-bold text-[#05111a]"
+          aria-hidden="true"
+        >
+          !
+        </span>
+        <p class="m-0 text-sm leading-relaxed text-[#d4e2e7]">
+          <strong class="font-semibold text-[#f5d547]">
+            Usage éducatif uniquement.
+          </strong>
+          Vérifiez toujours vos plongées avec les tables officielles MN90/FFESSM
+          et un ordinateur de plongée certifié. Cet outil ne remplace pas une
+          formation FFESSM.
         </p>
       </div>
     </div>
 
-    <div class="mx-auto max-w-7xl px-6 pb-4">
-      <div class="rounded-xl border border-yellow-500/30 bg-yellow-500/10 p-4">
-        <div class="flex items-start gap-3">
-          <Icon
-            name="mdi:alert-circle"
-            class="mt-0.5 shrink-0 text-yellow-400"
-            size="1.4rem"
-          />
-          <p class="text-sm text-yellow-300">
-            <strong>Usage éducatif uniquement.</strong>
-            Vérifiez toujours vos plongées avec les tables officielles
-            MN90/FFESSM et un ordinateur de plongée certifié. Cet outil ne
-            remplace pas une formation FFESSM.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="mx-auto max-w-7xl px-6 pb-12">
-      <div class="my-8 flex justify-center">
+    <div class="mx-auto max-w-[1280px] px-8 pb-24">
+      <div class="my-8 flex border-b border-[rgba(232,241,244,0.1)] pb-6">
         <div
-          class="inline-flex flex-wrap justify-center gap-1 rounded-xl border border-teal-500/30 bg-slate-800/50 p-1"
+          class="inline-flex flex-wrap gap-0.5 rounded-[10px] border border-white/[0.08] bg-white/5 p-[3px]"
+          role="tablist"
         >
           <button
             v-for="tab in tabs"
             :key="tab.id"
             type="button"
+            role="tab"
+            :aria-selected="activeTab === tab.id"
             @click="activeTab = tab.id"
             :class="[
-              'flex items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-medium transition-all',
+              'rounded-[7px] px-4 py-2 text-[15px] transition-colors',
               activeTab === tab.id
-                ? 'bg-teal-500/20 text-teal-300'
-                : 'text-gray-300 hover:text-white',
+                ? 'bg-[#7fe3d6] font-semibold text-[#05111a]'
+                : 'font-medium text-[#b7c9d1] hover:bg-white/[0.06] hover:text-white',
             ]"
           >
-            <Icon :name="tab.icon" />
             {{ tab.label }}
           </button>
         </div>
@@ -59,12 +60,16 @@
       <div v-if="activeTab === 'calculator'" class="space-y-6">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
+            class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-6"
           >
-            <h2 class="mb-6 text-xl font-bold text-teal-300">Paramètres</h2>
+            <h2
+              class="mb-6 text-xl font-semibold tracking-[-0.01em] text-white"
+            >
+              Paramètres
+            </h2>
 
             <div class="mb-6">
-              <label class="mb-2 block text-sm font-medium text-gray-300">
+              <label class="mb-2 block text-sm font-medium text-[#d4e2e7]">
                 Profondeur maximale
               </label>
               <div class="flex items-center gap-4">
@@ -74,7 +79,7 @@
                   min="6"
                   max="40"
                   step="1"
-                  class="flex-1 accent-teal-400"
+                  class="flex-1 accent-[#7fe3d6]"
                 />
                 <div class="flex items-center gap-2">
                   <input
@@ -82,17 +87,17 @@
                     type="number"
                     min="6"
                     max="40"
-                    class="w-20 rounded-lg border border-teal-500/30 bg-slate-700 px-3 py-2 text-center text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    class="w-20 rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-center text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="text-gray-400">m</span>
+                  <span class="text-[#9fb4bd]">m</span>
                 </div>
               </div>
-              <div class="mt-1 text-xs text-gray-500">
+              <div class="mt-1 text-xs text-[#7f97a2]">
                 Table utilisée :
-                <span class="text-teal-400">{{ effectiveDepth }}m</span>
+                <span class="text-[#7fe3d6]">{{ effectiveDepth }}m</span>
                 <span
                   v-if="effectiveDepth !== inputDepth"
-                  class="ml-1 text-yellow-400"
+                  class="ml-1 text-[#f5d547]"
                 >
                   (arrondi au palier supérieur)
                 </span>
@@ -100,7 +105,7 @@
             </div>
 
             <div class="mb-6">
-              <label class="mb-2 block text-sm font-medium text-gray-300">
+              <label class="mb-2 block text-sm font-medium text-[#d4e2e7]">
                 Durée de plongée (fond)
               </label>
               <div class="flex items-center gap-4">
@@ -110,7 +115,7 @@
                   min="1"
                   :max="maxTimeForDepth"
                   step="1"
-                  class="flex-1 accent-teal-400"
+                  class="flex-1 accent-[#7fe3d6]"
                 />
                 <div class="flex items-center gap-2">
                   <input
@@ -118,30 +123,30 @@
                     type="number"
                     min="1"
                     :max="maxTimeForDepth"
-                    class="w-20 rounded-lg border border-teal-500/30 bg-slate-700 px-3 py-2 text-center text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    class="w-20 rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-center text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="text-gray-400">min</span>
+                  <span class="text-[#9fb4bd]">min</span>
                 </div>
               </div>
               <div class="mt-1 flex items-center gap-2 text-xs">
-                <span class="text-gray-500">LSP :</span>
+                <span class="text-[#7f97a2]">LSP :</span>
                 <span
                   :class="
                     inputTime > noStopLimit
-                      ? 'font-semibold text-red-400'
-                      : 'text-green-400'
+                      ? 'font-semibold text-[#ff8f80]'
+                      : 'text-[#7fe3d6]'
                   "
                 >
                   {{ noStopLimit === Infinity ? '∞' : noStopLimit + ' min' }}
                 </span>
-                <span v-if="inputTime > noStopLimit" class="text-red-400">
+                <span v-if="inputTime > noStopLimit" class="text-[#ff8f80]">
                   ⚠ Paliers obligatoires
                 </span>
               </div>
             </div>
 
             <div>
-              <label class="mb-2 block text-sm font-medium text-gray-300">
+              <label class="mb-2 block text-sm font-medium text-[#d4e2e7]">
                 Profondeurs rapides
               </label>
               <div class="flex flex-wrap gap-2">
@@ -151,10 +156,10 @@
                   type="button"
                   @click="inputDepth = d"
                   :class="[
-                    'rounded-lg px-3 py-1.5 text-xs font-medium transition-all',
+                    'rounded-full border px-3 py-1.5 font-mono text-xs transition-colors',
                     effectiveDepth === d
-                      ? 'bg-teal-500/30 text-teal-300 ring-1 ring-teal-400'
-                      : 'bg-slate-700/50 text-gray-300 hover:bg-slate-700',
+                      ? 'border-[#7fe3d6] bg-[#7fe3d6] font-medium text-[#05111a]'
+                      : 'border-[rgba(232,241,244,0.12)] bg-white/[0.04] text-[#d4e2e7] hover:border-[rgba(127,227,214,0.45)]',
                   ]"
                 >
                   {{ d }}m
@@ -164,25 +169,29 @@
           </div>
 
           <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
+            class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-6"
           >
-            <h2 class="mb-6 text-xl font-bold text-teal-300">Résultats</h2>
+            <h2
+              class="mb-6 text-xl font-semibold tracking-[-0.01em] text-white"
+            >
+              Résultats
+            </h2>
 
             <div
               v-if="outOfTable"
-              class="rounded-xl bg-red-500/10 p-5 ring-1 ring-red-500/30"
+              class="rounded-xl bg-[rgba(255,143,128,0.08)] p-5 ring-1 ring-[rgba(255,143,128,0.35)]"
             >
               <div class="flex items-center gap-3">
                 <Icon
                   name="mdi:alert-octagon"
-                  class="shrink-0 text-red-400"
+                  class="shrink-0 text-[#ff8f80]"
                   size="2rem"
                 />
                 <div>
-                  <div class="font-semibold text-red-300">
+                  <div class="font-semibold text-[#ff8f80]">
                     Hors limites table MN90
                   </div>
-                  <div class="mt-1 text-sm text-gray-400">
+                  <div class="mt-1 text-sm text-[#9fb4bd]">
                     Ce profil dépasse les valeurs tabulées. Consultez les tables
                     officielles ou planifiez une plongée plus courte.
                   </div>
@@ -195,34 +204,36 @@
               class="space-y-4"
             >
               <div
-                class="flex items-center gap-3 rounded-xl bg-green-500/10 p-4 ring-1 ring-green-500/30"
+                class="flex items-center gap-3 rounded-xl bg-[rgba(127,227,214,0.07)] p-4 ring-1 ring-[rgba(127,227,214,0.35)]"
               >
                 <Icon
                   name="mdi:check-circle"
-                  class="shrink-0 text-green-400"
+                  class="shrink-0 text-[#7fe3d6]"
                   size="2rem"
                 />
                 <div>
-                  <div class="font-semibold text-green-300">
+                  <div class="font-semibold text-[#7fe3d6]">
                     Plongée sans palier obligatoire
                   </div>
-                  <div class="text-sm text-gray-400">
+                  <div class="text-sm text-[#9fb4bd]">
                     Palier de sécurité recommandé : 3 min à 3 m
                   </div>
                 </div>
               </div>
               <div class="grid grid-cols-2 gap-4">
-                <div class="rounded-xl bg-slate-700/50 p-4 text-center">
-                  <div class="text-3xl font-bold text-teal-400">
+                <div class="rounded-xl bg-[#0b2130] p-4 text-center">
+                  <div class="text-3xl font-bold text-[#7fe3d6]">
                     {{ result.group }}
                   </div>
-                  <div class="mt-1 text-xs text-gray-400">Groupe résiduel</div>
+                  <div class="mt-1 text-xs text-[#9fb4bd]">Groupe résiduel</div>
                 </div>
-                <div class="rounded-xl bg-slate-700/50 p-4 text-center">
+                <div class="rounded-xl bg-[#0b2130] p-4 text-center">
                   <div class="text-3xl font-bold text-white">
                     ~{{ ascentTimeNoStop }} min
                   </div>
-                  <div class="mt-1 text-xs text-gray-400">Remontée estimée</div>
+                  <div class="mt-1 text-xs text-[#9fb4bd]">
+                    Remontée estimée
+                  </div>
                 </div>
               </div>
             </div>
@@ -232,18 +243,18 @@
               class="space-y-4"
             >
               <div
-                class="flex items-center gap-3 rounded-xl bg-orange-500/10 p-4 ring-1 ring-orange-500/30"
+                class="flex items-center gap-3 rounded-xl bg-[rgba(255,143,128,0.08)] p-4 ring-1 ring-[rgba(255,143,128,0.35)]"
               >
                 <Icon
                   name="mdi:timer-alert"
-                  class="shrink-0 text-orange-400"
+                  class="shrink-0 text-[#ff8f80]"
                   size="2rem"
                 />
                 <div>
-                  <div class="font-semibold text-orange-300">
+                  <div class="font-semibold text-[#ff8f80]">
                     Paliers obligatoires requis
                   </div>
-                  <div class="text-sm text-gray-400">
+                  <div class="text-sm text-[#9fb4bd]">
                     Effectuez les paliers dans l'ordre, du plus profond au plus
                     superficiel
                   </div>
@@ -254,15 +265,15 @@
                 <div
                   v-for="stop in result.stops"
                   :key="stop.depth"
-                  class="flex items-center justify-between rounded-xl bg-slate-700/50 px-4 py-3"
+                  class="flex items-center justify-between rounded-xl bg-[#0b2130] px-4 py-3"
                 >
                   <div class="flex items-center gap-3">
                     <div
-                      class="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/20 text-sm font-bold text-orange-300"
+                      class="flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(255,143,128,0.15)] text-sm font-bold text-[#ff8f80]"
                     >
                       {{ stop.depth }}m
                     </div>
-                    <span class="text-gray-300">Palier obligatoire</span>
+                    <span class="text-[#d4e2e7]">Palier obligatoire</span>
                   </div>
                   <span class="text-xl font-bold text-white">
                     {{ stop.time }}&thinsp;min
@@ -270,49 +281,49 @@
                 </div>
 
                 <div
-                  class="flex items-center justify-between rounded-xl bg-blue-500/10 px-4 py-3"
+                  class="flex items-center justify-between rounded-xl bg-[rgba(127,227,214,0.07)] px-4 py-3"
                 >
                   <div class="flex items-center gap-3">
                     <div
-                      class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 text-sm font-bold text-blue-300"
+                      class="flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(127,227,214,0.15)] text-sm font-bold text-[#7fe3d6]"
                     >
                       3m
                     </div>
-                    <span class="text-gray-400">
+                    <span class="text-[#9fb4bd]">
                       Palier de sécurité (recommandé)
                     </span>
                   </div>
-                  <span class="text-xl font-bold text-blue-300">
+                  <span class="text-xl font-bold text-[#7fe3d6]">
                     3&thinsp;min
                   </span>
                 </div>
               </div>
 
               <div class="grid grid-cols-3 gap-3">
-                <div class="rounded-xl bg-slate-700/50 p-3 text-center">
-                  <div class="text-2xl font-bold text-teal-400">
+                <div class="rounded-xl bg-[#0b2130] p-3 text-center">
+                  <div class="text-2xl font-bold text-[#7fe3d6]">
                     {{ result.group }}
                   </div>
-                  <div class="mt-1 text-xs text-gray-400">Groupe</div>
+                  <div class="mt-1 text-xs text-[#9fb4bd]">Groupe</div>
                 </div>
-                <div class="rounded-xl bg-slate-700/50 p-3 text-center">
+                <div class="rounded-xl bg-[#0b2130] p-3 text-center">
                   <div class="text-2xl font-bold text-white">
                     {{ totalDecoTime }}&thinsp;min
                   </div>
-                  <div class="mt-1 text-xs text-gray-400">Temps déco</div>
+                  <div class="mt-1 text-xs text-[#9fb4bd]">Temps déco</div>
                 </div>
-                <div class="rounded-xl bg-slate-700/50 p-3 text-center">
+                <div class="rounded-xl bg-[#0b2130] p-3 text-center">
                   <div class="text-2xl font-bold text-white">
                     ~{{ totalAscentTime }}&thinsp;min
                   </div>
-                  <div class="mt-1 text-xs text-gray-400">Remontée totale</div>
+                  <div class="mt-1 text-xs text-[#9fb4bd]">Remontée totale</div>
                 </div>
               </div>
             </div>
 
             <div
               v-else
-              class="flex h-40 items-center justify-center text-gray-500"
+              class="flex h-40 items-center justify-center text-[#7f97a2]"
             >
               Ajustez les paramètres pour calculer
             </div>
@@ -321,9 +332,9 @@
 
         <div
           v-if="result && !outOfTable"
-          class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
+          class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-6"
         >
-          <h2 class="mb-4 text-xl font-bold text-teal-300">
+          <h2 class="mb-4 text-xl font-semibold tracking-[-0.01em] text-white">
             Profil de plongée
           </h2>
           <div class="overflow-x-auto">
@@ -334,10 +345,10 @@
             >
               <defs>
                 <linearGradient id="profileGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.3" />
+                  <stop offset="0%" stop-color="#7fe3d6" stop-opacity="0.3" />
                   <stop
                     offset="100%"
-                    stop-color="#14b8a6"
+                    stop-color="#7fe3d6"
                     stop-opacity="0.05"
                   />
                 </linearGradient>
@@ -347,7 +358,7 @@
                 y1="15"
                 x2="45"
                 y2="195"
-                stroke="#475569"
+                stroke="rgba(232,241,244,0.2)"
                 stroke-width="1"
               />
               <line
@@ -355,13 +366,13 @@
                 y1="195"
                 x2="505"
                 y2="195"
-                stroke="#475569"
+                stroke="rgba(232,241,244,0.2)"
                 stroke-width="1"
               />
               <text
                 x="38"
                 y="19"
-                fill="#94a3b8"
+                fill="#7f97a2"
                 font-size="10"
                 text-anchor="end"
               >
@@ -370,7 +381,7 @@
               <text
                 x="38"
                 y="107"
-                fill="#94a3b8"
+                fill="#7f97a2"
                 font-size="10"
                 text-anchor="end"
               >
@@ -379,17 +390,17 @@
               <text
                 x="38"
                 y="196"
-                fill="#94a3b8"
+                fill="#7f97a2"
                 font-size="10"
                 text-anchor="end"
               >
                 {{ effectiveDepth }} m
               </text>
-              <text x="45" y="215" fill="#94a3b8" font-size="10">0</text>
+              <text x="45" y="215" fill="#7f97a2" font-size="10">0</text>
               <text
                 x="505"
                 y="215"
-                fill="#94a3b8"
+                fill="#7f97a2"
                 font-size="10"
                 text-anchor="end"
               >
@@ -408,7 +419,7 @@
                 v-if="profilePoints.length > 1"
                 :points="profilePoints.map((p) => `${p[0]},${p[1]}`).join(' ')"
                 fill="none"
-                stroke="#14b8a6"
+                stroke="#7fe3d6"
                 stroke-width="2.5"
                 stroke-linejoin="round"
               />
@@ -418,12 +429,12 @@
                   :cx="stopSvgPositions[i]?.cx ?? 0"
                   :cy="stopSvgPositions[i]?.cy ?? 0"
                   r="4"
-                  fill="#f97316"
+                  fill="#ff8f80"
                 />
                 <text
                   :x="(stopSvgPositions[i]?.cx ?? 0) + 6"
                   :y="(stopSvgPositions[i]?.cy ?? 0) - 4"
-                  fill="#fdba74"
+                  fill="#ff8f80"
                   font-size="9"
                 >
                   {{ stop.depth }}m / {{ stop.time }}'
@@ -435,7 +446,7 @@
                 y1="195"
                 x2="505"
                 y2="195"
-                stroke="#22c55e"
+                stroke="#7fe3d6"
                 stroke-width="1"
                 stroke-dasharray="4,4"
                 opacity="0.5"
@@ -443,7 +454,7 @@
               <text
                 x="275"
                 y="225"
-                fill="#64748b"
+                fill="#7f97a2"
                 font-size="9"
                 text-anchor="middle"
               >
@@ -452,7 +463,7 @@
               <text
                 x="12"
                 y="107"
-                fill="#64748b"
+                fill="#7f97a2"
                 font-size="9"
                 text-anchor="middle"
                 transform="rotate(-90 12 107)"
@@ -461,41 +472,48 @@
               </text>
             </svg>
           </div>
-          <div class="mt-3 flex flex-wrap gap-4 text-xs text-gray-400">
+          <div class="mt-3 flex flex-wrap gap-4 text-xs text-[#9fb4bd]">
             <div class="flex items-center gap-1.5">
-              <span class="inline-block h-0.5 w-6 bg-teal-400"></span>
+              <span class="inline-block h-0.5 w-6 bg-[#7fe3d6]"></span>
               Profil de plongée
             </div>
             <div class="flex items-center gap-1.5">
               <span
-                class="inline-block h-2.5 w-2.5 rounded-full bg-orange-400"
+                class="inline-block h-2.5 w-2.5 rounded-full bg-[#ff8f80]"
               ></span>
               Palier de décompression
             </div>
           </div>
         </div>
 
-        <div class="rounded-xl border border-slate-600/30 bg-slate-800/30 p-4">
-          <h3 class="mb-3 text-sm font-semibold text-teal-400">
+        <div
+          class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-4"
+        >
+          <h3
+            class="mb-3 font-mono text-xs font-medium uppercase tracking-[0.12em] text-[#7fe3d6]"
+          >
             Rappels sécurité
           </h3>
           <ul
-            class="grid grid-cols-1 gap-1.5 text-xs text-gray-400 sm:grid-cols-2"
+            class="grid grid-cols-1 gap-1.5 text-xs text-[#9fb4bd] sm:grid-cols-2"
           >
             <li class="flex items-center gap-2">
-              <Icon name="mdi:arrow-up-circle" class="shrink-0 text-teal-500" />
+              <Icon
+                name="mdi:arrow-up-circle"
+                class="shrink-0 text-[#7fe3d6]"
+              />
               Vitesse de remontée : 15 m/min maximum
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="mdi:clock-outline" class="shrink-0 text-teal-500" />
+              <Icon name="mdi:clock-outline" class="shrink-0 text-[#7fe3d6]" />
               Palier de sécurité : 3 min à 3 m systématique
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="mdi:thermometer" class="shrink-0 text-teal-500" />
+              <Icon name="mdi:thermometer" class="shrink-0 text-[#7fe3d6]" />
               Froid, effort → majorez les paliers
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="mdi:repeat-variant" class="shrink-0 text-teal-500" />
+              <Icon name="mdi:repeat-variant" class="shrink-0 text-[#7fe3d6]" />
               Plongées successives → consultez l'onglet dédié
             </li>
           </ul>
@@ -505,67 +523,67 @@
       <!-- ===== TABLE MN90 ===== -->
       <div v-if="activeTab === 'table'" class="space-y-4">
         <div
-          class="flex flex-wrap items-center gap-4 rounded-xl border border-slate-600/30 bg-slate-800/30 p-3 text-xs text-gray-400"
+          class="flex flex-wrap items-center gap-4 rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-3 text-xs text-[#9fb4bd]"
         >
           <div class="flex items-center gap-2">
             <span
-              class="h-3 w-3 rounded bg-green-500/40 ring-1 ring-green-500/40"
+              class="h-3 w-3 rounded bg-[rgba(127,227,214,0.4)] ring-1 ring-[rgba(127,227,214,0.35)]"
             ></span>
             Sans palier (dans la LSP)
           </div>
           <div class="flex items-center gap-2">
             <span
-              class="h-3 w-3 rounded bg-yellow-500/30 ring-1 ring-yellow-500/30"
+              class="h-3 w-3 rounded bg-[rgba(245,213,71,0.3)] ring-1 ring-[rgba(245,213,71,0.3)]"
             ></span>
             Palier(s) requis
           </div>
           <div class="flex items-center gap-2">
             <span
-              class="h-3 w-6 rounded border-t-2 border-teal-400/60 bg-teal-500/10"
+              class="h-3 w-6 rounded border-t-2 border-[#7fe3d6]/60 bg-[rgba(127,227,214,0.07)]"
             ></span>
             Limite N1 (20 m max)
           </div>
           <div class="flex items-center gap-2">
             <span
-              class="h-3 w-3 rounded bg-teal-500/30 ring-2 ring-teal-400/60"
+              class="h-3 w-3 rounded bg-[rgba(127,227,214,0.15)] ring-2 ring-[#7fe3d6]/60"
             ></span>
             Valeur sélectionnée
           </div>
         </div>
 
         <div
-          class="overflow-x-auto rounded-2xl border border-teal-500/20 bg-slate-800/40"
+          class="overflow-x-auto rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035]"
         >
           <table class="w-full text-sm">
             <thead>
-              <tr class="border-b border-teal-500/20 bg-slate-800/60">
+              <tr class="border-b border-[rgba(232,241,244,0.1)] bg-[#0b2130]">
                 <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teal-400"
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[#7fe3d6]"
                 >
                   Prof.
                 </th>
                 <th
-                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-teal-400"
+                  class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-[#7fe3d6]"
                 >
                   Durée fond
                 </th>
                 <th
-                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-orange-400"
+                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-[#ff8f80]"
                 >
                   9 m
                 </th>
                 <th
-                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-orange-300"
+                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-[#ff8f80]"
                 >
                   6 m
                 </th>
                 <th
-                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-yellow-300"
+                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-[#f5d547]"
                 >
                   3 m
                 </th>
                 <th
-                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-teal-400"
+                  class="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wide text-[#7fe3d6]"
                 >
                   Groupe
                 </th>
@@ -577,37 +595,37 @@
                   v-for="(entry, idx) in depthData.entries"
                   :key="entry.time"
                   :class="[
-                    'border-b border-slate-700/30 transition-colors hover:bg-slate-700/30',
+                    'border-b border-[rgba(232,241,244,0.06)] transition-colors hover:bg-white/[0.04]',
                     idx === 0 && depthData.depth === 20
-                      ? 'border-t-2 border-t-teal-400/40'
+                      ? 'border-t-2 border-t-[#7fe3d6]/50'
                       : idx === 0
-                        ? 'border-t border-t-slate-600/50'
+                        ? 'border-t border-t-[rgba(232,241,244,0.12)]'
                         : '',
                     entry.stops.length === 0
-                      ? 'bg-green-500/5'
-                      : 'bg-yellow-500/5',
+                      ? 'bg-[rgba(127,227,214,0.07)]'
+                      : 'bg-[rgba(245,213,71,0.06)]',
                     isHighlighted(depthData.depth, entry.time)
-                      ? '!bg-teal-500/20 ring-1 ring-inset ring-teal-400/50'
+                      ? '!bg-[rgba(127,227,214,0.15)] ring-1 ring-inset ring-[#7fe3d6]/60'
                       : '',
                   ]"
                 >
                   <td
                     v-if="idx === 0"
                     :rowspan="depthData.entries.length"
-                    class="border-r border-slate-700/30 px-4 py-2.5 text-center font-bold"
+                    class="border-r border-[rgba(232,241,244,0.06)] px-4 py-2.5 text-center font-bold"
                     :class="
                       depthData.depth <= 20
-                        ? 'text-teal-300'
-                        : 'text-teal-400/70'
+                        ? 'text-[#7fe3d6]'
+                        : 'text-[#7fe3d6]/70'
                     "
                   >
                     {{ depthData.depth }} m
                   </td>
-                  <td class="px-4 py-2.5 text-gray-300">
+                  <td class="px-4 py-2.5 text-[#d4e2e7]">
                     {{ formatDuration(entry.time) }}
                     <span
                       v-if="entry.time === depthData.noStopLimit"
-                      class="ml-1 text-xs text-green-500"
+                      class="ml-1 text-xs text-[#7fe3d6]"
                     >
                       (LSP)
                     </span>
@@ -615,35 +633,35 @@
                   <td class="px-4 py-2.5 text-center">
                     <span
                       v-if="getStop(entry, 9) !== null"
-                      class="font-medium text-orange-400"
+                      class="font-medium text-[#ff8f80]"
                     >
                       {{ getStop(entry, 9) }}'
                     </span>
-                    <span v-else class="text-slate-600">—</span>
+                    <span v-else class="text-[#4b6470]">—</span>
                   </td>
                   <td class="px-4 py-2.5 text-center">
                     <span
                       v-if="getStop(entry, 6) !== null"
-                      class="font-medium text-orange-300"
+                      class="font-medium text-[#ff8f80]"
                     >
                       {{ getStop(entry, 6) }}'
                     </span>
-                    <span v-else class="text-slate-600">—</span>
+                    <span v-else class="text-[#4b6470]">—</span>
                   </td>
                   <td class="px-4 py-2.5 text-center">
                     <span
                       v-if="getStop(entry, 3) !== null"
-                      class="font-medium text-yellow-300"
+                      class="font-medium text-[#f5d547]"
                     >
                       {{ getStop(entry, 3) }}'
                     </span>
-                    <span v-else class="text-xs font-medium text-green-500">
+                    <span v-else class="text-xs font-medium text-[#7fe3d6]">
                       ✓
                     </span>
                   </td>
                   <td class="px-4 py-2.5 text-center">
                     <span
-                      class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-teal-500/20 text-xs font-bold text-teal-300"
+                      class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[rgba(127,227,214,0.15)] text-xs font-bold text-[#7fe3d6]"
                     >
                       {{ entry.group }}
                     </span>
@@ -654,7 +672,7 @@
           </table>
         </div>
 
-        <p class="text-center text-xs text-gray-500">
+        <p class="text-center text-xs text-[#7f97a2]">
           Tables MN90 — Marine Nationale 1990. Vitesse de remontée : 15 m/min.
           Palier de sécurité 3 min à 3 m recommandé dans tous les cas. Durées en
           minutes.
@@ -663,18 +681,20 @@
 
       <!-- ===== PLONGÉES SUCCESSIVES ===== -->
       <div v-if="activeTab === 'successive'" class="space-y-6">
-        <div class="rounded-xl border border-blue-500/30 bg-blue-500/10 p-4">
+        <div
+          class="rounded-[14px] border border-[rgba(127,227,214,0.3)] bg-[rgba(127,227,214,0.06)] p-5"
+        >
           <div class="flex items-start gap-3">
             <Icon
               name="mdi:information"
-              class="mt-0.5 shrink-0 text-blue-400"
+              class="mt-0.5 shrink-0 text-[#7fe3d6]"
               size="1.3rem"
             />
             <div class="text-sm">
-              <p class="mb-1 font-semibold text-blue-300">
+              <p class="mb-1 font-semibold text-[#7fe3d6]">
                 Plongée successive FFESSM/MN90
               </p>
-              <p class="text-gray-300">
+              <p class="text-[#d4e2e7]">
                 Deux plongées séparées par un intervalle de surface compris
                 entre
                 <strong class="text-white">15 min et 12 heures</strong>
@@ -687,13 +707,13 @@
 
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div
-            class="rounded-2xl border border-teal-500/20 bg-slate-800/40 p-6"
+            class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-6"
           >
             <h3
-              class="mb-5 flex items-center gap-2 text-lg font-bold text-teal-300"
+              class="mb-5 flex items-center gap-2 text-lg font-semibold text-white"
             >
               <span
-                class="flex h-7 w-7 items-center justify-center rounded-full bg-teal-500/30 text-sm font-bold"
+                class="flex h-7 w-7 items-center justify-center rounded-full bg-[rgba(127,227,214,0.15)] text-sm font-bold"
               >
                 1
               </span>
@@ -701,7 +721,7 @@
             </h3>
             <div class="space-y-4">
               <div>
-                <label class="mb-1 block text-xs text-gray-400">
+                <label class="mb-1 block text-xs text-[#9fb4bd]">
                   Profondeur
                 </label>
                 <div class="flex items-center gap-2">
@@ -710,13 +730,13 @@
                     type="number"
                     min="6"
                     max="40"
-                    class="w-full rounded-lg border border-teal-500/30 bg-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    class="w-full rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="shrink-0 text-gray-400">m</span>
+                  <span class="shrink-0 text-[#9fb4bd]">m</span>
                 </div>
               </div>
               <div>
-                <label class="mb-1 block text-xs text-gray-400">
+                <label class="mb-1 block text-xs text-[#9fb4bd]">
                   Durée fond
                 </label>
                 <div class="flex items-center gap-2">
@@ -725,19 +745,16 @@
                     type="number"
                     min="1"
                     max="360"
-                    class="w-full rounded-lg border border-teal-500/30 bg-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+                    class="w-full rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="shrink-0 text-gray-400">min</span>
+                  <span class="shrink-0 text-[#9fb4bd]">min</span>
                 </div>
               </div>
-              <div
-                v-if="succDive1Result"
-                class="rounded-xl bg-slate-700/40 p-3"
-              >
-                <div class="mb-2 text-xs text-gray-400">Résultat :</div>
+              <div v-if="succDive1Result" class="rounded-xl bg-[#0b2130] p-3">
+                <div class="mb-2 text-xs text-[#9fb4bd]">Résultat :</div>
                 <div class="mb-1 flex items-center justify-between">
-                  <span class="text-sm text-gray-300">Groupe résiduel</span>
-                  <span class="text-2xl font-bold text-teal-400">
+                  <span class="text-sm text-[#d4e2e7]">Groupe résiduel</span>
+                  <span class="text-2xl font-bold text-[#7fe3d6]">
                     {{ succDive1Result.group }}
                   </span>
                 </div>
@@ -750,17 +767,19 @@
                     :key="stop.depth"
                     class="flex justify-between text-xs"
                   >
-                    <span class="text-gray-400">Palier {{ stop.depth }} m</span>
-                    <span class="text-yellow-300">{{ stop.time }} min</span>
+                    <span class="text-[#9fb4bd]">
+                      Palier {{ stop.depth }} m
+                    </span>
+                    <span class="text-[#f5d547]">{{ stop.time }} min</span>
                   </div>
                 </div>
-                <div v-else class="mt-1 text-xs text-green-400">
+                <div v-else class="mt-1 text-xs text-[#7fe3d6]">
                   Sans palier obligatoire
                 </div>
               </div>
               <div
                 v-else
-                class="rounded-xl bg-red-500/10 p-3 text-xs text-red-300"
+                class="rounded-xl bg-[rgba(255,143,128,0.08)] p-3 text-xs text-[#ff8f80]"
               >
                 Hors table — réduire la durée
               </div>
@@ -768,17 +787,17 @@
           </div>
 
           <div
-            class="rounded-2xl border border-purple-500/20 bg-slate-800/40 p-6"
+            class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-6"
           >
             <h3
-              class="mb-5 flex items-center gap-2 text-lg font-bold text-purple-300"
+              class="mb-5 flex items-center gap-2 text-lg font-semibold text-white"
             >
-              <Icon name="mdi:weather-sunny" class="text-yellow-400" />
+              <Icon name="mdi:weather-sunny" class="text-[#f5d547]" />
               Intervalle surface
             </h3>
             <div class="space-y-4">
               <div>
-                <label class="mb-1 block text-xs text-gray-400">
+                <label class="mb-1 block text-xs text-[#9fb4bd]">
                   Durée en surface
                 </label>
                 <div class="flex items-center gap-2">
@@ -787,52 +806,52 @@
                     type="number"
                     min="15"
                     max="720"
-                    class="w-full rounded-lg border border-purple-500/30 bg-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    class="w-full rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="shrink-0 text-gray-400">min</span>
+                  <span class="shrink-0 text-[#9fb4bd]">min</span>
                 </div>
-                <div class="mt-1 text-xs text-gray-500">
+                <div class="mt-1 text-xs text-[#7f97a2]">
                   {{ formatDuration(surfaceInterval) }} · 15 min → 12 h
                 </div>
               </div>
 
               <div
                 v-if="surfaceInterval >= 720"
-                class="rounded-xl bg-green-500/10 p-3"
+                class="rounded-xl bg-[rgba(127,227,214,0.07)] p-3"
               >
                 <div
-                  class="flex items-center gap-2 text-sm font-semibold text-green-400"
+                  class="flex items-center gap-2 text-sm font-semibold text-[#7fe3d6]"
                 >
                   <Icon name="mdi:check-circle" />
                   Plongée indépendante
                 </div>
-                <div class="mt-1 text-xs text-gray-400">
+                <div class="mt-1 text-xs text-[#9fb4bd]">
                   Intervalle ≥ 12 h : aucune majoration
                 </div>
               </div>
 
               <div
                 v-else-if="succDive1Result"
-                class="rounded-xl bg-purple-500/10 p-3"
+                class="rounded-xl bg-white/[0.04] p-3"
               >
-                <div class="mb-2 text-xs text-gray-400">
+                <div class="mb-2 text-xs text-[#9fb4bd]">
                   Groupe résiduel après {{ formatDuration(surfaceInterval) }} :
                 </div>
                 <div class="flex items-center justify-between">
-                  <span class="text-sm text-gray-400">
+                  <span class="text-sm text-[#9fb4bd]">
                     {{ succDive1Result.group }}
                     <span v-if="residualGroup !== succDive1Result.group">
                       →
                     </span>
                   </span>
-                  <span class="text-3xl font-bold text-purple-300">
+                  <span class="text-3xl font-bold text-white">
                     {{ residualGroup }}
                   </span>
                 </div>
               </div>
 
-              <div class="rounded-xl bg-slate-700/40 p-3 text-xs text-gray-400">
-                <p class="mb-1 font-medium text-gray-300">
+              <div class="rounded-xl bg-[#0b2130] p-3 text-xs text-[#9fb4bd]">
+                <p class="mb-1 font-medium text-[#d4e2e7]">
                   Réduction du groupe par paliers :
                 </p>
                 <p>H→G : 15 min · G→F : 15 min · F→E : 20 min</p>
@@ -843,13 +862,13 @@
           </div>
 
           <div
-            class="rounded-2xl border border-yellow-500/20 bg-slate-800/40 p-6"
+            class="rounded-[14px] border border-[rgba(232,241,244,0.09)] bg-white/[0.035] p-6"
           >
             <h3
-              class="mb-5 flex items-center gap-2 text-lg font-bold text-yellow-300"
+              class="mb-5 flex items-center gap-2 text-lg font-semibold text-white"
             >
               <span
-                class="flex h-7 w-7 items-center justify-center rounded-full bg-yellow-500/30 text-sm font-bold"
+                class="flex h-7 w-7 items-center justify-center rounded-full bg-[rgba(245,213,71,0.3)] text-sm font-bold"
               >
                 2
               </span>
@@ -857,7 +876,7 @@
             </h3>
             <div class="space-y-4">
               <div>
-                <label class="mb-1 block text-xs text-gray-400">
+                <label class="mb-1 block text-xs text-[#9fb4bd]">
                   Profondeur
                 </label>
                 <div class="flex items-center gap-2">
@@ -866,13 +885,13 @@
                     type="number"
                     min="6"
                     max="40"
-                    class="w-full rounded-lg border border-yellow-500/30 bg-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                    class="w-full rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="shrink-0 text-gray-400">m</span>
+                  <span class="shrink-0 text-[#9fb4bd]">m</span>
                 </div>
               </div>
               <div>
-                <label class="mb-1 block text-xs text-gray-400">
+                <label class="mb-1 block text-xs text-[#9fb4bd]">
                   Durée fond souhaitée
                 </label>
                 <div class="flex items-center gap-2">
@@ -881,9 +900,9 @@
                     type="number"
                     min="1"
                     max="360"
-                    class="w-full rounded-lg border border-yellow-500/30 bg-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                    class="w-full rounded-lg border border-[rgba(232,241,244,0.12)] bg-[#05111a]/40 px-3 py-2 text-white outline-none transition-colors focus:border-[rgba(127,227,214,0.6)]"
                   />
-                  <span class="shrink-0 text-gray-400">min</span>
+                  <span class="shrink-0 text-[#9fb4bd]">min</span>
                 </div>
               </div>
 
@@ -892,22 +911,22 @@
                 class="space-y-2"
               >
                 <div
-                  class="rounded-xl bg-yellow-500/10 p-3 ring-1 ring-yellow-500/20"
+                  class="rounded-xl bg-[rgba(245,213,71,0.06)] p-3 ring-1 ring-[rgba(245,213,71,0.3)]"
                 >
-                  <div class="mb-2 text-xs text-gray-400">
+                  <div class="mb-2 text-xs text-[#9fb4bd]">
                     Majoration azote résiduel :
                   </div>
                   <div class="flex items-center justify-between">
-                    <span class="text-sm text-gray-300">
+                    <span class="text-sm text-[#d4e2e7]">
                       {{ succDive2Time }} + {{ majoration }} min
                     </span>
-                    <span class="text-xl font-bold text-yellow-300">
+                    <span class="text-xl font-bold text-[#f5d547]">
                       = {{ succDive2Time + majoration }} min
                     </span>
                   </div>
                 </div>
-                <div class="space-y-1.5 rounded-xl bg-slate-700/40 p-3">
-                  <div class="text-xs text-gray-400">
+                <div class="space-y-1.5 rounded-xl bg-[#0b2130] p-3">
+                  <div class="text-xs text-[#9fb4bd]">
                     Paliers calculés sur {{ succDive2Time + majoration }} min :
                   </div>
                   <div v-if="succDive2Result.stops.length > 0">
@@ -916,22 +935,22 @@
                       :key="stop.depth"
                       class="flex justify-between text-sm"
                     >
-                      <span class="text-gray-300">
+                      <span class="text-[#d4e2e7]">
                         Palier {{ stop.depth }} m
                       </span>
-                      <span class="font-semibold text-orange-300">
+                      <span class="font-semibold text-[#ff8f80]">
                         {{ stop.time }} min
                       </span>
                     </div>
                   </div>
-                  <div v-else class="text-sm text-green-400">
+                  <div v-else class="text-sm text-[#7fe3d6]">
                     Sans palier obligatoire
                   </div>
                   <div
                     class="flex justify-between border-t border-slate-600 pt-1.5 text-sm"
                   >
-                    <span class="text-gray-400">Groupe résiduel</span>
-                    <span class="font-bold text-teal-400">
+                    <span class="text-[#9fb4bd]">Groupe résiduel</span>
+                    <span class="font-bold text-[#7fe3d6]">
                       {{ succDive2Result.group }}
                     </span>
                   </div>
@@ -940,29 +959,31 @@
 
               <div
                 v-else-if="surfaceInterval >= 720 && succDive2ResultSimple"
-                class="space-y-1.5 rounded-xl bg-slate-700/40 p-3"
+                class="space-y-1.5 rounded-xl bg-[#0b2130] p-3"
               >
-                <div class="text-xs text-gray-400">Plongée indépendante :</div>
+                <div class="text-xs text-[#9fb4bd]">Plongée indépendante :</div>
                 <div v-if="succDive2ResultSimple.stops.length > 0">
                   <div
                     v-for="stop in succDive2ResultSimple.stops"
                     :key="stop.depth"
                     class="flex justify-between text-sm"
                   >
-                    <span class="text-gray-300">Palier {{ stop.depth }} m</span>
-                    <span class="font-semibold text-orange-300">
+                    <span class="text-[#d4e2e7]">
+                      Palier {{ stop.depth }} m
+                    </span>
+                    <span class="font-semibold text-[#ff8f80]">
                       {{ stop.time }} min
                     </span>
                   </div>
                 </div>
-                <div v-else class="text-sm text-green-400">
+                <div v-else class="text-sm text-[#7fe3d6]">
                   Sans palier obligatoire
                 </div>
                 <div
                   class="flex justify-between border-t border-slate-600 pt-1.5 text-sm"
                 >
-                  <span class="text-gray-400">Groupe résiduel</span>
-                  <span class="font-bold text-teal-400">
+                  <span class="text-[#9fb4bd]">Groupe résiduel</span>
+                  <span class="font-bold text-[#7fe3d6]">
                     {{ succDive2ResultSimple.group }}
                   </span>
                 </div>
@@ -977,6 +998,8 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+
+definePageMeta({ breadcrumb: 'Tables MN90' })
 
 interface Stop {
   depth: number
