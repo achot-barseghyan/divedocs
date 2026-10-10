@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="939" viewBox="0 0 760 939" font-family="'Familjen Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>L'oreille et la manœuvre de Valsalva</title>
+  <style>
+    .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+    .tymp { transform-box: fill-box; transform-origin: 100% 50%; animation: tymp 8s ease-in-out infinite; }
+    .push { animation: push 8s ease-out infinite both; }
+    .valsalva { animation: valsalva 8s ease-out infinite both; }
+    .step1 { animation: step1 8s ease-in-out infinite; }
+    .step2 { animation: step2 8s ease-in-out infinite; }
+    @keyframes tymp { 0% { transform: scaleX(.12); } 28%, 50% { transform: scaleX(1); } 70%, 100% { transform: scaleX(.12); } }
+    @keyframes push { 0% { opacity: 0; transform: translateX(24px); } 10%, 50% { opacity: 1; transform: none; } 60%, 100% { opacity: .2; transform: none; } }
+    @keyframes valsalva { 0%, 36% { opacity: .2; transform: translate(-14px, 12px); } 46%, 80% { opacity: 1; transform: none; } 92%, 100% { opacity: .2; transform: none; } }
+    @keyframes step1 { 0%, 50% { opacity: 1; } 58%, 94% { opacity: .35; } 100% { opacity: 1; } }
+    @keyframes step2 { 0%, 38% { opacity: .35; } 46%, 84% { opacity: 1; } 92%, 100% { opacity: .35; } }
+    @media (prefers-reduced-motion: reduce) {
+      .tymp, .push, .valsalva, .step1, .step2 { animation: none; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c2a3d"/>
+      <stop offset="0.45" stop-color="#081c2a"/>
+      <stop offset="1" stop-color="#05111a"/>
+    </linearGradient>
+    <clipPath id="clip1"><rect x="40" y="130" width="680" height="585" rx="18"/></clipPath>
+    <marker id="hc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#ff7a6b"/></marker>
+    <marker id="hy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#f5d547"/></marker>
+    <path id="trompe" d="M140 392 Q235 365 336 266"/>
+  </defs>
+
+  <rect width="760" height="939" fill="url(#bg)"/>
+
+  <!-- En-tête -->
+  <text x="40" y="52" class="mono" font-size="13" fill="#7fe3d6" letter-spacing="1">MODULE 06 · LES BAROTRAUMATISMES</text>
+  <text x="40" y="100" font-size="36" font-weight="700" fill="#e8f1f4" letter-spacing="-0.7">L'oreille et la manœuvre de Valsalva</text>
+
+  <!-- Carte 1 : schéma -->
+  <rect x="40" y="130" width="680" height="585" rx="18" fill="#ffffff" fill-opacity="0.03"/>
+  <g clip-path="url(#clip1)">
+    <g transform="translate(40 130) scale(0.9189)">
+      <path d="M150 110 C210 50 360 46 450 96 C510 130 512 270 474 300 C434 330 386 322 352 312 C304 356 262 420 202 438 C140 456 70 444 72 408 C74 370 126 346 146 320 C104 258 106 162 150 110 Z" fill="#e8f1f4" fill-opacity="0.05" stroke="#e8f1f4" stroke-opacity="0.14" stroke-width="2"/>
+      <path d="M600 175 C590 90 640 40 680 60 C715 80 705 160 690 220 C680 290 690 340 650 350 C615 360 600 300 600 228" fill="#7fe3d6" fill-opacity="0.06" stroke="#7fe3d6" stroke-width="3"/>
+      <path d="M424 200 C470 194 530 222 612 204" fill="none" stroke="#9fb4bd" stroke-width="48"/>
+      <path d="M424 200 C470 194 530 222 612 204" fill="none" stroke="#134a5c" stroke-width="44"/>
+      <path d="M318 148 C342 116 402 120 420 150 C438 180 434 236 414 258 C392 282 346 278 326 258 C298 232 296 178 318 148 Z" fill="#e8f1f4" fill-opacity="0.08" stroke="#9fb4bd" stroke-width="2"/>
+      <path d="M140 392 Q235 365 336 266" fill="none" stroke="#2a4a5a" stroke-width="28" stroke-linecap="round"/>
+      <path d="M140 392 Q235 365 336 266" fill="none" stroke="#123448" stroke-width="16" stroke-linecap="round"/>
+
+      <!-- Air qui remonte la trompe d'Eustache -->
+      <g fill="#e8f1f4">
+        <circle r="5" opacity="0">
+          <animateMotion dur="8s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.7;1"><mpath href="#trompe"/></animateMotion>
+          <animate attributeName="opacity" dur="8s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.42;0.46;0.7;0.74;1"/>
+        </circle>
+        <circle r="4" opacity="0">
+          <animateMotion dur="8s" begin="0.35s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.7;1"><mpath href="#trompe"/></animateMotion>
+          <animate attributeName="opacity" dur="8s" begin="0.35s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.42;0.46;0.7;0.74;1"/>
+        </circle>
+        <circle r="3.5" opacity="0">
+          <animateMotion dur="8s" begin="0.7s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.42;0.7;1"><mpath href="#trompe"/></animateMotion>
+          <animate attributeName="opacity" dur="8s" begin="0.7s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.42;0.46;0.7;0.74;1"/>
+        </circle>
+      </g>
+
+      <path d="M96 404 C96 384 130 380 148 392 C160 402 150 420 124 420 C106 420 96 414 96 404 Z" fill="#0a2230" stroke="#9fb4bd" stroke-width="2"/>
+      <path d="M414 200 C402 184 390 184 384 194 C376 208 366 212 356 202 C348 194 340 192 332 198" fill="none" stroke="#e8f1f4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M304 198 C290 190 276 206 262 198" fill="none" stroke="#9fb4bd" stroke-width="3" stroke-linecap="round"/>
+      <path d="M232 198 m0 -6 a6 6 0 1 1 -6 6 a12 12 0 1 1 12 12 a20 20 0 1 1 -20 -20 a30 30 0 1 1 30 30" fill="none" stroke="#7fe3d6" stroke-width="4" stroke-linecap="round"/>
+      <g fill="none" stroke="#7fe3d6" stroke-width="3" opacity="0.8">
+        <ellipse cx="262" cy="140" rx="16" ry="22"/>
+        <ellipse cx="286" cy="150" rx="22" ry="12"/>
+      </g>
+
+      <!-- Tympan -->
+      <path class="tymp" d="M424 176 Q402 200 424 224" fill="none" stroke="#f5d547" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Pression de l'eau -->
+      <g class="push">
+        <line x1="730" y1="200" x2="618" y2="200" stroke="#ff7a6b" stroke-width="9" marker-end="url(#hc)"/>
+      </g>
+      <!-- Manœuvre de Valsalva -->
+      <g class="valsalva">
+        <line x1="40" y1="470" x2="102" y2="424" stroke="#f5d547" stroke-width="9" marker-end="url(#hy)"/>
+      </g>
+
+      <!-- Repères numérotés -->
+      <g class="mono" font-size="17" font-weight="500" fill="#7fe3d6" text-anchor="middle">
+        <circle cx="700" cy="40" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="700" y="46">1</text>
+        <circle cx="530" cy="256" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="530" y="262">2</text>
+        <circle cx="444" cy="150" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="444" y="156">3</text>
+        <circle cx="362" cy="104" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="362" y="110">4</text>
+        <circle cx="210" cy="110" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="210" y="116">5</text>
+        <circle cx="262" cy="360" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="262" y="366">6</text>
+        <circle cx="82" cy="362" r="17" fill="#05111a" stroke="#7fe3d6" stroke-width="2"/><text x="82" y="368">7</text>
+      </g>
+    </g>
+
+    <!-- Légende -->
+    <line x1="40" y1="571" x2="720" y2="571" stroke="#e8f1f4" stroke-opacity="0.08"/>
+    <g font-size="16" fill="#d4e2e7">
+      <g fill="none" stroke="#7fe3d6" stroke-width="1.5">
+        <circle cx="77" cy="607" r="13"/><circle cx="303" cy="607" r="13"/><circle cx="529" cy="607" r="13"/>
+        <circle cx="77" cy="643" r="13"/><circle cx="303" cy="643" r="13"/><circle cx="529" cy="643" r="13"/>
+        <circle cx="77" cy="679" r="13"/>
+      </g>
+      <g class="mono" font-size="13" fill="#7fe3d6" text-anchor="middle">
+        <text x="77" y="611.5">1</text><text x="303" y="611.5">2</text><text x="529" y="611.5">3</text>
+        <text x="77" y="647.5">4</text><text x="303" y="647.5">5</text><text x="529" y="647.5">6</text>
+        <text x="77" y="683.5">7</text>
+      </g>
+      <text x="100" y="612.5">Pavillon</text>
+      <text x="326" y="612.5">Conduit auditif</text>
+      <text x="552" y="612.5">Tympan</text>
+      <text x="100" y="648.5">Oreille moyenne</text>
+      <text x="326" y="648.5">Oreille interne</text>
+      <text x="552" y="648.5">Trompe d'Eustache</text>
+      <text x="100" y="684.5">Fosses nasales</text>
+    </g>
+  </g>
+  <rect x="40" y="130" width="680" height="585" rx="18" fill="none" stroke="#e8f1f4" stroke-opacity="0.1"/>
+
+  <!-- Étape 1 -->
+  <g class="step1">
+    <rect x="40" y="739" width="332" height="160" rx="16" fill="#ff7a6b" fill-opacity="0.06" stroke="#ff7a6b" stroke-opacity="0.35"/>
+    <text x="60" y="771" class="mono" font-size="13" fill="#ff7a6b">01</text>
+    <text x="60" y="799" font-size="19" font-weight="600" fill="#e8f1f4">Pression exercée par l'eau</text>
+    <text font-size="15" fill="#9fb4bd">
+      <tspan x="60" y="851">Le tympan est poussé</tspan>
+      <tspan x="60" y="871">vers l'intérieur.</tspan>
+    </text>
+  </g>
+
+  <!-- Étape 2 -->
+  <g class="step2">
+    <rect x="388" y="739" width="332" height="160" rx="16" fill="#f5d547" fill-opacity="0.06" stroke="#f5d547" stroke-opacity="0.35"/>
+    <text x="408" y="771" class="mono" font-size="13" fill="#f5d547">02</text>
+    <text font-size="19" font-weight="600" fill="#e8f1f4">
+      <tspan x="408" y="799">Pression exercée par la</tspan>
+      <tspan x="408" y="823">manœuvre de Valsalva</tspan>
+    </text>
+    <text font-size="15" fill="#9fb4bd">
+      <tspan x="408" y="851">L'air passe par la trompe d'Eustache</tspan>
+      <tspan x="408" y="871">et le tympan reprend sa place.</tspan>
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="912" viewBox="0 0 760 912" font-family="'Familjen Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>La pression absolue</title>
+  <style>
+    .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+    .wave { animation: wave 4s linear infinite; }
+    .bob { animation: bob 3s ease-in-out infinite; }
+    .bub { transform-box: fill-box; animation: bubble 3s ease-in infinite both; }
+    .drop { animation: drop 7s ease-out infinite both; }
+    .fill { transform-box: fill-box; transform-origin: left center; animation: fill 7s ease-out infinite both; }
+    .pop { transform-box: fill-box; animation: pop 7s ease-out infinite both; }
+    @keyframes wave { to { transform: translateX(-160px); } }
+    @keyframes drop {
+      0% { clip-path: inset(-10px -20px 100% -20px); opacity: 1; }
+      14% { clip-path: inset(-10px -20px -20px -20px); opacity: 1; }
+      86% { clip-path: inset(-10px -20px -20px -20px); opacity: 1; }
+      96%, 100% { clip-path: inset(-10px -20px -20px -20px); opacity: 0; }
+    }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @keyframes bubble { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 100% { transform: translateY(-110px); opacity: 0; } }
+    @keyframes fill { 0% { transform: scaleX(0); } 18%, 88% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes pop { 0%, 10% { opacity: 0; transform: translateY(6px); } 22%, 88% { opacity: 1; transform: none; } 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .wave, .bob, .bub, .drop, .fill, .pop { animation: none; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c2a3d"/>
+      <stop offset="0.45" stop-color="#081c2a"/>
+      <stop offset="1" stop-color="#05111a"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b6f86" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#0a2a3c" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b6f86" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0a2a3c" stop-opacity="0.6"/>
+    </linearGradient>
+    <clipPath id="clip1"><rect x="40" y="185" width="680" height="415" rx="18"/></clipPath>
+    <marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#f5d547"/></marker>
+    <marker id="at" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#7fe3d6"/></marker>
+    <marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#ff7a6b"/></marker>
+  </defs>
+
+  <rect width="760" height="912" fill="url(#bg)"/>
+
+  <!-- En-tête -->
+  <text x="40" y="52" class="mono" font-size="13" fill="#7fe3d6" letter-spacing="1">MODULE 04 · PRESSION ET LOI DE MARIOTTE-BOYLE</text>
+  <text x="40" y="102" font-size="42" font-weight="700" fill="#e8f1f4" letter-spacing="-0.8">La pression absolue</text>
+  <text font-size="17" fill="#9fb4bd">
+    <tspan x="40" y="138">Sous l'eau, le plongeur subit le poids de l'air au-dessus de la surface</tspan>
+    <tspan x="40" y="162">et le poids de l'eau au-dessus de lui.</tspan>
+  </text>
+
+  <!-- Carte 1 : schéma -->
+  <rect x="40" y="185" width="680" height="415" rx="18" fill="#ffffff" fill-opacity="0.03"/>
+  <g clip-path="url(#clip1)">
+    <g transform="translate(40 185) scale(1.0625)">
+      <line x1="0" y1="28" x2="640" y2="28" stroke="#9fb4bd" stroke-opacity="0.5" stroke-dasharray="6 6"/>
+      <text x="24" y="20" class="mono" font-size="12" fill="#7f97a2">LIMITE DE L'ATMOSPHÈRE</text>
+      <g class="wave">
+        <path d="M0 132 Q40 122 80 132 T160 132 T240 132 T320 132 T400 132 T480 132 T560 132 T640 132 T720 132 T800 132 V330 H0 Z" fill="url(#sea)"/>
+        <path d="M0 132 Q40 122 80 132 T160 132 T240 132 T320 132 T400 132 T480 132 T560 132 T640 132 T720 132 T800 132" fill="none" stroke="#7fe3d6" stroke-width="2"/>
+      </g>
+      <text x="24" y="90" font-size="22" font-weight="600" fill="#f5d547">Pression atmosphérique</text>
+      <text x="24" y="116" class="mono" font-size="16" fill="#f5d547">PA</text>
+      <text x="24" y="184" font-size="22" font-weight="600" fill="#7fe3d6">Pression de l'eau</text>
+      <text x="24" y="210" class="mono" font-size="16" fill="#7fe3d6">Peau</text>
+      <g fill="#bfeee8">
+        <circle class="bub" cx="262" cy="232" r="3"/>
+        <circle class="bub" cx="257" cy="232" r="2" style="animation-delay:1s"/>
+        <circle class="bub" cx="266" cy="232" r="2.5" style="animation-delay:2s"/>
+      </g>
+      <g class="bob" stroke="#e8f1f4" stroke-width="3" stroke-linecap="round" fill="none">
+        <circle cx="250" cy="248" r="13"/>
+        <line x1="250" y1="261" x2="250" y2="292"/>
+        <line x1="226" y1="272" x2="274" y2="272"/>
+        <line x1="250" y1="292" x2="236" y2="316"/>
+        <line x1="250" y1="292" x2="264" y2="316"/>
+      </g>
+      <g class="drop">
+        <line x1="440" y1="32" x2="440" y2="124" stroke="#f5d547" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ay)"/>
+        <text x="452" y="84" class="mono" font-size="14" fill="#f5d547">PA</text>
+      </g>
+      <g class="drop" style="animation-delay:1.1s">
+        <line x1="440" y1="140" x2="440" y2="300" stroke="#7fe3d6" stroke-width="3" marker-end="url(#at)"/>
+        <text x="452" y="226" class="mono" font-size="14" fill="#7fe3d6">Peau</text>
+      </g>
+      <g class="drop" style="animation-delay:2.2s">
+        <line x1="520" y1="32" x2="520" y2="300" stroke="#ff7a6b" stroke-width="3.5" marker-end="url(#ac)"/>
+        <text x="532" y="226" class="mono" font-size="14" fill="#ff7a6b">Pabs</text>
+      </g>
+    </g>
+    <line x1="40" y1="536" x2="720" y2="536" stroke="#e8f1f4" stroke-opacity="0.08"/>
+    <text x="64" y="575" font-size="20" font-weight="600">
+      <tspan fill="#ff7a6b">Pression absolue</tspan>
+      <tspan fill="#7f97a2" dx="6">=</tspan>
+      <tspan fill="#f5d547" dx="6">PA</tspan>
+      <tspan fill="#7f97a2" dx="6">+</tspan>
+      <tspan fill="#7fe3d6" dx="6">Peau</tspan>
+    </text>
+  </g>
+  <rect x="40" y="185" width="680" height="415" rx="18" fill="none" stroke="#e8f1f4" stroke-opacity="0.1"/>
+
+  <!-- Carte 2 : tableau des profondeurs -->
+  <rect x="40" y="625" width="680" height="246" rx="18" fill="url(#card2)" stroke="#e8f1f4" stroke-opacity="0.1"/>
+  <text x="64" y="657" class="mono" font-size="13" fill="#7fe3d6" letter-spacing="1">TOUS LES 10 M : +1 BAR</text>
+
+  <g>
+    <line x1="40" y1="673" x2="720" y2="673" stroke="#e8f1f4" stroke-opacity="0.08"/>
+    <text x="64" y="713" class="mono" font-size="20" fill="#e8f1f4">0 m</text>
+    <text x="144" y="701" class="mono" font-size="13" fill="#f5d547">1 bar (air)</text>
+    <rect class="fill" x="144" y="711" width="340" height="2" rx="1" fill="#7fe3d6" fill-opacity="0.7" style="animation-delay:0.2s"/>
+    <text class="pop" x="696" y="713" text-anchor="end" font-size="18" fill="#9fb4bd" style="animation-delay:0.2s">Pabs = <tspan fill="#ff7a6b" font-weight="700">1 bar</tspan></text>
+  </g>
+  <g>
+    <line x1="40" y1="739" x2="720" y2="739" stroke="#e8f1f4" stroke-opacity="0.08"/>
+    <text x="64" y="779" class="mono" font-size="20" fill="#e8f1f4">10 m</text>
+    <text x="144" y="767" class="mono" font-size="13" fill="#f5d547">+ 1 bar</text>
+    <rect class="fill" x="144" y="777" width="340" height="2" rx="1" fill="#7fe3d6" fill-opacity="0.7" style="animation-delay:1s"/>
+    <text class="pop" x="696" y="779" text-anchor="end" font-size="18" fill="#9fb4bd" style="animation-delay:1s">Pabs = <tspan fill="#ff7a6b" font-weight="700">2 bars</tspan></text>
+  </g>
+  <g>
+    <line x1="40" y1="805" x2="720" y2="805" stroke="#e8f1f4" stroke-opacity="0.08"/>
+    <text x="64" y="845" class="mono" font-size="20" fill="#e8f1f4">20 m</text>
+    <text x="144" y="833" class="mono" font-size="13" fill="#f5d547">+ 1 bar</text>
+    <rect class="fill" x="144" y="843" width="340" height="2" rx="1" fill="#7fe3d6" fill-opacity="0.7" style="animation-delay:1.8s"/>
+    <text class="pop" x="696" y="845" text-anchor="end" font-size="18" fill="#9fb4bd" style="animation-delay:1.8s">Pabs = <tspan fill="#ff7a6b" font-weight="700">3 bars</tspan></text>
+  </g>
+</svg>

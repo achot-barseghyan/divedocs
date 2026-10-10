@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="724" viewBox="0 0 760 724" font-family="'Familjen Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>La courbe de sécurité</title>
+  <style>
+    .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+    .curve { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.8s ease-in-out forwards; }
+    .area { animation: fadein 1.2s ease-out .4s both; }
+    .pop { transform-box: fill-box; transform-origin: center; animation: popin .35s ease-out both; }
+    .cyc { animation: cycle 26s linear infinite; }
+    @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+    @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes popin { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+    @keyframes cycle { 0%, 7.6% { opacity: 1; } 7.7%, 100% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .curve { animation: none; stroke-dashoffset: 0; }
+      .area, .pop { animation: none; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c2a3d"/>
+      <stop offset="0.45" stop-color="#081c2a"/>
+      <stop offset="1" stop-color="#05111a"/>
+    </linearGradient>
+    <clipPath id="cardClip"><rect x="40" y="150" width="680" height="517" rx="18"/></clipPath>
+  </defs>
+
+  <rect width="760" height="724" fill="url(#bg)"/>
+
+  <!-- En-tête -->
+  <text x="40" y="52" class="mono" font-size="13" fill="#7fe3d6" letter-spacing="1">MODULE 10 · LA COURBE DE SÉCURITÉ</text>
+  <text x="40" y="102" font-size="42" font-weight="700" fill="#e8f1f4" letter-spacing="-0.8">La courbe de sécurité</text>
+  <text x="40" y="134" font-size="17" fill="#9fb4bd">D'après les tables MN90.</text>
+
+  <!-- Carte -->
+  <g clip-path="url(#cardClip)">
+  <rect x="40" y="150" width="680" height="517" fill="#ffffff" fill-opacity="0.03"/>
+  <g transform="translate(40 150) scale(0.894737)">
+    <text x="395" y="22" text-anchor="middle" font-size="17" font-weight="600" fill="#d4e2e7">Durée de la plongée (minutes)</text>
+    <text x="20" y="250" text-anchor="middle" font-size="17" font-weight="600" fill="#d4e2e7" transform="rotate(-90 20 250)">Profondeur (m)</text>
+    <rect x="70" y="60" width="650" height="380" fill="#ff7a6b" fill-opacity="0.10"/>
+    <path class="area" d="M70 60 H720 V155 L682.9 155 L320.7 174 L209.3 202.5 L162.9 231 L144.3 250 L135 269 L107.1 297.5 L97.9 326 L88.6 345 L88.6 364 L88.6 392.5 L79.3 421 L79.3 440 H70 Z" fill="#7fe3d6" fill-opacity="0.12"/>
+    <g stroke="#e8f1f4" stroke-opacity="0.07" stroke-width="1">
+      <line x1="162.9" y1="60" x2="162.9" y2="440"/><line x1="255.7" y1="60" x2="255.7" y2="440"/><line x1="348.6" y1="60" x2="348.6" y2="440"/><line x1="441.4" y1="60" x2="441.4" y2="440"/><line x1="534.3" y1="60" x2="534.3" y2="440"/><line x1="627.1" y1="60" x2="627.1" y2="440"/>
+      <line x1="70" y1="107.5" x2="720" y2="107.5"/><line x1="70" y1="155" x2="720" y2="155"/><line x1="70" y1="202.5" x2="720" y2="202.5"/><line x1="70" y1="297.5" x2="720" y2="297.5"/><line x1="70" y1="345" x2="720" y2="345"/><line x1="70" y1="392.5" x2="720" y2="392.5"/>
+    </g>
+    <line x1="70" y1="60" x2="720" y2="60" stroke="#9fb4bd" stroke-width="1.5"/>
+    <line x1="70" y1="60" x2="70" y2="440" stroke="#9fb4bd" stroke-width="1.5"/>
+    <g class="mono" font-size="15" fill="#9fb4bd" text-anchor="middle">
+      <text x="70" y="50">0</text><text x="162.9" y="50">50</text><text x="255.7" y="50">100</text><text x="348.6" y="50">150</text><text x="441.4" y="50">200</text><text x="534.3" y="50">250</text><text x="627.1" y="50">300</text><text x="712" y="50">350</text>
+    </g>
+    <g class="mono" font-size="15" fill="#9fb4bd" text-anchor="end">
+      <text x="60" y="65">0</text><text x="60" y="112.5">5</text><text x="60" y="160">10</text><text x="60" y="207.5">15</text><text x="60" y="255">20</text><text x="60" y="302.5">25</text><text x="60" y="350">30</text><text x="60" y="397.5">35</text><text x="60" y="445">40</text>
+    </g>
+    <line x1="70" y1="250" x2="720" y2="250" stroke="#f5d547" stroke-width="2.5" stroke-dasharray="8 6"/>
+    <text x="712" y="272" text-anchor="end" font-size="16" font-style="italic" fill="#f5d547">limite d'évolution niveau 1</text>
+    <text x="300" y="120" text-anchor="middle" font-size="21" font-weight="600" fill="#7fe3d6">Zone de plongée</text>
+    <text x="300" y="146" text-anchor="middle" font-size="21" font-weight="600" fill="#7fe3d6">sans paliers</text>
+    <text x="420" y="352" text-anchor="middle" font-size="21" font-weight="600" fill="#ff7a6b">Zone de paliers obligatoires</text>
+    <path class="curve" pathLength="1" d="M79.3 440 L79.3 421 L88.6 392.5 L88.6 364 L88.6 345 L97.9 326 L107.1 297.5 L135 269 L144.3 250 L162.9 231 L209.3 202.5 L320.7 174 L682.9 155" fill="none" stroke="#e8f1f4" stroke-width="3" stroke-linejoin="round"/>
+    <circle class="pop" cx="79.3" cy="440" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.15s"/>
+    <circle class="pop" cx="79.3" cy="421" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.28s"/>
+    <circle class="pop" cx="88.6" cy="392.5" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.41s"/>
+    <circle class="pop" cx="88.6" cy="364" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.54s"/>
+    <circle class="pop" cx="88.6" cy="345" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.67s"/>
+    <circle class="pop" cx="97.9" cy="326" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.80s"/>
+    <circle class="pop" cx="107.1" cy="297.5" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:0.93s"/>
+    <circle class="pop" cx="135" cy="269" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:1.06s"/>
+    <circle class="pop" cx="144.3" cy="250" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:1.19s"/>
+    <circle class="pop" cx="162.9" cy="231" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:1.32s"/>
+    <circle class="pop" cx="209.3" cy="202.5" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:1.45s"/>
+    <circle class="pop" cx="320.7" cy="174" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:1.58s"/>
+    <circle class="pop" cx="682.9" cy="155" r="6" fill="#ff7a6b" stroke="#05111a" stroke-width="2" style="animation-delay:1.71s"/>
+    <circle class="cyc" cx="79.3" cy="440" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-0s"/>
+    <circle class="cyc" cx="79.3" cy="421" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-24s"/>
+    <circle class="cyc" cx="88.6" cy="392.5" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-22s"/>
+    <circle class="cyc" cx="88.6" cy="364" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-20s"/>
+    <circle class="cyc" cx="88.6" cy="345" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-18s"/>
+    <circle class="cyc" cx="97.9" cy="326" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-16s"/>
+    <circle class="cyc" cx="107.1" cy="297.5" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-14s"/>
+    <circle class="cyc" cx="135" cy="269" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-12s"/>
+    <circle class="cyc" cx="144.3" cy="250" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-10s"/>
+    <circle class="cyc" cx="162.9" cy="231" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-8s"/>
+    <circle class="cyc" cx="209.3" cy="202.5" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-6s"/>
+    <circle class="cyc" cx="320.7" cy="174" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-4s"/>
+    <circle class="cyc" cx="682.9" cy="155" r="9" fill="#f5d547" stroke="#05111a" stroke-width="2" style="animation-delay:-2s"/>
+  </g>
+
+  <!-- Lecture -->
+  <line x1="40" y1="597" x2="720" y2="597" stroke="#e8f1f4" stroke-opacity="0.08"/>
+    <g class="cyc" style="animation-delay:-0s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">40 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">5 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-24s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">38 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">5 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-22s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">35 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">10 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-20s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">32 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">10 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-18s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">30 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">10 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-16s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">28 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">15 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-14s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">25 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">20 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-12s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">22 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">35 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-10s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">20 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">40 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-8s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">18 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">50 min maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-6s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">15 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">1 h 15 maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-4s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">12 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">2 h 15 maximum sans palier</text></g>
+    <g class="cyc" style="animation-delay:-2s"><text x="64" y="646" class="mono" font-size="28" font-weight="500" fill="#f5d547">10 m</text><text x="156" y="645" font-size="18" fill="#d4e2e7">5 h 30 maximum sans palier</text></g>
+  </g>
+  <rect x="40" y="150" width="680" height="517" rx="18" fill="none" stroke="#e8f1f4" stroke-opacity="0.1"/>
+
+  <text x="40" y="702" font-size="15" fill="#7f97a2">Le point jaune parcourt la courbe : durée maximale sans palier pour chaque profondeur.</text>
+</svg>

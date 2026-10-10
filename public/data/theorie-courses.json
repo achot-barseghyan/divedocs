@@ -53,12 +53,12 @@
         "images": [
           {
             "id": 1,
-            "src": "/img/theorie/module2/img2.jpg",
+            "src": "/img/theorie/module2/img2.png",
             "alt": "Comparaison de la perception de la taille et de la distance avec masque"
           },
           {
             "id": 2,
-            "src": "/img/theorie/module2/img1.jpg",
+            "src": "/img/theorie/module2/img1.png",
             "alt": "Schéma illustrant la vision sous-marine avec masque"
           }
         ]
@@ -74,7 +74,7 @@
         "images": [
           {
             "id": 3,
-            "src": "/img/theorie/module2/img3.jpg",
+            "src": "/img/theorie/module2/img3.png",
             "alt": "Schéma illustrant l'absorption des couleurs sous l'eau"
           }
         ]
@@ -139,7 +139,7 @@
             "images": [
               {
                 "id": 1,
-                "src": "/img/theorie/module4/img1.jpg",
+                "src": "/img/theorie/module4/img1.png",
                 "alt": "Schéma illustrant la pression atmosphérique"
               }
             ]
@@ -159,7 +159,7 @@
             "images": [
               {
                 "id": 2,
-                "src": "/img/theorie/module4/img2.jpg",
+                "src": "/img/theorie/module4/img2.svg",
                 "alt": "Schéma illustrant la pression absolue à différentes profondeurs"
               }
             ]
@@ -184,7 +184,7 @@
         "images": [
           {
             "id": 3,
-            "src": "/img/theorie/module4/img3.jpg",
+            "src": "/img/theorie/module4/img3.svg",
             "alt": "Schéma illustrant la loi de Mariotte-Boyle"
           }
         ]
@@ -323,7 +323,7 @@
         "images": [
           {
             "id": 1,
-            "src": "/img/theorie/module6/img1.jpg",
+            "src": "/img/theorie/module6/img1.svg",
             "alt": "Schéma illustrant le barotraumatisme de l'oreille"
           }
         ]
@@ -542,7 +542,7 @@
         "content": "En lisant ces tables, on voit qu'il existe pour chaque profondeur, une durée à partir de laquelle il faut faire des paliers. Donc, pour une profondeur donnée, si la plongée est inférieure à cette durée, il n'est pas nécessaire de faire des paliers. L'ensemble de ces durées, pour toutes les profondeurs, définit la courbe de sécurité.",
         "images": [
           {
-            "src": "/img/theorie/module10/img1.jpg"
+            "src": "/img/theorie/module10/img1.svg"
           }
         ]
       }

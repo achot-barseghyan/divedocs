@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="714" viewBox="0 0 760 714" font-family="'Familjen Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Pression et volume</title>
+  <style>
+    .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+    .ball { transform-box: fill-box; transform-origin: center; animation: travel 9s ease-in-out infinite; }
+    .fill { transform-box: fill-box; transform-origin: left center; animation: fill 7s ease-out infinite both; }
+    .down { animation: dir 9s ease-in-out infinite both; }
+    .up { animation: dir 9s ease-in-out 4.5s infinite both; }
+    @keyframes travel {
+      0%, 8% { transform: translateY(0) scale(1); fill: #f5d547; }
+      28%, 36% { transform: translateY(112px) scale(.72); fill: #ffb36b; }
+      56%, 64% { transform: translateY(224px) scale(.45); fill: #ff7a6b; }
+      84%, 92% { transform: translateY(112px) scale(.72); fill: #ffb36b; }
+      100% { transform: translateY(0) scale(1); fill: #f5d547; }
+    }
+    @keyframes fill { 0% { transform: scaleX(0); } 18%, 88% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+    @keyframes dir { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ball, .fill, .down, .up { animation: none; }
+    }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c2a3d"/>
+      <stop offset="0.45" stop-color="#081c2a"/>
+      <stop offset="1" stop-color="#05111a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b6f86" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#0a2a3c" stop-opacity="0.6"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="760" height="714" fill="url(#bg)"/>
+
+  <!-- En-tête -->
+  <text x="40" y="52" class="mono" font-size="13" fill="#7fe3d6" letter-spacing="1">MODULE 04 · PRESSION ET LOI DE MARIOTTE-BOYLE</text>
+  <text x="40" y="102" font-size="42" font-weight="700" fill="#e8f1f4" letter-spacing="-0.8">Pression et volume</text>
+  <text x="40" y="134" font-size="17" fill="#9fb4bd">Un même volume d'air se comprime à la descente et se dilate à la remontée.</text>
+
+  <!-- Carte 1 : tableau -->
+  <rect x="40" y="150" width="680" height="436" rx="18" fill="url(#card)" stroke="#e8f1f4" stroke-opacity="0.1"/>
+  <g class="mono" font-size="12" fill="#7fe3d6" letter-spacing="1">
+    <text x="60" y="182">PROF.</text>
+    <text x="116" y="182">PRESSION</text>
+    <text x="582" y="182" text-anchor="middle">AIR</text>
+    <text x="700" y="182" text-anchor="end">VOL.</text>
+  </g>
+
+  <!-- Ligne 0 m -->
+  <line x1="40" y1="198" x2="720" y2="198" stroke="#e8f1f4" stroke-opacity="0.08"/>
+  <text x="60" y="260" class="mono" font-size="18" fill="#e8f1f4">0 m</text>
+  <text x="116" y="236" class="mono" font-size="13" fill="#f5d547">1 bar (air)</text>
+  <rect class="fill" x="116" y="246" width="390" height="2" rx="1" fill="#7fe3d6" fill-opacity="0.7" style="animation-delay:0.2s"/>
+  <text x="116" y="274" font-size="16" fill="#9fb4bd">Pabs = <tspan fill="#e8f1f4" font-weight="700">1 bar</tspan></text>
+  <circle cx="582" cy="254" r="40" fill="none" stroke="#e8f1f4" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="700" y="260" text-anchor="end" class="mono" font-size="18" font-weight="500" fill="#e8f1f4">15 l</text>
+
+  <!-- Ligne 10 m -->
+  <line x1="40" y1="310" x2="720" y2="310" stroke="#e8f1f4" stroke-opacity="0.08"/>
+  <text x="60" y="372" class="mono" font-size="18" fill="#e8f1f4">10 m</text>
+  <text x="116" y="348" class="mono" font-size="13" fill="#f5d547">+ 1 bar</text>
+  <rect class="fill" x="116" y="358" width="390" height="2" rx="1" fill="#7fe3d6" fill-opacity="0.7" style="animation-delay:1s"/>
+  <text x="116" y="386" font-size="16" fill="#9fb4bd">Pabs = <tspan fill="#e8f1f4" font-weight="700">2 bars</tspan></text>
+  <circle cx="582" cy="366" r="28.8" fill="none" stroke="#e8f1f4" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="682" y="332" text-anchor="end" class="mono down" font-size="16" fill="#ff7a6b">↓</text>
+  <text x="700" y="332" text-anchor="end" class="mono up" font-size="16" fill="#7fe3d6">↑</text>
+  <text x="700" y="372" text-anchor="end" class="mono" font-size="18" font-weight="500" fill="#e8f1f4">7,5 l</text>
+
+  <!-- Ligne 20 m -->
+  <line x1="40" y1="422" x2="720" y2="422" stroke="#e8f1f4" stroke-opacity="0.08"/>
+  <text x="60" y="484" class="mono" font-size="18" fill="#e8f1f4">20 m</text>
+  <text x="116" y="460" class="mono" font-size="13" fill="#f5d547">+ 1 bar</text>
+  <rect class="fill" x="116" y="470" width="390" height="2" rx="1" fill="#7fe3d6" fill-opacity="0.7" style="animation-delay:1.8s"/>
+  <text x="116" y="498" font-size="16" fill="#9fb4bd">Pabs = <tspan fill="#e8f1f4" font-weight="700">3 bars</tspan></text>
+  <circle cx="582" cy="478" r="18" fill="none" stroke="#e8f1f4" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="682" y="444" text-anchor="end" class="mono down" font-size="16" fill="#ff7a6b">↓</text>
+  <text x="700" y="444" text-anchor="end" class="mono up" font-size="16" fill="#7fe3d6">↑</text>
+  <text x="700" y="484" text-anchor="end" class="mono" font-size="18" font-weight="500" fill="#e8f1f4">5 l</text>
+
+  <!-- Bulle d'air qui voyage -->
+  <circle class="ball" cx="582" cy="254" r="40" fill="#f5d547" filter="url(#glow)"/>
+
+  <!-- Légende -->
+  <line x1="40" y1="534" x2="720" y2="534" stroke="#e8f1f4" stroke-opacity="0.08"/>
+  <text x="60" y="566" font-size="15" fill="#9fb4bd"><tspan fill="#ff7a6b">↓</tspan> Descente : le volume diminue</text>
+  <text x="330" y="566" font-size="15" fill="#9fb4bd"><tspan fill="#7fe3d6">↑</tspan> Remontée : le volume augmente</text>
+
+  <!-- Carte 2 : formule -->
+  <rect x="40" y="610" width="680" height="64" rx="18" fill="#ffffff" fill-opacity="0.03" stroke="#e8f1f4" stroke-opacity="0.1"/>
+  <text x="64" y="649" font-size="20" font-weight="600" fill="#e8f1f4">P × V = constante</text>
+  <text x="270" y="649" class="mono" font-size="15" fill="#9fb4bd">1 × 15 = 2 × 7,5 = 3 × 5 = 15</text>
+</svg>

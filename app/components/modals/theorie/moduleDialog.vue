@@ -125,12 +125,14 @@
                 v-for="(item, imageIndex) in subsection.images"
                 :key="item.id ?? imageIndex"
                 type="button"
+                :class="{ 'w-full': isSvg(item.src) }"
                 @click="showImg(subsection.images, imageIndex)"
               >
                 <img
                   :src="item.src"
                   :alt="item.alt"
-                  class="max-h-[40vh] rounded-[10px] border border-[rgba(232,241,244,0.14)]"
+                  class="rounded-[10px] border border-[rgba(232,241,244,0.14)]"
+                  :class="isSvg(item.src) ? 'w-full' : 'max-h-[40vh]'"
                 />
               </button>
             </div>
@@ -154,7 +156,8 @@
             <img
               :src="item.src"
               :alt="item.alt"
-              class="max-h-[60vh] rounded-[10px] border border-[rgba(232,241,244,0.14)]"
+              class="rounded-[10px] border border-[rgba(232,241,244,0.14)]"
+              :class="isSvg(item.src) ? 'w-full' : 'max-h-[60vh]'"
             />
           </button>
         </div>
@@ -259,6 +262,10 @@ const nextCourse = computed(() => courses.value[wrap(currentIndex.value + 1)])
 const visibleLighboxRef = ref(false)
 const indexLightboxRef = ref(0)
 const currentImages = ref<any[]>([])
+
+function isSvg(src: string) {
+  return src.endsWith('.svg')
+}
 
 function showImg(images: any[], imageIndex: number) {
   currentImages.value = images
