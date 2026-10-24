@@ -74,6 +74,11 @@ const modules = [
     desc: 'Cours théoriques, recherche, ouverture des modules et export PDF',
     link: '/niveau2/theorie',
   },
+  {
+    title: 'Matériel',
+    desc: 'Ordinateur, gilet, détendeur et parachute : fiches interactives et conseils d’achat',
+    link: '/niveau2/materiel',
+  },
 ]
 
 // N2: autonomous to 20 m, supervised to 40 m (FFESSM PA20 / PE40)
