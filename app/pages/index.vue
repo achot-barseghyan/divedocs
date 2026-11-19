@@ -195,7 +195,8 @@
                 class="relative flex min-h-12 items-center gap-3 self-start rounded-xl px-5 text-[15px] font-semibold text-[#05111a] transition-[filter,transform] duration-200 hover:translate-x-1 hover:text-[#05111a] hover:brightness-110"
                 :style="{ background: s.accent }"
               >
-                {{ s.cta }} <span class="text-lg" aria-hidden="true">→</span>
+                {{ s.cta }}
+                <span class="text-lg" aria-hidden="true">→</span>
               </NuxtLink>
             </article>
           </div>
@@ -268,9 +269,7 @@
       <span class="font-mono text-[11px] tracking-[0.1em] text-[#7f97a2]">
         PROF.
       </span>
-      <span
-        class="min-w-[76px] text-right font-mono text-xl text-[#f5d547]"
-      >
+      <span class="min-w-[76px] text-right font-mono text-xl text-[#f5d547]">
         −{{ depth.toFixed(1) }}
       </span>
       <span class="mr-1.5 font-mono text-xs text-[#f5d547]">m</span>
@@ -436,10 +435,15 @@ const measure = () => {
   if (!root || !track || !stopRefs.value.length) return
   const wrapTop = track.getBoundingClientRect().top
   // 33px: centre of the stop's depth dot
-  const ys = stopRefs.value.map((el) => el.getBoundingClientRect().top - wrapTop + 33)
+  const ys = stopRefs.value.map(
+    (el) => el.getBoundingClientRect().top - wrapTop + 33
+  )
   const first = ys[0]!
   const last = ys[ys.length - 1]!
-  const mark = Math.min(last, Math.max(first, window.innerHeight * 0.5 - wrapTop))
+  const mark = Math.min(
+    last,
+    Math.max(first, window.innerHeight * 0.5 - wrapTop)
+  )
   let d = 0
   for (let i = 0; i < ys.length - 1; i++) {
     const y0 = ys[i]!
@@ -451,7 +455,8 @@ const measure = () => {
   }
   const rect = root.getBoundingClientRect()
   inDesc.value =
-    rect.top < window.innerHeight * 0.55 && rect.bottom > window.innerHeight * 0.45
+    rect.top < window.innerHeight * 0.55 &&
+    rect.bottom > window.innerHeight * 0.45
   line.top = first
   line.h = last - first
   line.mark = mark

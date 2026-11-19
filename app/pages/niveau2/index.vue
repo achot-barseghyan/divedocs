@@ -79,6 +79,11 @@ const modules = [
     desc: 'Ordinateur, gilet, détendeur et parachute : fiches interactives et conseils d’achat',
     link: '/niveau2/materiel',
   },
+  {
+    title: 'Révisions & Quiz',
+    desc: 'QCM et questions ouvertes sur la physique et la réglementation',
+    link: '/niveau2/quiz',
+  },
 ]
 
 // N2: autonomous to 20 m, supervised to 40 m (FFESSM PA20 / PE40)

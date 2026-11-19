@@ -136,11 +136,14 @@
               animationDelay: (i - 1) * 0.8 + 's',
             }"
           ></span>
-          <div class="absolute left-[110px] right-3.5 top-3.5 flex flex-col gap-1.5">
+          <div
+            class="absolute left-[110px] right-3.5 top-3.5 flex flex-col gap-1.5"
+          >
             <div
               class="flex justify-between font-mono text-[11px] text-[#7f97a2]"
             >
-              <span>AVANCEMENT</span><span>Patience…</span>
+              <span>AVANCEMENT</span>
+              <span>Patience…</span>
             </div>
             <div
               class="h-1.5 overflow-hidden rounded-[3px] bg-[rgba(232,241,244,0.1)]"
