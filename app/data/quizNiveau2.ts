@@ -16,6 +16,8 @@ export interface QcmQuestion {
   o: string[]
   c: number[]
   e: string
+  key?: string // stable id for stats, when q changes (generated calculations)
+  keyLabel?: string // name shown in stats for that id
 }
 
 // r = model answer, k = expected items [label, ...variants], n = expected numbers,
@@ -28,6 +30,8 @@ export interface OpenQuestion {
   n?: number[]
   tol?: number
   min?: number
+  key?: string
+  keyLabel?: string
 }
 
 const STATIC_QCM: QcmQuestion[] = [

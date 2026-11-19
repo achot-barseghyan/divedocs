@@ -276,12 +276,35 @@ const toOpen = (c: Calc): OpenQuestion => ({
   k: c.k,
 })
 
-export const QCM_CALC = GENERATORS.map((gen) => ({
+// Names shown on /admin/stats, in the same order as GENERATORS
+const NAMES = [
+  'Pression absolue à une profondeur',
+  'Profondeur pour une pression absolue',
+  "Volume d'air détendu d'une bouteille",
+  "Volume d'air disponible au fond",
+  'Gilet non purgé à la remontée',
+  'Ballon descendu en profondeur',
+  'Consommation au fond',
+  'Autonomie au fond',
+  'Volume à mettre dans la stab',
+  'Lestage pour être neutre',
+  'Changement de bloc acier → alu',
+  'Temps de palier avant la réserve',
+]
+
+// Generated questions share a stable stats key per generator
+const stamp = <Q extends object>(q: Q, i: number): Q => ({
+  ...q,
+  key: `calc-${i}`,
+  keyLabel: `Calcul : ${NAMES[i] ?? i + 1} (chiffres variables)`,
+})
+
+export const QCM_CALC = GENERATORS.map((gen, i) => ({
   t: 'phy' as const,
-  gen: () => toQcm(gen()),
+  gen: () => stamp(toQcm(gen()), i),
 }))
 
-export const OPEN_CALC = GENERATORS.map((gen) => ({
+export const OPEN_CALC = GENERATORS.map((gen, i) => ({
   t: 'phy' as const,
-  gen: () => toOpen(gen()),
+  gen: () => stamp(toOpen(gen()), i),
 }))

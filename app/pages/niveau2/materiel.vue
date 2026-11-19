@@ -60,7 +60,8 @@
               <span
                 class="mt-auto flex items-center justify-between gap-3 rounded-[10px] bg-[#7fe3d6] px-4 py-3.5 text-[15px] font-semibold text-[#05111a]"
               >
-                Ouvrir la fiche <span class="text-lg" aria-hidden="true">→</span>
+                Ouvrir la fiche
+                <span class="text-lg" aria-hidden="true">→</span>
               </span>
             </button>
           </article>
@@ -84,4 +85,9 @@ import {
 definePageMeta({ breadcrumb: 'Matériel' })
 
 const openFiche = ref<FicheKey | null>(null)
+
+// Anonymous stats: count each fiche opened
+watch(openFiche, (key) => {
+  if (key) track({ e: 'fiche', level: 'niveau2', title: fiches[key].title })
+})
 </script>

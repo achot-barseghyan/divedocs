@@ -225,7 +225,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useTheorieCourses } from '~/composables/useTheorieCourses'
 import { useExportPDF } from '~/composables/useExportPDF'
 
@@ -294,6 +294,17 @@ useEventListener('keydown', (e: KeyboardEvent) => {
   if (!visible.value || visibleLighboxRef.value) return
   if (e.key === 'ArrowRight') goTo(currentIndex.value + 1)
   if (e.key === 'ArrowLeft') goTo(currentIndex.value - 1)
+})
+
+// Anonymous stats: one read per module shown (opening or ← / → navigation)
+const route = useRoute()
+watch([visible, () => moduleData.value?.title], ([isOpen, title]) => {
+  if (isOpen && title)
+    track({
+      e: 'module',
+      level: route.path.split('/')[1] ?? '',
+      title: String(title),
+    })
 })
 
 defineExpose({

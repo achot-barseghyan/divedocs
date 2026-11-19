@@ -25,6 +25,25 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-easy-lightbox',
   ],
+  // Password of the hidden page /admin/stats: set NUXT_STATS_PASSWORD
+  runtimeConfig: {
+    statsPassword: '',
+  },
+
+  // Anonymous usage stats (server/utils/stats.ts). The "fs" driver writes
+  // JSON files to .data/stats: fine on a server with a persistent disk. On a
+  // serverless host, switch to its storage (Vercel KV, Netlify Blobs,
+  // Cloudflare KV...): https://nitro.build/guide/storage
+  nitro: {
+    storage: {
+      stats: { driver: 'fs', base: './.data/stats' },
+    },
+  },
+
+  routeRules: {
+    '/admin/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+  },
+
   primevue: {
     options: {
       theme: {

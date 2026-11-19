@@ -639,6 +639,43 @@ const startSession = (questions: Question[], mode: Mode) => {
   }
   showResults.value = false
   resetQuestion()
+  track({ e: 'quiz_start', quiz: 'n2', mode, themes: themesLabel() })
+}
+
+/* ---------- Stats anonymes (voir /admin/stats) ---------- */
+const themesLabel = () => {
+  const ids = new Set(session.value?.qs.map((it) => it.q.t))
+  return THEMES.filter((t) => ids.has(t.id))
+    .map((t) => t.name)
+    .join(' + ')
+}
+
+// Sent when leaving a question, so a manual "Compter juste / faux" is taken into account
+const trackAnswer = () => {
+  const s = session.value
+  const r = s?.res[s.i]
+  if (!s || !r) return
+  const q = s.qs[s.i]!.q
+  track({
+    e: 'answer',
+    quiz: `n2 · ${s.mode}`,
+    key: `${s.mode}:${q.key ?? q.q}`,
+    label: q.keyLabel ?? q.q,
+    verdict: r.v,
+  })
+}
+
+const trackEnd = () => {
+  const s = session.value
+  if (!s) return
+  track({
+    e: 'quiz_end',
+    quiz: 'n2',
+    mode: s.mode,
+    themes: themesLabel(),
+    total: s.qs.length,
+    correct: s.res.filter((r) => r?.v === 'ok').length,
+  })
 }
 
 const startFromPrefs = () => {
@@ -703,11 +740,13 @@ const override = (v: Verdict) => {
 const next = () => {
   const s = session.value
   if (!s) return
+  trackAnswer()
   if (s.i < s.qs.length - 1) {
     s.i++
     resetQuestion()
   } else {
     showResults.value = true
+    trackEnd()
     scrollToStage()
   }
 }
@@ -716,10 +755,12 @@ const next = () => {
 const quit = () => {
   const s = session.value
   if (!s) return
+  trackAnswer()
   const done = s.res.filter(Boolean).length
   if (!done) return backHome()
   s.qs = s.qs.slice(0, done)
   showResults.value = true
+  trackEnd()
   scrollToStage()
 }
 

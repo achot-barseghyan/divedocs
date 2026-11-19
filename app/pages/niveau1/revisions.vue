@@ -242,6 +242,12 @@ const scrollToStage = async () => {
 
 const startMode = (id: 'quiz' | 'flashcard') => {
   mode.value = id
+  track({
+    e: 'quiz_start',
+    quiz: 'n1',
+    mode: id === 'quiz' ? 'qcm' : 'flashcards',
+    themes: 'Réglementation',
+  })
   scrollToStage()
 }
 
@@ -250,7 +256,15 @@ const backToMenu = () => {
   scrollToStage()
 }
 
-const handleQuizComplete = (results: { score: number }) => {
+const handleQuizComplete = (results: { score: number; total: number }) => {
+  track({
+    e: 'quiz_end',
+    quiz: 'n1',
+    mode: 'qcm',
+    themes: 'Réglementation',
+    total: results.total,
+    correct: results.score,
+  })
   const previous = stats.value ?? {
     attempts: 0,
     totalScore: 0,
